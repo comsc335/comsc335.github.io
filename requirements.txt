@@ -1,0 +1,13 @@
+mystmd
+numpy
+pandas>=1.3.0
+seaborn
+scipy
+jupyter-book==1.0.4
+jupytext
+ipywidgets
+jupyterlab_myst
+gradescope_utils
+pyodbc>=4.0.30
+pypyodbc>=1.3.5
+ghp-import

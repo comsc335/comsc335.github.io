@@ -1,0 +1,48 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: "COMSC 335: Machine Learning"
+author: ""
+logo: ""
+copyright: ""  # Copyright year to be placed in the footer
+
+exclude_patterns: [venv/, _build/]
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: cache
+  exclude_patterns:
+    - "worksheets/*.ipynb"
+    - "homeworks/*ipynb"
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/comsc335/comsc335.github.io  # Online location of your book
+  branch: main  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: false
+  use_repository_button: false
+  extra_footer: |
+    <p>
+      COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+    </p>
+sphinx:
+  config:
+    html_show_copyright: false
+launch_buttons:
+  jupyterhub_url: "TODO" #"https://comsc341cd-fa-hub.mtholyoke.edu"
+
+only_build_toc_files: false
