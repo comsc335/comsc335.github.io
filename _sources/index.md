@@ -5,7 +5,7 @@
 - **Course number:** COMSC 335
 - **Semester:** Spring 2026
 
-Machine learning is the study of programming computers that can learn and improve through experience, and has become a powerful and pervasive paradigm in technology, science, and society. In this course, we will explore the mathematical foundations, models, and practices that enable machine learning. Students will get hands-on experience understanding, building, and evaluating machine learning models using modern scientific computing frameworks coding in Python. This course is programming intensive and will have a subsantial mathematical component. 
+Machine learning is the study of creating programs that can learn through experience, and has become a powerful and pervasive paradigm in technology, science, and society. In this course, we will explore the mathematical foundations, models, and practices that enable machine learning. Students will get hands-on experience understanding, building, and evaluating machine learning models using modern scientific computing frameworks coding in Python. This course is programming intensive and will have a subsantial mathematical component. 
 
 ### Prerequisites
 
@@ -33,4 +33,4 @@ This course would not be possible without a number of fantastic, freely availabl
 - Deisenroth, Faisal, and Ong 2020: [Mathematics for Machine Learning](https://mml-book.com/)
 - James, Witten, Hastie, Tibshirani, and Taylor 2023: [Introduction to Statistical Learning](https://www.statlearning.com/)
 - Hastie, Tibshirani, and Friedman 2017: [Elements of Statistical Learning](https://hastie.su.domains/ElemStatLearn/)
-- Deuschle, Harvard's CS1810 students and staff 2025: [Undergraduate Fundamentals of Machine Learning](https://github.com/harvard-ml-courses/cs181-textbook/blob/master/Textbook.pdf)
+- Deuschle, [CS1810](https://harvard-ml-courses.github.io/cs181-web/) students and staff 2025: [Undergraduate Fundamentals of Machine Learning](https://github.com/harvard-ml-courses/cs181-textbook/blob/master/Textbook.pdf)
