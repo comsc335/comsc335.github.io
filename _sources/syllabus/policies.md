@@ -68,7 +68,7 @@ Extensions will be given in the event of extenuating circumstances, such as illn
 
 ## Resubmissions
 
-The three projects (not including the final project) will have the option to be resubmitted up to one time each. To do a resubmission, in addition with revising your project you will need to reach out to me to set up a time to discuss the changes you made. Resubmissions can be done up to two weeks after the original assignment has been returned, and will be eligible for up to **half of the total points deducted** from the original submission.
+The four homeworks will have the option to be resubmitted up to one time each. To do a resubmission, in addition with revising your homework you will need to reach out to me to set up a time to discuss the changes you made. Resubmissions can be done up to two weeks after the original assignment has been returned, and will be eligible for up to **half of the total points deducted** from the original submission.
 
 ## Equipment
 
