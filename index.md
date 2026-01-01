@@ -1,7 +1,7 @@
 # Machine Learning
 
 ```{warning}
-This site is still under construction!
+This site is still under construction and subject to change!
 ```
 
 ## Course Description
@@ -9,7 +9,7 @@ This site is still under construction!
 - **Course number:** COMSC 335
 - **Semester:** Spring 2026
 
-Machine learning is the study of creating programs that can learn through experience, and has become a powerful and pervasive paradigm in technology, science, and society. In this course, we will explore the mathematical foundations, models, and practices that enable machine learning. Students will get hands-on experience understanding, building, and evaluating machine learning models using modern scientific computing frameworks coding in Python. This course is programming intensive and will have a subsantial mathematical component. 
+Machine learning is the study of creating programs that can learn through experience, and has become a powerful and pervasive paradigm in technology, science, and society. In this course, we will explore the mathematical foundations, models, and practices that enable machine learning. Students will get hands-on experience understanding, building, and criticallyevaluating machine learning models using modern scientific computing frameworks coding in Python. This course is programming intensive and will have a subsantial mathematical component. 
 
 ### Prerequisites
 
