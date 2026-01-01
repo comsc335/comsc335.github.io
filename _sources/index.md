@@ -1,7 +1,7 @@
 # Machine Learning
 
 ```{warning}
-This site is still under construction!
+This site is still under construction and subject to change!
 ```
 
 ## Course Description
