@@ -31,7 +31,7 @@ These are guided assignments that are "lightly graded" -- the grade is based on 
 
 ### Homeworks: 40%
 
-These are longer, graded assignments that are an opportunity to more deeply explore the mathematical and engineering foundations of machine learning in order to build and apply ML models. There will be **four** homeworks over the course of the semester, worth 10% each.
+These are longer, graded assignments that are an opportunity to more deeply explore the mathematical and engineering foundations needed to build and apply machine learning models. There will be **four** homeworks over the course of the semester, worth 10% each.
 
 ### Quizzes: 12%
 
