@@ -43,6 +43,6 @@ sphinx:
   config:
     html_show_copyright: false
 launch_buttons:
-  jupyterhub_url: "TODO" #"https://comsc341cd-fa-hub.mtholyoke.edu"
+  jupyterhub_url: "https://comsc335-sp-hub.mtholyoke.edu"
 
 only_build_toc_files: false
