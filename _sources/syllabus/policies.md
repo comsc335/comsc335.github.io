@@ -25,13 +25,13 @@ This site is still under construction and subject to change!
 Wherever possible, assignments will have their overall grade point value attached to them.
 ```
 
-### Worksheets: 16%
+### Worksheets: 20%
 
-These are guided assignments that are "lightly graded" -- the grade is based on autograded components as well as good faith effort and completion. The worksheets are designed to introduce the skills and concepts needed to prepare for the homeworks. There will be **four** worksheets over the course of the semester, worth 4% each.
+These are guided assignments that are "lightly graded" -- the grade is based on autograded components as well as good faith effort and completion. The worksheets are designed to introduce the skills and concepts needed to prepare for the homeworks. There will be **four** worksheets over the course of the semester, worth 5% each.
 
-### Homeworks: 40%
+### Homeworks: 36%
 
-These are longer, graded assignments that are an opportunity to more deeply explore the mathematical and engineering foundations needed to build and apply machine learning models. There will be **four** homeworks over the course of the semester, worth 10% each.
+These are longer, graded assignments that are an opportunity to more deeply explore the mathematical and engineering foundations needed to build and apply machine learning models. There will be **four** homeworks over the course of the semester, worth 9% each.
 
 ### Quizzes: 12%
 
@@ -60,7 +60,7 @@ However, I also understand that unexpected situations may arise. If you are unab
 
 ## Late Policy
 
-**Worksheets**: Because the worksheets are designed as jumping off points for class and homework assignments, I expect them to be completed on time. Thus there are **no late days** for worksheets. Again, they will be largely graded on good faith effort, so it is in your best interest to stay on top of them and submit every worksheet.
+**Worksheets**: Because the worksheets are designed as jumping off points for class and homework assignments, I expect them to be completed on time. Thus there are **no late days** for worksheets. Again, they will be largely graded on good faith completion, so it is in your best interest to stay on top of them and submit every worksheet.
 
 **Homeworks**: You will have **4 late days** for the homeworks over the course of the semester. They may be used for any reason and you do not need to ask permission to use them. As part of the assignment submission process, you will be asked to indicate the number of late days you are using. These late days may not be used for the final project. After these late days have expired, you will lose 10% of the assignment's value for each day that it is late. 
 
