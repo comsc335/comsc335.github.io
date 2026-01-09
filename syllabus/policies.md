@@ -25,23 +25,19 @@ This site is still under construction and subject to change!
 Wherever possible, assignments will have their overall grade point value attached to them.
 ```
 
-### Worksheets: 16%
+### Worksheets: 25%
 
-These are guided assignments that are "lightly graded" -- the grade is based on autograded components as well as good faith effort and completion. The worksheets are designed to introduce the skills and concepts needed to prepare for the homeworks. There will be **four** worksheets over the course of the semester, worth 4% each.
+These are guided assignments that are "lightly graded" -- the grade is based on autograded components as well as good faith effort and completion. The worksheets are designed to introduce the skills and concepts needed to prepare for the larger assignments. There will be **five** worksheets over the course of the semester, worth 5% each.
 
 ### Homeworks: 40%
 
 These are longer, graded assignments that are an opportunity to more deeply explore the mathematical and engineering foundations needed to build and apply machine learning models. There will be **four** homeworks over the course of the semester, worth 10% each.
 
-### Quizzes: 12%
-
-To facilitate retention of the course material, there will be **two** quizzes over the course of the semester, worth 6% each. These quizzes will be online and closed notes, with the exception of a one-page self-created study guide. The goal of these quizzes is to balance the benefits of formative review and learning while also making the assessments less high stakes.
-
-### Final Project: 20%
+### Final Project: 25%
 
 The final project will be an open-ended assignment that will allow you to apply the ML skills you have learned in the course to a real-world problem. I will also provide a list of potential datasets and project ideas as suggestions and starting points.
 
-### Participation and Course Feedback: 12%
+### Participation and Course Feedback: 10% 
 
 As discussed in the [Course Values](values) page, participation is a key component of this course. Active participation includes:
 
@@ -60,7 +56,7 @@ However, I also understand that unexpected situations may arise. If you are unab
 
 ## Late Policy
 
-**Worksheets**: Because the worksheets are designed as jumping off points for class and homework assignments, I expect them to be completed on time. Thus there are **no late days** for worksheets. Again, they will be largely graded on good faith effort, so it is in your best interest to stay on top of them and submit every worksheet.
+**Worksheets**: Because the worksheets are designed as jumping off points for class and homework assignments, I expect them to be completed on time. Thus there are **no late days** for worksheets. Again, they will be largely graded on good faith completion, so it is in your best interest to stay on top of them and submit every worksheet.
 
 **Homeworks**: You will have **4 late days** for the homeworks over the course of the semester. They may be used for any reason and you do not need to ask permission to use them. As part of the assignment submission process, you will be asked to indicate the number of late days you are using. These late days may not be used for the final project. After these late days have expired, you will lose 10% of the assignment's value for each day that it is late. 
 
