@@ -37,7 +37,7 @@ These are longer, graded assignments that are an opportunity to more deeply expl
 
 The final project will be an open-ended assignment that will allow you to apply the ML skills you have learned in the course to a real-world problem. I will also provide a list of potential datasets and project ideas as suggestions and starting points.
 
-### Participation and Course Feedback: 11% 
+### Participation, Attendance, and Course Feedback: 11% 
 
 As discussed in the [Course Values](values) page, participation is a key component of this course. Active participation includes:
 
@@ -49,9 +49,9 @@ As discussed in the [Course Values](values) page, participation is a key compone
 - **Completing feedback surveys.** Over the course of the semester, I will check in to ask what is going well for you, what difficulties you are encountering, and what could be adjusted to improve your learning experience.
 
 ```{admonition} Attendance
-Attendance is required for this course. You can miss up to **two classes** over the course of the semester without penalty. Attendance is worth roughly 0.25 points of your overall grade per class session. This does not apply during add/drop period while you are still confirming your schedule. 
+Attendance is required for this course. You may have **two** unexcused absences over the course of the semester without penalty. Attendance is worth roughly **1/3 of a point** of your overall grade per class session. This does not apply during add/drop period while you are still confirming your schedule. 
 
-However, I also understand that unexpected situations may arise. If you are unable to attend a class, please let me know as soon as possible. Together, we can figure out a plan to proceed.
+However, I also understand that unexpected situations may arise such as illnesses, family emergencies, etc. If you are unable to attend a class, please let me know as soon as possible. Together, we can figure out a plan to proceed.
 ```
 
 ## Late Policy
