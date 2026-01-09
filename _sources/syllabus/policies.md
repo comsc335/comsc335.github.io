@@ -25,9 +25,9 @@ This site is still under construction and subject to change!
 Wherever possible, assignments will have their overall grade point value attached to them.
 ```
 
-### Worksheets: 25%
+### Worksheets: 24%
 
-These are guided assignments that are "lightly graded" -- the grade is based on autograded components as well as good faith effort and completion. The worksheets are designed to introduce the skills and concepts needed to prepare for the larger assignments. There will be **five** worksheets over the course of the semester, worth 5% each.
+These are guided assignments that are "lightly graded" -- the grade is based on autograded components as well as good faith effort and completion. The worksheets are designed to introduce the skills and concepts needed to prepare for the homeworks. There will be **four** worksheets over the course of the semester, worth 6% each.
 
 ### Homeworks: 40%
 
@@ -37,7 +37,7 @@ These are longer, graded assignments that are an opportunity to more deeply expl
 
 The final project will be an open-ended assignment that will allow you to apply the ML skills you have learned in the course to a real-world problem. I will also provide a list of potential datasets and project ideas as suggestions and starting points.
 
-### Participation and Course Feedback: 10% 
+### Participation and Course Feedback: 11% 
 
 As discussed in the [Course Values](values) page, participation is a key component of this course. Active participation includes:
 
