@@ -8,3 +8,4 @@ parts:
     chapters:
       - file: syllabus/values.md
       - file: syllabus/policies.md
+      - file: syllabus/submit.md
