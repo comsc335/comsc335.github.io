@@ -57,7 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'worksheets/ws1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -408,7 +409,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="worksheet-1">
+  <section class="tex2jax_ignore mathjax_ignore" id="worksheet-1">
 <span id="ws1"></span><h1>Worksheet 1<a class="headerlink" href="#worksheet-1" title="Link to this heading">#</a></h1>
 <p>:::{epigraph}
 Getting Started</p>
@@ -436,7 +437,7 @@ Getting Started</p>
 </ul>
 </section>
 </section>
-<section id="course-resources-0-5-pts">
+<section class="tex2jax_ignore mathjax_ignore" id="course-resources-0-5-pts">
 <h1>1. Course resources [0.5 pts]<a class="headerlink" href="#course-resources-0-5-pts" title="Link to this heading">#</a></h1>
 <p><strong>1.1:</strong> Read through all the pages listed in the syllabus section on the <a class="reference external" href="https://comsc335cd.github.io/">course website</a>. What are the two file types that you need to submit to Gradescope for each assignment?</p>
 <p><strong>Your Response</strong>: TODO</p>
@@ -497,68 +498,81 @@ Many of the functions we ask you to implement in the course will be autograded. 
 <section id="math">
 <h2>Math<a class="headerlink" href="#math" title="Link to this heading">#</a></h2>
 <p>We will be using mathematical notation to formalize many concepts in this course. For example, the notation for sums is as follows:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \sum_{i=1}^{n} x_i = x_1 + x_2 + x_3 + \cdots + x_n
-$$</p>
-<p>which can be read as “the sum of $x_i$’s from $i=1$ to $n$”.</p>
-<p>You may also see only a subscript underneath the summation symbol, which means the sum is over all the elements in the set. For example, the sum of all elements in the set $A={1,2,3}$ is written as:</p>
-<p>$$
+\]</div>
+<p>which can be read as “the sum of <span class="math notranslate nohighlight">\(x_i\)</span>’s from <span class="math notranslate nohighlight">\(i=1\)</span> to <span class="math notranslate nohighlight">\(n\)</span>”.</p>
+<p>You may also see only a subscript underneath the summation symbol, which means the sum is over all the elements in the set. For example, the sum of all elements in the set <span class="math notranslate nohighlight">\(A=\{1,2,3\}\)</span> is written as:</p>
+<div class="math notranslate nohighlight">
+\[
 \sum_{x \in A} x = 1 + 2 + 3 = 6
-$$</p>
+\]</div>
 </section>
 </section>
-<section id="calculus-primer-1-pt">
+<section class="tex2jax_ignore mathjax_ignore" id="calculus-primer-1-pt">
 <h1>2. Calculus primer [1 pt]<a class="headerlink" href="#calculus-primer-1-pt" title="Link to this heading">#</a></h1>
-<p>In this course, we will be making frequent use of derivatives for optimization. Recall from your calculus classes that the <strong>derivative</strong> of a function $f(x)$ points in the direction of steepest ascent of the function. The derivative is sometimes denoted as $f’(x)$ or $\frac{d}{dx} f(x)$. Here, will use the latter notation to more closely align with the notation used for <em>partial derivatives</em> of functions with multiple inputs.</p>
+<p>In this course, we will be making frequent use of derivatives for optimization. Recall from your calculus classes that the <strong>derivative</strong> of a function <span class="math notranslate nohighlight">\(f(x)\)</span> points in the direction of steepest ascent of the function. The derivative is sometimes denoted as <span class="math notranslate nohighlight">\(f'(x)\)</span> or <span class="math notranslate nohighlight">\(\frac{d}{dx} f(x)\)</span>. Here, will use the latter notation to more closely align with the notation used for <em>partial derivatives</em> of functions with multiple inputs.</p>
 <p>Here is a list of some common differentiation rules that will be useful when brushing up on calculus:</p>
 <p>:::{admonition} Common Differentiation Rules</p>
 <ul class="simple">
 <li><p>Constant multiple rule:</p></li>
 </ul>
-<p>$$\frac{d}{dx} (c \cdot f(x)) = c \cdot \frac{d}{dx} f(x)$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} (c \cdot f(x)) = c \cdot \frac{d}{dx} f(x)\]</div>
 <ul class="simple">
 <li><p>Constant rule:</p></li>
 </ul>
-<p>$$\frac{d}{dx} (c) = 0$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} (c) = 0\]</div>
 <ul class="simple">
 <li><p>Sum rule:</p></li>
 </ul>
-<p>$$\frac{d}{dx} (f(x) + g(x)) = \frac{d}{dx} f(x) + \frac{d}{dx} g(x)$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} (f(x) + g(x)) = \frac{d}{dx} f(x) + \frac{d}{dx} g(x)\]</div>
 <ul class="simple">
 <li><p>Product rule:</p></li>
 </ul>
-<p>$$\frac{d}{dx} (f(x) \cdot g(x)) = \frac{d}{dx} f(x) \cdot g(x) + f(x) \cdot \frac{d}{dx} g(x)$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} (f(x) \cdot g(x)) = \frac{d}{dx} f(x) \cdot g(x) + f(x) \cdot \frac{d}{dx} g(x)\]</div>
 <ul class="simple">
 <li><p>Quotient rule:</p></li>
 </ul>
-<p>$$\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) = \frac{\frac{d}{dx} f(x) \cdot g(x) - f(x) \cdot \frac{d}{dx} g(x)}{g(x)^2}$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) = \frac{\frac{d}{dx} f(x) \cdot g(x) - f(x) \cdot \frac{d}{dx} g(x)}{g(x)^2}\]</div>
 <ul class="simple">
 <li><p>Chain rule:</p></li>
 </ul>
-<p>$$\frac{d}{dx} f(g(x)) = \frac{d}{dx} f(g(x)) \cdot \frac{d}{dx} g(x)$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} f(g(x)) = \frac{d}{dx} f(g(x)) \cdot \frac{d}{dx} g(x)\]</div>
 <p>:::</p>
-<p><strong>2.1:</strong> What is the derivative of $f(x) = 3x^2 + 2x + 5$? Typeset your answer in LaTeX below.</p>
-<p>$$
+<p><strong>2.1:</strong> What is the derivative of <span class="math notranslate nohighlight">\(f(x) = 3x^2 + 2x + 5\)</span>? Typeset your answer in LaTeX below.</p>
+<div class="math notranslate nohighlight">
+\[
 TODO
-$$</p>
-<p><strong>2.2:</strong> Using the chain rule, what is the derivative of $h(x) = (2x + 1)^3$? Typeset your answer in LaTeX below.</p>
-<p>$$
+\]</div>
+<p><strong>2.2:</strong> Using the chain rule, what is the derivative of <span class="math notranslate nohighlight">\(h(x) = (2x + 1)^3\)</span>? Typeset your answer in LaTeX below.</p>
+<div class="math notranslate nohighlight">
+\[
 TODO
-$$</p>
+\]</div>
 <p>:::{admonition} Solutions (click this to check once you’ve completed 2.1 and 2.2)
 :class: dropdown</p>
 <p>2.1:</p>
-<p>$$\frac{d}{dx} (3x^2 + 2x + 5) = 6x + 2$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} (3x^2 + 2x + 5) = 6x + 2\]</div>
 <p>2.2:</p>
-<p>$$\frac{d}{dx} ((2x + 1)^3) = 3(2x + 1)^2 \cdot \frac{d}{dx} (2x + 1) =  3 (2x + 1)^2 \cdot 2 = 6(2x + 1)^2$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{d}{dx} ((2x + 1)^3) = 3(2x + 1)^2 \cdot \frac{d}{dx} (2x + 1) =  3 (2x + 1)^2 \cdot 2 = 6(2x + 1)^2\]</div>
 <p>:::</p>
 <section id="partial-derivatives">
 <h2>Partial derivatives<a class="headerlink" href="#partial-derivatives" title="Link to this heading">#</a></h2>
 <p>Most machine learning models are functions of multiple variables. Thus, we need to extend the concept of derivatives to multiple variables, which are called <strong>partial derivatives</strong>.</p>
-<p>We find partial derivatives by varying one variable at a time, holding all of the other variables constant. For example, the partial derivative of a function $f(x_1, x_2)$ <strong>with respect to</strong> $x_1$ is found by treating $x_2$ as a constant and differentiating with $x_1$ as the variable of interest. This is denoted as:</p>
-<p>$$\frac{\partial}{\partial x_1} f(x_1, x_2)$$</p>
+<p>We find partial derivatives by varying one variable at a time, holding all of the other variables constant. For example, the partial derivative of a function <span class="math notranslate nohighlight">\(f(x_1, x_2)\)</span> <strong>with respect to</strong> <span class="math notranslate nohighlight">\(x_1\)</span> is found by treating <span class="math notranslate nohighlight">\(x_2\)</span> as a constant and differentiating with <span class="math notranslate nohighlight">\(x_1\)</span> as the variable of interest. This is denoted as:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial x_1} f(x_1, x_2)\]</div>
 <p>In general, we treat all variables except the one we are differentiating with respect to as constants.</p>
-<p>For example, suppose we have a function $f(x_1, x_2) = (x_1 + 2x_2^3)^2$. Then, the partial derivative of $f$ with respect to $x_1$ is:</p>
+<p>For example, suppose we have a function <span class="math notranslate nohighlight">\(f(x_1, x_2) = (x_1 + 2x_2^3)^2\)</span>. Then, the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x_1\)</span> is:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 
@@ -567,24 +581,28 @@ $$</p>
 &amp;= 2(x_1 + 2x_2^3)
 
 \end{align*}\]</div>
-<p><strong>2.3:</strong> Compute the partial derivative of $f(x_1, x_2) = (x_1 + 2x_2^3)^2$ with respect to $x_2$.</p>
-<p>$$
+<p><strong>2.3:</strong> Compute the partial derivative of <span class="math notranslate nohighlight">\(f(x_1, x_2) = (x_1 + 2x_2^3)^2\)</span> with respect to <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
 TODO
-$$</p>
+\]</div>
 <p>We may also encounter taking partial derivatives of functions over sums. For example, consider the following function:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 f(x_1, x_2, \ldots, x_p) = \sum_{j=1}^{p} x_j^{(j+1)}
-$$</p>
-<p>We might want to compute the partial derivative of $f$ with respect to some $x_q$ where $q \in {1, 2, \ldots, p}$:</p>
-<p>$$
+\]</div>
+<p>We might want to compute the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to some <span class="math notranslate nohighlight">\(x_q\)</span> where <span class="math notranslate nohighlight">\(q \in \{1, 2, \ldots, p\}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{\partial}{\partial x_q} f(x_1, x_2, \ldots, x_p) = \frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{(j+1)}
-$$</p>
+\]</div>
 <p>While this might look a little daunting, we can apply the rules shown so far to compute the partial derivatives. Let’s do this step by step.</p>
-<p>First, we can split the summation into $p$ terms:</p>
-<p>$$
+<p>First, we can split the summation into <span class="math notranslate nohighlight">\(p\)</span> terms:</p>
+<div class="math notranslate nohighlight">
+\[
 \sum_{j=1}^{p} x_j^{(j+1)} = x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}
-$$</p>
-<p>Then, by the sum rule and the fact that all other variables are treated as constants, we can compute the partial derivative of $f$ with respect to $x_q$ as follows:</p>
+\]</div>
+<p>Then, by the sum rule and the fact that all other variables are treated as constants, we can compute the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x_q\)</span> as follows:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 
@@ -593,14 +611,16 @@ $$</p>
 &amp;= (q+1) x_q^q
 
 \end{align*}\]</div>
-<p><strong>2.4:</strong> Consider the following function of five variables, $(w_1, w_2, w_3, w_4, w_5)$:</p>
-<p>$$
+<p><strong>2.4:</strong> Consider the following function of five variables, <span class="math notranslate nohighlight">\((w_1, w_2, w_3, w_4, w_5)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 f(w_1, w_2, w_3, w_4, w_5) = \sum_{j=1}^{5} (w_j + 1)^2
-$$</p>
-<p>Compute the partial derivative of $f$ with respect to $w_3$.</p>
-<p>$$
+\]</div>
+<p>Compute the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(w_3\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
 TODO
-$$</p>
+\]</div>
 <p>:::{admonition} Solutions (click this to check once you’ve completed 2.3 and 2.4)
 :class: dropdown</p>
 <p>2.3:</p>
@@ -624,7 +644,7 @@ $$</p>
 <p>:::</p>
 </section>
 </section>
-<section id="numpy-fundamentals-2-pts">
+<section class="tex2jax_ignore mathjax_ignore" id="numpy-fundamentals-2-pts">
 <h1>3. NumPy fundamentals [2 pts]<a class="headerlink" href="#numpy-fundamentals-2-pts" title="Link to this heading">#</a></h1>
 <section id="numpy-arrays">
 <h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
@@ -944,12 +964,13 @@ $$</p>
 :::</p>
 </section>
 </section>
-<section id="vectors-norms-and-distances-1-pt">
+<section class="tex2jax_ignore mathjax_ignore" id="vectors-norms-and-distances-1-pt">
 <h1>4. Vectors, norms, and distances [1 pt]<a class="headerlink" href="#vectors-norms-and-distances-1-pt" title="Link to this heading">#</a></h1>
-<p>As we’ve seen, machine learning models are functions of potentially many variables. Instead of writing out the individual variables (e.g. $x_1, x_2, \ldots, x_p$), we can collect them into a <strong>vector</strong> to represent them. They are often denoted as a bold-faced letter $\mathbf{x}$ or with an arrow above the letter $\vec{x}$. In this course, we will use the arrow notation to visually differentiate the vectors from scalars:</p>
-<p>$$
+<p>As we’ve seen, machine learning models are functions of potentially many variables. Instead of writing out the individual variables (e.g. <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_p\)</span>), we can collect them into a <strong>vector</strong> to represent them. They are often denoted as a bold-faced letter <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> or with an arrow above the letter <span class="math notranslate nohighlight">\(\vec{x}\)</span>. In this course, we will use the arrow notation to visually differentiate the vectors from scalars:</p>
+<div class="math notranslate nohighlight">
+\[
 \vec{x} \in \mathbb{R}^p, \quad \vec{x} = (x_1, x_2, \ldots, x_p)
-$$</p>
+\]</div>
 <p>These vectors generalize the geometric vectors you might have seen in math courses to higher dimensions. Mapping onto the NumPy concepts we just practiced, we can think of vectors as 1D arrays of shape <code class="docutils literal notranslate"><span class="pre">(p,)</span></code>, where <code class="docutils literal notranslate"><span class="pre">p</span></code> is the number of elements (and thus the dimensionality) in the vector.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -961,13 +982,14 @@ $$</p>
 </div>
 <section id="norms">
 <h2>Norms<a class="headerlink" href="#norms" title="Link to this heading">#</a></h2>
-<p>Geometric vectors can be visualized as a line segment in space that starts at the origin. For example, we can represent the two-dimensional vector $\vec{x} = (2, 3)$ as follows:</p>
+<p>Geometric vectors can be visualized as a line segment in space that starts at the origin. For example, we can represent the two-dimensional vector <span class="math notranslate nohighlight">\(\vec{x} = (2, 3)\)</span> as follows:</p>
 <p><img alt="" src="../_images/geometric_vector.png" /></p>
-<p>We can generalize this notion of length to vectors in any number of dimensions, as well as different ways to measure the “length” of a vector, which is called a <strong>norm</strong>. Norms are represented using double vertical bars e.g. $|\vec{x}|$, and always produce a scalar value that represents vector length. A commonly used norm is the <strong>Euclidean norm</strong>, which is defined as:</p>
+<p>We can generalize this notion of length to vectors in any number of dimensions, as well as different ways to measure the “length” of a vector, which is called a <strong>norm</strong>. Norms are represented using double vertical bars e.g. <span class="math notranslate nohighlight">\(\|\vec{x}\|\)</span>, and always produce a scalar value that represents vector length. A commonly used norm is the <strong>Euclidean norm</strong>, which is defined as:</p>
 <p>:::{admonition} Euclidean norm</p>
-<p>$$
-|\vec{x}|<em>2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_p^2} = \sqrt{\sum</em>{j=1}^{p} x_i^2}
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+\|\vec{x}\|_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_p^2} = \sqrt{\sum_{j=1}^{p} x_i^2}
+\]</div>
 <p>This is also known as the <strong>L2 norm</strong> (note the 2 in the subscript).</p>
 <p>:::</p>
 <p>One straightforward way to implement this is to use a for loop for the summation:</p>
@@ -1061,10 +1083,11 @@ $$</p>
 </section>
 <section id="distances">
 <h2>Distances<a class="headerlink" href="#distances" title="Link to this heading">#</a></h2>
-<p>Finally, we can also use norms to measure the distance $d$ between two vectors. A common distance metric is the <strong>Euclidean distance</strong>, which is just the Euclidean norm of the difference between two vectors:</p>
-<p>$$
-d(\vec{x}, \vec{y}) = |\vec{x} - \vec{y}|_2
-$$</p>
+<p>Finally, we can also use norms to measure the distance <span class="math notranslate nohighlight">\(d\)</span> between two vectors. A common distance metric is the <strong>Euclidean distance</strong>, which is just the Euclidean norm of the difference between two vectors:</p>
+<div class="math notranslate nohighlight">
+\[
+d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2
+\]</div>
 <p><strong>4.3</strong> Using your <code class="docutils literal notranslate"><span class="pre">euclidean_norm_vectorized</span></code> function, complete the function below that computes the Euclidean distance between two vectors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1090,18 +1113,19 @@ $$</p>
 </div>
 </div>
 </div>
-<p><strong>4.4</strong> Is the Euclidean distance metric symmetric? That is, does $d(\vec{x}, \vec{y}) = d(\vec{y}, \vec{x})$?</p>
+<p><strong>4.4</strong> Is the Euclidean distance metric symmetric? That is, does <span class="math notranslate nohighlight">\(d(\vec{x}, \vec{y}) = d(\vec{y}, \vec{x})\)</span>?</p>
 <p><strong>Your Response</strong>: TODO</p>
 <p>:::{admonition} Solution (click this to check once you’ve completed 4.4)
 :class: dropdown</p>
 <p>The Euclidean distance metric is symmetric – notice how the square term in the definition of the Euclidean distance is the same regardless of which point we subtract from which:</p>
-<p>$$
-d(\vec{x}, \vec{y}) = |\vec{x} - \vec{y}|<em>2 = \sqrt{\sum</em>{j=1}^{p} (x_j - y_j)^2} = \sqrt{\sum_{j=1}^{p} (y_j - x_j)^2} = |\vec{y} - \vec{x}|_2 = d(\vec{y}, \vec{x})
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)^2} = \sqrt{\sum_{j=1}^{p} (y_j - x_j)^2} = \|\vec{y} - \vec{x}\|_2 = d(\vec{y}, \vec{x})
+\]</div>
 <p>:::</p>
 </section>
 </section>
-<section id="oop-in-python-with-sklearn-1-pt">
+<section class="tex2jax_ignore mathjax_ignore" id="oop-in-python-with-sklearn-1-pt">
 <h1>5. OOP in Python with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> [1 pt]<a class="headerlink" href="#oop-in-python-with-sklearn-1-pt" title="Link to this heading">#</a></h1>
 <p>Our final topic for this worksheet is a brief introduction to object-oriented programming (OOP) in Python, which we’ll explore using the <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> library. <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> is the primary Python library for building (non-deep learning) machine learning models, and is a great example of how OOP is used in practice. Each machine learning model in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> is represented as a class, which contains the model’s parameters at initailization, as well as functions for training and predicting.</p>
 <p>Let’s walk through and complete the implementation of the k nearest neighbors (KNN) regressor model that we discussed in class.</p>
@@ -1171,15 +1195,17 @@ $$</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="o">=</span> <span class="n">y</span>
 
+        <span class="c1"># sklearn fit() methods return the model itself to allow for method chaining</span>
         <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> uses a convention where any instance variables that are created during the model fitting process are suffixed with a <code class="docutils literal notranslate"><span class="pre">_</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">self.X_</span></code>). This is actually used by <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to determine whether a model has been fitted or not.</p>
-<p>Recall from class that the KNN regressor predicts the value of a new point by averaging the values of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors. If $D_k = {(\vec{x_1}, y_1), (\vec{x_2}, y_2), \ldots, (\vec{x_k}, y_k)}$ is the set of $k$ nearest neighbors to a new point $\vec{x}$, then the prediction is given by:</p>
-<p>$$
+<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> uses a convention where any instance variables that are created during the model fitting process are suffixed with a <code class="docutils literal notranslate"><span class="pre">_</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">self.X_</span></code>). This is actually used by <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to determine whether a model has been fitted or not. Another convention is that sklearn <code class="docutils literal notranslate"><span class="pre">fit()</span></code> methods return the model itself to allow for method calls to be chained together, e.g. <code class="docutils literal notranslate"><span class="pre">knn_model.fit(X_train,</span> <span class="pre">y_train).predict(X_new)</span></code>.</p>
+<p>Recall from class that the KNN regressor predicts the value of a new point by averaging the values of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors. If <span class="math notranslate nohighlight">\(D_k = \{(\vec{x_1}, y_1), (\vec{x_2}, y_2), \ldots, (\vec{x_k}, y_k)\}\)</span> is the set of <span class="math notranslate nohighlight">\(k\)</span> nearest neighbors to a new point <span class="math notranslate nohighlight">\(\vec{x}\)</span>, then the prediction is given by:</p>
+<div class="math notranslate nohighlight">
+\[
 \hat{y} = \frac{1}{k} \sum_{(\vec{x_i}, y_i) \in D_k} y_i
-$$</p>
-<p>Let’s first write a helper function, <code class="docutils literal notranslate"><span class="pre">find_k_nearest_indices</span></code>, that finds the indices of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors to a new point $\vec{x}$ using the Euclidean distance.</p>
+\]</div>
+<p>Let’s first write a helper function, <code class="docutils literal notranslate"><span class="pre">find_k_nearest_indices</span></code>, that finds the indices of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors to a new point <span class="math notranslate nohighlight">\(\vec{x}\)</span> using the Euclidean distance.</p>
 <p>The function is partially implemented below. You will need to use the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.argsort.html">np.argsort</a> function, which returns the indices that would sort an array. For example, if we wanted to sort the array <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.array([3,</span> <span class="pre">2,</span> <span class="pre">1])</span></code>, then <code class="docutils literal notranslate"><span class="pre">np.argsort(a)</span></code> returns <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">1,</span> <span class="pre">0]</span></code>, which are the indices that would sort <code class="docutils literal notranslate"><span class="pre">a</span></code> in ascending order:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1286,6 +1312,7 @@ $$</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="o">=</span> <span class="n">y</span>
 
+        <span class="c1"># As convention, sklearn fit() methods return the model itself to allow for method chaining</span>
         <span class="k">return</span> <span class="bp">self</span>
 
 
@@ -1356,8 +1383,8 @@ $$</p>
 <p>We will frequently use interactive widgets to explore tradeoffs in building machine learning models. We will cover how to implement these widgets in a future worksheet, but for now, the code to run the widget will be provided.</p>
 <p>We will consider a simple prediction task, where our goal is to predict block-level housing prices based on a single feature: the median income of the block:</p>
 <ul class="simple">
-<li><p>$X$ is an <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">1)</span></code> array of median incomes on a block, measured in tens of thousands of dollars</p></li>
-<li><p>$y$ is an <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">)</span></code> array of house prices, measured in hundreds of thousands of dollars</p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span> is an <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">1)</span></code> array of median incomes on a block, measured in tens of thousands of dollars</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is an <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">)</span></code> array of house prices, measured in hundreds of thousands of dollars</p></li>
 </ul>
 <p><strong>5.3:</strong> We can intuitively think of our model’s “complexity” as how flexible its predictions are – that is, the more “jagged” or “wiggly” the prediction curve is, the more complex the model. Run the cell below to play with how the <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> parameter affects model complexity. Does increasing <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> make the model more or less complex?</p>
 <p><strong>Your Response</strong>: TODO</p>
@@ -1383,7 +1410,7 @@ $$</p>
 <p>:::</p>
 </section>
 </section>
-<section id="reflection-0-5-pts">
+<section class="tex2jax_ignore mathjax_ignore" id="reflection-0-5-pts">
 <h1>6. Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
 <p><strong>6.1</strong> How much time outside of class did it take you to complete this worksheet?</p>
 <p><strong>Your Response</strong>: TODO</p>
@@ -1397,7 +1424,7 @@ Follow the instructions on the <a class="reference external" href="https://comsc
 :::</p>
 <p>Congrats on finishing the first worksheet of the course!</p>
 </section>
-<section id="acknowledgements">
+<section class="tex2jax_ignore mathjax_ignore" id="acknowledgements">
 <h1>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Some exercises are adapted from <a class="reference external" href="https://mml-book.github.io/">Deisenroth 2020: Mathematics for Machine Learning</a>.</p></li>
