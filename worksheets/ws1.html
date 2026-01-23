@@ -411,16 +411,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="worksheet-1">
 <span id="ws1"></span><h1>Worksheet 1<a class="headerlink" href="#worksheet-1" title="Link to this heading">#</a></h1>
-<p>:::{epigraph}
-Getting Started</p>
-<p>– TODO your name here
-:::</p>
-<p>:::{admonition} Collaboration Statement</p>
+<blockquote class="epigraph">
+<div><p>Getting Started</p>
+<p class="attribution">—TODO your name here</p>
+</div></blockquote>
+<div class="admonition-collaboration-statement admonition">
+<p class="admonition-title">Collaboration Statement</p>
 <ul class="simple">
 <li><p>TODO brief statement on the nature of your collaboration.</p></li>
-<li><p>TODO your collaborator’s names here.
-:::</p></li>
+<li><p>TODO your collaborator’s names here.</p></li>
 </ul>
+</div>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -446,7 +447,7 @@ Getting Started</p>
 <section id="coding-interface">
 <h2>Coding interface<a class="headerlink" href="#coding-interface" title="Link to this heading">#</a></h2>
 <p><strong>Programming language: Python.</strong> This course will be taught in Python. To get the most out of the course, it’s important you don’t feel bogged down by the syntax of the language so that you can focus on the concepts introduced. If you do not have prior experience with Python, that’s no problem. <strong>Please do take the time at start of the course to study and practice it.</strong></p>
-<p>For resources, I recommend going through an online Python tutorial such as this one: https://www.learnpython.org/, and completing all the sections under “Learn the Basics.”</p>
+<p>For resources, I recommend going through an online Python tutorial such as this one: <a class="reference external" href="https://www.learnpython.org/">https://www.learnpython.org/</a>, and completing all the sections under “Learn the Basics.”</p>
 <p><strong>Libraries.</strong> We will be using a standard Python machine learning stack throughout the course:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://numpy.org/">numpy</a> + <a class="reference external" href="https://scipy.org/">scipy</a>: for scientific computing</p></li>
@@ -460,26 +461,28 @@ Getting Started</p>
 <p>We will introduce the functionality of these libraries as we need them in the course, so we do not assume prior knowledge of these libraries. However, I do encourage you to refer to the documentation for all of them.</p>
 <p><strong>Computing environment.</strong> We will be using Jupyter notebooks (.ipynb files) for all assignments. We have a centralized Jupyterhub server which provides a uniform environment for everyone, and you can access it anywhere on campus using your MHC credentials:</p>
 <ul class="simple">
-<li><p>https://comsc335-sp-hub.mtholyoke.edu</p></li>
+<li><p><a class="reference external" href="https://comsc335-sp-hub.mtholyoke.edu">https://comsc335-sp-hub.mtholyoke.edu</a></p></li>
 </ul>
-<p>:::{warning}
-If you would like to run your code locally, you are welcome to do so and we can provide the necessary list of installation packages. However, note that the teaching team unfortunately cannot help troubleshoot issues with your local environment. In particular, some of the scientific computing libraries can be finnicky to install on ARM-based Macs, which is why we have centralized our Jupyterhub server.
-:::</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you would like to run your code locally, you are welcome to do so and we can provide the necessary list of installation packages. However, note that the teaching team unfortunately cannot help troubleshoot issues with your local environment. In particular, some of the scientific computing libraries can be finnicky to install on ARM-based Macs, which is why we have centralized our Jupyterhub server.</p>
+</div>
 <p>There are two types of cells in a Jupyter notebook:</p>
 <ul class="simple">
 <li><p>Code cells: for writing and running code</p></li>
 <li><p>Markdown cells: for writing text</p></li>
 </ul>
 <p><strong>1.3 TODO</strong> Create a new code cell below that defines a function called <code class="docutils literal notranslate"><span class="pre">hello()</span></code> that takes no arguments and returns the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">COMSC</span> <span class="pre">335!&quot;</span></code></p>
-<p>:::{tip}
-Many of the functions we ask you to implement in the course will be autograded. There will be no submission limit, so feel free to submit multiple times to get feedback on your work!</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Many of the functions we ask you to implement in the course will be autograded. There will be no submission limit, so feel free to submit multiple times to get feedback on your work!</p>
 <p>We will frequently provide some simple test cases via <code class="docutils literal notranslate"><span class="pre">assert</span></code> statements wrapped in a <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> block to check your function, like the one below. The syntax for assert statements is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">bool_expression</span><span class="p">,</span> <span class="n">description</span>
 </pre></div>
 </div>
 <p>where the <code class="docutils literal notranslate"><span class="pre">bool_expression</span></code> is a boolean expression that tests some condition, and the <code class="docutils literal notranslate"><span class="pre">description</span></code> is a string that will be displayed if the assertion fails (evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
-<p>You are encouraged to write your own test cases as well for your functions!
-:::</p>
+<p>You are encouraged to write your own test cases as well for your functions!</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -491,9 +494,10 @@ Many of the functions we ask you to implement in the course will be autograded. 
 </div>
 <p>Jupyter notebooks allow users to write code and text in the same file. The language used to write text is called Markdown, and is popular language for writing documentation (for example, Github README files default to Markdown).</p>
 <p>In particular, Markdown allows users to write mathematical notation using LaTeX. Read through <a class="reference external" href="https://gtribello.github.io/mathNET/assets/notebook-writing.html">this guide</a> to learn how to format markdown cells with LateX, as you will be typesetting some mathematical statements in the assignments.</p>
-<p>:::{tip}</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>If you double click on a cell with a math equation, you can view the LaTeX source code for the cell that you can copy and paste into your own markdown cells.</p>
-<p>:::</p>
+</div>
 </section>
 <section id="math">
 <h2>Math<a class="headerlink" href="#math" title="Link to this heading">#</a></h2>
@@ -514,7 +518,8 @@ Many of the functions we ask you to implement in the course will be autograded. 
 <h1>2. Calculus primer [1 pt]<a class="headerlink" href="#calculus-primer-1-pt" title="Link to this heading">#</a></h1>
 <p>In this course, we will be making frequent use of derivatives for optimization. Recall from your calculus classes that the <strong>derivative</strong> of a function <span class="math notranslate nohighlight">\(f(x)\)</span> points in the direction of steepest ascent of the function. The derivative is sometimes denoted as <span class="math notranslate nohighlight">\(f'(x)\)</span> or <span class="math notranslate nohighlight">\(\frac{d}{dx} f(x)\)</span>. Here, will use the latter notation to more closely align with the notation used for <em>partial derivatives</em> of functions with multiple inputs.</p>
 <p>Here is a list of some common differentiation rules that will be useful when brushing up on calculus:</p>
-<p>:::{admonition} Common Differentiation Rules</p>
+<div class="admonition-common-differentiation-rules admonition">
+<p class="admonition-title">Common Differentiation Rules</p>
 <ul class="simple">
 <li><p>Constant multiple rule:</p></li>
 </ul>
@@ -545,7 +550,7 @@ Many of the functions we ask you to implement in the course will be autograded. 
 </ul>
 <div class="math notranslate nohighlight">
 \[\frac{d}{dx} f(g(x)) = \frac{d}{dx} f(g(x)) \cdot \frac{d}{dx} g(x)\]</div>
-<p>:::</p>
+</div>
 <p><strong>2.1:</strong> What is the derivative of <span class="math notranslate nohighlight">\(f(x) = 3x^2 + 2x + 5\)</span>? Typeset your answer in LaTeX below.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -556,15 +561,15 @@ TODO
 \[
 TODO
 \]</div>
-<p>:::{admonition} Solutions (click this to check once you’ve completed 2.1 and 2.2)
-:class: dropdown</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions (click this to check once you’ve completed 2.1 and 2.2)</p>
 <p>2.1:</p>
 <div class="math notranslate nohighlight">
 \[\frac{d}{dx} (3x^2 + 2x + 5) = 6x + 2\]</div>
 <p>2.2:</p>
 <div class="math notranslate nohighlight">
 \[\frac{d}{dx} ((2x + 1)^3) = 3(2x + 1)^2 \cdot \frac{d}{dx} (2x + 1) =  3 (2x + 1)^2 \cdot 2 = 6(2x + 1)^2\]</div>
-<p>:::</p>
+</div>
 <section id="partial-derivatives">
 <h2>Partial derivatives<a class="headerlink" href="#partial-derivatives" title="Link to this heading">#</a></h2>
 <p>Most machine learning models are functions of multiple variables. Thus, we need to extend the concept of derivatives to multiple variables, which are called <strong>partial derivatives</strong>.</p>
@@ -573,14 +578,10 @@ TODO
 \[\frac{\partial}{\partial x_1} f(x_1, x_2)\]</div>
 <p>In general, we treat all variables except the one we are differentiating with respect to as constants.</p>
 <p>For example, suppose we have a function <span class="math notranslate nohighlight">\(f(x_1, x_2) = (x_1 + 2x_2^3)^2\)</span>. Then, the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x_1\)</span> is:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-
-\frac{\partial}{\partial x_1} f(x_1, x_2) &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_1} (x_1 + 2x_2^3), \text{ by the chain rule} \\
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial}{\partial x_1} f(x_1, x_2) &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_1} (x_1 + 2x_2^3), \text{ by the chain rule} \\
 &amp;= 2(x_1 + 2x_2^3) \cdot 1, \text{ by the constant multiple rule, $x_2$ is treated as a constant} \\
-&amp;= 2(x_1 + 2x_2^3)
-
-\end{align*}\]</div>
+&amp;= 2(x_1 + 2x_2^3)\end{split}\]</div>
 <p><strong>2.3:</strong> Compute the partial derivative of <span class="math notranslate nohighlight">\(f(x_1, x_2) = (x_1 + 2x_2^3)^2\)</span> with respect to <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -603,14 +604,10 @@ f(x_1, x_2, \ldots, x_p) = \sum_{j=1}^{p} x_j^{(j+1)}
 \sum_{j=1}^{p} x_j^{(j+1)} = x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}
 \]</div>
 <p>Then, by the sum rule and the fact that all other variables are treated as constants, we can compute the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x_q\)</span> as follows:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-
-\frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{(j+1)} &amp;= \frac{\partial}{\partial x_q} (x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}) \\
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{(j+1)} &amp;= \frac{\partial}{\partial x_q} (x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}) \\
 &amp;= \frac{\partial}{\partial x_q} x_q^{q+1} \\
-&amp;= (q+1) x_q^q
-
-\end{align*}\]</div>
+&amp;= (q+1) x_q^q\end{split}\]</div>
 <p><strong>2.4:</strong> Consider the following function of five variables, <span class="math notranslate nohighlight">\((w_1, w_2, w_3, w_4, w_5)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -621,27 +618,19 @@ f(w_1, w_2, w_3, w_4, w_5) = \sum_{j=1}^{5} (w_j + 1)^2
 \[
 TODO
 \]</div>
-<p>:::{admonition} Solutions (click this to check once you’ve completed 2.3 and 2.4)
-:class: dropdown</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions (click this to check once you’ve completed 2.3 and 2.4)</p>
 <p>2.3:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-
-\frac{\partial}{\partial x_2} (x_1 + 2x_2^3)^2 &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_2} (x_1 + 2x_2^3) \\
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial}{\partial x_2} (x_1 + 2x_2^3)^2 &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_2} (x_1 + 2x_2^3) \\
 &amp;= 2(x_1 + 2x_2^3) \cdot 6x_2^2 \\
-&amp;= 12x_2^2(x_1 + 2x_2^3)
-
-\end{align*}\]</div>
+&amp;= 12x_2^2(x_1 + 2x_2^3)\end{split}\]</div>
 <p>2.4:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-
-\frac{\partial}{\partial w_3} \sum_{j=1}^{5} (w_j + 1)^2 &amp;= 2(w_3 + 1) \cdot \frac{\partial}{\partial w_3} (w_3 + 1) \\
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial}{\partial w_3} \sum_{j=1}^{5} (w_j + 1)^2 &amp;= 2(w_3 + 1) \cdot \frac{\partial}{\partial w_3} (w_3 + 1) \\
 &amp;= 2(w_3 + 1) \cdot 1 \\
-&amp;= 2(w_3 + 1)
-
-\end{align*}\]</div>
-<p>:::</p>
+&amp;= 2(w_3 + 1)\end{split}\]</div>
+</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="numpy-fundamentals-2-pts">
@@ -704,9 +693,10 @@ TODO
 </div>
 </div>
 <p><strong>3.1</strong> Complete the function below to create an array of shape <code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">2)</span></code> with any values you want in it.</p>
-<p>:::{admonition} Python Return Type Hints</p>
+<div class="admonition-python-return-type-hints admonition">
+<p class="admonition-title">Python Return Type Hints</p>
 <p>You’ll notice that the function definition includes <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">np.ndarray</span></code>. This is a Python <em>type hint</em> that indicates the function returns an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>. These hints are not required for Python code to run, but is good practice to include in order to increase the readability of your code. They are also used by some text editors like VSCode to provide type-checking and documentation. Most of the functions you will see in this course will have type hints.</p>
-<p>:::</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shape_practice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -839,9 +829,10 @@ TODO
 </div>
 </div>
 <p><strong>3.3:</strong> Complete the function below that selects the <em>last</em> column of the passed in array.</p>
-<p>:::{admonition} Python Parameter Type Hints</p>
+<div class="admonition-python-parameter-type-hints admonition">
+<p class="admonition-title">Python Parameter Type Hints</p>
 <p>You’ll notice that function parameter name is written as <code class="docutils literal notranslate"><span class="pre">arr:</span> <span class="pre">np.ndarray</span></code>. Similar to the return type hint, this is a Python <em>parameter</em> type hint that indicates the function parameter <code class="docutils literal notranslate"><span class="pre">arr</span></code> is an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>. Again, these hints are optional and do not affect the execution of the code, but is good practice to include in order to increase the readability of Python code.</p>
-<p>:::</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select_last_column</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -956,12 +947,12 @@ TODO
 </pre></div>
 </div>
 <p><strong>Your Response</strong>: <code class="docutils literal notranslate"><span class="pre">[TODO]</span></code></p>
-<p>:::{admonition} Solutions (click this to check once you’ve completed 3.5)
-:class: dropdown</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions (click this to check once you’ve completed 3.5)</p>
 <p>The multiplication is also performed element-wise, so we get:</p>
 <p><code class="docutils literal notranslate"><span class="pre">[(2*-1)</span> <span class="pre">-</span> <span class="pre">1,</span>&#160; <span class="pre">(1*1)</span> <span class="pre">-</span> <span class="pre">1]</span> <span class="pre">=</span> <span class="pre">[-3,</span> <span class="pre">0]</span></code></p>
-<p>Note that this is <em>not</em> the same as matrix multiplication or a dot product. We will cover matrix manipulation and NumPy broadcasting concepts in a future worksheet.
-:::</p>
+<p>Note that this is <em>not</em> the same as matrix multiplication or a dot product. We will cover matrix manipulation and NumPy broadcasting concepts in a future worksheet.</p>
+</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="vectors-norms-and-distances-1-pt">
@@ -985,13 +976,14 @@ TODO
 <p>Geometric vectors can be visualized as a line segment in space that starts at the origin. For example, we can represent the two-dimensional vector <span class="math notranslate nohighlight">\(\vec{x} = (2, 3)\)</span> as follows:</p>
 <p><img alt="" src="../_images/geometric_vector.png" /></p>
 <p>We can generalize this notion of length to vectors in any number of dimensions, as well as different ways to measure the “length” of a vector, which is called a <strong>norm</strong>. Norms are represented using double vertical bars e.g. <span class="math notranslate nohighlight">\(\|\vec{x}\|\)</span>, and always produce a scalar value that represents vector length. A commonly used norm is the <strong>Euclidean norm</strong>, which is defined as:</p>
-<p>:::{admonition} Euclidean norm</p>
+<div class="admonition-euclidean-norm admonition">
+<p class="admonition-title">Euclidean norm</p>
 <div class="math notranslate nohighlight">
 \[
 \|\vec{x}\|_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_p^2} = \sqrt{\sum_{j=1}^{p} x_i^2}
 \]</div>
 <p>This is also known as the <strong>L2 norm</strong> (note the 2 in the subscript).</p>
-<p>:::</p>
+</div>
 <p>One straightforward way to implement this is to use a for loop for the summation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1075,11 +1067,11 @@ TODO
 </div>
 </div>
 </div>
-<p>:::{admonition} Takeaway (click this once you’ve completed 4.2)
-:class: dropdown</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Takeaway (click this once you’ve completed 4.2)</p>
 <p>The exact numbers might vary (and double check the seconds units), but you should see a ~300-500x speedup with the vectorized version!</p>
 <p>Whenever possible, we should try to use vectorized operations instead of for-loops when manipulating NumPy arrays – though for-loops are still sometimes necessary.</p>
-<p>:::</p>
+</div>
 </section>
 <section id="distances">
 <h2>Distances<a class="headerlink" href="#distances" title="Link to this heading">#</a></h2>
@@ -1115,14 +1107,14 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2
 </div>
 <p><strong>4.4</strong> Is the Euclidean distance metric symmetric? That is, does <span class="math notranslate nohighlight">\(d(\vec{x}, \vec{y}) = d(\vec{y}, \vec{x})\)</span>?</p>
 <p><strong>Your Response</strong>: TODO</p>
-<p>:::{admonition} Solution (click this to check once you’ve completed 4.4)
-:class: dropdown</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution (click this to check once you’ve completed 4.4)</p>
 <p>The Euclidean distance metric is symmetric – notice how the square term in the definition of the Euclidean distance is the same regardless of which point we subtract from which:</p>
 <div class="math notranslate nohighlight">
 \[
 d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)^2} = \sqrt{\sum_{j=1}^{p} (y_j - x_j)^2} = \|\vec{y} - \vec{x}\|_2 = d(\vec{y}, \vec{x})
 \]</div>
-<p>:::</p>
+</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="oop-in-python-with-sklearn-1-pt">
@@ -1404,10 +1396,10 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)
 </div>
 </div>
 </div>
-<p>:::{admonition} Takeaway (click this to check once you’ve completed 5.3)
-:class: dropdown</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Takeaway (click this to check once you’ve completed 5.3)</p>
 <p>You should see that decreasing <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> makes the model more complex, as the predictions are much more jagged. This makes the model more flexible, and able to fit the data better. However, we can overdo this – in the extreme case where <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">=</span> <span class="pre">1</span></code>, the model almost perfectly fits to the training data, which may make its predictions less generalizable to new, unseen data. We will cover the tradeoffs between model complexity and generalization as we move further along in the course.</p>
-<p>:::</p>
+</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reflection-0-5-pts">
@@ -1418,10 +1410,10 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)
 <p><strong>Your Response</strong>: TODO</p>
 <p><strong>6.3</strong> How comfortable do you feel about your mathematical and programming preparation for this course?</p>
 <p><strong>Your Response</strong>: TODO</p>
-<p>:::{admonition} How to submit
-:class: tip
-Follow the instructions on the <a class="reference external" href="https://comsc335.github.io/syllabus/submit.html">course website</a> to submit your worksheet.
-:::</p>
+<div class="tip admonition">
+<p class="admonition-title">How to submit</p>
+<p>Follow the instructions on the <a class="reference external" href="https://comsc335.github.io/syllabus/submit.html">course website</a> to submit your worksheet.</p>
+</div>
 <p>Congrats on finishing the first worksheet of the course!</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="acknowledgements">
