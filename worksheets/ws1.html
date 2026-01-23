@@ -1,0 +1,1539 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worksheet 1 &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worksheets/ws1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/worksheets/ws1.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worksheets/ws1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worksheet 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worksheet 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#course-resources-0-5-pts">1. Course resources [0.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-interface">Coding interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-primer-1-pt">2. Calculus primer [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-derivatives">Partial derivatives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-fundamentals-2-pts">3. NumPy fundamentals [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing">Boolean indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-arithmetic">Array arithmetic</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-norms-and-distances-1-pt">4. Vectors, norms, and distances [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-operations">Timing operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distances">Distances</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oop-in-python-with-sklearn-1-pt">5. OOP in Python with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-definition">Class definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor">Constructor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-creation">Object creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-methods">Instance methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-neighbors-and-model-complexity"><code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> and model “complexity”</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">6. Reflection [0.5 pts]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="worksheet-1">
+<span id="ws1"></span><h1>Worksheet 1<a class="headerlink" href="#worksheet-1" title="Link to this heading">#</a></h1>
+<p>:::{epigraph}
+Getting Started</p>
+<p>– TODO your name here
+:::</p>
+<p>:::{admonition} Collaboration Statement</p>
+<ul class="simple">
+<li><p>TODO brief statement on the nature of your collaboration.</p></li>
+<li><p>TODO your collaborator’s names here.
+:::</p></li>
+</ul>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Get familiarized with the Jupyterhub interface and the course’s submission system.</p></li>
+<li><p>Practice with the first math concepts needed for the course:</p>
+<ul>
+<li><p>Derivatives</p></li>
+<li><p>Vectors</p></li>
+<li><p>Norms and distances</p></li>
+</ul>
+</li>
+<li><p>Practice with <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array usage.</p></li>
+<li><p>Learn about OOP concepts in Python with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section id="course-resources-0-5-pts">
+<h1>1. Course resources [0.5 pts]<a class="headerlink" href="#course-resources-0-5-pts" title="Link to this heading">#</a></h1>
+<p><strong>1.1:</strong> Read through all the pages listed in the syllabus section on the <a class="reference external" href="https://comsc335cd.github.io/">course website</a>. What are the two file types that you need to submit to Gradescope for each assignment?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p><strong>1.2</strong> Reply to the Course Intros thread on Ed introducing yourself and sharing why you’re interested in taking this course.</p>
+<p>TODO post to the Ed discussion thread: TODO link</p>
+<section id="coding-interface">
+<h2>Coding interface<a class="headerlink" href="#coding-interface" title="Link to this heading">#</a></h2>
+<p><strong>Programming language: Python.</strong> This course will be taught in Python. To get the most out of the course, it’s important you don’t feel bogged down by the syntax of the language so that you can focus on the concepts introduced. If you do not have prior experience with Python, that’s no problem. <strong>Please do take the time at start of the course to study and practice it.</strong></p>
+<p>For resources, I recommend going through an online Python tutorial such as this one: https://www.learnpython.org/, and completing all the sections under “Learn the Basics.”</p>
+<p><strong>Libraries.</strong> We will be using a standard Python machine learning stack throughout the course:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/">numpy</a> + <a class="reference external" href="https://scipy.org/">scipy</a>: for scientific computing</p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/">sklearn</a>: for building (non-neural network) machine learning models and pipelines</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a>: for data table manipulation and analysis</p></li>
+<li><p><a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> + <a class="reference external" href="https://matplotlib.org/">matplotlib</a>: for figure visualization</p></li>
+<li><p><a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/">ipywidgets</a>: for interactive widgets</p></li>
+<li><p><a class="reference external" href="https://pytorch.org/">pytorch</a>: for building and training deep learning models</p></li>
+<li><p><a class="reference external" href="https://github.com/HIPS/autograd/blob/master/docs/tutorial.md">autograd</a>: for automatic differentiation (more on this later in the semester!)</p></li>
+</ul>
+<p>We will introduce the functionality of these libraries as we need them in the course, so we do not assume prior knowledge of these libraries. However, I do encourage you to refer to the documentation for all of them.</p>
+<p><strong>Computing environment.</strong> We will be using Jupyter notebooks (.ipynb files) for all assignments. We have a centralized Jupyterhub server which provides a uniform environment for everyone, and you can access it anywhere on campus using your MHC credentials:</p>
+<ul class="simple">
+<li><p>https://comsc335-sp-hub.mtholyoke.edu</p></li>
+</ul>
+<p>:::{warning}
+If you would like to run your code locally, you are welcome to do so and we can provide the necessary list of installation packages. However, note that the teaching team unfortunately cannot help troubleshoot issues with your local environment. In particular, some of the scientific computing libraries can be finnicky to install on ARM-based Macs, which is why we have centralized our Jupyterhub server.
+:::</p>
+<p>There are two types of cells in a Jupyter notebook:</p>
+<ul class="simple">
+<li><p>Code cells: for writing and running code</p></li>
+<li><p>Markdown cells: for writing text</p></li>
+</ul>
+<p><strong>1.3 TODO</strong> Create a new code cell below that defines a function called <code class="docutils literal notranslate"><span class="pre">hello()</span></code> that takes no arguments and returns the string <code class="docutils literal notranslate"><span class="pre">&quot;Hello,</span> <span class="pre">COMSC</span> <span class="pre">335!&quot;</span></code></p>
+<p>:::{tip}
+Many of the functions we ask you to implement in the course will be autograded. There will be no submission limit, so feel free to submit multiple times to get feedback on your work!</p>
+<p>We will frequently provide some simple test cases via <code class="docutils literal notranslate"><span class="pre">assert</span></code> statements wrapped in a <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> block to check your function, like the one below. The syntax for assert statements is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">bool_expression</span><span class="p">,</span> <span class="n">description</span>
+</pre></div>
+</div>
+<p>where the <code class="docutils literal notranslate"><span class="pre">bool_expression</span></code> is a boolean expression that tests some condition, and the <code class="docutils literal notranslate"><span class="pre">description</span></code> is a string that will be displayed if the assertion fails (evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<p>You are encouraged to write your own test cases as well for your functions!
+:::</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># check that hello() returns the specified string</span>
+    <span class="k">assert</span> <span class="n">hello</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Hello, COMSC 335!&quot;</span><span class="p">,</span> <span class="s2">&quot;hello() does not return the correct string&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jupyter notebooks allow users to write code and text in the same file. The language used to write text is called Markdown, and is popular language for writing documentation (for example, Github README files default to Markdown).</p>
+<p>In particular, Markdown allows users to write mathematical notation using LaTeX. Read through <a class="reference external" href="https://gtribello.github.io/mathNET/assets/notebook-writing.html">this guide</a> to learn how to format markdown cells with LateX, as you will be typesetting some mathematical statements in the assignments.</p>
+<p>:::{tip}</p>
+<p>If you double click on a cell with a math equation, you can view the LaTeX source code for the cell that you can copy and paste into your own markdown cells.</p>
+<p>:::</p>
+</section>
+<section id="math">
+<h2>Math<a class="headerlink" href="#math" title="Link to this heading">#</a></h2>
+<p>We will be using mathematical notation to formalize many concepts in this course. For example, the notation for sums is as follows:</p>
+<p>$$
+\sum_{i=1}^{n} x_i = x_1 + x_2 + x_3 + \cdots + x_n
+$$</p>
+<p>which can be read as “the sum of $x_i$’s from $i=1$ to $n$”.</p>
+<p>You may also see only a subscript underneath the summation symbol, which means the sum is over all the elements in the set. For example, the sum of all elements in the set $A={1,2,3}$ is written as:</p>
+<p>$$
+\sum_{x \in A} x = 1 + 2 + 3 = 6
+$$</p>
+</section>
+</section>
+<section id="calculus-primer-1-pt">
+<h1>2. Calculus primer [1 pt]<a class="headerlink" href="#calculus-primer-1-pt" title="Link to this heading">#</a></h1>
+<p>In this course, we will be making frequent use of derivatives for optimization. Recall from your calculus classes that the <strong>derivative</strong> of a function $f(x)$ points in the direction of steepest ascent of the function. The derivative is sometimes denoted as $f’(x)$ or $\frac{d}{dx} f(x)$. Here, will use the latter notation to more closely align with the notation used for <em>partial derivatives</em> of functions with multiple inputs.</p>
+<p>Here is a list of some common differentiation rules that will be useful when brushing up on calculus:</p>
+<p>:::{admonition} Common Differentiation Rules</p>
+<ul class="simple">
+<li><p>Constant multiple rule:</p></li>
+</ul>
+<p>$$\frac{d}{dx} (c \cdot f(x)) = c \cdot \frac{d}{dx} f(x)$$</p>
+<ul class="simple">
+<li><p>Constant rule:</p></li>
+</ul>
+<p>$$\frac{d}{dx} (c) = 0$$</p>
+<ul class="simple">
+<li><p>Sum rule:</p></li>
+</ul>
+<p>$$\frac{d}{dx} (f(x) + g(x)) = \frac{d}{dx} f(x) + \frac{d}{dx} g(x)$$</p>
+<ul class="simple">
+<li><p>Product rule:</p></li>
+</ul>
+<p>$$\frac{d}{dx} (f(x) \cdot g(x)) = \frac{d}{dx} f(x) \cdot g(x) + f(x) \cdot \frac{d}{dx} g(x)$$</p>
+<ul class="simple">
+<li><p>Quotient rule:</p></li>
+</ul>
+<p>$$\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) = \frac{\frac{d}{dx} f(x) \cdot g(x) - f(x) \cdot \frac{d}{dx} g(x)}{g(x)^2}$$</p>
+<ul class="simple">
+<li><p>Chain rule:</p></li>
+</ul>
+<p>$$\frac{d}{dx} f(g(x)) = \frac{d}{dx} f(g(x)) \cdot \frac{d}{dx} g(x)$$</p>
+<p>:::</p>
+<p><strong>2.1:</strong> What is the derivative of $f(x) = 3x^2 + 2x + 5$? Typeset your answer in LaTeX below.</p>
+<p>$$
+TODO
+$$</p>
+<p><strong>2.2:</strong> Using the chain rule, what is the derivative of $h(x) = (2x + 1)^3$? Typeset your answer in LaTeX below.</p>
+<p>$$
+TODO
+$$</p>
+<p>:::{admonition} Solutions (click this to check once you’ve completed 2.1 and 2.2)
+:class: dropdown</p>
+<p>2.1:</p>
+<p>$$\frac{d}{dx} (3x^2 + 2x + 5) = 6x + 2$$</p>
+<p>2.2:</p>
+<p>$$\frac{d}{dx} ((2x + 1)^3) = 3(2x + 1)^2 \cdot \frac{d}{dx} (2x + 1) =  3 (2x + 1)^2 \cdot 2 = 6(2x + 1)^2$$</p>
+<p>:::</p>
+<section id="partial-derivatives">
+<h2>Partial derivatives<a class="headerlink" href="#partial-derivatives" title="Link to this heading">#</a></h2>
+<p>Most machine learning models are functions of multiple variables. Thus, we need to extend the concept of derivatives to multiple variables, which are called <strong>partial derivatives</strong>.</p>
+<p>We find partial derivatives by varying one variable at a time, holding all of the other variables constant. For example, the partial derivative of a function $f(x_1, x_2)$ <strong>with respect to</strong> $x_1$ is found by treating $x_2$ as a constant and differentiating with $x_1$ as the variable of interest. This is denoted as:</p>
+<p>$$\frac{\partial}{\partial x_1} f(x_1, x_2)$$</p>
+<p>In general, we treat all variables except the one we are differentiating with respect to as constants.</p>
+<p>For example, suppose we have a function $f(x_1, x_2) = (x_1 + 2x_2^3)^2$. Then, the partial derivative of $f$ with respect to $x_1$ is:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+
+\frac{\partial}{\partial x_1} f(x_1, x_2) &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_1} (x_1 + 2x_2^3), \text{ by the chain rule} \\
+&amp;= 2(x_1 + 2x_2^3) \cdot 1, \text{ by the constant multiple rule, $x_2$ is treated as a constant} \\
+&amp;= 2(x_1 + 2x_2^3)
+
+\end{align*}\]</div>
+<p><strong>2.3:</strong> Compute the partial derivative of $f(x_1, x_2) = (x_1 + 2x_2^3)^2$ with respect to $x_2$.</p>
+<p>$$
+TODO
+$$</p>
+<p>We may also encounter taking partial derivatives of functions over sums. For example, consider the following function:</p>
+<p>$$
+f(x_1, x_2, \ldots, x_p) = \sum_{j=1}^{p} x_j^{(j+1)}
+$$</p>
+<p>We might want to compute the partial derivative of $f$ with respect to some $x_q$ where $q \in {1, 2, \ldots, p}$:</p>
+<p>$$
+\frac{\partial}{\partial x_q} f(x_1, x_2, \ldots, x_p) = \frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{(j+1)}
+$$</p>
+<p>While this might look a little daunting, we can apply the rules shown so far to compute the partial derivatives. Let’s do this step by step.</p>
+<p>First, we can split the summation into $p$ terms:</p>
+<p>$$
+\sum_{j=1}^{p} x_j^{(j+1)} = x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}
+$$</p>
+<p>Then, by the sum rule and the fact that all other variables are treated as constants, we can compute the partial derivative of $f$ with respect to $x_q$ as follows:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+
+\frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{(j+1)} &amp;= \frac{\partial}{\partial x_q} (x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}) \\
+&amp;= \frac{\partial}{\partial x_q} x_q^{q+1} \\
+&amp;= (q+1) x_q^q
+
+\end{align*}\]</div>
+<p><strong>2.4:</strong> Consider the following function of five variables, $(w_1, w_2, w_3, w_4, w_5)$:</p>
+<p>$$
+f(w_1, w_2, w_3, w_4, w_5) = \sum_{j=1}^{5} (w_j + 1)^2
+$$</p>
+<p>Compute the partial derivative of $f$ with respect to $w_3$.</p>
+<p>$$
+TODO
+$$</p>
+<p>:::{admonition} Solutions (click this to check once you’ve completed 2.3 and 2.4)
+:class: dropdown</p>
+<p>2.3:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+
+\frac{\partial}{\partial x_2} (x_1 + 2x_2^3)^2 &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_2} (x_1 + 2x_2^3) \\
+&amp;= 2(x_1 + 2x_2^3) \cdot 6x_2^2 \\
+&amp;= 12x_2^2(x_1 + 2x_2^3)
+
+\end{align*}\]</div>
+<p>2.4:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+
+\frac{\partial}{\partial w_3} \sum_{j=1}^{5} (w_j + 1)^2 &amp;= 2(w_3 + 1) \cdot \frac{\partial}{\partial w_3} (w_3 + 1) \\
+&amp;= 2(w_3 + 1) \cdot 1 \\
+&amp;= 2(w_3 + 1)
+
+\end{align*}\]</div>
+<p>:::</p>
+</section>
+</section>
+<section id="numpy-fundamentals-2-pts">
+<h1>3. NumPy fundamentals [2 pts]<a class="headerlink" href="#numpy-fundamentals-2-pts" title="Link to this heading">#</a></h1>
+<section id="numpy-arrays">
+<h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://numpy.org/">NumPy</a> is the standard Python library for scientific computing. The standard import idiom for the library is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the standard way to import numpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+<p>We can then use the <code class="docutils literal notranslate"><span class="pre">np</span></code> prefix to access the functions and classes in the library. The primary data structure in NumPy is the <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, which is a multi-dimensional array of elements of the same type, typically integers or floats.</p>
+<p>We can create an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function and passing in Python lists. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="c1"># create an array from a list</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1"># Will print &lt;class &#39;numpy.ndarray&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># pretty prints the array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A fundamental property of a NumPy array is its <strong>shape</strong>, which is a tuple of integers that represent the size of the array in each dimension. For example, the shape of the array <code class="docutils literal notranslate"><span class="pre">a</span></code> is <code class="docutils literal notranslate"><span class="pre">(4,)</span></code>, which means it has 4 elements in one dimension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># Will print (4,)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can thus create two-dimensional arrays by passing in a list of lists to the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creates a 2x3 array with a list of lists</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># the same array, but formatted for better readability</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># prints the array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The shape of <code class="docutils literal notranslate"><span class="pre">b</span></code> is <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">3)</span></code>, which means it has 2 rows and 3 columns.</p>
+<p>The shape tuple itself provides useful information about the array and can be accessed using <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> notation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># prints the first element of the shape tuple, which is the number of rows in b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># prints the second element of the shape tuple, which is the number of columns in b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.1</strong> Complete the function below to create an array of shape <code class="docutils literal notranslate"><span class="pre">(4,</span> <span class="pre">2)</span></code> with any values you want in it.</p>
+<p>:::{admonition} Python Return Type Hints</p>
+<p>You’ll notice that the function definition includes <code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">np.ndarray</span></code>. This is a Python <em>type hint</em> that indicates the function returns an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>. These hints are not required for Python code to run, but is good practice to include in order to increase the readability of your code. They are also used by some text editors like VSCode to provide type-checking and documentation. Most of the functions you will see in this course will have type hints.</p>
+<p>:::</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shape_practice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Practice with creating arrays of a specific shape.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        A 2D array of shape (4, 2)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">shape_practice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;result should be a 2D array of shape (4, 2)&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are helper functions that can be used to create arrays with specific values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># create a shape (2, 3) array with all elements equal to 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zeros</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+<span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># create a shape (4, 4) array with all elements equal to 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ones</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexing-and-slicing">
+<h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Link to this heading">#</a></h2>
+<p>NumPy arrays can be indexed in a variety of different ways. To begin, we can access elements using square brackets. For example, we can access index 0 of <code class="docutils literal notranslate"><span class="pre">a</span></code> as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the whole array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># NumPy arrays are 0-indexed</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Will print 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Just like with Python lists, we can use negative indices to access elements from the end of the array. For example, <code class="docutils literal notranslate"><span class="pre">a[-1]</span></code> will return the last element of <code class="docutils literal notranslate"><span class="pre">a</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Will print 4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the array is multidimensional, we can access elements by specifying the index for each dimension. For example, we can access the element in the second row and third column of <code class="docutils literal notranslate"><span class="pre">b</span></code> as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the whole array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Access the element in the second row and third column</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># Will print 6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>NumPy arrays also support <strong>slicing</strong> with the colon <code class="docutils literal notranslate"><span class="pre">:</span></code> operator, which allows us to access a range of elements in the array. If a <code class="docutils literal notranslate"><span class="pre">:</span></code> is used as the index, it is interpreted as “take all elements in this dimension”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the whole array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Access the first row</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span> <span class="c1"># Will print [1 2 3]</span>
+
+<span class="c1"># Access the second column. Note that the selection is a 1D array so there no notion of a &quot;column vector&quot; in NumPy</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Will print [2 5]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The slice operator can be combined with beginning and ending indices to access a range of elements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the whole array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+<span class="c1"># Access the first two columns of row 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Will print [1 2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;shape of b[0, :2]:&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+
+<span class="c1"># Access all rows and the last two columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:])</span> <span class="c1"># Will print [[2, 3], </span>
+<span class="c1">#                             [5, 6]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;shape of b[:, 1:]:&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need to pay attention to the shape of the array when slicing. Note how the first selection above returns a 1D array of shape <code class="docutils literal notranslate"><span class="pre">(2,)</span></code>, while the second selection returns a 2D array of shape <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">2)</span></code>.</p>
+<p><strong>3.2:</strong> Consider the array <code class="docutils literal notranslate"><span class="pre">c</span></code> defined in the function below. Use indexing to access <code class="docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">6]</span></code> from <code class="docutils literal notranslate"><span class="pre">c</span></code> and return it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index_practice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Practice with indexing&quot;&quot;&quot;</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+                  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span> 
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">index_practice</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="s2">&quot;result should be a 1D array of shape (2,)&quot;</span>
+    <span class="c1"># np.allclose() checks if all elements in the array are equal to the corresponding elements in the other array</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])),</span> <span class="s2">&quot;result should be [4, 6]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.3:</strong> Complete the function below that selects the <em>last</em> column of the passed in array.</p>
+<p>:::{admonition} Python Parameter Type Hints</p>
+<p>You’ll notice that function parameter name is written as <code class="docutils literal notranslate"><span class="pre">arr:</span> <span class="pre">np.ndarray</span></code>. Similar to the return type hint, this is a Python <em>parameter</em> type hint that indicates the function parameter <code class="docutils literal notranslate"><span class="pre">arr</span></code> is an <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>. Again, these hints are optional and do not affect the execution of the code, but is good practice to include in order to increase the readability of Python code.</p>
+<p>:::</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select_last_column</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select the last column of the passed in array.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        arr: A 2D array</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        A 1D array of the last column of the passed in array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">test_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+                         <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="n">select_last_column</span><span class="p">(</span><span class="n">test_arr</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])),</span> <span class="s2">&quot;result should be [2, 5]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boolean-indexing">
+<h2>Boolean indexing<a class="headerlink" href="#boolean-indexing" title="Link to this heading">#</a></h2>
+<p>We can also apply boolean operators to arrays. These operations return an array <strong>of the same shape</strong> as the original array, with elements set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> depending on the result of the boolean operation. For example, we can check which elements of <code class="docutils literal notranslate"><span class="pre">a</span></code> are greater than 2:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># Will print [False False  True  True]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then use these boolean arrays to index into the original array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selects the elements of a that are greater than 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">])</span> <span class="c1"># Will print [3 4]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.4:</strong> Complete the function below that selects all elements of the passed in array that are even.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select_evens</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select all elements of the passed in array that are even.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        arr: A 1D array</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        A 1D array of the elements of the passed in array that are even.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">test_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">select_evens</span><span class="p">(</span><span class="n">test_arr</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])),</span> <span class="s2">&quot;result should be [2, 4, 6]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="array-arithmetic">
+<h2>Array arithmetic<a class="headerlink" href="#array-arithmetic" title="Link to this heading">#</a></h2>
+<p>Basic arithmetic operations are applied element-wise to arrays. That means that the shapes of the arrays must be the same.</p>
+<p>The following code adds two arrays element-wise:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># Will print [3 5 7]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also apply arithmetic operations to arrays with scalars (a single number). The scalar is applied to <em>each element</em> in the array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># Will print [4 8 12]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.5</strong> Work out what the following code will print before checking your answer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">((</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p><strong>Your Response</strong>: <code class="docutils literal notranslate"><span class="pre">[TODO]</span></code></p>
+<p>:::{admonition} Solutions (click this to check once you’ve completed 3.5)
+:class: dropdown</p>
+<p>The multiplication is also performed element-wise, so we get:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[(2*-1)</span> <span class="pre">-</span> <span class="pre">1,</span>&#160; <span class="pre">(1*1)</span> <span class="pre">-</span> <span class="pre">1]</span> <span class="pre">=</span> <span class="pre">[-3,</span> <span class="pre">0]</span></code></p>
+<p>Note that this is <em>not</em> the same as matrix multiplication or a dot product. We will cover matrix manipulation and NumPy broadcasting concepts in a future worksheet.
+:::</p>
+</section>
+</section>
+<section id="vectors-norms-and-distances-1-pt">
+<h1>4. Vectors, norms, and distances [1 pt]<a class="headerlink" href="#vectors-norms-and-distances-1-pt" title="Link to this heading">#</a></h1>
+<p>As we’ve seen, machine learning models are functions of potentially many variables. Instead of writing out the individual variables (e.g. $x_1, x_2, \ldots, x_p$), we can collect them into a <strong>vector</strong> to represent them. They are often denoted as a bold-faced letter $\mathbf{x}$ or with an arrow above the letter $\vec{x}$. In this course, we will use the arrow notation to visually differentiate the vectors from scalars:</p>
+<p>$$
+\vec{x} \in \mathbb{R}^p, \quad \vec{x} = (x_1, x_2, \ldots, x_p)
+$$</p>
+<p>These vectors generalize the geometric vectors you might have seen in math courses to higher dimensions. Mapping onto the NumPy concepts we just practiced, we can think of vectors as 1D arrays of shape <code class="docutils literal notranslate"><span class="pre">(p,)</span></code>, where <code class="docutils literal notranslate"><span class="pre">p</span></code> is the number of elements (and thus the dimensionality) in the vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># represents a vector in 3-dimensional space</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="norms">
+<h2>Norms<a class="headerlink" href="#norms" title="Link to this heading">#</a></h2>
+<p>Geometric vectors can be visualized as a line segment in space that starts at the origin. For example, we can represent the two-dimensional vector $\vec{x} = (2, 3)$ as follows:</p>
+<p><img alt="" src="../_images/geometric_vector.png" /></p>
+<p>We can generalize this notion of length to vectors in any number of dimensions, as well as different ways to measure the “length” of a vector, which is called a <strong>norm</strong>. Norms are represented using double vertical bars e.g. $|\vec{x}|$, and always produce a scalar value that represents vector length. A commonly used norm is the <strong>Euclidean norm</strong>, which is defined as:</p>
+<p>:::{admonition} Euclidean norm</p>
+<p>$$
+|\vec{x}|<em>2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_p^2} = \sqrt{\sum</em>{j=1}^{p} x_i^2}
+$$</p>
+<p>This is also known as the <strong>L2 norm</strong> (note the 2 in the subscript).</p>
+<p>:::</p>
+<p>One straightforward way to implement this is to use a for loop for the summation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_norm_slow</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean norm of a vector using a for loop.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: A 1D array</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The Euclidean norm of the vector</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># Computes the square root of the sum</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, loops are slow in Python for large inputs. NumPy provides many <strong>vectorized</strong> operations, which can be directly applied to arrays and are highly optimized for performance. Here, let’s use the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.sum.html">np.sum()</a> function, which computes the sum of all elements in an array in a single operation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1"># Will print 6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>4.1</strong> Complete the function below that computes the Euclidean norm of a vector, replacing the for-loop with <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>. You should be able to do this in a single line of code!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_norm_vectorized</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean norm of a vector *without* using a for loop.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: A 1D array</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The Euclidean norm of the vector</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">euclidean_norm_vectorized</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">euclidean_norm_slow</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="s2">&quot;result should be the same as the slow version&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">euclidean_norm_vectorized</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="o">**</span><span class="mi">2</span><span class="p">)),</span> <span class="s2">&quot;result should be the same as manual computation&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="timing-operations">
+<h2>Timing operations<a class="headerlink" href="#timing-operations" title="Link to this heading">#</a></h2>
+<p>Jupyter notebooks also provide a way to measure the time it takes to run a cell of code through a <a class="reference external" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">“magic”</a> command (no, really, that’s what they’re actually called), which are generally prefixed with a <code class="docutils literal notranslate"><span class="pre">%</span></code>. We can use the magic command <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> to compare the performance of our two implementations, which provides an estimate of the average runtime over multiple runs.</p>
+<p><strong>4.2</strong> Use the cell below to time the performance of the two implementations. Approximately how many times faster is the vectorized version?</p>
+<p><strong>Your Response</strong>:</p>
+<ul class="simple">
+<li><p>average runtime of <code class="docutils literal notranslate"><span class="pre">euclidean_norm_slow(x)</span></code>: TODO</p></li>
+<li><p>average runtime of <code class="docutils literal notranslate"><span class="pre">euclidean_norm_vectorized(x)</span></code>: TODO</p></li>
+<li><p>speedup: TODO</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a large, random vector with a million elements</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+
+<span class="c1"># TODO run the slow version to time it, then the vectorized version</span>
+<span class="o">%</span><span class="k">timeit</span> euclidean_norm_slow(x)
+</pre></div>
+</div>
+</div>
+</div>
+<p>:::{admonition} Takeaway (click this once you’ve completed 4.2)
+:class: dropdown</p>
+<p>The exact numbers might vary (and double check the seconds units), but you should see a ~300-500x speedup with the vectorized version!</p>
+<p>Whenever possible, we should try to use vectorized operations instead of for-loops when manipulating NumPy arrays – though for-loops are still sometimes necessary.</p>
+<p>:::</p>
+</section>
+<section id="distances">
+<h2>Distances<a class="headerlink" href="#distances" title="Link to this heading">#</a></h2>
+<p>Finally, we can also use norms to measure the distance $d$ between two vectors. A common distance metric is the <strong>Euclidean distance</strong>, which is just the Euclidean norm of the difference between two vectors:</p>
+<p>$$
+d(\vec{x}, \vec{y}) = |\vec{x} - \vec{y}|_2
+$$</p>
+<p><strong>4.3</strong> Using your <code class="docutils literal notranslate"><span class="pre">euclidean_norm_vectorized</span></code> function, complete the function below that computes the Euclidean distance between two vectors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean distance between two vectors.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: A 1D array</span>
+<span class="sd">        y: A 1D array</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The distance between the two vectors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)),</span> <span class="s2">&quot;result should be the same as manual computation&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>4.4</strong> Is the Euclidean distance metric symmetric? That is, does $d(\vec{x}, \vec{y}) = d(\vec{y}, \vec{x})$?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p>:::{admonition} Solution (click this to check once you’ve completed 4.4)
+:class: dropdown</p>
+<p>The Euclidean distance metric is symmetric – notice how the square term in the definition of the Euclidean distance is the same regardless of which point we subtract from which:</p>
+<p>$$
+d(\vec{x}, \vec{y}) = |\vec{x} - \vec{y}|<em>2 = \sqrt{\sum</em>{j=1}^{p} (x_j - y_j)^2} = \sqrt{\sum_{j=1}^{p} (y_j - x_j)^2} = |\vec{y} - \vec{x}|_2 = d(\vec{y}, \vec{x})
+$$</p>
+<p>:::</p>
+</section>
+</section>
+<section id="oop-in-python-with-sklearn-1-pt">
+<h1>5. OOP in Python with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> [1 pt]<a class="headerlink" href="#oop-in-python-with-sklearn-1-pt" title="Link to this heading">#</a></h1>
+<p>Our final topic for this worksheet is a brief introduction to object-oriented programming (OOP) in Python, which we’ll explore using the <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> library. <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> is the primary Python library for building (non-deep learning) machine learning models, and is a great example of how OOP is used in practice. Each machine learning model in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> is represented as a class, which contains the model’s parameters at initailization, as well as functions for training and predicting.</p>
+<p>Let’s walk through and complete the implementation of the k nearest neighbors (KNN) regressor model that we discussed in class.</p>
+<section id="class-definition">
+<h2>Class definition<a class="headerlink" href="#class-definition" title="Link to this heading">#</a></h2>
+<p>Classes in Python are defined using the <code class="docutils literal notranslate"><span class="pre">class</span></code> keyword.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> provides a <code class="docutils literal notranslate"><span class="pre">BaseEstimator</span></code> class that provides a standard interface for all models, and can be <strong>subclassed</strong> to create new models. To extend a class, the child class just passes in the parent class name as an “argument” to the <code class="docutils literal notranslate"><span class="pre">class</span></code> keyword:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our KNNRegressor class extends the BaseEstimator class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Link to this heading">#</a></h2>
+<p>In Python, the constructor is defined using the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method. This method is called when a new instance of the class is created. The first argument to the constructor is always <code class="docutils literal notranslate"><span class="pre">self</span></code>, which refers to the instance of the class itself – think of it as similar to the <code class="docutils literal notranslate"><span class="pre">this</span></code> keyword in Java.</p>
+<p>Any additional arguments to the constructor are passed in by the user when the class is instantiated, and instance variables are also assigned using the <code class="docutils literal notranslate"><span class="pre">self</span></code> keyword.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Our KNNRegressor class extends the BaseEstimator class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;KNN regressor model.&quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes our KNNRegressor model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            n_neighbors: the number of neighbors to use for the KNN regressor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># self.var_name is an instance variable that can be accessed by any method in the class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">n_neighbors</span>
+</pre></div>
+</div>
+</section>
+<section id="object-creation">
+<h2>Object creation<a class="headerlink" href="#object-creation" title="Link to this heading">#</a></h2>
+<p>Objects are created using the <code class="docutils literal notranslate"><span class="pre">class_name(arguments)</span></code> syntax. This should look similar to other OOP languages you may have used. For example, we can create a new KNNRegressor object with 5 neighbors as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Create a new KNNRegressor object with 5 neighbors</span>
+<span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNNRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">self</span></code> argument is not passed in. It is implicitly passed in by Python when the object is created.</p>
+</section>
+<section id="instance-methods">
+<h2>Instance methods<a class="headerlink" href="#instance-methods" title="Link to this heading">#</a></h2>
+<p>Instance methods are defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword within the class block, and are similar to functions in Python. Like the constructor, the first argument to any instance method is <strong>required</strong> to be <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+<p>In order for our <code class="docutils literal notranslate"><span class="pre">KNNRegressor</span></code> class to be a valid <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> estimator, we need to implement the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+    <span class="o">...</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the KNN regressor to the training data.</span>
+
+<span class="sd">        Note that KNN models do not have any functions or features that need to be fit, </span>
+<span class="sd">        so all this method does is store the training data in the instance variables.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: the feature matrix of shape (n, p)</span>
+<span class="sd">            y: the target vector of shape (n,)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            self: the fitted model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Use self to store the training data in the instance variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> uses a convention where any instance variables that are created during the model fitting process are suffixed with a <code class="docutils literal notranslate"><span class="pre">_</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">self.X_</span></code>). This is actually used by <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to determine whether a model has been fitted or not.</p>
+<p>Recall from class that the KNN regressor predicts the value of a new point by averaging the values of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors. If $D_k = {(\vec{x_1}, y_1), (\vec{x_2}, y_2), \ldots, (\vec{x_k}, y_k)}$ is the set of $k$ nearest neighbors to a new point $\vec{x}$, then the prediction is given by:</p>
+<p>$$
+\hat{y} = \frac{1}{k} \sum_{(\vec{x_i}, y_i) \in D_k} y_i
+$$</p>
+<p>Let’s first write a helper function, <code class="docutils literal notranslate"><span class="pre">find_k_nearest_indices</span></code>, that finds the indices of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors to a new point $\vec{x}$ using the Euclidean distance.</p>
+<p>The function is partially implemented below. You will need to use the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.argsort.html">np.argsort</a> function, which returns the indices that would sort an array. For example, if we wanted to sort the array <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.array([3,</span> <span class="pre">2,</span> <span class="pre">1])</span></code>, then <code class="docutils literal notranslate"><span class="pre">np.argsort(a)</span></code> returns <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">1,</span> <span class="pre">0]</span></code>, which are the indices that would sort <code class="docutils literal notranslate"><span class="pre">a</span></code> in ascending order:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1"># Will print [2 1 0]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">a</span><span class="p">)])</span> <span class="c1"># Will print in sorted order: [1 2 3]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>5.1:</strong> Complete the function below that implements the logic described above. <strong>Hint</strong>: You should use the indexing and slice notation from the NumPy section to select each point in <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, as well as to return the first <code class="docutils literal notranslate"><span class="pre">k</span></code> elements of the sorted array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_k_nearest_indices</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds the indices of the k nearest neighbors to a new point x.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: the new point of shape (p,)</span>
+<span class="sd">        X_train: the training data of shape (n, p)</span>
+<span class="sd">        k: the number of nearest neighbors to find</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        the indices of the k nearest neighbors to x in X_train</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">dists</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="c1"># TODO append the Euclidean distance between x and the i-th point in X</span>
+        <span class="n">dists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    
+    <span class="c1"># TODO call np.argsort on dists, then return the first k elements</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># initialize some simple data for testing</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">4</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mi">9</span><span class="p">]])</span>
+
+    <span class="c1"># test the find_k_nearest_indices function in one dimension</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">])</span> <span class="c1"># closest two points to 7 are 6 and 9</span>
+    <span class="n">k_nearest_indices</span> <span class="o">=</span> <span class="n">find_k_nearest_indices</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">X_train</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">k_nearest_indices</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])),</span> <span class="s2">&quot;result should be the indices of 6 and 9, which are [2,3]&quot;</span>
+
+    <span class="c1"># Initialize some two dimensional data for testing</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="c1"># closest two points to (0,0) are (1,2) and (2,3)</span>
+    <span class="n">k_nearest_indices</span> <span class="o">=</span> <span class="n">find_k_nearest_indices</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">X_train</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">k_nearest_indices</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])),</span> <span class="s2">&quot;result should be the indices of (1,2) and (2,3), which are [0,1]&quot;</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>5.2:</strong> Now, let’s put things together. The <code class="docutils literal notranslate"><span class="pre">KNNRegressor</span></code> class is given below, and your job is to complete the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method using the helper function you just implemented:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="c1"># Our KNNRegressor class extends the BaseEstimator class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;KNN regressor model.&quot;&quot;&quot;</span>
+    
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the KNN regressor model.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            n_neighbors: the number of neighbors to use for the KNN regressor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># self.var_name is an instance variable that can be accessed by any method in the class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">n_neighbors</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the KNN regressor to the training data.</span>
+
+<span class="sd">        Note that KNN models do not have any functions or features that need to be fit, </span>
+<span class="sd">        so all this method does is store the training data as instance variables.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: the feature matrix of shape (n, p)</span>
+<span class="sd">            y: the target vector of shape (n,)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            self: the fitted model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Use self to store the training data in the instance variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Predicts the values of a set of new points X.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: the new points of shape (n_new, p)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            the predicted values of shape (n_new,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;X must have the same number of features as the training data&quot;</span>
+
+        <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># this loops over the rows of X</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span>
+            <span class="c1"># TODO find the k nearest neighbors to x</span>
+            
+
+            <span class="c1"># TODO compute the average of the k nearest neighbors, append to predictions</span>
+            <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># initialize some simple data for testing</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">4</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+                        <span class="p">[</span><span class="mi">9</span><span class="p">]])</span>
+
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+    <span class="c1"># test the predict method</span>
+    <span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNNRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">]])</span> <span class="c1"># note that x is a 2D array of shape (1, 1)!</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mf">3.5</span><span class="p">),</span> <span class="s2">&quot;result should be (3 + 4) / 2 = 3.5&quot;</span>
+
+    <span class="c1"># Initialize some two dimensional data for testing</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+                        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+    
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>  <span class="c1"># closest two points to (0,0) are (1,2) and (2,3)</span>
+                  <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span> <span class="c1"># closest two points to (5,5) are (3,3) and (2,3)</span>
+
+    <span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNNRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">])),</span> <span class="s2">&quot;result should be (1 + 2) / 2 = 1.5 and (3 + 2) / 2 = 2.5&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="n-neighbors-and-model-complexity">
+<h2><code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> and model “complexity”<a class="headerlink" href="#n-neighbors-and-model-complexity" title="Link to this heading">#</a></h2>
+<p>We will frequently use interactive widgets to explore tradeoffs in building machine learning models. We will cover how to implement these widgets in a future worksheet, but for now, the code to run the widget will be provided.</p>
+<p>We will consider a simple prediction task, where our goal is to predict block-level housing prices based on a single feature: the median income of the block:</p>
+<ul class="simple">
+<li><p>$X$ is an <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">1)</span></code> array of median incomes on a block, measured in tens of thousands of dollars</p></li>
+<li><p>$y$ is an <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">)</span></code> array of house prices, measured in hundreds of thousands of dollars</p></li>
+</ul>
+<p><strong>5.3:</strong> We can intuitively think of our model’s “complexity” as how flexible its predictions are – that is, the more “jagged” or “wiggly” the prediction curve is, the more complex the model. Run the cell below to play with how the <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> parameter affects model complexity. Does increasing <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> make the model more or less complex?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<div class="cell tag_hide-code docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ws_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">explore_n_neighbors</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+
+<span class="n">widgets</span><span class="o">.</span><span class="n">interact_manual</span><span class="p">(</span><span class="n">explore_n_neighbors</span><span class="p">,</span> 
+    <span class="c1"># Tells the widget to use the KNNRegressor class you just implemented</span>
+    <span class="n">KNNRegressor</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">fixed</span><span class="p">(</span><span class="n">KNNRegressor</span><span class="p">),</span> 
+    <span class="c1"># Creates an interactive slider for the number of neighbors</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>:::{admonition} Takeaway (click this to check once you’ve completed 5.3)
+:class: dropdown</p>
+<p>You should see that decreasing <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> makes the model more complex, as the predictions are much more jagged. This makes the model more flexible, and able to fit the data better. However, we can overdo this – in the extreme case where <code class="docutils literal notranslate"><span class="pre">n_neighbors</span> <span class="pre">=</span> <span class="pre">1</span></code>, the model almost perfectly fits to the training data, which may make its predictions less generalizable to new, unseen data. We will cover the tradeoffs between model complexity and generalization as we move further along in the course.</p>
+<p>:::</p>
+</section>
+</section>
+<section id="reflection-0-5-pts">
+<h1>6. Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
+<p><strong>6.1</strong> How much time outside of class did it take you to complete this worksheet?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p><strong>6.2</strong> What is one thing you have a better understanding of after completing this worksheet? This could be about the concepts, the math, or the code.</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p><strong>6.3</strong> How comfortable do you feel about your mathematical and programming preparation for this course?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p>:::{admonition} How to submit
+:class: tip
+Follow the instructions on the <a class="reference external" href="https://comsc335.github.io/syllabus/submit.html">course website</a> to submit your worksheet.
+:::</p>
+<p>Congrats on finishing the first worksheet of the course!</p>
+</section>
+<section id="acknowledgements">
+<h1>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Some exercises are adapted from <a class="reference external" href="https://mml-book.github.io/">Deisenroth 2020: Mathematics for Machine Learning</a>.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worksheets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worksheet 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#course-resources-0-5-pts">1. Course resources [0.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-interface">Coding interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-primer-1-pt">2. Calculus primer [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-derivatives">Partial derivatives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-fundamentals-2-pts">3. NumPy fundamentals [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing">Indexing and Slicing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing">Boolean indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-arithmetic">Array arithmetic</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vectors-norms-and-distances-1-pt">4. Vectors, norms, and distances [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norms">Norms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-operations">Timing operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distances">Distances</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oop-in-python-with-sklearn-1-pt">5. OOP in Python with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-definition">Class definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor">Constructor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-creation">Object creation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-methods">Instance methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-neighbors-and-model-complexity"><code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> and model “complexity”</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">6. Reflection [0.5 pts]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
