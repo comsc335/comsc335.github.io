@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b9885972" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -182,6 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Course Schedule</a></li>
 </ul>
 
     </div>
@@ -1058,11 +1060,12 @@ TODO
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a large, random vector with a million elements</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># generate a large, random vector with a million elements</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
 
-<span class="c1"># TODO run the slow version to time it, then the vectorized version</span>
-<span class="o">%</span><span class="k">timeit</span> euclidean_norm_slow(x)
+    <span class="c1"># TODO run the slow version to time it, then the vectorized version</span>
+    <span class="o">%</span><span class="k">timeit</span> euclidean_norm_slow(x)
 </pre></div>
 </div>
 </div>
@@ -1384,15 +1387,16 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)
 <p><strong>Your Response</strong>: TODO</p>
 <div class="cell tag_hide-code docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ws_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">explore_n_neighbors</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ws_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">explore_n_neighbors</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
 
-<span class="n">widgets</span><span class="o">.</span><span class="n">interact_manual</span><span class="p">(</span><span class="n">explore_n_neighbors</span><span class="p">,</span> 
-    <span class="c1"># Tells the widget to use the KNNRegressor class you just implemented</span>
-    <span class="n">KNNRegressor</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">fixed</span><span class="p">(</span><span class="n">KNNRegressor</span><span class="p">),</span> 
-    <span class="c1"># Creates an interactive slider for the number of neighbors</span>
-    <span class="n">n_neighbors</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">);</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">interact_manual</span><span class="p">(</span><span class="n">explore_n_neighbors</span><span class="p">,</span> 
+        <span class="c1"># Tells the widget to use the KNNRegressor class you just implemented</span>
+        <span class="n">KNNRegressor</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">fixed</span><span class="p">(</span><span class="n">KNNRegressor</span><span class="p">),</span> 
+        <span class="c1"># Creates an interactive slider for the number of neighbors</span>
+        <span class="n">n_neighbors</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">);</span>
 </pre></div>
 </div>
 </div>
