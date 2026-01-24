@@ -1084,15 +1084,17 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean distance between two vectors.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean distance between two vectors of the same dimensionality.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
-<span class="sd">        x: A 1D array</span>
-<span class="sd">        y: A 1D array</span>
+<span class="sd">        x: A 1D array, same shape as y</span>
+<span class="sd">        y: A 1D array, same shape as x</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
 <span class="sd">        The distance between the two vectors</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;x and y must have the same shape&quot;</span>
     
     <span class="c1"># TODO your code here</span>
     <span class="k">return</span> <span class="kc">None</span>
@@ -1382,8 +1384,7 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)
 <p><strong>Your Response</strong>: TODO</p>
 <div class="cell tag_hide-code docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ws_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">explore_n_neighbors</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ws_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">explore_n_neighbors</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
 
 <span class="n">widgets</span><span class="o">.</span><span class="n">interact_manual</span><span class="p">(</span><span class="n">explore_n_neighbors</span><span class="p">,</span> 
