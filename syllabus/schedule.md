@@ -53,7 +53,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         
 
         
-        ![](https://img.shields.io/badge/Released-2ca02c) Survey 1
+        ![](https://img.shields.io/badge/Released-2ca02c) [Survey 1](https://www.gradescope.com/courses/1231382/assignments/7547649)
 
     - <small> 1/28 </small>
 
@@ -67,7 +67,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
 
 *   - <small> 2/2 </small> <!-- Week 2 -->
-        <br> ![](https://img.shields.io/badge/Due-dc322f) Survey 1
+        <br> ![](https://img.shields.io/badge/Due-dc322f) [Survey 1](https://www.gradescope.com/courses/1231382/assignments/7547649)
         
     
     - <small> 2/3 </small> <br>
