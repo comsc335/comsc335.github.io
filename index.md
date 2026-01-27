@@ -1,9 +1,5 @@
 # Machine Learning
 
-```{warning}
-This site is still under construction and subject to change!
-```
-
 ## Course Description
 
 - **Course number:** COMSC 335

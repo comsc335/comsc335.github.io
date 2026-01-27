@@ -5,10 +5,6 @@
 :local:
 ```
 
-```{warning}
-This site is still under construction and subject to change!
-```
-
 ## Learning goals
 
 Our goal is that by the end of this course, you will be able to:
