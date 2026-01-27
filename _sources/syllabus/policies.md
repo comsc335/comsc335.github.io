@@ -5,10 +5,6 @@
 :depth: 1
 ```
 
-```{warning}
-This site is still under construction and subject to change!
-```
-
 ## Communication
 
 **Office Hours**: Generally, answering questions about the assignments is much more efficient in person. As such, please ask questions about the assignments during office hours or class whenever possible.
