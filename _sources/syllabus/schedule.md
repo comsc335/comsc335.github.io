@@ -50,8 +50,10 @@ A list of topics we will cover can be found below. Note that topics may be subje
     
     - <small> 1/27 </small> <br>
         ![](https://img.shields.io/badge/Class%2000-1f77b4) <b>Introduction</b>
-        
-
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552043/mod_resource/content/3/lec00-intro-starter.pdf)</li>
+                <li>[activity 1](https://docs.google.com/document/d/1C20oOB-E-XyJra-tNXNY7fLjPHdAUBsZlWaHTEvIWQg/edit?usp=sharing)</li>
+            </ul> 
         
         ![](https://img.shields.io/badge/Released-2ca02c) [Survey 1](https://www.gradescope.com/courses/1231382/assignments/7547649)
 
