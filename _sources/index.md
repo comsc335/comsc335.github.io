@@ -23,7 +23,7 @@ Machine learning is the study of creating programs that can learn through experi
 
 - Instructor: [Tony Liu](https://tliutony.github.io) (he/him)
     - Office: Clapp 207
-- Teaching Assistant: To be announced!
+- Teaching Assistant: Bhargavi Patil (she/her)
 
 ## Acknowledgements
 
