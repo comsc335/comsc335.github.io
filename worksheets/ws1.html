@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=b9885972" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=27c265a2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -183,7 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Course Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
 </ul>
 
     </div>
@@ -445,7 +445,7 @@ document.write(`
 <p><strong>1.1:</strong> Read through all the pages listed in the syllabus section on the <a class="reference external" href="https://comsc335cd.github.io/">course website</a>. What are the two file types that you need to submit to Gradescope for each assignment?</p>
 <p><strong>Your Response</strong>: TODO</p>
 <p><strong>1.2</strong> Reply to the Course Intros thread on Ed introducing yourself and sharing why you’re interested in taking this course.</p>
-<p>TODO post to the Ed discussion thread: TODO link</p>
+<p>TODO post to the Ed discussion thread: <a class="reference external" href="https://edstem.org/us/courses/94030/discussion/7575488">https://edstem.org/us/courses/94030/discussion/7575488</a></p>
 <section id="coding-interface">
 <h2>Coding interface<a class="headerlink" href="#coding-interface" title="Link to this heading">#</a></h2>
 <p><strong>Programming language: Python.</strong> This course will be taught in Python. To get the most out of the course, it’s important you don’t feel bogged down by the syntax of the language so that you can focus on the concepts introduced. If you do not have prior experience with Python, that’s no problem. <strong>Please do take the time at start of the course to study and practice it.</strong></p>
@@ -581,9 +581,11 @@ TODO
 <p>In general, we treat all variables except the one we are differentiating with respect to as constants.</p>
 <p>For example, suppose we have a function <span class="math notranslate nohighlight">\(f(x_1, x_2) = (x_1 + 2x_2^3)^2\)</span>. Then, the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x_1\)</span> is:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\frac{\partial}{\partial x_1} f(x_1, x_2) &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_1} (x_1 + 2x_2^3), \text{ by the chain rule} \\
+\[\begin{split}
+\frac{\partial}{\partial x_1} f(x_1, x_2) &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_1} (x_1 + 2x_2^3), \text{ by the chain rule} \\
 &amp;= 2(x_1 + 2x_2^3) \cdot 1, \text{ by the constant multiple rule, $x_2$ is treated as a constant} \\
-&amp;= 2(x_1 + 2x_2^3)\end{split}\]</div>
+&amp;= 2(x_1 + 2x_2^3)
+\end{split}\]</div>
 <p><strong>2.3:</strong> Compute the partial derivative of <span class="math notranslate nohighlight">\(f(x_1, x_2) = (x_1 + 2x_2^3)^2\)</span> with respect to <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -592,24 +594,26 @@ TODO
 <p>We may also encounter taking partial derivatives of functions over sums. For example, consider the following function:</p>
 <div class="math notranslate nohighlight">
 \[
-f(x_1, x_2, \ldots, x_p) = \sum_{j=1}^{p} x_j^{(j+1)}
+f(x_1, x_2, \ldots, x_p) = \sum_{j=1}^{p} x_j^{j+1}
 \]</div>
 <p>We might want to compute the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to some <span class="math notranslate nohighlight">\(x_q\)</span> where <span class="math notranslate nohighlight">\(q \in \{1, 2, \ldots, p\}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial}{\partial x_q} f(x_1, x_2, \ldots, x_p) = \frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{(j+1)}
+\frac{\partial}{\partial x_q} f(x_1, x_2, \ldots, x_p) = \frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{j+1}
 \]</div>
 <p>While this might look a little daunting, we can apply the rules shown so far to compute the partial derivatives. Let’s do this step by step.</p>
 <p>First, we can split the summation into <span class="math notranslate nohighlight">\(p\)</span> terms:</p>
 <div class="math notranslate nohighlight">
 \[
-\sum_{j=1}^{p} x_j^{(j+1)} = x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}
+\sum_{j=1}^{p} x_j^{j+1} = x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}
 \]</div>
 <p>Then, by the sum rule and the fact that all other variables are treated as constants, we can compute the partial derivative of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x_q\)</span> as follows:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{(j+1)} &amp;= \frac{\partial}{\partial x_q} (x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}) \\
+\[\begin{split}
+\frac{\partial}{\partial x_q} \sum_{j=1}^{p} x_j^{j+1} &amp;= \frac{\partial}{\partial x_q} (x_1^{2} + x_2^{3} + x_3^{4} + \cdots + x_p^{p+1}) \\
 &amp;= \frac{\partial}{\partial x_q} x_q^{q+1} \\
-&amp;= (q+1) x_q^q\end{split}\]</div>
+&amp;= (q+1) x_q^q
+\end{split}\]</div>
 <p><strong>2.4:</strong> Consider the following function of five variables, <span class="math notranslate nohighlight">\((w_1, w_2, w_3, w_4, w_5)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -624,14 +628,18 @@ TODO
 <p class="admonition-title">Solutions (click this to check once you’ve completed 2.3 and 2.4)</p>
 <p>2.3:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\frac{\partial}{\partial x_2} (x_1 + 2x_2^3)^2 &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_2} (x_1 + 2x_2^3) \\
+\[\begin{split}
+\frac{\partial}{\partial x_2} (x_1 + 2x_2^3)^2 &amp;= 2(x_1 + 2x_2^3) \cdot \frac{\partial}{\partial x_2} (x_1 + 2x_2^3) \\
 &amp;= 2(x_1 + 2x_2^3) \cdot 6x_2^2 \\
-&amp;= 12x_2^2(x_1 + 2x_2^3)\end{split}\]</div>
+&amp;= 12x_2^2(x_1 + 2x_2^3)
+\end{split}\]</div>
 <p>2.4:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\frac{\partial}{\partial w_3} \sum_{j=1}^{5} (w_j + 1)^2 &amp;= 2(w_3 + 1) \cdot \frac{\partial}{\partial w_3} (w_3 + 1) \\
+\[\begin{split}
+\frac{\partial}{\partial w_3} \sum_{j=1}^{5} (w_j + 1)^2 &amp;= 2(w_3 + 1) \cdot \frac{\partial}{\partial w_3} (w_3 + 1) \\
 &amp;= 2(w_3 + 1) \cdot 1 \\
-&amp;= 2(w_3 + 1)\end{split}\]</div>
+&amp;= 2(w_3 + 1)
+\end{split}\]</div>
 </div>
 </section>
 </section>
@@ -668,7 +676,7 @@ TODO
 <p>We can thus create two-dimensional arrays by passing in a list of lists to the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creates a 2x3 array with a list of lists</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creates 2-row, 3-column array with a list of lists</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 
 <span class="c1"># the same array, but formatted for better readability</span>
@@ -959,7 +967,7 @@ TODO
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="vectors-norms-and-distances-1-pt">
 <h1>4. Vectors, norms, and distances [1 pt]<a class="headerlink" href="#vectors-norms-and-distances-1-pt" title="Link to this heading">#</a></h1>
-<p>As we’ve seen, machine learning models are functions of potentially many variables. Instead of writing out the individual variables (e.g. <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_p\)</span>), we can collect them into a <strong>vector</strong> to represent them. They are often denoted as a bold-faced letter <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> or with an arrow above the letter <span class="math notranslate nohighlight">\(\vec{x}\)</span>. In this course, we will use the arrow notation to visually differentiate the vectors from scalars:</p>
+<p>As we’ve seen, machine learning models are functions of potentially many features. Instead of writing out the individual variables (e.g. <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_p\)</span>), we can collect them into a <strong>vector</strong> to represent them. They are often denoted as a bold-faced letter <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> or with an arrow above the letter <span class="math notranslate nohighlight">\(\vec{x}\)</span>. In this course, we will use the arrow notation to visually differentiate the vectors from scalars:</p>
 <div class="math notranslate nohighlight">
 \[
 \vec{x} \in \mathbb{R}^p, \quad \vec{x} = (x_1, x_2, \ldots, x_p)
@@ -1081,43 +1089,43 @@ TODO
 <p>Finally, we can also use norms to measure the distance <span class="math notranslate nohighlight">\(d\)</span> between two vectors. A common distance metric is the <strong>Euclidean distance</strong>, which is just the Euclidean norm of the difference between two vectors:</p>
 <div class="math notranslate nohighlight">
 \[
-d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2
+d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2
 \]</div>
 <p><strong>4.3</strong> Using your <code class="docutils literal notranslate"><span class="pre">euclidean_norm_vectorized</span></code> function, complete the function below that computes the Euclidean distance between two vectors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean distance between two vectors of the same dimensionality.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
-<span class="sd">        x: A 1D array, same shape as y</span>
-<span class="sd">        y: A 1D array, same shape as x</span>
+<span class="sd">        x: A 1D array, same shape as z</span>
+<span class="sd">        z: A 1D array, same shape as x</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
 <span class="sd">        The distance between the two vectors</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;x and y must have the same shape&quot;</span>
+    <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">z</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;x and z must have the same shape&quot;</span>
     
     <span class="c1"># TODO your code here</span>
     <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)),</span> <span class="s2">&quot;result should be the same as manual computation&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)),</span> <span class="s2">&quot;result should be the same as manual computation&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>4.4</strong> Is the Euclidean distance metric symmetric? That is, does <span class="math notranslate nohighlight">\(d(\vec{x}, \vec{y}) = d(\vec{y}, \vec{x})\)</span>?</p>
+<p><strong>4.4</strong> Is the Euclidean distance metric symmetric? That is, does <span class="math notranslate nohighlight">\(d(\vec{x}, \vec{z}) = d(\vec{z}, \vec{x})\)</span>?</p>
 <p><strong>Your Response</strong>: TODO</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Solution (click this to check once you’ve completed 4.4)</p>
 <p>The Euclidean distance metric is symmetric – notice how the square term in the definition of the Euclidean distance is the same regardless of which point we subtract from which:</p>
 <div class="math notranslate nohighlight">
 \[
-d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)^2} = \sqrt{\sum_{j=1}^{p} (y_j - x_j)^2} = \|\vec{y} - \vec{x}\|_2 = d(\vec{y}, \vec{x})
+d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)^2} = \sqrt{\sum_{j=1}^{p} (z_j - x_j)^2} = \|\vec{z} - \vec{x}\|_2 = d(\vec{z}, \vec{x})
 \]</div>
 </div>
 </section>
@@ -1197,7 +1205,7 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> uses a convention where any instance variables that are created during the model fitting process are suffixed with a <code class="docutils literal notranslate"><span class="pre">_</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">self.X_</span></code>). This is actually used by <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to determine whether a model has been fitted or not. Another convention is that sklearn <code class="docutils literal notranslate"><span class="pre">fit()</span></code> methods return the model itself to allow for method calls to be chained together, e.g. <code class="docutils literal notranslate"><span class="pre">knn_model.fit(X_train,</span> <span class="pre">y_train).predict(X_new)</span></code>.</p>
-<p>Recall from class that the KNN regressor predicts the value of a new point by averaging the values of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors. If <span class="math notranslate nohighlight">\(D_k = \{(\vec{x_1}, y_1), (\vec{x_2}, y_2), \ldots, (\vec{x_k}, y_k)\}\)</span> is the set of <span class="math notranslate nohighlight">\(k\)</span> nearest neighbors to a new point <span class="math notranslate nohighlight">\(\vec{x}\)</span>, then the prediction is given by:</p>
+<p>Recall from class that the KNN regressor predicts the <span class="math notranslate nohighlight">\(y\)</span> value of a new point by averaging the <span class="math notranslate nohighlight">\(y\)</span> values of the <code class="docutils literal notranslate"><span class="pre">k</span></code> nearest neighbors. If <span class="math notranslate nohighlight">\(D_k = \{(\vec{x_1}, y_1), (\vec{x_2}, y_2), \ldots, (\vec{x_k}, y_k)\}\)</span> is the set of <span class="math notranslate nohighlight">\(k\)</span> nearest neighbors to a new point <span class="math notranslate nohighlight">\(\vec{x}_{\text{new}}\)</span>, then the prediction is given by:</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{y} = \frac{1}{k} \sum_{(\vec{x_i}, y_i) \in D_k} y_i
@@ -1298,8 +1306,8 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)
 <span class="sd">        so all this method does is store the training data as instance variables.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            X: the feature matrix of shape (n, p)</span>
-<span class="sd">            y: the target vector of shape (n,)</span>
+<span class="sd">            X: the data examples of shape (n, p)</span>
+<span class="sd">            y: the answers vector of shape (n,)</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            self: the fitted model</span>
@@ -1409,7 +1417,7 @@ d(\vec{x}, \vec{y}) = \|\vec{x} - \vec{y}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - y_j)
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reflection-0-5-pts">
 <h1>6. Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
-<p><strong>6.1</strong> How much time outside of class did it take you to complete this worksheet?</p>
+<p><strong>6.1</strong> How much time did it take you to complete this worksheet?</p>
 <p><strong>Your Response</strong>: TODO</p>
 <p><strong>6.2</strong> What is one thing you have a better understanding of after completing this worksheet? This could be about the concepts, the math, or the code.</p>
 <p><strong>Your Response</strong>: TODO</p>
