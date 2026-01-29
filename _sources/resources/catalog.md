@@ -2,7 +2,7 @@
 
 # Notation catalog
 
-```{list-table} Common notation used in COMSC 335
+```{list-table}
 :header-rows: 1
 :widths: 25 75
 
