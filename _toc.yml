@@ -10,3 +10,6 @@ parts:
       - file: syllabus/policies.md
       - file: syllabus/submit.md
       - file: syllabus/schedule.md
+  - caption: Resources
+    chapters:
+      - file: resources/catalog.md
