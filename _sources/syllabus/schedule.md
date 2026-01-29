@@ -69,7 +69,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
             </ul> 
         
         
-        ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 1
+        ![](https://img.shields.io/badge/Released-2ca02c) [Worksheet 1](ws1)
 
     - <small> 1/30 </small> 
 
@@ -83,7 +83,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
 
     - <small> 2/4 </small> <br>
-        ![](https://img.shields.io/badge/Due-dc322f) Worksheet 1
+        ![](https://img.shields.io/badge/Due-dc322f) [Worksheet 1](ws1)
 
     - <small> 2/5 </small> <br>
         ![](https://img.shields.io/badge/Class%2003-1f77b4) <b> Gradient Descent I </b>
