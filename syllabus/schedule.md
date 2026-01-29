@@ -63,6 +63,10 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 1/29 </small> <br>
         ![](https://img.shields.io/badge/Class%2001-1f77b4) <b>kNN, Math, NumPy</b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552049/mod_resource/content/2/lec01-knn-numpy-starter.pdf)</li>
+                <li>[activity 2](activity2)</li>
+            </ul> 
         
         
         ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 1
