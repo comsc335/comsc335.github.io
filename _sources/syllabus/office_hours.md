@@ -9,6 +9,7 @@
 ### Tony (he/him): Clapp 207
 
 - To be announced after preferred OH poll closes!
+- Zoom office hours **1/30 3 - 4:30pm** at this [link](https://mtholyoke.zoom.us/j/92315690528)
 
 These times may be subject to change, please check the [schedule](schedule) and [Ed](https://edstem.org/us/courses/94030/discussion) for the most up-to-date information.
 
