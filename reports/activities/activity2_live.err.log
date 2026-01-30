@@ -1,0 +1,85 @@
+Traceback (most recent call last):
+  File "/Users/tliu/Github/comsc335.github.io/venv/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/tliu/Github/comsc335.github.io/venv/lib/python3.11/site-packages/nbclient/client.py", line 1324, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tliu/Github/comsc335.github.io/venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tliu/.pyenv/versions/3.11.10/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/tliu/Github/comsc335.github.io/venv/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/tliu/Github/comsc335.github.io/venv/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/tliu/Github/comsc335.github.io/venv/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from sklearn.base import BaseEstimator
+
+# TODO In Python, we can inherit from a class by specifying the parent class in parentheses
+class MeanRegressor(BaseEstimator):
+    """Simple model that predicts the mean of the training data."""
+
+    # constructors in Python are defined using the `__init__` method
+    # A quirk of Python OOP: the first argument is always `self`, which refers to the object itself
+    def __init__(self):
+        pass
+
+
+    # fit method trains the model on the given data, and always takes X and y as arguments
+    def fit(self, X, y):
+        """Fits the mean regressor to the training data.
+
+        Args:
+            X: the data examples of shape (n, p)
+            y: the answers vector of shape (n,)
+
+        Returns:
+            self: the fitted model
+        """
+
+        # TODO store the mean prediction
+        # fitted model parameters are stored in `self` as instance variables and suffixed with `_`
+        self.mean_ = np.mean(y)
+
+        # TODO As convention, sklearn fit() methods return self
+        return self
+
+    # predict method makes predictions on new data, and always takes X as an argument
+    def predict(self, X):
+        """Predicts the values for new points X.
+
+        This model will only predict the mean value of the fitted data for all new points.
+
+        Args:
+            X: the new points of shape (n_new, p)
+
+        Returns:
+            the predicted values of shape (n_new,)
+        """
+        
+        predictions = []
+
+        # TODO this loops over the rows of X
+        for x in X:
+            predictions.append(self.mean_) 
+
+        # TODO return the mean prediction for all new points
+        return np.array(predictions)
+
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[10][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mbase[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m BaseEstimator
+[32m      3[39m [38;5;66;03m# TODO In Python, we can inherit from a class by specifying the parent class in parentheses[39;00m
+[32m      4[39m [38;5;28;01mclass[39;00m[38;5;250m [39m[34;01mMeanRegressor[39;00m(BaseEstimator):
+
+[31mModuleNotFoundError[39m: No module named 'sklearn'
+
