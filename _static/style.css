@@ -18,3 +18,34 @@
 .bd-main .bd-content .bd-article-container {
     max-width: 100em;
 }
+
+
+/* Keep odd rows color */
+tr.row-odd,
+tr.row-odd:hover {
+    background-color: rgb(255, 255, 255) !important;  /* white */
+}
+
+/* Keep even rows color */
+tr.row-even,
+tr.row-even:hover {
+    background-color: rgb(247, 247, 247) !important;  /* light gray */
+}
+
+/* Dark theme support for table rows */
+[data-theme="dark"] tr.row-odd,
+[data-theme="dark"] tr.row-odd:hover {
+    background-color: rgb(40, 40, 40) !important;  /* dark gray */
+}
+
+[data-theme="dark"] tr.row-even,
+[data-theme="dark"] tr.row-even:hover {
+    background-color: rgb(50, 50, 50) !important;  /* slightly lighter dark gray */
+}
+
+/* Hide the table of contents on print */
+@media print {
+    .bd-toc {
+        visibility: hidden;
+    }
+}
