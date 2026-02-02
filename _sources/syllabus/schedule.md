@@ -98,12 +98,12 @@ A list of topics we will cover can be found below. Note that topics may be subje
 *   - <small> 2/9 </small> <!-- Week 3 -->
          
     - <small> 2/10 </small> <br>
-        ![](https://img.shields.io/badge/Class%2004-1f77b4) 
+        ![](https://img.shields.io/badge/Class%2004-1f77b4) <b> Gradient Descent II </b>
 
     - <small> 2/11 </small>
 
     - <small> 2/12 </small> <br>
-        ![](https://img.shields.io/badge/Class%2005-1f77b4) 
+        ![](https://img.shields.io/badge/Class%2005-1f77b4) <b> Model evaluation </b>
 
     - <small> 2/13 </small> <br>
         ![](https://img.shields.io/badge/Due-dc322f) Homework 1
