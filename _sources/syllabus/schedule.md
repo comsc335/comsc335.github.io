@@ -84,6 +84,8 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2002-1f77b4) <b> Linear Regression </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552052/mod_resource/content/2/lec02-linear-regression-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552053/mod_resource/content/2/lec02-linear-regression.pdf)</li>
+                <li>[MSE loss video](https://moodle.mtholyoke.edu/pluginfile.php/1561027/mod_resource/content/1/lec02-mse-rotate.mp4)</li>
                 <li>[activity 3](https://docs.google.com/document/d/1ybZLoFSFOqInZ_nxbSkuUmOgdWQHiVmxUryNA8VM6yQ/edit?usp=sharing)</li>
             </ul> 
 
