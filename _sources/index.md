@@ -17,7 +17,7 @@ Machine learning is the study of creating programs that can learn through experi
 ## When and Where
 
 - **When:** Tuesdays and Thursdays, 1:45pm - 3:00pm
-- **Where:** To be announced!
+- **Where:** Kendade 303
 
 ## Teaching Staff
 
