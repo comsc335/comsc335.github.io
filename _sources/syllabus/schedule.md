@@ -95,10 +95,16 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 2/5 </small> <br>
         ![](https://img.shields.io/badge/Class%2003-1f77b4) <b> Gradient Descent I </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552057/mod_resource/content/4/lec03-gradient-descent-i-starter.pdf)</li>
+                <li>[activity 4](activity4)</li>
+            </ul> 
+
+        ![](https://img.shields.io/badge/Released-2ca02c) <s>Homework 1</s>
+
+    - <small> 2/6 </small> <br>
 
         ![](https://img.shields.io/badge/Released-2ca02c) Homework 1
-
-    - <small> 2/6 </small>
 
 
 *   - <small> 2/9 </small> <!-- Week 3 -->
@@ -112,10 +118,11 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2005-1f77b4) <b> Model evaluation </b>
 
     - <small> 2/13 </small> <br>
+        ![](https://img.shields.io/badge/Due-dc322f) <s>Homework 1</s>
+
+
+*   - <small> 2/16 </small> <!-- Week 4 --> <br>
         ![](https://img.shields.io/badge/Due-dc322f) Homework 1
-
-
-*   - <small> 2/16 </small> <!-- Week 4 -->
 
     - <small> 2/17 </small> <br>
         ![](https://img.shields.io/badge/Class%2006-1f77b4) 
