@@ -649,14 +649,15 @@ w_0 = \frac{1}{n} \sum_{i=1}^{n} y_i - \frac{w_1}{n} \sum_{i=1}^{n} x_i
 <span class="n">sk_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">sk_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_beds</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># TODO create and fit our model here</span>
+<span class="c1"># TODO create our SimpleLinearRegression model here</span>
 <span class="n">our_model</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="c1"># TODO fit our model</span>
 
+<span class="c1"># TODO predict on the training data</span>
+<span class="n">y_hat_ours</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="c1"># Check that the predictions are the same</span>
 <span class="n">y_hat_sk</span> <span class="o">=</span> <span class="n">sk_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_beds</span><span class="p">)</span>
-<span class="n">y_hat_ours</span> <span class="o">=</span> <span class="kc">None</span>
-
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">y_hat_sk</span><span class="p">,</span> <span class="n">y_hat_ours</span><span class="p">)</span>
 </pre></div>
 </div>
