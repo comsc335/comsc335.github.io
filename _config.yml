@@ -15,6 +15,7 @@ execute:
   exclude_patterns:
     - "worksheets/*.ipynb"
     - "homeworks/*ipynb"
+    - "activities/*ipynb"
 
 # Define the name of the latex output file for PDF builds
 latex:

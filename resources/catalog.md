@@ -22,4 +22,6 @@
   - A function that takes in a data example $\vec{x}$ and outputs a prediction $\hat{y}$
 * - $\hat{y}$
   - A **prediction** (we want this to be close to the true answer)
+* - $\mathcal{L}(\vec{w})$
+  - The loss function, a function of the weights $\vec{w} = (w_0, w_1, \ldots, w_k)$, which quantifies the error of the model
 ```
