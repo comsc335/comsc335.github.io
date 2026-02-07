@@ -97,7 +97,11 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2003-1f77b4) <b> Gradient Descent I </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552057/mod_resource/content/4/lec03-gradient-descent-i-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1562025/mod_resource/content/1/lec03-gradient-descent-i.pdf)</li>
+                <li>[gradient descent video](https://moodle.mtholyoke.edu/pluginfile.php/1562026/mod_resource/content/2/lec02-gd-w0.mp4)</li>
+                <li>[contour plot video](https://moodle.mtholyoke.edu/pluginfile.php/1562027/mod_resource/content/1/lec02-mse-slice-to-contour.mp4)</li>
                 <li>[activity 4](activity4)</li>
+                <li>[[live] activity 4](activity4_live)</li>
             </ul> 
 
         ![](https://img.shields.io/badge/Released-2ca02c) <s>Homework 1</s>
