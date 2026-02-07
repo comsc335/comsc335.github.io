@@ -25,7 +25,7 @@ If you are uncertain or have questions about any portion of the homework, please
 :::
 
 :::{note}
-This homework is due **Monday 2/16 11:59pm.**
+This homework is due **Monday 2/16 at 11:59pm.**
 :::
 
 - [Part 1: Foundations](hw1_foundations.ipynb)
