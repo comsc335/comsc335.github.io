@@ -104,7 +104,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 2/6 </small> <br>
 
-        ![](https://img.shields.io/badge/Released-2ca02c) Homework 1
+        ![](https://img.shields.io/badge/Released-2ca02c) [Homework 1](hw1)
 
 
 *   - <small> 2/9 </small> <!-- Week 3 -->
@@ -122,7 +122,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
 
 *   - <small> 2/16 </small> <!-- Week 4 --> <br>
-        ![](https://img.shields.io/badge/Due-dc322f) Homework 1
+        ![](https://img.shields.io/badge/Due-dc322f) [Homework 1](hw1)
 
     - <small> 2/17 </small> <br>
         ![](https://img.shields.io/badge/Class%2006-1f77b4) 

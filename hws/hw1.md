@@ -19,7 +19,7 @@ Homeworks in this course are often split into two notebooks to make it easier to
 - Part 2 is focused on building a linear regression model class and evaluating it on a real-world regression problem.
 
 :::{tip}
-I recommend that you test your function in Part 1 with the Gradescope autograder before moving on to Part 2. That way you'll have more certainty that your functions are working correctly for Part 2.
+I recommend that you test your functions in Part 1 with the Gradescope autograder before moving on to Part 2. That way you'll have more certainty that your functions are working correctly for Part 2.
 
 If you are uncertain or have questions about any portion of the homework, please do come to my office hours, Bhargavi's TA hours, or reach out on Ed!
 :::
@@ -28,4 +28,5 @@ If you are uncertain or have questions about any portion of the homework, please
 This homework is due **Monday 2/16 11:59pm.**
 :::
 
-
+- [Part 1: Foundations](hw1_foundations.ipynb)
+- [Part 2: Models](hw1_models.ipynb)
