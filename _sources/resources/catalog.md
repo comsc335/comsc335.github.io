@@ -4,7 +4,7 @@
 
 ```{list-table}
 :header-rows: 1
-:widths: 15 85
+:widths: 25 75
 
 * - Notation
   - Meaning
@@ -26,6 +26,6 @@
   - A **prediction** (we want this to be close to the true answer)
 * - $\mathcal{L}(\vec{w})$
   - A **loss function**, a function of the weights $\vec{w} = (w_0, w_1, \ldots, w_p)$, which quantifies the error of the model
-* - $\nabla \mathcal{L}(\vec{w})$
-  - The **gradient** of $\mathcal{L}(\vec{w})$ with respect to the weights $\vec{w}$, a vector of partial derivatives $\left(\frac{\partial \mathcal{L}}{\partial w_0}, \frac{\partial \mathcal{L}}{\partial w_1}, \ldots, \frac{\partial \mathcal{L}}{\partial w_p}\right)$
+* - $\nabla \mathcal{L}(\vec{w})$ = $\left(\frac{\partial \mathcal{L}}{\partial w_0}, \frac{\partial \mathcal{L}}{\partial w_1}, \ldots, \frac{\partial \mathcal{L}}{\partial w_p}\right)$
+  - The **gradient** of $\mathcal{L}(\vec{w})$ with respect to the weights $\vec{w}$, a vector of partial derivatives
 ```
