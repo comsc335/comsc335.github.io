@@ -14,7 +14,7 @@ execute:
   execute_notebooks: cache
   exclude_patterns:
     - "worksheets/*.ipynb"
-    - "homeworks/*ipynb"
+    - "hws/*ipynb"
     - "activities/*ipynb"
 
 # Define the name of the latex output file for PDF builds
