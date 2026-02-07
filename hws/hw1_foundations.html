@@ -497,7 +497,7 @@ f(\vec{x_i}) = w_0 + w_1 x_{i,1} + w_2 x_{i,2} + \cdots + w_p x_{i,p}
 <p>Your response:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial \mathcal{L}}{\partial w_0} &amp;= \text{ TODO }
+\frac{\partial \mathcal{L}}{\partial w_0} = \text{ TODO }
 \]</div>
 <p>Now, compute the partial derivative of the loss function with respect to the weight <span class="math notranslate nohighlight">\(w_j\)</span> where <span class="math notranslate nohighlight">\(j \in \{1, 2, 3,\ldots, p\}\)</span>, showing your work:</p>
 <div class="math notranslate nohighlight">
@@ -507,7 +507,7 @@ f(\vec{x_i}) = w_0 + w_1 x_{i,1} + w_2 x_{i,2} + \cdots + w_p x_{i,p}
 <p>Your response:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial \mathcal{L}}{\partial w_j} &amp;= \text{ TODO } 
+\frac{\partial \mathcal{L}}{\partial w_j} = \text{ TODO } 
 \]</div>
 <div class="tip admonition">
 <p class="admonition-title">Hint</p>
@@ -532,7 +532,7 @@ f(\vec{x_i}) = w_0 + w_1 x_{i,1} + w_2 x_{i,2} + \cdots + w_p x_{i,p}
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \forall w \in \mathbb{R}, \quad h(w^*) &amp;\leq h(w) \\
-                                       &amp;\leq \text{ TODO your step 1 }
+                                       &amp;\leq \text{ TODO your step 1 } \\
                                        &amp;\leq \text{ TODO your step 2 }
 \end{split}\]</div>
 <p>Note that this same idea works when the input to the function is a vector of weights <span class="math notranslate nohighlight">\(\vec{w} = (w_0, w_1, \ldots, w_p)\)</span>.</p>
@@ -576,11 +576,12 @@ w_{1, \text{new}} = w_{1, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\part
 f(\vec{x_i}) = w_0 + w_1 x_{i,1} + w_2 x_{i,2}
 \]</div>
 <p>We can then implement the gradient update rule for the weights. Gradient descent updates the weights by moving in the direction of the negative partial derivatives, scaled by a learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
-<p>\begin{align*}
-w_{0, \text{new}} &amp;= w_{0, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_0} \
-w_{1, \text{new}} &amp;= w_{1, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_1} \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+w_{0, \text{new}} &amp;= w_{0, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_0} \\
+w_{1, \text{new}} &amp;= w_{1, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_1} \\
 w_{2, \text{new}} &amp;= w_{2, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_2}
-\end{align*}</p>
+\end{split}\]</div>
 <p>Implement this gradient update rule in <code class="docutils literal notranslate"><span class="pre">linreg_grad_update</span></code> below.</p>
 <div class="tip admonition">
 <p class="admonition-title">Hint</p>
