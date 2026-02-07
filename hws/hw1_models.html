@@ -484,10 +484,10 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">hw1_foundations</span><span class="w"> </span><span class="kn">import</span> <span class="n">linreg_grad_descent</span><span class="p">,</span> <span class="n">mse_loss</span>
-
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># import your functions from Part 1 </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hw1_foundations</span><span class="w"> </span><span class="kn">import</span> <span class="n">linreg_grad_descent</span><span class="p">,</span> <span class="n">mse_loss</span>
 </pre></div>
 </div>
 </div>
@@ -496,7 +496,7 @@ document.write(`
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="linear-regression-model-class-1-5-pts">
 <h1>3. Linear regression model class [1.5 pts]<a class="headerlink" href="#linear-regression-model-class-1-5-pts" title="Link to this heading">#</a></h1>
-<p>Let’s put the gradient descent implementation together and create a linear regression model class. Following the same pattern as we did in Worksheet 1, we’ll create a class that inherits from scikit-learn’s <code class="docutils literal notranslate"><span class="pre">BaseEstimator</span></code> and implements the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods.</p>
+<p>Let’s put the gradient descent implementation together and create a linear regression model class. Following the same pattern as we did in <a class="reference external" href="https://comsc335.github.io/worksheets/worksheet1.html">Worksheet 1</a> and <a class="reference internal" href="../activities/activity4_live.html#activity4-live"><span class="std std-ref">Activity 4</span></a>, we’ll create a class that inherits from scikit-learn’s <code class="docutils literal notranslate"><span class="pre">BaseEstimator</span></code> and implements the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods.</p>
 <div class="admonition-ml-model-class-documentation admonition">
 <p class="admonition-title">ML model class documentation</p>
 <p>As Guido van Rossum, the creator of Python, likes to say:</p>
@@ -604,14 +604,14 @@ document.write(`
 <p class="admonition-title">Normalized features</p>
 <p>As a data <strong>preprocessing</strong> step, the dataset creators <em>normalized</em> the weather features, which means that all of the values are scaled to be between 0 and 1. This aids in the model fitting process and with the interpretation of the coefficients, as all of the features are in the same range. We will discuss data preprocessing principles in more detail in upcoming classes.</p>
 </div>
-<p>We’ll first perform a simple feature selection task. Our goal in machine learning is to fit a model on the <strong>training data</strong> so that it has low loss on new data. The new data is often called the <strong>test set</strong>. Since our <code class="docutils literal notranslate"><span class="pre">MHCLinearRegressor</span></code> model can take data with two features, we’ll have to select two of the four features to use in our model. We have provided starter code below that helps load in and create the <code class="docutils literal notranslate"><span class="pre">X_train_all</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test_all</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, and <code class="docutils literal notranslate"><span class="pre">y_test</span></code> NumPy arrays. It then iterates over all possible combinations of two features to include in the model.</p>
+<p>We’ll first perform a <strong>feature selection</strong> task. Our goal in machine learning is to fit a model on the training data so that it has low loss on new data, which indicates that model generalizes well to unseen data. The new data is often called the <strong>test set</strong>. Since our <code class="docutils literal notranslate"><span class="pre">MHCLinearRegressor</span></code> model can take data with two features, we’ll have to select two of the four features to use in our model. We have provided starter code below that helps load in and create the <code class="docutils literal notranslate"><span class="pre">X_train_all</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test_all</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, and <code class="docutils literal notranslate"><span class="pre">y_test</span></code> NumPy arrays. It then iterates over all possible combinations of two features to include in the model.</p>
 <p>Complete the code below that:</p>
 <ol class="arabic simple">
 <li><p>Trains a <code class="docutils literal notranslate"><span class="pre">MHCLinearRegressor</span></code> model on the selected training data, using <code class="docutils literal notranslate"><span class="pre">alpha=0.05</span></code>.</p></li>
 <li><p>Predicts the testing data using the trained model.</p></li>
 <li><p>Computes the loss of the model on the testing data, and extracts the weights of the model.</p></li>
 </ol>
-<p>Which model achieves the lowest test set MSE loss, and which two features does it use?</p>
+<p>Which two features achieves the lowest test set MSE loss?</p>
 <ul class="simple">
 <li><p>Lowest test MSE loss: <strong>TODO</strong></p></li>
 <li><p>Features used: <strong>TODO</strong></p></li>
