@@ -60,7 +60,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'activities/activity4';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'activities/activity4_live';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -270,7 +270,7 @@
       
       
       
-      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/activities/activity4.ipynb&branch=main" target="_blank"
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/activities/activity4_live.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on JupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -301,7 +301,7 @@
       
       
       
-      <li><a href="../_sources/activities/activity4.ipynb" target="_blank"
+      <li><a href="../_sources/activities/activity4_live.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,7 +411,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="activity-4-implementing-linear-regression">
-<span id="activity4"></span><h1>Activity 4: Implementing linear regression<a class="headerlink" href="#activity-4-implementing-linear-regression" title="Link to this heading">#</a></h1>
+<span id="activity4-live"></span><h1>Activity 4: Implementing linear regression<a class="headerlink" href="#activity-4-implementing-linear-regression" title="Link to this heading">#</a></h1>
 <p><strong>2026-02-05</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -428,12 +428,20 @@ document.write(`
 <p>A Python tuple is similar to a list, but it is <strong>immutable</strong> (cannot be modified). Declared using parentheses <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">tup</span><span class="p">))</span>
 
 <span class="c1"># Accessing elements is similar to lists</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">tup</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;tuple&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 </div>
@@ -450,6 +458,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+</pre></div>
+</div>
+</div>
 </div>
 <p>This shorthand extends to Python function returns as well:</p>
 <div class="cell docutils container">
@@ -458,6 +473,7 @@ document.write(`
 <span class="k">def</span><span class="w"> </span><span class="nf">return_two_values</span><span class="p">():</span>
     <span class="k">return</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">2</span>
 
+
 <span class="n">tup</span> <span class="o">=</span> <span class="n">return_two_values</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span>
 
@@ -465,6 +481,13 @@ document.write(`
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">return_two_values</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;hello&#39;, 2)
+hello
+2
 </pre></div>
 </div>
 </div>
@@ -485,7 +508,11 @@ document.write(`
 <span class="sd">        X: a 2D numpy array of shape (n, p)</span>
 <span class="sd">        y: a 1D numpy array of shape (n,)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="c1">#        r, c</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -536,6 +563,8 @@ document.write(`
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="c1"># TODO let&#39;s write some assertion tests **first**</span>
+<span class="k">assert</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,)</span>
 </pre></div>
 </div>
 </div>
@@ -551,11 +580,36 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 4, 1, 1])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This selects the first column of X as a 2D array</span>
 <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2],
+       [4],
+       [1],
+       [1]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 6, 11,  4,  3])
 </pre></div>
 </div>
 </div>
@@ -567,11 +621,24 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([12, 44,  4,  3])
+</pre></div>
+</div>
+</div>
 </div>
 <p>When multiplying arrays of different shapes, NumPy will perform a <strong>broadcasting</strong> operation where the 1D array is “stretched” to match the shape of the 2D array. More on this in future classes!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[12, 22,  8,  6],
+       [24, 44, 16, 12],
+       [ 6, 11,  4,  3],
+       [ 6, 11,  4,  3]])
 </pre></div>
 </div>
 </div>
@@ -581,6 +648,11 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># flatten() converts a 2D array of any shape to a 1D array</span>
 <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4,)
 </pre></div>
 </div>
 </div>
@@ -632,7 +704,8 @@ w_0 = \frac{1}{n} \sum_{i=1}^{n} y_i - \frac{w_1}{n} \sum_{i=1}^{n} x_i
         <span class="bp">self</span><span class="o">.</span><span class="n">w1_</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 
         <span class="c1"># TODO compute w0 and assign it to an instance variable</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">w0_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1_</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
         <span class="k">return</span> <span class="bp">self</span>
 
 
@@ -647,7 +720,7 @@ w_0 = \frac{1}{n} \sum_{i=1}^{n} y_i - \frac{w_1}{n} \sum_{i=1}^{n} x_i
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># TODO: compute the simple linear regression prediction</span>
         <span class="c1"># This can be done with one line of code</span>
-        <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">w0_</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1_</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
         
 </pre></div>
 </div>
@@ -666,14 +739,16 @@ w_0 = \frac{1}{n} \sum_{i=1}^{n} y_i - \frac{w_1}{n} \sum_{i=1}^{n} x_i
 <span class="n">sk_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_beds</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="c1"># TODO create our SimpleLinearRegression model here</span>
-<span class="n">our_model</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">our_model</span> <span class="o">=</span> <span class="n">SimpleLinearRegression</span><span class="p">()</span>
 <span class="c1"># TODO fit our model</span>
+<span class="n">our_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_beds</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="c1"># TODO predict on the training data</span>
-<span class="n">y_hat_ours</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">y_hat_ours</span> <span class="o">=</span> <span class="n">our_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_beds</span><span class="p">)</span>
 
 <span class="c1"># Check that the predictions are the same</span>
 <span class="n">y_hat_sk</span> <span class="o">=</span> <span class="n">sk_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_beds</span><span class="p">)</span>
+
 <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">y_hat_sk</span><span class="p">,</span> <span class="n">y_hat_ours</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -691,10 +766,15 @@ RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n} (\hat{y}_i - y_i)^2}
     <span class="k">assert</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
 
     <span class="c1"># TODO: compute the RMSE, using the functions we practiced on WS 1</span>
-    <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="c1"># Multiply by 100k to get dollars</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_ours</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35355.33905932738
 </pre></div>
 </div>
 </div>
@@ -708,6 +788,11 @@ RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n} (\hat{y}_i - y_i)^2}
 <span class="n">avg_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">avg_price</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">rmse</span><span class="p">(</span><span class="n">avg_preds</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>308220.7001484488
 </pre></div>
 </div>
 </div>

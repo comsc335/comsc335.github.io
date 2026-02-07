@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HW 1 part 1 &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hws/hw1_foundations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW 1 part 2" href="hw1_models.html" />
+    <link rel="prev" title="Homework 1" href="hw1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="hw1.html">Homework 1</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/hws/hw1_foundations.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/hws/hw1_foundations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HW 1 part 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 1 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-foundations-2-pts">1. Mathematical Foundations [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-gradients-1-pt">1.1 Linear regression gradients [1 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-constant-factors-0-5-pts">1.2 Gradient descent constant factors [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-plots-0-5-pts">1.3 Contour plots [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-implementation-2-5-pts">2. Gradient Descent Implementation [2.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-update-rule-1-pt">2.1 Gradient update rule [1 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-loss-0-5-pts">2.2 MSE loss [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-1-pt">2.3 Gradient descent [1 pt]</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hw-1-part-1">
+<span id="hw1-foundations"></span><h1>HW 1 part 1<a class="headerlink" href="#hw-1-part-1" title="Link to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>Linear Regression: Foundations</p>
+<p class="attribution">—TODO your name here</p>
+</div></blockquote>
+<div class="admonition-collaboration-statement admonition">
+<p class="admonition-title">Collaboration Statement</p>
+<ul class="simple">
+<li><p>TODO brief statement on the nature of your collaboration.</p></li>
+<li><p>TODO your collaborator’s names here</p></li>
+</ul>
+</div>
+<section id="part-1-table-of-contents-and-rubric">
+<h2>Part 1 Table of Contents and Rubric<a class="headerlink" href="#part-1-table-of-contents-and-rubric" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Points</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mathematical Foundations</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gradient Descent Implementation</p></td>
+<td><p>2.5</p></td>
+</tr>
+<tr class="row-even"><td><p>Total</p></td>
+<td><p>4.5 pts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notebook-and-function-imports">
+<h1>Notebook and function imports<a class="headerlink" href="#notebook-and-function-imports" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># random number generator</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mathematical-foundations-2-pts">
+<h1>1. Mathematical Foundations [2 pts]<a class="headerlink" href="#mathematical-foundations-2-pts" title="Link to this heading">#</a></h1>
+<p>We’ll begin by deriving the equations that we’ll need to build our linear regression model. Building off what we did in class, linear regression can be expanded to include multiple features.</p>
+<p>In particular, if we have a dataset with <span class="math notranslate nohighlight">\(n\)</span> datapoints and <span class="math notranslate nohighlight">\(p\)</span> features, then the linear regression model can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\vec{x_i}) = w_0 + w_1 x_{i,1} + w_2 x_{i,2} + \cdots + w_p x_{i,p}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\vec{x_i} = (x_{i,1}, x_{i,2}, \ldots, x_{i,p})\)</span> is a vector of features.</p>
+<p>We then pair this model with the <strong>mean squared error</strong> loss function that measures the squared error between the predicted and true values:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(\vec{w}) = \frac{1}{n} \sum_{i=1}^n (f(\vec{x_i}) - y_i)^2
+\]</div>
+<p>The question we now have is: how do we find the “best” values for the weights <span class="math notranslate nohighlight">\(\vec{w} = (w_0, w_1, \ldots, w_p)\)</span> so that the loss function is minimized? To get us started, we’ll need the partial derivatives of the loss function with respect to the weights.</p>
+<section id="linear-regression-gradients-1-pt">
+<h2>1.1 Linear regression gradients [1 pt]<a class="headerlink" href="#linear-regression-gradients-1-pt" title="Link to this heading">#</a></h2>
+<p>Compute the partial derivative of the loss function <span class="math notranslate nohighlight">\(\mathcal{L}(\vec{w})\)</span> with respect to the weight <span class="math notranslate nohighlight">\(w_0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_0} =  \frac{\partial}{\partial w_0} \frac{1}{n} \sum_{i=1}^n (f(\vec{x}_i)- y_i)^2
+\]</div>
+<p>Your response:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_0} &amp;= \text{ TODO }
+\]</div>
+<p>Now, compute the partial derivative of the loss function with respect to the weight <span class="math notranslate nohighlight">\(w_j\)</span> where <span class="math notranslate nohighlight">\(j \in \{1, 2, 3,\ldots, p\}\)</span>, showing your work:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_j} =  \frac{\partial}{\partial w_j} \frac{1}{n} \sum_{i=1}^n (f(\vec{x}_i) - y_i)^2
+\]</div>
+<p>Your response:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_j} &amp;= \text{ TODO } 
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>This derivation should closely follow what we did in class, except now generalized to <span class="math notranslate nohighlight">\(p\)</span> features. Please make an initial attempt on your own but feel free to look at the slides if you get stuck.</p>
+<p>Remember that when computing partial derivatives, we treat all variables except the one we are differentiating as constants!</p>
+</div>
+</section>
+<section id="gradient-descent-constant-factors-0-5-pts">
+<h2>1.2 Gradient descent constant factors [0.5 pts]<a class="headerlink" href="#gradient-descent-constant-factors-0-5-pts" title="Link to this heading">#</a></h2>
+<p>In certain textbooks, you might see the loss function for linear regression written as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(\vec{w}) = \frac{1}{2n} \sum_{i=1}^n (f(\vec{x}_i) - y_i)^2
+\]</div>
+<p>where there is an extra constant factor of <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> in the loss function. Does multiplying the loss function by a constant factor change which weights are optimal (i.e., minimize the loss)?</p>
+<p>To help us answer this question, let’s complete a small derivation. Suppose we have a function <span class="math notranslate nohighlight">\(h(w)\)</span>. Let <span class="math notranslate nohighlight">\(w^*\)</span> be the value of <span class="math notranslate nohighlight">\(w\)</span> that <strong>minimizes</strong> <span class="math notranslate nohighlight">\(h(w)\)</span> over the domain of all real numbers <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. That means for all other values of <span class="math notranslate nohighlight">\(w \in \mathbb{R}\)</span>, we have that <span class="math notranslate nohighlight">\(h(w^*) \leq h(w)\)</span>. Formally, we can write this as:</p>
+<div class="math notranslate nohighlight">
+\[
+\forall w \in \mathbb{R}, \quad h(w^*) \leq h(w)
+\]</div>
+<p>Next, let <span class="math notranslate nohighlight">\(g(w) = c \cdot h(w)\)</span>, where <span class="math notranslate nohighlight">\(c &gt; 0\)</span> is a constant. Show that <span class="math notranslate nohighlight">\(w^*\)</span> also minimizes <span class="math notranslate nohighlight">\(g(w)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\forall w \in \mathbb{R}, \quad h(w^*) &amp;\leq h(w) \\
+                                       &amp;\leq \text{ TODO your step 1 }
+                                       &amp;\leq \text{ TODO your step 2 }
+\end{split}\]</div>
+<p>Note that this same idea works when the input to the function is a vector of weights <span class="math notranslate nohighlight">\(\vec{w} = (w_0, w_1, \ldots, w_p)\)</span>.</p>
+<p>Explain what this tells us about the weights that minimize the loss function <span class="math notranslate nohighlight">\(\frac{1}{2n} \sum_{i=1}^n (f(\vec{x}_i) - y_i)^2\)</span> versus the weights that minimize the loss function <span class="math notranslate nohighlight">\(\frac{1}{n} \sum_{i=1}^n (f(\vec{x}_i) - y_i)^2\)</span>. Discuss why you think the loss function is sometimes written with the <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>.</p>
+<p><strong>Your response:</strong> TODO</p>
+<div class="admonition-discussion-questions admonition">
+<p class="admonition-title">Discussion questions</p>
+<p>Whenever a question asks for a discussion, we are not necessarily looking for a particular answer. However, we are looking for engagement with the material, so one-word/one-phrase answers usually don’t give enough space to show your thought process. Try to explain your reasoning in ~1-2 full sentences.</p>
+</div>
+</section>
+<section id="contour-plots-0-5-pts">
+<h2>1.3 Contour plots [0.5 pts]<a class="headerlink" href="#contour-plots-0-5-pts" title="Link to this heading">#</a></h2>
+<p><img alt="" src="../_images/hw1_contour.png" /></p>
+<p>Suppose we’re optimizing the MSE loss function <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> where there are two weights <span class="math notranslate nohighlight">\(w_1\)</span> and <span class="math notranslate nohighlight">\(w_2\)</span>. A contour plot using this loss function is shown above. We can think of the partial derivatives <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial w_1}\)</span> and <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial w_2}\)</span> as vectors that point in the steepest direction of the loss function.</p>
+<p>To get us oriented with this contour plot: the darker the color, the lower the MSE loss, and some of the contour lines are also labelled with the loss value. For example, the labelled point <span class="math notranslate nohighlight">\((w_1, w_2) = (-3, 2)\)</span> sits on the contour with an MSE loss of around 3.</p>
+<p><strong>1.3.1:</strong> Pick a point on the contour plot that has a <strong>higher</strong> loss than 3:</p>
+<div class="math notranslate nohighlight">
+\[
+(w_1, w_2) = \text{ TODO your response}
+\]</div>
+<p>The way we think about moving along the contour plot is that increasing or decreasing <span class="math notranslate nohighlight">\(w_1\)</span> corresponds to moving vertically (up or down) along the contour plot, while increasing or decreasing <span class="math notranslate nohighlight">\(w_2\)</span> corresponds to moving horizontally (left or right). Now, consider that the gradient descent algorithm updates the weights by moving in the direction of the <strong>negative</strong> partial derivatives to minimize the loss function. For example, the update rule for <span class="math notranslate nohighlight">\(w_1\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+w_{1, \text{new}} = w_{1, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_{1, \text{old}}}
+\]</div>
+<p>for some learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>, and <span class="math notranslate nohighlight">\(w_{1, \text{new}}\)</span> will update such that the overall MSE loss is lower (subject to an appropriately chosen <span class="math notranslate nohighlight">\(\alpha\)</span>).</p>
+<p>Now, consider the labelled point <span class="math notranslate nohighlight">\((w_1, w_2) = (-3, 2)\)</span>:</p>
+<p><strong>1.3.2:</strong> Does <span class="math notranslate nohighlight">\(w_1\)</span> need to increase or decrease to move towards the minimum loss?</p>
+<p><strong>Your response:</strong> TODO</p>
+<p><strong>1.3.3:</strong> Does <span class="math notranslate nohighlight">\(w_2\)</span> need to increase or decrease to move towards the minimum loss?</p>
+<p><strong>Your response:</strong> TODO</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-implementation-2-5-pts">
+<h1>2. Gradient Descent Implementation [2.5 pts]<a class="headerlink" href="#gradient-descent-implementation-2-5-pts" title="Link to this heading">#</a></h1>
+<section id="gradient-update-rule-1-pt">
+<h2>2.1 Gradient update rule [1 pt]<a class="headerlink" href="#gradient-update-rule-1-pt" title="Link to this heading">#</a></h2>
+<p>For the rest of the homework, let’s suppose that <span class="math notranslate nohighlight">\(p=2\)</span>, so we have two features <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>. Then the linear regression model can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\vec{x_i}) = w_0 + w_1 x_{i,1} + w_2 x_{i,2}
+\]</div>
+<p>We can then implement the gradient update rule for the weights. Gradient descent updates the weights by moving in the direction of the negative partial derivatives, scaled by a learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>:</p>
+<p>\begin{align*}
+w_{0, \text{new}} &amp;= w_{0, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_0} \
+w_{1, \text{new}} &amp;= w_{1, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_1} \
+w_{2, \text{new}} &amp;= w_{2, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_2}
+\end{align*}</p>
+<p>Implement this gradient update rule in <code class="docutils literal notranslate"><span class="pre">linreg_grad_update</span></code> below.</p>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>This function can be written without any loops by using the slice notation for numpy arrays we practiced in Worksheet 1. You can take advantage of numpy’s vectorized operations when computing the predictions for all the data points at once, which is much more efficient than computing the predictions one data point at a time.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">X[:,</span> <span class="pre">0]</span></code> is a 1D numpy array of shape <code class="docutils literal notranslate"><span class="pre">(n,)</span></code> that contains the first feature of all the data points, and can be multiplied with <code class="docutils literal notranslate"><span class="pre">w_old[1]</span></code> to compute <span class="math notranslate nohighlight">\(w_1 x_{1}\)</span> for all the data points simultaneously.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">linreg_grad_update</span><span class="p">(</span><span class="n">w_old</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform a single gradient update for linear regression.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        w_old: the old weights of shape (3,)</span>
+<span class="sd">        X: the feature matrix of shape (n, 2)</span>
+<span class="sd">        y: the target vector of shape (n,)</span>
+<span class="sd">        alpha: the learning rate</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The new weights of shape (3,)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">assert</span> <span class="n">w_old</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The simple test cases we provide via assert statements here usually have data that can be verified by hand if you would like to double check your implementation.</p>
+<p>You are encouraged to write your own test cases as well! If you do write additional test cases, just be sure that the assert statements are written within the <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> block so that the autograder can run correctly.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Initialize some simple data for testing, n=3, p=2</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+                  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">w_old</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="c1"># Test the gradient update rule</span>
+    <span class="n">w_new</span> <span class="o">=</span> <span class="n">linreg_grad_update</span><span class="p">(</span><span class="n">w_old</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">w_new</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="s2">&quot;The new weights should have shape (3,)&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">w_new</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])),</span> <span class="s2">&quot;The new weights should be [1, 8/3, 3]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-gradient-notation admonition">
+<p class="admonition-title">Gradient notation</p>
+<p>As an aside, gradient update rule can be more compactly written in terms of the gradient <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\vec{w})\)</span>, which is the vector of partial derivatives:</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla \mathcal{L}(\vec{w}) = \left(
+    \frac{\partial \mathcal{L}}{\partial w_0},
+    \frac{\partial \mathcal{L}}{\partial w_1},
+    \frac{\partial \mathcal{L}}{\partial w_2} \right)
+\]</div>
+<p>The gradient update rule is then given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{w}_{\text{new}} = \vec{w}_{\text{old}} - \alpha \nabla \mathcal{L}(\vec{w}_{\text{old}})
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\vec{w}_{\text{new}}\)</span> and <span class="math notranslate nohighlight">\(\vec{w}_{\text{old}}\)</span> are vectors of shape <code class="docutils literal notranslate"><span class="pre">(3,)</span></code> holding the new and old weights, respectively. We will discuss this representation in more detail in upcoming classes.</p>
+</div>
+</section>
+<section id="mse-loss-0-5-pts">
+<h2>2.2 MSE loss [0.5 pts]<a class="headerlink" href="#mse-loss-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Now, let’s implement the loss function. Recall from class that the loss function quantifies the amount of error that our model makes on the training data. Thus, our goal is to build a model that <em>minimizes</em> the loss
+function. From above, the loss function is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L} = \frac{1}{n} \sum_{i=1}^n (f(\vec{x}_i) - y_i)^2
+\]</div>
+<p>Our model <span class="math notranslate nohighlight">\(f(\vec{x}_i)\)</span> outputs predictions <span class="math notranslate nohighlight">\(\hat{y}_i\)</span>, giving the loss function as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L} = \frac{1}{n} \sum_{i=1}^n (\hat{y}_i - y_i)^2
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mse_loss</span><span class="p">(</span><span class="n">y_hat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the mean squared error loss for linear regression.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        y_hat: the predicted values of shape (n,)</span>
+<span class="sd">        y: the target values of shape (n,)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The mean squared error loss</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;y-hat predictions and y targets must have the same shape&quot;</span>
+    
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test the loss function</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;The loss should be 0&quot;</span>
+
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;The loss should be 2&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gradient-descent-1-pt">
+<h2>2.3 Gradient descent [1 pt]<a class="headerlink" href="#gradient-descent-1-pt" title="Link to this heading">#</a></h2>
+<p>We’ll now implement the overall gradient descent algorithm. The algorithm begins by initializing the weights to arbitrary values, and then iteratively updates the weights until a stopping criterion is met. There are two stopping criteria:</p>
+<ol class="arabic simple">
+<li><p>We stop if the weights have sufficiently <strong>converged</strong> to a minimum. Here, we test for convergence by checking if the Euclidean distance between the old and new weights is less than some small stopping threshold <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\left\| \vec{w}_{\text{new}} - \vec{w}_{\text{old}} \right\|_2 &lt; \epsilon
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>We also stop if the number of iterations exceeds a maximum number of iterations.</p></li>
+</ol>
+<p>The algorithm can be described in the following pseudocode:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the weights to arbitrary values</span>
+<span class="n">w_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e4</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">]</span>
+<span class="n">w_old</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># update the new weights</span>
+    <span class="n">w_new</span> <span class="o">=</span> <span class="n">linreg_grad_update</span><span class="p">(</span><span class="n">w_old</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+    <span class="c1"># check for convergence using Euclidean distance from Worksheet 1, exit the while loop if the weights have converged</span>
+    
+    <span class="c1"># check if number of iterations exceeds max_iters, exit the while loop if it does</span>
+
+    <span class="c1"># update the old weights</span>
+    <span class="n">w_old</span> <span class="o">=</span> <span class="n">w_new</span>
+</pre></div>
+</div>
+<p>In addition to finding the final weights, your implementation will also return a list of the loss values and a list of the weights, appended at each iteration.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In Python, you can use the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement to exit the while loop early.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">linreg_grad_descent</span><span class="p">(</span><span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">stopping_threshold</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">max_iters</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform gradient descent for linear regression.</span>
+
+<span class="sd">    Additionally computes the loss function at each iteration.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X: the feature matrix of shape (n, 2)</span>
+<span class="sd">        y: the target vector of shape (n,)</span>
+<span class="sd">        alpha: the learning rate</span>
+<span class="sd">        stopping_threshold: the stopping threshold, default is 1e-6</span>
+<span class="sd">        max_iters: the maximum number of iterations, default is 10000</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Final weights of shape (3,)</span>
+<span class="sd">        A list of the loss function values at each iteration</span>
+<span class="sd">        A list of the weights at each iteration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Initialize the weights to arbitrary values</span>
+    <span class="n">w_new</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e4</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">]</span>
+    <span class="n">w_old</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Initialize the loss values list</span>
+    <span class="n">loss_values</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Initialize the weight history list</span>
+    <span class="n">w_history</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># number of iterations</span>
+    <span class="n">num_iters</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># TODO Complete the while loop</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Compute the loss function using the old weights</span>
+
+    
+        <span class="c1"># Append to the loss values list</span>
+        
+
+        <span class="c1"># Append the weights to the history</span>
+        
+
+        <span class="c1"># Update the new weights</span>
+        
+
+        <span class="c1"># Check for convergence, exit the loop if so</span>
+        
+
+        <span class="c1"># Check if number of iterations exceeds max_iters, exit the loop if so</span>
+        
+        
+        <span class="c1"># Update the old weights</span>
+
+
+        <span class="c1"># Increment the number of iterations</span>
+        <span class="n">num_iters</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        
+    <span class="k">return</span> <span class="n">w_new</span><span class="p">,</span> <span class="n">loss_values</span><span class="p">,</span> <span class="n">w_history</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Initialize some simple data for testing, n=3, p=2</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+                  <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
+                  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+    <span class="c1"># Test the gradient descent algorithm</span>
+    <span class="n">w_final</span><span class="p">,</span> <span class="n">loss_values</span><span class="p">,</span> <span class="n">w_history</span> <span class="o">=</span> <span class="n">linreg_grad_descent</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">w_final</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="s2">&quot;The final weights should have shape (3,)&quot;</span>
+    <span class="k">assert</span> <span class="n">loss_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="s2">&quot;The final loss should be less than 1e-4&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">w_final</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">),</span> <span class="s2">&quot;The final weights should be [-1, 1, 0]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">How to submit</p>
+<p>Like Worksheet 1, follow the instructions on the <a class="reference external" href="https://comsc335.github.io/syllabus/submit.html">course website</a> to submit your work. For part 1, you will submit <code class="docutils literal notranslate"><span class="pre">hw1_foundations.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">hw1_foundations.py</span></code>.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./hws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hw1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hw1_models.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HW 1 part 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 1 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-foundations-2-pts">1. Mathematical Foundations [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-gradients-1-pt">1.1 Linear regression gradients [1 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-constant-factors-0-5-pts">1.2 Gradient descent constant factors [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contour-plots-0-5-pts">1.3 Contour plots [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-implementation-2-5-pts">2. Gradient Descent Implementation [2.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-update-rule-1-pt">2.1 Gradient update rule [1 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-loss-0-5-pts">2.2 MSE loss [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-1-pt">2.3 Gradient descent [1 pt]</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
