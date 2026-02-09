@@ -553,7 +553,7 @@ f(\vec{x_i}) = w_0 + w_1 x_{i,1} + w_2 x_{i,2} + \cdots + w_p x_{i,p}
 \[
 (w_1, w_2) = \text{ TODO your response}
 \]</div>
-<p>The way we think about moving along the contour plot is that increasing or decreasing <span class="math notranslate nohighlight">\(w_1\)</span> corresponds to moving vertically (up or down) along the contour plot, while increasing or decreasing <span class="math notranslate nohighlight">\(w_2\)</span> corresponds to moving horizontally (left or right). Now, consider that the gradient descent algorithm updates the weights by moving in the direction of the <strong>negative</strong> partial derivatives to minimize the loss function. For example, the update rule for <span class="math notranslate nohighlight">\(w_1\)</span> is given by:</p>
+<p>The way we think about moving along the contour plot is that increasing or decreasing <span class="math notranslate nohighlight">\(w_1\)</span> corresponds to moving horizontally (left or right) along the contour plot, while increasing or decreasing <span class="math notranslate nohighlight">\(w_2\)</span> corresponds to moving vertically (up or down). Now, consider that the gradient descent algorithm updates the weights by moving in the direction of the <strong>negative</strong> partial derivatives to minimize the loss function. For example, the update rule for <span class="math notranslate nohighlight">\(w_1\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[
 w_{1, \text{new}} = w_{1, \text{old}} - \alpha \frac{\partial \mathcal{L}}{\partial w_{1, \text{old}}}
