@@ -652,7 +652,7 @@ document.write(`
         <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_all</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]]</span>
         <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test_all</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]]</span>
 
-        <span class="c1"># TODO Initialize the model</span>
+        <span class="c1"># TODO initialize the model</span>
         <span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="c1"># TODO train the model using X_train and y_train</span>
@@ -664,8 +664,8 @@ document.write(`
         <span class="c1"># TODO compute the loss of the model compared to y_test using your mse_loss function</span>
         <span class="n">test_mse</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="c1"># Extract the weights from the model object</span>
-        <span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">weights_</span>
+        <span class="c1"># TODO extract the weights from the trained model object</span>
+        <span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="c1"># Prints the results for each feature pair</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model: (</span><span class="si">{</span><span class="n">feat1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">feat2</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
