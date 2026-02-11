@@ -117,7 +117,10 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2004-1f77b4) <b> Gradient Descent II </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1562791/mod_resource/content/1/lec04-gradient-descent-ii-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1562907/mod_resource/content/1/lec04-gradient-descent-ii.pdf)</li>
                 <li>[activity 5](https://docs.google.com/document/d/10deeym-8sHELoF4geHWFqWHs9GSOAjNFgv-nsJMURaU/edit?usp=sharing)</li>
+                <li>[batch gradient descent video](https://moodle.mtholyoke.edu/pluginfile.php/1562908/mod_resource/content/1/lec04-gd-batch.mp4)</li>
+                <li>[batch vs SGD video](https://moodle.mtholyoke.edu/pluginfile.php/1562909/mod_resource/content/1/lec04-gd-batch-sgd.mp4)</li>
             </ul> 
 
     - <small> 2/11 </small>
