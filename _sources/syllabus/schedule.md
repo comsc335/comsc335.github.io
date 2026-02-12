@@ -127,6 +127,10 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 2/12 </small> <br>
         ![](https://img.shields.io/badge/Class%2005-1f77b4) <b> Model evaluation </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1563327/mod_resource/content/2/lec05-model-evaluation-starter.pdf)</li>
+                <li>[activity 6](activity6)</li>
+            </ul> 
 
     - <small> 2/13 </small> <br>
         ![](https://img.shields.io/badge/Due-dc322f) <s>Homework 1</s>
