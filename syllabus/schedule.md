@@ -129,7 +129,10 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2005-1f77b4) <b> Model evaluation </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1563327/mod_resource/content/2/lec05-model-evaluation-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1563565/mod_resource/content/2/lec05-model-evaluation.pdf)</li>
+                <li>[batch vs SGD vs mini-batch video](https://moodle.mtholyoke.edu/pluginfile.php/1563570/mod_resource/content/1/lec04-gd-batch-sgd-minibatch.mp4)</li>
                 <li>[activity 6](activity6)</li>
+                <li>[[live] activity 6](activity6_live)</li>
             </ul> 
 
     - <small> 2/13 </small> <br>
