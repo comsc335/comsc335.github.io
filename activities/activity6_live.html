@@ -1,0 +1,1205 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Activity 6: Holdout and model evaluation &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'activities/activity6_live';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/activities/activity6_live.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/activities/activity6_live.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Activity 6: Holdout and model evaluation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activity 6: Holdout and model evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-and-previous-models">Imports and previous models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-train-test-holdout-split">Part 1: train/test holdout split</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-feature-exploration">Part 2: Feature exploration</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-model-evaluation-and-benchmarking">Part 3: Model evaluation and benchmarking</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="activity-6-holdout-and-model-evaluation">
+<span id="activity6"></span><h1>Activity 6: Holdout and model evaluation<a class="headerlink" href="#activity-6-holdout-and-model-evaluation" title="Link to this heading">#</a></h1>
+<p><strong>2026-02-12</strong></p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="imports-and-previous-models">
+<h1>Imports and previous models<a class="headerlink" href="#imports-and-previous-models" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rmse</span><span class="p">(</span><span class="n">y_hat</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Root mean squared error.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="c1"># TODO: compute the RMSE, using the functions we practiced on WS 1</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below are implementations of the models we’ve built so far:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you click on arrow near the blue bar at the top of the heading, you can collapse the code which can help organize the notebook.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MeanRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple model that predicts the mean of the training data.&quot;&quot;&quot;</span>
+
+    <span class="c1"># constructors in Python are defined using the `__init__` method</span>
+    <span class="c1"># A quirk of Python OOP: the first argument is always `self`, which refers to the object itself</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+
+    <span class="c1"># fit method trains the model on the given data, and always takes X and y as arguments</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the mean regressor to the training data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: the data examples of shape (n, p)</span>
+<span class="sd">            y: the answers vector of shape (n,)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            self: the fitted model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># fitted model parameters are stored in `self` as instance variables and suffixed with `_`</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="c1"># predict method makes predictions on new data, and always takes X as an argument</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Predicts the values for new points X.</span>
+
+<span class="sd">        This model will only predict the mean value of the fitted data for all new points.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: the new points of shape (n_new, p)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            the predicted values of shape (n_new,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
+
+        
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span>
+            <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean_</span><span class="p">)</span> 
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_k_nearest_indices</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds the indices of the k nearest neighbors to a new point x.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: the new point of shape (m,)</span>
+<span class="sd">        X_train: the training data of shape (n, m)</span>
+<span class="sd">        k: the number of nearest neighbors to find</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        the indices of the k nearest neighbors to x in X_train</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dists</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X_train</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">dists</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sorted_indices</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+
+
+<span class="c1"># Our KNNRegressor class extends the BaseEstimator class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;KNN regressor model.&quot;&quot;&quot;</span>
+    
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the KNN regressor model.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            n_neighbors: the number of neighbors to use for the KNN regressor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># self.var_name is an instance variable that can be accessed by any method in the class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">n_neighbors</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the KNN regressor to the training data.</span>
+
+<span class="sd">        Note that KNN models do not have any functions or features that need to be fit, </span>
+<span class="sd">        so all this method does is store the training data as instance variables.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: the feature matrix of shape (n, m)</span>
+<span class="sd">            y: the target vector of shape (n,)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            self: the fitted model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Use self to store the training data in the instance variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Predicts the values of a set of new points X.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: the new points of shape (n_new, m)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            the predicted values of shape (n_new,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;X must have the same number of features as the training data&quot;</span>
+
+        <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># this loops over the rows of X</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span>
+            <span class="c1"># Find the k nearest neighbors to x</span>
+            <span class="n">k_nearest_indices</span> <span class="o">=</span> <span class="n">find_k_nearest_indices</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span><span class="p">)</span>
+
+            <span class="c1"># Compute the average of the k nearest neighbors, append to predictions</span>
+            <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_</span><span class="p">[</span><span class="n">k_nearest_indices</span><span class="p">]))</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-code docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: this is called &quot;simple&quot; as a statistical term for one feature, not because it&#39;s simple to implement</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SimpleLinearRegression</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># There are no (hyper)parameters to set</span>
+        <span class="k">pass</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to training data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: a 2D numpy array of shape (n, 1)</span>
+<span class="sd">            y: a 1D numpy array of shape (n,)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            self: the fitted model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+
+        <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        <span class="c1"># NOTE: we need to be super careful about the shape of the arrays!</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w1_</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w0_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1_</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict on new data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            X: a 2D numpy array of shape (n_new, 1)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            y_hat: a 1D numpy array of shape (n_new,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">w0_</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1_</span> <span class="o">*</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+        
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-1-train-test-holdout-split">
+<h1>Part 1: train/test holdout split<a class="headerlink" href="#part-1-train-test-holdout-split" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load in data</span>
+<span class="n">housing_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/COMSC-335/data/housing_data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO examine the first few rows and last few rows of the data</span>
+<span class="n">housing_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MedInc</th>
+      <th>HouseAge</th>
+      <th>AveRooms</th>
+      <th>AveBedrms</th>
+      <th>Population</th>
+      <th>AveOccup</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>MedHouseVal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4995</th>
+      <td>4.1064</td>
+      <td>16.0</td>
+      <td>5.023155</td>
+      <td>1.024602</td>
+      <td>1769.0</td>
+      <td>2.560058</td>
+      <td>33.86</td>
+      <td>-117.78</td>
+      <td>2.461</td>
+    </tr>
+    <tr>
+      <th>4996</th>
+      <td>5.6454</td>
+      <td>33.0</td>
+      <td>5.642298</td>
+      <td>1.000000</td>
+      <td>1235.0</td>
+      <td>3.224543</td>
+      <td>33.90</td>
+      <td>-117.99</td>
+      <td>2.028</td>
+    </tr>
+    <tr>
+      <th>4997</th>
+      <td>4.7750</td>
+      <td>24.0</td>
+      <td>5.560458</td>
+      <td>1.071895</td>
+      <td>2829.0</td>
+      <td>4.622549</td>
+      <td>37.29</td>
+      <td>-121.84</td>
+      <td>1.919</td>
+    </tr>
+    <tr>
+      <th>4998</th>
+      <td>2.9551</td>
+      <td>41.0</td>
+      <td>4.118541</td>
+      <td>1.060790</td>
+      <td>655.0</td>
+      <td>1.990881</td>
+      <td>33.90</td>
+      <td>-118.36</td>
+      <td>2.050</td>
+    </tr>
+    <tr>
+      <th>4999</th>
+      <td>6.0471</td>
+      <td>17.0</td>
+      <td>6.535849</td>
+      <td>0.979245</td>
+      <td>1713.0</td>
+      <td>3.232075</td>
+      <td>33.61</td>
+      <td>-117.66</td>
+      <td>2.484</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO get the column names</span>
+<span class="n">housing_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;,
+       &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;MedHouseVal&#39;],
+      dtype=&#39;str&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO get the number of rows and columns</span>
+<span class="n">housing_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5000, 9)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The features we have are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MedInc</span></code>:        median income in block group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HouseAge</span></code>:      median house age in block group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AveRooms</span></code>:      average number of rooms per household</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AveBedrms</span></code>:     average number of bedrooms per household</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Population</span></code>:    block group population</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AveOccup</span></code>:      average number of household members</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Latitude</span></code>:      block group latitude</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Longitude</span></code>:     block group longitude</p></li>
+</ul>
+<p>The answer we want to predict is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MedHouseVal</span></code>: median house value in $100,000s</p></li>
+</ul>
+<p>Single columns in pandas can be accessed with the column name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span><span class="p">[</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       48.0
+1       36.0
+2       31.0
+3       38.0
+4       52.0
+        ... 
+4995    16.0
+4996    33.0
+4997    24.0
+4998    41.0
+4999    17.0
+Name: HouseAge, Length: 5000, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Multiple columns can be accessed with a list of column names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span><span class="p">[[</span><span class="s2">&quot;AveRooms&quot;</span><span class="p">,</span> <span class="s2">&quot;HouseAge&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AveRooms</th>
+      <th>HouseAge</th>
+      <th>Longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.807074</td>
+      <td>48.0</td>
+      <td>-118.32</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.860390</td>
+      <td>36.0</td>
+      <td>-118.01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5.345550</td>
+      <td>31.0</td>
+      <td>-118.23</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.990074</td>
+      <td>38.0</td>
+      <td>-117.31</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.806283</td>
+      <td>52.0</td>
+      <td>-118.21</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4995</th>
+      <td>5.023155</td>
+      <td>16.0</td>
+      <td>-117.78</td>
+    </tr>
+    <tr>
+      <th>4996</th>
+      <td>5.642298</td>
+      <td>33.0</td>
+      <td>-117.99</td>
+    </tr>
+    <tr>
+      <th>4997</th>
+      <td>5.560458</td>
+      <td>24.0</td>
+      <td>-121.84</td>
+    </tr>
+    <tr>
+      <th>4998</th>
+      <td>4.118541</td>
+      <td>41.0</td>
+      <td>-118.36</td>
+    </tr>
+    <tr>
+      <th>4999</th>
+      <td>6.535849</td>
+      <td>17.0</td>
+      <td>-117.66</td>
+    </tr>
+  </tbody>
+</table>
+<p>5000 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>There are many ways to select rows from a pandas DataFrame. Similar to numpy, we can use square brackets and slicing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the first 1000 rows</span>
+<span class="n">housing_df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+
+<span class="c1"># select the last 1000 rows, uncommon</span>
+<span class="n">housing_df</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:]</span>
+
+<span class="c1"># select the rows starting at index 1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">housing_df</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4000, 9)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s split the data into training and test sets. We’ll use the <strong>first</strong> 80% of the data for training and the <strong>last 20%</strong> for testing. Complete the code below to create the <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, and <code class="docutils literal notranslate"><span class="pre">y_test</span></code> variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO split the data into training and test sets</span>
+<span class="n">housing_train</span> <span class="o">=</span> <span class="n">housing_df</span><span class="p">[:</span><span class="mi">4000</span><span class="p">]</span>
+<span class="n">housing_test</span> <span class="o">=</span> <span class="n">housing_df</span><span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">:]</span>
+
+<span class="c1"># TODO what are some assertions we can do to test our splits?</span>
+<span class="k">assert</span> <span class="n">housing_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">housing_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Columns can also be removed with the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html">drop()</a> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove the y column</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">housing_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">])</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">housing_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">])</span>
+
+<span class="c1"># save the y column</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">housing_train</span><span class="p">[</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">housing_test</span><span class="p">[</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-2-feature-exploration">
+<h1>Part 2: Feature exploration<a class="headerlink" href="#part-2-feature-exploration" title="Link to this heading">#</a></h1>
+<p>Seaborn is a high-level plotting library that has strong integration with pandas DataFrames. For a given plot, we often specify the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: the column name of the x-axis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: the column name of the y-axis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: the pandas DataFrame to plot</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember that we should only be looking at the training data when exploring the relationships between features and the target!</p>
+</div>
+<p>We’ll visualize the data using <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.scatterplot.html">sns.scatterplots</a> below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plots HouseAge vs MedHouseVal</span>
+<span class="c1"># alpha controls the transparency of the points</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing_train</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;HouseAge&#39;, ylabel=&#39;MedHouseVal&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/708c24a6cf58ab8c4e15bd459e5695b877ace70338a1f7a54e389b51019a07d0.png" src="../_images/708c24a6cf58ab8c4e15bd459e5695b877ace70338a1f7a54e389b51019a07d0.png" />
+</div>
+</div>
+<p>The features we have are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MedInc</span></code>:        median income in block group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HouseAge</span></code>:      median house age in block group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AveRooms</span></code>:      average number of rooms per household</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AveBedrms</span></code>:     average number of bedrooms per household</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Population</span></code>:    block group population</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AveOccup</span></code>:      average number of household members</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Latitude</span></code>:      block group latitude</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Longitude</span></code>:     block group longitude</p></li>
+</ul>
+<p>The answer we want to predict is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MedHouseVal</span></code>: median house value in $100,000s</p></li>
+</ul>
+<p>In groups of 2-3 around you, split up the features to plot on the x-axis, always keeping the y-axis as <code class="docutils literal notranslate"><span class="pre">MedHouseVal</span></code>. Compare plots to discuss what the “best” 2-3 features for predicting <code class="docutils literal notranslate"><span class="pre">MedHouseVal</span></code> are, and vote for them in the PollEverywhere:</p>
+<p><a class="reference external" href="https://pollev.com/tliu">https://pollev.com/tliu</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO your scatterplots here</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;MedHouseVal&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">housing_train</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Latitude&#39;, ylabel=&#39;MedHouseVal&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/bea8003a6450077b9f2a170dd876df0127b30f3e35cd08f6a2071cf9298e0f1a.png" src="../_images/bea8003a6450077b9f2a170dd876df0127b30f3e35cd08f6a2071cf9298e0f1a.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-3-model-evaluation-and-benchmarking">
+<h1>Part 3: Model evaluation and benchmarking<a class="headerlink" href="#part-3-model-evaluation-and-benchmarking" title="Link to this heading">#</a></h1>
+<p>Let’s now fit a <code class="docutils literal notranslate"><span class="pre">MeanRegressor</span></code> model as a baseline for us to benchmark our other models against:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO update this to change the features we&#39;re using</span>
+<span class="n">feats_to_include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;HouseAge&quot;</span><span class="p">]</span>
+
+<span class="c1"># initialize the model</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">MeanRegressor</span><span class="p">()</span>
+
+<span class="c1"># fit the model on the training data</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># make predictions on both the training and test sets</span>
+<span class="n">y_hat_train</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<span class="n">y_hat_test</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># compute the RMSE</span>
+<span class="n">rmse_train</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Rounds the RMSE to 2 decimal places</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MeanRegressor RMSE on training set: </span><span class="si">{</span><span class="n">rmse_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MeanRegressor RMSE on test set: </span><span class="si">{</span><span class="n">rmse_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MeanRegressor RMSE on training set: 1.11
+MeanRegressor RMSE on test set: 1.07
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s go model-hunting: find a model that beats the MeanRegressor RMSE (lower is better) on the test set. Copy the cell above and modify it to try new model and feature combinations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">KNNRegressor</span></code>: try different values of <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SimpleLinearRegression</span></code>: try different features, but note that this model only takes in 1 feature</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code>: try different feature combinations</p></li>
+</ul>
+<p>Again, you can discuss with folks around you on a strategy to search through models.</p>
+<p>As you try new models and features, discuss with folks around you any discrepancies you see between the training and test set RMSEs. Is one number usually higher than the other?</p>
+<p>After trying out a few models with your group, submit your best test set RMSE rounded to 2 decimal places to the PollEverywhere:</p>
+<p><a class="reference external" href="https://pollev.com/tliu">https://pollev.com/tliu</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO update this to change the features we&#39;re using</span>
+<span class="n">feats_to_include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MedInc&quot;</span><span class="p">]</span>
+
+<span class="c1"># initialize the model</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">KNNRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># fit the model on the training data</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># make predictions on both the training and test sets</span>
+<span class="n">y_hat_train</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<span class="n">y_hat_test</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># compute the RMSE</span>
+<span class="n">rmse_train</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Rounds the RMSE to 2 decimal places</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MeanRegressor RMSE on training set: </span><span class="si">{</span><span class="n">rmse_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MeanRegressor RMSE on test set: </span><span class="si">{</span><span class="n">rmse_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MeanRegressor RMSE on training set: 0.77
+MeanRegressor RMSE on test set: 0.82
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./activities"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activity 6: Holdout and model evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-and-previous-models">Imports and previous models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-train-test-holdout-split">Part 1: train/test holdout split</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-feature-exploration">Part 2: Feature exploration</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-model-evaluation-and-benchmarking">Part 3: Model evaluation and benchmarking</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
