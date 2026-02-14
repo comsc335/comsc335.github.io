@@ -1,0 +1,1450 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worksheet 2 &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worksheets/ws2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/worksheets/ws2.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worksheets/ws2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worksheet 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worksheet 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-for-tabular-data-2-pts">1. Pandas for tabular data [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#column-selection-and-filtering">Column selection and filtering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-aggregation">Grouping and aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-categorical-variables-with-get-dummies">Processing categorical variables with <code class="docutils literal notranslate"><span class="pre">get_dummies</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-for-data-visualization-1-pt">2. Seaborn for data visualization [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-primer-1-pt">3. Probability primer [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chance-events">Chance events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-and-conditional-probabilities">Joint and conditional probabilities</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-and-axis-operations-in-numpy-1-5-pts">4. Broadcasting and axis operations in NumPy [1.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-operations">Axis operations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">5. Reflection [0.5 pts]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worksheet-2">
+<span id="ws2"></span><h1>Worksheet 2<a class="headerlink" href="#worksheet-2" title="Link to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>Datasets and Probability</p>
+<p class="attribution">—TODO your name here</p>
+</div></blockquote>
+<div class="admonition-collaboration-statement admonition">
+<p class="admonition-title">Collaboration Statement</p>
+<ul class="simple">
+<li><p>TODO brief statement on the nature of your collaboration.</p></li>
+<li><p>TODO your collaborator’s names here.</p></li>
+</ul>
+</div>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Learn about <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> for dataset manipulation and visualization.</p></li>
+<li><p>Practice with probability concepts needed for the course:</p>
+<ul>
+<li><p>Discrete random events and expectation</p></li>
+<li><p>Contingency tables and conditional probabilities</p></li>
+</ul>
+</li>
+<li><p>Familiarization with broadcasting and axis operations in <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pandas-for-tabular-data-2-pts">
+<h1>1. Pandas for tabular data [2 pts]<a class="headerlink" href="#pandas-for-tabular-data-2-pts" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> is the defacto Python framework for working with tabular data, and it is supported by a large ecosystem of libraries, including integration with NumPy. Pandas provides two main data structures:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>: a 2-dimensional data structure often used to represent a table with rows and named columns. We can think of a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> as a 2D numpy array with named columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Series</span></code>: a 1-dimensional, <strong>labelled</strong> array, often used to represent a single column or row in a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
+</ul>
+<p>We will primarily be using pandas to load in and analyze datasets before we pass them into our machine learning models.</p>
+<p>To familiarize ourselves with working with the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library, we will load US Census data provided by the <a class="reference external" href="https://github.com/socialfoundations/folktables">folktables package</a> and perform some fundamental pandas operations.</p>
+<p>From the creators of <a class="reference external" href="https://github.com/socialfoundations/folktables">folktables</a>:</p>
+<blockquote>
+<div><p>Folktables is a Python package that provides access to datasets derived from the US Census, facilitating the benchmarking of machine learning algorithms. The package includes a suite of pre-defined prediction tasks in domains including income, employment, health, transportation, and housing, and also includes tools for creating new prediction tasks of interest in the US Census data ecosystem. The package additionally enables systematic studies of the effect of distribution shift, as each prediction task can be instantiated on datasets spanning multiple years and all states within the US.</p>
+<p>Why the name? Folktables is a neologism describing tabular data about individuals. <strong>It emphasizes that data has the power to create and shape narratives about populations and challenges us to think carefully about the data we collect and use.</strong></p>
+</div></blockquote>
+<p>We will study the context and history around machine learning research using US Census data in the upcoming weeks, but for now, let’s take a look at one particularly prominent dataset: the <a class="reference external" href="https://www.census.gov/programs-surveys/acs">ACS (American Community Survey)</a> Income dataset, which contains socioeconomic data about individuals in the US.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># The standard import idiom for pandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Load in the ACS Income dataset</span>
+<span class="n">income_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/COMSC-335/data/adult_reconstruction.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To load data from files manually, pandas provides various <code class="docutils literal notranslate"><span class="pre">pd.read_*</span></code> functions. For example, <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">pd.read_csv</a> loads (comma-separated values) CSV files. See pandas’ <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html">I/O documentation</a> for more options.</p>
+</div>
+<p>We often suffix variable names with <code class="docutils literal notranslate"><span class="pre">_df</span></code> to make it clear that we are working with a dataframe.</p>
+<p>For high-level inspection of the dataframe, we can use the following functions and attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.head()</span></code>: returns the first 5 rows of the dataframe</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.tail()</span></code>: returns the last 5 rows of the dataframe</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.info()</span></code>: returns a summary of the dataframe, including the number of rows, columns, and the data types of each column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.columns</span></code>: returns the column names of the dataframe</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.shape</span></code>: returns the number of rows and columns in the dataframe</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.dtypes</span></code>: returns the data types of each column</p></li>
+</ul>
+<p>You can play around with the dataframe in the cell below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Like numpy, pandas provides a `shape` attribute that returns a tuple of (num rows, num columns)</span>
+<span class="n">income_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From above, we see that the dataframe has 49,531 rows and 14 columns. Here, each row represents an individual, and each column represents a feature of the individual. The machine learning task is to predict the <code class="docutils literal notranslate"><span class="pre">income</span></code> of an individual based on the other features.</p>
+<p>Taking a look at the columns, we see that there are a wide range of demographic and occupational features collected:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="column-selection-and-filtering">
+<h2>Column selection and filtering<a class="headerlink" href="#column-selection-and-filtering" title="Link to this heading">#</a></h2>
+<p>To select a single column, we can square bracket indexing with the name of the column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selects the &#39;education&#39; column and prints the first 5 rows</span>
+<span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;education&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When initially exploring a dataset, it is often useful to see the unique values in a column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the unique values in the &#39;education&#39; column</span>
+<span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;education&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The square bracket indexing can be generalized to selecting multiple columns by passing a list of column names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selects multiple columns and prints the last 10 rows</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;hours-per-week&#39;</span><span class="p">]</span>
+<span class="n">income_df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also remove columns by using the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop the &#39;relationship&#39; column</span>
+<span class="n">income_df</span> <span class="o">=</span> <span class="n">income_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;relationship&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Operations that modify the dataframe will return a new dataframe with the changes, and the original dataframe will not be modified. So if we want to modify the dataframe in place, we need to assign the result back to the original variable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">income_df</span> <span class="o">=</span> <span class="n">income_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;relationship&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Just like NumPy, we can also use boolean indexing to select portions of the dataframe based on a condition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selects individuals who are below the age of 30</span>
+<span class="n">sel_df</span> <span class="o">=</span> <span class="n">income_df</span><span class="p">[</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="n">sel_df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then use the <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> function to get the frequency of each category in a column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the value counts of the &#39;workclass&#39; column for individuals below the age of 30</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sel_df</span><span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="c1"># Normalize=True to get the proportion of each category</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sel_df</span><span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These boolean conditions can be combined using the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> (AND), <code class="docutils literal notranslate"><span class="pre">|</span></code> (OR), and <code class="docutils literal notranslate"><span class="pre">~</span></code> (NOT) operators. Additionally, there are some special functions that can be used to select data based on a condition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combining conditions: respondents who are less than 30 years old AND have non-zero capital-gain</span>
+<span class="n">income_df</span><span class="p">[(</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">)</span> 
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;capital-gain&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)]</span>
+
+<span class="c1"># isin(): select rows where a column is in a list of values</span>
+<span class="n">income_df</span><span class="p">[</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Local-gov&#39;</span><span class="p">,</span> <span class="s1">&#39;State-gov&#39;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To avoid errors, always use parentheses when combining conditions:</p>
+<ul class="simple">
+<li><p>Incorrect: <code class="docutils literal notranslate"><span class="pre">df[column1</span> <span class="pre">==</span> <span class="pre">value1</span> <span class="pre">&amp;</span> <span class="pre">column2</span> <span class="pre">==</span> <span class="pre">value2]</span></code></p></li>
+<li><p>Correct: <code class="docutils literal notranslate"><span class="pre">df[(column1</span> <span class="pre">==</span> <span class="pre">value1)</span> <span class="pre">&amp;</span> <span class="pre">(column2</span> <span class="pre">==</span> <span class="pre">value2)]</span></code></p></li>
+</ul>
+</div>
+<p><strong>1.1</strong>. Let’s practice combining these operations. Select respondents who:</p>
+<ul class="simple">
+<li><p>work <strong>full-time</strong>, defined as <code class="docutils literal notranslate"><span class="pre">hours-per-week</span> <span class="pre">&gt;=</span> <span class="pre">40</span></code> AND</p></li>
+<li><p>have an <code class="docutils literal notranslate"><span class="pre">education</span></code> level in <code class="docutils literal notranslate"><span class="pre">['Bachelors',</span> <span class="pre">'Masters',</span> <span class="pre">'Doctorate']</span></code></p></li>
+</ul>
+<p>Within this group, compute the counts of <code class="docutils literal notranslate"><span class="pre">occupation</span></code> using <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code>. This column indicates the type of job the respondent has.</p>
+<p>How many individuals are in this group? What is the most common occupation in this group?</p>
+<p><strong>Your response</strong>: TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO your code here (make sure to use income_df for the dataframe)</span>
+<span class="n">full_time_at_least_bachelors_df</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution (click to check once you’ve completed 1.1)</p>
+<p>You should see that the group of respondents who work full-time and have an education level defined above has 9,463 individuals. The most common occupation in this group is <code class="docutils literal notranslate"><span class="pre">Prof-specialty</span></code> with 3,287 individuals, which corresponds to some professional specialization role (<em>not</em> an academic professor).</p>
+</div>
+<p>We can also use boolean logic to create new columns. For example, a common age cutoff used in US policy studies is 65, as it is the age that corresponds to “seniors” and is when people are eligible for Medicare health insurance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new column &#39;is_senior&#39; that is 1 if the respondent is 65 or older, and 0 otherwise</span>
+<span class="c1"># .astype(int) converts the boolean values into 0s and 1s</span>
+<span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;is_senior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">65</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;is_senior&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll commonly apply this transformation to a continuous variable to create a binary indicator column, such as when we want to create a <span class="math notranslate nohighlight">\(y\)</span> column for a binary classification task.</p>
+<p><strong>1.2</strong> Complete the <code class="docutils literal notranslate"><span class="pre">binarize_column</span></code> function below. This function takes a pandas Series and a cutpoint as arguments, and returns a Series with 1s and 0s indicating whether each element of the input series is greater than the cutpoint:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">binarize_column</span><span class="p">(</span><span class="n">column</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">cutpoint</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Binarizes a column based on a cutpoint.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        column (pd.Series): The column to binarize.</span>
+<span class="sd">        cutpoint (float): The cutpoint to use for binarization.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.Series: A column with 1s and 0s indicating whether each element of the input series is greater than the cutpoint.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO your code here</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Test binarize_column ####</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]})</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;A_bin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">binarize_column</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="mf">2.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="s1">&#39;A_bin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})),</span> <span class="s2">&quot;Binarization is incorrect&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="grouping-and-aggregation">
+<h2>Grouping and aggregation<a class="headerlink" href="#grouping-and-aggregation" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code class="docutils literal notranslate"><span class="pre">groupby()</span></code></a> operation is a powerful tool for performing aggregations on subsets of the dataframe. We pass in one or more columns as the <code class="docutils literal notranslate"><span class="pre">by</span></code> argument, which then divides the original Dataframe based on the unique values of the column(s). We then often apply an <strong>aggregation</strong> function to each group, resulting in a new dataframe.</p>
+<p>You can think of it as:</p>
+<ul class="simple">
+<li><p>split the dataframe into groups (based on unique values of a column), then</p></li>
+<li><p>apply an aggregation (like <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code>, etc.) to each group.</p></li>
+</ul>
+<p>We can replicate <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> with <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> and the <code class="docutils literal notranslate"><span class="pre">size()</span></code> aggregation function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count number of people in each workclass category</span>
+<span class="n">income_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;workclass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also compute summary statistics like <code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">std()</span></code>, <code class="docutils literal notranslate"><span class="pre">median()</span></code>, <code class="docutils literal notranslate"><span class="pre">min()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code> on columns after grouping:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, group by the &#39;workclass&#39; column</span>
+<span class="c1"># Then, see the average number of work hours per week for each group</span>
+<span class="n">income_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;workclass&#39;</span><span class="p">)[</span><span class="s1">&#39;hours-per-week&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To apply multiple aggregation functions, we can pass in a dictionary of columns as keys and functions as values to <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.agg.html">agg()</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we want to apply the following aggregations:</span>
+<span class="n">agg_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># mean, min, max for hours-per-week</span>
+    <span class="s1">&#39;hours-per-week&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">],</span>
+    <span class="c1"># median for education_num</span>
+    <span class="s1">&#39;education-num&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;median&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># apply the aggregations, grouping by &#39;workclass&#39;</span>
+<span class="n">income_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;workclass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">agg_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>1.3</strong>. Compute a summary table that groups by the <code class="docutils literal notranslate"><span class="pre">is_senior</span></code> column and then computes the following aggregations:</p>
+<ul class="simple">
+<li><p>mean and median <code class="docutils literal notranslate"><span class="pre">income</span></code></p></li>
+<li><p>mean and median <code class="docutils literal notranslate"><span class="pre">capital-gain</span></code></p></li>
+</ul>
+<p>What is the mean <code class="docutils literal notranslate"><span class="pre">income</span></code> for seniors? Do seniors have more or less median <code class="docutils literal notranslate"><span class="pre">capital-gain</span></code> than non-seniors?</p>
+<p><strong>Your response</strong>: TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution (click to check once you’ve completed 1.3)</p>
+<p>The groupby aggregation table should show that seniors have a mean income of about $29,670. Seniors have a higher median capital gain of $1,877, compared to non-seniors with a median capital gain of $1,029.</p>
+</div>
+</section>
+<section id="processing-categorical-variables-with-get-dummies">
+<h2>Processing categorical variables with <code class="docutils literal notranslate"><span class="pre">get_dummies</span></code><a class="headerlink" href="#processing-categorical-variables-with-get-dummies" title="Link to this heading">#</a></h2>
+<p>Many machine learning models expect purely numeric or binary features, but we’ve seen so far that our dataset has a number of categorical features that are encoded as strings.</p>
+<p>A common step taken to prepare data is <strong>one-hot encoding</strong>, where we convert a categorical column like <code class="docutils literal notranslate"><span class="pre">workclass</span></code> into a set of binary indicator columns: a new column is generated for each category within the column, called a <strong>dummy variable</strong>.</p>
+<p>In pandas, there is the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html"><code class="docutils literal notranslate"><span class="pre">pd.get_dummies</span></code></a> function that can be used to perform this transformation.</p>
+<p>Let’s first see what the last 5 rows of the <code class="docutils literal notranslate"><span class="pre">workclass</span></code> column look like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we’ll use <code class="docutils literal notranslate"><span class="pre">pd.get_dummies</span></code> to convert the <code class="docutils literal notranslate"><span class="pre">workclass</span></code> column into a set of binary indicator columns, one for each category in the column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a new dataframe with binary columns for each category in &#39;workclass&#39;</span>
+<span class="n">workclass_dummy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">income_df</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># .astype(int) converts the boolean values into 0s and 1s</span>
+<span class="n">display</span><span class="p">(</span><span class="n">workclass_dummy_df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how in the <code class="docutils literal notranslate"><span class="pre">workclass_dummy_df</span></code>, each row has a 1 in the <code class="docutils literal notranslate"><span class="pre">workclass_category</span></code> column if the original <code class="docutils literal notranslate"><span class="pre">workclass</span></code> column had that category, and 0 otherwise. The columns argument can also be a list of columns to encode.</p>
+<p><strong>1.4</strong>. Use <code class="docutils literal notranslate"><span class="pre">pd.get_dummies()</span></code> to one-hot encode the <code class="docutils literal notranslate"><span class="pre">occupation</span></code> column in the <code class="docutils literal notranslate"><span class="pre">income_df</span></code> dataframe.</p>
+<p>What is the shape of the new dataframe compared to the original <code class="docutils literal notranslate"><span class="pre">income_df</span></code>? What does that tell us about the number of categories in the <code class="docutils literal notranslate"><span class="pre">occupation</span></code> column?</p>
+<p><strong>Your response</strong>: TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO your code here</span>
+<span class="n">occupation_dummy_df</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">occupation_dummy_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution (click to check once you’ve completed 1.4)</p>
+<p>The shape of <code class="docutils literal notranslate"><span class="pre">occupation_dummy_df</span></code> is <code class="docutils literal notranslate"><span class="pre">(49531,</span> <span class="pre">28)</span></code>, which has the same number of rows as <code class="docutils literal notranslate"><span class="pre">income_df</span></code> but 15 more columns. This tells us that there are 15 unique categories in the <code class="docutils literal notranslate"><span class="pre">occupation</span></code> column. We can also check this by using the <code class="docutils literal notranslate"><span class="pre">nunique()</span></code> function: <code class="docutils literal notranslate"><span class="pre">income_df['occupation'].nunique()</span></code></p>
+</div>
+<div class="admonition-more-on-pandas admonition">
+<p class="admonition-title">More on pandas</p>
+<p>If you’d like to learn more about pandas operations, see <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/10min.html">this quickstart guide</a> and the associated links within it.</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="seaborn-for-data-visualization-1-pt">
+<h1>2. Seaborn for data visualization [1 pt]<a class="headerlink" href="#seaborn-for-data-visualization-1-pt" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction.html">seaborn</a> is one of the most popular libraries for creating visualizations in Python, as it is a higher-level library built on top of the more fundamental <a class="reference external" href="https://matplotlib.org/">matplotlib</a> library.</p>
+<p>We’ll use seaborn to visualize some relationships between variables in our income dataset.</p>
+<p>First, let’s import seaborn using its standard import idiom, which abbreviates the name to <code class="docutils literal notranslate"><span class="pre">sns</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Many seaborn plots follow a similar argument pattern, where we often pass in the following arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code>: the dataframe to plot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: the column to plot on the x-axis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: the column to plot on the y-axis, if applicable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hue</span></code>: the column to use for color-coding the points</p></li>
+</ul>
+<p>Seaborn has tight integration with pandas, which allows us to use pandas to filter and manipulate the data before passing it to seaborn. Let’s generate a <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.histplot.html#seaborn.histplot">sns.histplot</a> of <code class="docutils literal notranslate"><span class="pre">income</span></code> for individuals above the age of 30 who work in the private sector:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+  <span class="c1"># Select out data for individuals above the age of 30 who work in the private sector</span>
+  <span class="n">above_30_private_df</span> <span class="o">=</span> <span class="n">income_df</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">)</span> 
+      <span class="o">&amp;</span> <span class="p">(</span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Private&#39;</span><span class="p">)</span>
+  <span class="p">]</span>
+
+  <span class="c1"># Generate the histogram with:</span>
+  <span class="c1"># Data: the below_30_private_df dataframe</span>
+  <span class="c1"># x-axis: &#39;income&#39;</span>
+  <span class="c1"># y-axis: is the count of individuals in each bin so it does not need to be specified</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">above_30_private_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;income&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2.1.</strong> You should see that the distribution tails off to the right, with a large mass of individuals at the $100k mark. Speculate on why you think this mass is at $100k, keeping in mind that this data is generated from a survey of individuals in the US:</p>
+<p><strong>Your response</strong>: TODO</p>
+<p>The most common machine learning task associated with this dataset is a binary classification task, where we predict whether the <code class="docutils literal notranslate"><span class="pre">income</span></code> of an individual is greater than or equal to $50k based on the given features. This dataset in particular has been extensively used historically as a benchmark for evaluating the <a class="reference external" href="https://arxiv.org/pdf/2108.04884"><strong>fairness</strong> of machine learning models</a>, such as whether the model is biased towards certain groups of individuals. We’ll examine aspects of fairness in the upcoming weeks, but first let’s get a sense of the data. Run the cell below to create a column that is a binary indicator of <code class="docutils literal notranslate"><span class="pre">income</span></code> &gt;= $50k:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;income_&gt;50k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">50000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Complete the cell below to generate a histplot of <code class="docutils literal notranslate"><span class="pre">age</span></code> with the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data=income_df</span></code>: use the <code class="docutils literal notranslate"><span class="pre">income_df</span></code> dataframe for the plot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x='age'</span></code>: plot the <code class="docutils literal notranslate"><span class="pre">age</span></code> column on the x-axis</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># TODO your code here</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2.2</strong> Now, add the following parameters to your plot above:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hue='income_&gt;50k'</span></code>: this colors the histogram bars by the <code class="docutils literal notranslate"><span class="pre">income_&gt;50k</span></code> column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiple='stack'</span></code>: stack the colored histograms on top of each other</p></li>
+</ul>
+<p>Briefly describe what you see in the relationship between <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">income_&gt;50k</span></code> in the plot above. Some questions to consider:</p>
+<ul class="simple">
+<li><p>Are there ages where there are very few individuals with incomes &gt; $50k?</p></li>
+<li><p>Is there a particular age, or age range where the proportion of individuals with incomes &gt; $50k is higher?</p></li>
+</ul>
+<p><strong>Your response</strong>: TODO</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Observations (click to check once you’ve completed 2.2)</p>
+<p>In this data, you should see that there are very few individuals with incomes &gt; $50k with ages &lt;20, as well as in the ~75-80 age range.</p>
+<p>There is a peak in the proportion of individuals with incomes &gt; $50k around age 47, and generally it looks like the older the individual, the more likely they are to have an income &gt; $50k up until ~47, where it begins to slowly decline.</p>
+</div>
+<p>The top 4 most common occupations are (How would you check this using the pandas commands we saw earlier?):</p>
+<ul class="simple">
+<li><p>Craft-repair</p></li>
+<li><p>Prof-specialty</p></li>
+<li><p>Exec-managerial</p></li>
+<li><p>Adm-clerical</p></li>
+</ul>
+<p>Let’s see how the proportion of individuals with incomes &gt; $50k varies by these top 4 occupations with an <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.countplot.html#seaborn.countplot">sns.countplot</a>, which shows counts or percentages across categories.</p>
+<p><strong>2.3</strong> Complete the code below with the following parameters passed to countplot:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data=top4_occupations_df</span></code>: use the <code class="docutils literal notranslate"><span class="pre">top4_occupations_df</span></code> dataframe for the plot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x='occupation'</span></code>: plot the <code class="docutils literal notranslate"><span class="pre">occupation</span></code> column on the x-axis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hue='income_&gt;50k'</span></code>: this colors the bars by the <code class="docutils literal notranslate"><span class="pre">income_&gt;50k</span></code> column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat='percent'</span></code>: show the percentage of individuals in each bar on the y-axis</p></li>
+</ul>
+<p>Which occupations seem to be most “predictive” of income &gt; $50k?</p>
+<p><strong>Your response</strong>: TODO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">top4_occupations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;Craft-repair&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Prof-specialty&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Exec-managerial&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Adm-clerical&#39;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="c1"># TODO select the rows in income_df where the &#39;occupation&#39; column is in the top4_occupations list</span>
+    <span class="n">top4_occupations_df</span> <span class="o">=</span> <span class="kc">None</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Observations (click to check once you’ve completed 2.3)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Exec-managerial</span></code> and <code class="docutils literal notranslate"><span class="pre">Prof-specialty</span></code> occupations have the highest percentage of individuals with incomes &gt; $50k, while the <code class="docutils literal notranslate"><span class="pre">Adm-clerical</span></code> and <code class="docutils literal notranslate"><span class="pre">Craft-repair</span></code> occupations have the lowest.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">More on seaborn</p>
+<p>The following official resources are good references for seaborn if you’d like to learn more:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://seaborn.pydata.org/tutorial/function_overview.html">seaborn plotting overview</a></p></li>
+<li><p><a class="reference external" href="https://seaborn.pydata.org/tutorial/data_structure.html">seaborn data structures</a></p></li>
+</ul>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="probability-primer-1-pt">
+<h1>3. Probability primer [1 pt]<a class="headerlink" href="#probability-primer-1-pt" title="Link to this heading">#</a></h1>
+<p>Now that we’re moving into machine learning classification, where the goal is to predict categories instead of continuous values, we’ll need to utilize some fundemental concepts from probability.</p>
+<section id="chance-events">
+<h2>Chance events<a class="headerlink" href="#chance-events" title="Link to this heading">#</a></h2>
+<p>Probability is the mathematical framework that allows us to reason about randomness and chance. We often want to reason about discrete events that happen, such as whether a coin flip comes up heads or tails, whether it will rain tomorrow, or whether a machine learning model trained to recognize cats identifies an image as a cat or not.</p>
+<p>For all of these situations, we assign probabilities to an event <span class="math notranslate nohighlight">\(A\)</span> that happens, <span class="math notranslate nohighlight">\(P(A)\)</span>. For example, a fair coin has a 50% chance of landing heads and a 50% chance of landing tails, so:</p>
+<div class="math notranslate nohighlight">
+\[P(\text{heads}) = 0.5, \quad P(\text{tails}) = 0.5\]</div>
+<p>If we assign heads and tails to be numeric outcomes, e.g. <span class="math notranslate nohighlight">\(\text{heads} = 1\)</span> and <span class="math notranslate nohighlight">\(\text{tails} = 0\)</span>, then the coin flip can be thought of as a <strong>random variable</strong> <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>In order for something to be considered a valid (discrete) random variable, the probability of each event must be between 0 and 1, and the sum of the probabilities of all events <strong>must</strong> equal 1. In the case of a fair coin, <span class="math notranslate nohighlight">\(P(Y=1) + P(Y=0) = 0.5 + 0.5 = 1\)</span>.</p>
+<p>We most frequently work in situations where the random variable is binary, for example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y = \begin{cases}
+    1 &amp; \text{image has a cat} \\
+    0 &amp; \text{image does not have a cat}
+\end{cases}
+\end{split}\]</div>
+<p><strong>3.1:</strong> Suppose that we have a dataset of 1000 images, where 300 of them have cats in them. What is <span class="math notranslate nohighlight">\(P(Y=0)\)</span>, that is, the probability that a image does not have a cat?</p>
+<p><strong>Your response</strong>: TODO</p>
+</section>
+<section id="expectation">
+<h2>Expectation<a class="headerlink" href="#expectation" title="Link to this heading">#</a></h2>
+<p>The <strong>expectation</strong> of a random variable <span class="math notranslate nohighlight">\(Y\)</span> is the average value of <span class="math notranslate nohighlight">\(Y\)</span> over all possible outcomes. It is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+E[Y] = \sum_{y \in \mathcal{Y}} y P(Y=y)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> is the set of all possible outcomes for <span class="math notranslate nohighlight">\(Y\)</span>. In the case of binary random variables, <span class="math notranslate nohighlight">\(\mathcal{Y} = \{0, 1\}\)</span> for the two possible outcomes.</p>
+<p><strong>3.2:</strong> Continuing from our cat picture example above, what is the expectation <span class="math notranslate nohighlight">\(E[Y]\)</span>?</p>
+<div class="math notranslate nohighlight">
+\[
+E[Y] = TODO
+\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions (click to check once you’ve completed 3.1-3.2)</p>
+<p><strong>3.1:</strong> <span class="math notranslate nohighlight">\(P(Y=0) = 1 - P(Y=1) = 1 - 0.3 = 0.7\)</span></p>
+<p><strong>3.2:</strong> <span class="math notranslate nohighlight">\(E[Y] = 0 \cdot P(Y=0) + 1 \cdot P(Y=1) = 0 \cdot 0.7 + 1 \cdot 0.3 = 0.3\)</span></p>
+<p>An identity that is often used is that <span class="math notranslate nohighlight">\(E[Y] = P(Y=1)\)</span> for binary random variables.</p>
+</div>
+</section>
+<section id="joint-and-conditional-probabilities">
+<h2>Joint and conditional probabilities<a class="headerlink" href="#joint-and-conditional-probabilities" title="Link to this heading">#</a></h2>
+<p>We also often want to reason about the probability of two random variables occurring together, called a <strong>joint probability</strong>. If the two random variables <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(Z\)</span> are binary, we can represent the joint probability using a <strong>2x2 contingency table</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c}
+       &amp; Y=0 &amp; Y=1 \\
+\hline
+Z=0 &amp; \text{count of } Z=0 \text{ AND } Y=0 &amp; \text{count of } Z=0 \text{ AND } Y=1 \\
+Z=1 &amp; \text{count of } Z=1 \text{ AND } Y=0 &amp; \text{count of } Z=1 \text{ AND } Y=1 \\
+\end{array}
+\end{split}\]</div>
+<p>Each entry in the contingency table is a count of the number of times the corresponding event occurs. For example, the entry in the first row and first column is the count of the number of times <span class="math notranslate nohighlight">\(Y=0\)</span> and <span class="math notranslate nohighlight">\(Z=0\)</span> occur together.</p>
+<p>Let <span class="math notranslate nohighlight">\(N\)</span> be the total count of all the entries in the contingency table. We can take the <strong>marginal probability</strong> of <span class="math notranslate nohighlight">\(Y\)</span> by summing over the columns of the contingency table:</p>
+<div class="math notranslate nohighlight">
+\[
+P(Y=0) = \frac{(\text{count of } Y=0 \text{ and } Z=0) + (\text{count of } Y=0 \text{ and } Z=1)}{N}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(Y=1) = \frac{(\text{count of } Y=1 \text{ and } Z=0) + (\text{count of } Y=1 \text{ and } Z=1)}{N}
+\]</div>
+<p>Similarly, we can take the marginal probability of <span class="math notranslate nohighlight">\(Z\)</span> by summing over the rows of the contingency table:</p>
+<div class="math notranslate nohighlight">
+\[
+P(Z=0) = \frac{(\text{count of } Z=0 \text{ and } Y=0) + (\text{count of } Z=0 \text{ and } Y=1)}{N}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(Z=1) = \frac{(\text{count of } Z=1 \text{ and } Y=0) + (\text{count of } Z=1 \text{ and } Y=1)}{N}
+\]</div>
+<p>The <strong>joint probability</strong> of two events <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(Z\)</span> occurring together, <span class="math notranslate nohighlight">\(P(Y=y, Z=z)\)</span>, is given by the entry in the contingency table for the corresponding row and column. For example, if <span class="math notranslate nohighlight">\(Y=0\)</span> and <span class="math notranslate nohighlight">\(Z=1\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+P(Y=0, Z=1) = \frac{\text{count of } Y=0 \text{ and } Z=1}{N}
+\]</div>
+<p>The conditional probability of <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(Z\)</span>, <span class="math notranslate nohighlight">\(P(Y=y \mid Z=z)\)</span>, is given by the entry in the contingency table for the corresponding row and column, divided by the marginal probability of <span class="math notranslate nohighlight">\(Z\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+P(Y=y \mid Z=z) = \frac{P(Y=y, Z=z)}{P(Z=z)}
+\]</div>
+<p>Suppose we also know that some of our 1000 images also contain a cardboard box. We can represent this as a new random variable <span class="math notranslate nohighlight">\(Z\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Z = \begin{cases}
+    1 &amp; \text{image contains a cardboard box} \\
+    0 &amp; \text{image does not contain a cardboard box}
+\end{cases}
+\end{split}\]</div>
+<p>We then have the following contingency table for our 1000 images:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c}
+ &amp; Y=0 &amp; Y=1 \\
+\hline
+Z=0 &amp; 600 &amp; 100 \\
+Z=1 &amp; 100 &amp; 200 \\
+\end{array}
+\end{split}\]</div>
+<p><strong>4.3</strong>: Compute the following probabilities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(Z=0) = TODO\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(Z=1) = TODO\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(Y=1 \mid Z=0) = TODO\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(Y=1 \mid Z=1) = TODO\)</span></p></li>
+</ul>
+<p><strong>4.4</strong> Given your answers to 4.3, does the presence or does the absence of a cardboard box seem to more predictive of whether an image has a cat in it?</p>
+<p><strong>Your response</strong>: TODO</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions (click to check once you’ve completed 4.3 and 4.4)</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(Z=0) = 0.7\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(Z=1) = 0.3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(Y=1 \mid Z=0) = 1/7 \approx 0.1429\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(Y=1 \mid Z=1) = 2/3 \approx 0.6667\)</span></p></li>
+</ul>
+<p>To assess “predictiveness”, we can look at the conditional probabilities of <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(Z\)</span>. The presence of a cardboard box seems to be more predictive of whether an image has a cat in it, as <span class="math notranslate nohighlight">\(P(Y=1 \mid Z=1) &gt; P(Y=1 \mid Z=0)\)</span>. Additionally, <span class="math notranslate nohighlight">\(P(Y=1 \mid Z=1) &gt; P(Y=1)\)</span>, so the presence of a cardboard box seems to be a useful predictor of whether an image has a cat in it overall.</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="broadcasting-and-axis-operations-in-numpy-1-5-pts">
+<h1>4. Broadcasting and axis operations in NumPy [1.5 pts]<a class="headerlink" href="#broadcasting-and-axis-operations-in-numpy-1-5-pts" title="Link to this heading">#</a></h1>
+<p>As we scale up the number of features in our machine learning models, we can lean on broadcasting and axis operations in NumPy to make calculations across 2D arrays more efficient.</p>
+<section id="broadcasting">
+<h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://numpy.org/doc/stable/user/basics.broadcasting.html">Broadcasting</a> is one of the most powerful concepts in NumPy, but it is also one that takes some getting used to. So, let’s review the idea of NumPy array shapes and what happens when using operators on differently shaped arrays.</p>
+<p>We saw on Worksheet 1 that arithmetic operations performed on arrays with the same shape are computed element-wise. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># Will print [3 5 7]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that both arrays have the same shape (3,), which indicates that they are 1D arrays with 3 elements. <strong>This is different from a 2D array of shape (3, 1)</strong>, which is a vector with 3 rows and 1 column or a 2D array of shape (1, 3), which is a vector with 1 row and 3 columns.</p>
+<p>If NumPy encounters two arrays with different shapes, it will attempt to <strong>broadcast</strong> the arrays together. What happens is that NumPy will compare their shapes element-wise, starting from the rightmost dimension and working its way to the left. Two dimensions are compatible when:</p>
+<ul class="simple">
+<li><p>they are equal, or</p></li>
+<li><p>one of them is 1</p></li>
+</ul>
+<p>Once one of these conditions is met, the arithmetic operation is performed element-wise across that dimension. Below are some examples.</p>
+<p>Below are some examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a is an array of shape (2, 3)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># b is an array of shape (2, 3)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="c1"># Will print [[2 3 4], </span>
+<span class="c1">#             [5 6 7]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above, working from the rightmost dimension, we see that both dimensions for <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are equal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>       <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+<span class="n">b</span>       <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+<span class="n">result</span>  <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Therefore, the arithmetic operation is performed element-wise across the array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a is an array of shape (2, 3)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># c is an array of shape (3,)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+
+<span class="c1"># Will print [[ 3  4  3], </span>
+<span class="c1">#             [12 10  6]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even though <code class="docutils literal notranslate"><span class="pre">c</span></code> has a different shape than <code class="docutils literal notranslate"><span class="pre">a</span></code>, we see that the dimension of <code class="docutils literal notranslate"><span class="pre">c</span></code> matches the last dimension of <code class="docutils literal notranslate"><span class="pre">a</span></code>, so the multiplication operation is performed element-wise across that dimension:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>       <span class="p">(</span><span class="mi">1</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span>     <span class="mi">3</span>
+<span class="n">a</span>       <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+<span class="n">result</span>  <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>However, if we try to broadcast <code class="docutils literal notranslate"><span class="pre">a</span></code> with a 1D array of shape (2,), NumPy will raise a ValueError because the dimensions do not match:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>       <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+<span class="n">d</span>       <span class="p">(</span><span class="mi">1</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span>     <span class="mi">2</span>
+<span class="n">result</span><span class="p">:</span> <span class="ne">ValueError</span> <span class="n">because</span> <span class="n">of</span> <span class="n">a</span> <span class="n">dimension</span> <span class="n">mismatch</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a is an array of shape (2, 3)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># d is an array of shape (2,)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Will raise an Error because the dimensions do not match</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>4.1</strong> If <code class="docutils literal notranslate"><span class="pre">a</span></code> is an array of shape <code class="docutils literal notranslate"><span class="pre">(100,)</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> is an array of shape <code class="docutils literal notranslate"><span class="pre">(100,</span> <span class="pre">10)</span></code>, what is the shape of <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></code> (or would it raise an error)?</p>
+<p><strong>Your response</strong>: TODO</p>
+<p><strong>4.2</strong> If <code class="docutils literal notranslate"><span class="pre">c</span></code> is an array of shape <code class="docutils literal notranslate"><span class="pre">(256,</span> <span class="pre">16)</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> is an array of shape <code class="docutils literal notranslate"><span class="pre">(16,)</span></code>, what is the shape of <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">d</span></code> (or would it raise an error)?</p>
+<p><strong>Your response</strong>: TODO</p>
+<p><strong>4.3</strong> Work out what the output of the following arithmetic operation will be before checking your answer by running the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># w is a 1D array of shape (2,)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># X is a 2D array of shape (3, 2)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Your response</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">TODO</span><span class="p">]]</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Solutions (click to check once you’ve completed 4.1-4.3)</p>
+<p><strong>4.1:</strong> Since <code class="docutils literal notranslate"><span class="pre">a</span></code> is a 1D array and its shape does not match the rightmost dimension of <code class="docutils literal notranslate"><span class="pre">b</span></code>, this will raise a ValueError.</p>
+<p><strong>4.2:</strong> Since <code class="docutils literal notranslate"><span class="pre">c</span></code>’s rightmost dimension matches <code class="docutils literal notranslate"><span class="pre">d</span></code>’s shape, the addition will be successful. The resulting array will have shape <code class="docutils literal notranslate"><span class="pre">(256,</span> <span class="pre">16)</span></code>, with <code class="docutils literal notranslate"><span class="pre">d</span></code> being added to each <strong>row</strong> of <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
+<p><strong>4.3:</strong> The multiplication will result in each row of <code class="docutils literal notranslate"><span class="pre">X</span></code> being multiplied by the corresponding element of <code class="docutils literal notranslate"><span class="pre">w</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="axis-operations">
+<h2>Axis operations<a class="headerlink" href="#axis-operations" title="Link to this heading">#</a></h2>
+<p>When working with 2D arrays, we often want to apply operations across rows or columns. NumPy provides a convenient way to do this using the <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter in many aggregation functions.</p>
+<p>For example, we have used the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.sum.html">np.sum</a> function to sum all the elements in an array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Will print 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, in 2D arrays we could also sum the elements across the rows or columns. By default, <code class="docutils literal notranslate"><span class="pre">np.sum</span></code> will sum all the elements in the array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+
+<span class="c1"># Will print a single number, the sum of all the elements in b: 21</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we wanted to sum the column values for each row, we could specify the parameter <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>, which tells <code class="docutils literal notranslate"><span class="pre">np.sum</span></code> to sum across the second dimension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># Will print [6 15]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This produces a new array of shape <code class="docutils literal notranslate"><span class="pre">(2,)</span></code>, which is the sum of each row in <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>Similarly, if we wanted the sum of each column, we could specify the parameter <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, which tells <code class="docutils literal notranslate"><span class="pre">np.sum</span></code> to sum across the first dimension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># Will print [5 7 9]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This produces a new array of shape <code class="docutils literal notranslate"><span class="pre">(3,)</span></code>, which is the sum of each column in <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>Another way we can think about the <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter is that we’re telling NumPy which dimension to collapse in the resulting array:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>                           <span class="n">dim</span><span class="p">:</span> <span class="mi">0</span>   <span class="mi">1</span>
+<span class="n">b</span>                   <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span> <span class="n">x</span> <span class="mi">3</span>
+<span class="c1"># dimension 0 is collapsed</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="p">(</span><span class="mi">1</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="n">_</span>   <span class="mi">3</span>
+
+
+<span class="c1"># dimension 1 is collapsed</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="p">(</span><span class="mi">1</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="mi">2</span>   <span class="n">_</span>
+</pre></div>
+</div>
+<p><strong>4.4.</strong> Suppose that <code class="docutils literal notranslate"><span class="pre">X</span></code> is a 2D array of shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">p)</span></code>. Write the line of code that computes the mean of each column of <code class="docutils literal notranslate"><span class="pre">X</span></code>, which results in an array of shape <code class="docutils literal notranslate"><span class="pre">(p,)</span></code>:</p>
+<p><strong>Your response</strong>: <code class="docutils literal notranslate"><span class="pre">TODO</span></code></p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution (click to check once you’ve completed 4.4)</p>
+<p>We want to collapse the dimension that corresponds to the number of rows, so we specify <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>: <code class="docutils literal notranslate"><span class="pre">np.mean(X,</span> <span class="pre">axis=0)</span></code></p>
+</div>
+<p>Finally, let’s put broadcasting and axis operations together to more efficiently compute predictions from our linear regression model.</p>
+<p>With one feature, our linear regression model prediction for a given example <span class="math notranslate nohighlight">\(x_i\)</span> has the form:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_i = w_0 + w_1 x_{i,1}
+\]</div>
+<p>With two features on Homework 1, our linear regression model had the form:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_i = w_0 + w_1 x_{i,1} + w_2 x_{i,2}
+\]</div>
+<p>While we could compute the weighted sum for each row of <code class="docutils literal notranslate"><span class="pre">X</span></code> and then add the bias term manually, we’d like to generalize this to any number of features <span class="math notranslate nohighlight">\(p\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_i = w_0 + \sum_{j=1}^{p} w_j x_{i,j}
+\]</div>
+<p>Furthermore, we’d like to compute the predictions for all examples in <code class="docutils literal notranslate"><span class="pre">X</span></code> at once:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+\hat{y}_1 \\
+\hat{y}_2 \\
+\vdots \\
+\hat{y}_n
+\end{bmatrix}
+= 
+\begin{bmatrix}
+w_0 + \sum_{j=1}^{p} w_j x_{1,j} \\
+w_0 + \sum_{j=1}^{p} w_j x_{2,j} \\
+\vdots \\
+w_0 + \sum_{j=1}^{p} w_j x_{n,j}
+\end{bmatrix}
+\end{split}\]</div>
+<p>Complete the function below to compute the predictions for all examples in <code class="docutils literal notranslate"><span class="pre">X</span></code> at once:</p>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>This can be done using a single line of code. First, we can use broadcasting to compute the product of <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code>. Then we can sum across the appropriate axis to compute <span class="math notranslate nohighlight">\(\sum_{j=1}^{p} w_j x_{i,j}\)</span> for each row. Finally, since <span class="math notranslate nohighlight">\(w_0\)</span> is a scalar, we can just add it to the result.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">linreg_predictions</span><span class="p">(</span><span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w0</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Efficiently compute the predictions for all examples in X at once.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X: data examples of shape (n, p)</span>
+<span class="sd">        w: weights of shape (p,)</span>
+<span class="sd">        w0: scalar intercept term</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray of shape (n,) where each element is the prediction for the corresponding example in X</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">]])</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">])</span>
+    <span class="n">w0</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">linreg_predictions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">w0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">predictions</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="s2">&quot;predictions should have shape (n,)&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">])),</span> <span class="s2">&quot;predictions are not correct&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reflection-0-5-pts">
+<h1>5. Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
+<p><strong>5.1</strong> How much time did it take you to complete this worksheet?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p><strong>5.2</strong> What is one thing you have a better understanding of after completing this worksheet and going though the class content this week? This could be about the concepts, the reading, or the code.</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p><strong>5.3</strong> What questions or points of confusion do you have about the material covered in the past week of class?</p>
+<p><strong>Your Response</strong>: TODO</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="acknowledgments">
+<h1>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Portions of this worksheet are adapted from Bhargavi’s study notes on pandas.</p></li>
+<li><p>Some exercises are adapted from <a class="reference external" href="https://mml-book.github.io/">Deisenroth 2020: Mathematics for Machine Learning</a>.</p></li>
+<li><p>Folktables was introduced by <a class="reference external" href="https://arxiv.org/abs/2108.04884">Ding et al. 2021: Retiring Adult: New Datasets for Fair Machine Learning</a></p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worksheets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worksheet 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-for-tabular-data-2-pts">1. Pandas for tabular data [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#column-selection-and-filtering">Column selection and filtering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-aggregation">Grouping and aggregation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-categorical-variables-with-get-dummies">Processing categorical variables with <code class="docutils literal notranslate"><span class="pre">get_dummies</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-for-data-visualization-1-pt">2. Seaborn for data visualization [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-primer-1-pt">3. Probability primer [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chance-events">Chance events</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-and-conditional-probabilities">Joint and conditional probabilities</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-and-axis-operations-in-numpy-1-5-pts">4. Broadcasting and axis operations in NumPy [1.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-operations">Axis operations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">5. Reflection [0.5 pts]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
