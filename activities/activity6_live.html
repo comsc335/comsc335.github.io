@@ -753,7 +753,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;MedInc&#39;, &#39;HouseAge&#39;, &#39;AveRooms&#39;, &#39;AveBedrms&#39;, &#39;Population&#39;, &#39;AveOccup&#39;,
        &#39;Latitude&#39;, &#39;Longitude&#39;, &#39;MedHouseVal&#39;],
-      dtype=&#39;str&#39;)
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -987,7 +987,7 @@ Name: HouseAge, Length: 5000, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;HouseAge&#39;, ylabel=&#39;MedHouseVal&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/708c24a6cf58ab8c4e15bd459e5695b877ace70338a1f7a54e389b51019a07d0.png" src="../_images/708c24a6cf58ab8c4e15bd459e5695b877ace70338a1f7a54e389b51019a07d0.png" />
+<img alt="../_images/b14c0fe6b186328f5dad901ce7b0c126eeed8e3fb2f13336a5832654c395021c.png" src="../_images/b14c0fe6b186328f5dad901ce7b0c126eeed8e3fb2f13336a5832654c395021c.png" />
 </div>
 </div>
 <p>The features we have are:</p>
@@ -1018,7 +1018,7 @@ Name: HouseAge, Length: 5000, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Latitude&#39;, ylabel=&#39;MedHouseVal&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/bea8003a6450077b9f2a170dd876df0127b30f3e35cd08f6a2071cf9298e0f1a.png" src="../_images/bea8003a6450077b9f2a170dd876df0127b30f3e35cd08f6a2071cf9298e0f1a.png" />
+<img alt="../_images/ddfdb42984cde982809c7a55645051f4df77642700bef0e900891212c78240c6.png" src="../_images/ddfdb42984cde982809c7a55645051f4df77642700bef0e900891212c78240c6.png" />
 </div>
 </div>
 </section>
@@ -1070,10 +1070,10 @@ MeanRegressor RMSE on test set: 1.07
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO update this to change the features we&#39;re using</span>
-<span class="n">feats_to_include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MedInc&quot;</span><span class="p">]</span>
+<span class="n">feats_to_include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MedInc&quot;</span><span class="p">,</span> <span class="s2">&quot;HouseAge&quot;</span><span class="p">,</span> <span class="s2">&quot;AveRooms&quot;</span><span class="p">,</span> <span class="s2">&quot;AveBedrms&quot;</span><span class="p">,</span> <span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="s2">&quot;AveOccup&quot;</span><span class="p">,</span> <span class="s2">&quot;Latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">]</span>
 
 <span class="c1"># initialize the model</span>
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">KNNRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="c1"># fit the model on the training data</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
@@ -1087,14 +1087,78 @@ MeanRegressor RMSE on test set: 1.07
 <span class="n">rmse_test</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 
 <span class="c1"># Rounds the RMSE to 2 decimal places</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MeanRegressor RMSE on training set: </span><span class="si">{</span><span class="n">rmse_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MeanRegressor RMSE on test set: </span><span class="si">{</span><span class="n">rmse_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LinearRegression with all 8 features RMSE on training set: </span><span class="si">{</span><span class="n">rmse_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LinearRegression with all 8 features RMSE on test set: </span><span class="si">{</span><span class="n">rmse_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MeanRegressor RMSE on training set: 0.77
-MeanRegressor RMSE on test set: 0.82
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression with all features RMSE on training set: 0.62
+LinearRegression with all features RMSE on test set: 0.63
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO update this to change the features we&#39;re using</span>
+<span class="n">feats_to_include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MedInc&quot;</span><span class="p">,]</span>
+
+<span class="c1"># initialize the model</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">KNNRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># fit the model on the training data</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># make predictions on both the training and test sets</span>
+<span class="n">y_hat_train</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<span class="n">y_hat_test</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># compute the RMSE</span>
+<span class="n">rmse_train</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Rounds the RMSE to 2 decimal places</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KNNRegressor with 1 neighbor RMSE on training set: </span><span class="si">{</span><span class="n">rmse_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KNNRegressor with 1 neighbor RMSE on test set: </span><span class="si">{</span><span class="n">rmse_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNNRegressor with 1 neighbor RMSE on training set: 0.45
+KNNRegressor with 1 neighbor RMSE on test set: 1.12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO update this to change the features we&#39;re using</span>
+<span class="n">feats_to_include</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MedInc&quot;</span><span class="p">,]</span>
+
+<span class="c1"># initialize the model</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">KNNRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># fit the model on the training data</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># make predictions on both the training and test sets</span>
+<span class="n">y_hat_train</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+<span class="n">y_hat_test</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">feats_to_include</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">())</span>
+
+<span class="c1"># compute the RMSE</span>
+<span class="n">rmse_train</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">rmse_test</span> <span class="o">=</span> <span class="n">rmse</span><span class="p">(</span><span class="n">y_hat_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Rounds the RMSE to 2 decimal places</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KNNRegressor with 20 neighbors RMSE on training set: </span><span class="si">{</span><span class="n">rmse_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KNNRegressor with 20 neighbors RMSE on test set: </span><span class="si">{</span><span class="n">rmse_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KNNRegressor with 20 neighbors RMSE on training set: 0.79
+KNNRegressor with 20 neighbors RMSE on test set: 0.81
 </pre></div>
 </div>
 </div>
