@@ -150,7 +150,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 2/18 </small>
 
     - <small> 2/19 </small> <br>
-        ![](https://img.shields.io/badge/Class%2007-1f77b4) <b> Classification </b>
+        ![](https://img.shields.io/badge/Class%2007-1f77b4) 
 
     - <small> 2/20 </small> 
 
