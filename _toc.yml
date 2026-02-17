@@ -17,6 +17,7 @@ parts:
   - caption: Worksheets
     chapters:
       - file: worksheets/ws1.ipynb
+      - file: worksheets/ws2.ipynb
   - caption: Homeworks
     chapters:
       - file: hws/hw1.md
