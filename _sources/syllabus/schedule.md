@@ -150,7 +150,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 2/18 </small>
 
     - <small> 2/19 </small> <br>
-        ![](https://img.shields.io/badge/Class%2007-1f77b4) 
+        ![](https://img.shields.io/badge/Class%2007-1f77b4) <b> Classification </b>
 
     - <small> 2/20 </small> 
 
@@ -159,7 +159,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Due-dc322f) Worksheet 2
 
     - <small> 2/24 </small> <br>
-        ![](https://img.shields.io/badge/Class%2008-1f77b4) <b> Cross-validation </b>
+        ![](https://img.shields.io/badge/Class%2008-1f77b4) 
 
         ![](https://img.shields.io/badge/Released-2ca02c) Homework 2
 
