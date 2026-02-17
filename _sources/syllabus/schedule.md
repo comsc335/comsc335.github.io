@@ -144,8 +144,13 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 2/17 </small> <br>
         ![](https://img.shields.io/badge/Class%2006-1f77b4) <b> Regularization </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552068/mod_resource/content/2/lec06-regularization-starter.pdf)</li>
+                <li>[activity 7 part 1](https://docs.google.com/document/d/1YGJkvgbH1YMYXxaXukRL4L0O3N5N0RayQ2R1ms9eIwE/edit?usp=sharing)</li>
+                <li>[activity 7 part 2](activity7)</li>
+            </ul> 
 
-        ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 2
+        ![](https://img.shields.io/badge/Released-2ca02c) [Worksheet 2](ws2)
 
     - <small> 2/18 </small>
 
@@ -156,7 +161,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
 
 *   - <small> 2/23 </small> <br> <!-- Week 5 -->
-        ![](https://img.shields.io/badge/Due-dc322f) Worksheet 2
+        ![](https://img.shields.io/badge/Due-dc322f) [Worksheet 2](ws2)
 
     - <small> 2/24 </small> <br>
         ![](https://img.shields.io/badge/Class%2008-1f77b4) 
