@@ -767,13 +767,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a new dataframe with binary columns for each category in &#39;workclass&#39;</span>
+<span class="c1"># dtype=int converts the boolean values into 0s and 1s</span>
 <span class="n">workclass_dummy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">income_df</span><span class="p">,</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;workclass&#39;</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span>
 <span class="p">)</span>
 
-<span class="c1"># .astype(int) converts the boolean values into 0s and 1s</span>
-<span class="n">display</span><span class="p">(</span><span class="n">workclass_dummy_df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">workclass_dummy_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -929,7 +930,7 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="probability-primer-1-pt">
 <h1>3. Probability primer [1 pt]<a class="headerlink" href="#probability-primer-1-pt" title="Link to this heading">#</a></h1>
-<p>Now that we’re moving into machine learning classification, where the goal is to predict categories instead of continuous values, we’ll need to utilize some fundemental concepts from probability.</p>
+<p>We’re now in the process of moving into machine learning <strong>classification</strong>, where the goal is to predict categories instead of continuous values. For this, we’ll need to utilize some fundemental concepts from probability.</p>
 <section id="chance-events">
 <h2>Chance events<a class="headerlink" href="#chance-events" title="Link to this heading">#</a></h2>
 <p>Probability is the mathematical framework that allows us to reason about randomness and chance. We often want to reason about discrete events that happen, such as whether a coin flip comes up heads or tails, whether it will rain tomorrow, or whether a machine learning model trained to recognize cats identifies an image as a cat or not.</p>
