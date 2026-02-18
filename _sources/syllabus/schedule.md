@@ -146,6 +146,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2006-1f77b4) <b> Regularization </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552068/mod_resource/content/2/lec06-regularization-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552069/mod_resource/content/2/lec06-regularization.pdf)</li>
                 <li>[activity 7 part 1](https://docs.google.com/document/d/1YGJkvgbH1YMYXxaXukRL4L0O3N5N0RayQ2R1ms9eIwE/edit?usp=sharing)</li>
                 <li>[activity 7 part 2](activity7)</li>
             </ul> 
