@@ -200,6 +200,13 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
 <ul class="nav bd-sidenav">
@@ -498,11 +505,41 @@ document.write(`
 </div>
 <p>We’ll combine polynomial features with a ridge-regularized linear regression model: <code class="docutils literal notranslate"><span class="pre">Ridge(alpha=a)</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> model operates exactly like all of our other scikit-learn models, with a <code class="docutils literal notranslate"><span class="pre">fit()</span></code> method and a <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method.</p>
-<p>We need to set the regularization hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> (called <span class="math notranslate nohighlight">\(\lambda\)</span> in the lecture slides and in most other ML literature) to a positive value.</p>
+<p>We need to set the regularization hyperparameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> (called <span class="math notranslate nohighlight">\(\lambda\)</span> in the lecture slides and in most other ML literature) to a positive value if we want to use regularization.</p>
+<p>If we set <code class="docutils literal notranslate"><span class="pre">alpha=0</span></code>, we get back the unregularized linear regression model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize the Ridge model with alpha = 1.0</span>
 <span class="n">ridge_model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see what the largest weights are with and without ridge regularization:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deg</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">poly_features</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="c1"># fit the transformer to the training data</span>
+<span class="n">poly_features</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">X_poly_train</span> <span class="o">=</span> <span class="n">poly_features</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_poly_test</span> <span class="o">=</span> <span class="n">poly_features</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Degree&quot;</span><span class="p">,</span> <span class="n">deg</span><span class="p">,</span> <span class="s2">&quot;polynomial features:&quot;</span><span class="p">,</span> <span class="n">X_poly_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">ridge_model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ridge_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_poly_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># we can access the fitted weights using the `coef_` attribute</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ridge_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+
+<span class="c1"># np.abs() returns the absolute value of each element in the array</span>
+<span class="c1"># np.max() returns the maximum value in the array   </span>
+<span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ridge_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -526,7 +563,9 @@ document.write(`
 <li><p>Transform the training and test data using <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code></p></li>
 <li><p>Iterate over the range of alphas</p></li>
 </ul>
-<p>Experiment with higher values of the degree. Compare with folks around you what values of the regularization hyperparameter and degree give the best test RMSE. Are large or small values of <code class="docutils literal notranslate"><span class="pre">alpha</span></code> better?</p>
+<p>Experiment with higher values of the degree. Compare with folks around you what values of the regularization hyperparameter and degree give the best test RMSE, and submit your best test RMSE to PollEverywhere:</p>
+<p><a class="reference external" href="https://pollev.com/tliu">https://pollev.com/tliu</a></p>
+<p>Discuss with folks around you: from what you’re seeing, is a higher or lower <code class="docutils literal notranslate"><span class="pre">alpha</span></code> needed to get most of the benefits of regularization?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="mi">1</span>
