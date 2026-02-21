@@ -28,4 +28,8 @@
   - A **loss function**, a function of the weights $\vec{w} = (w_0, w_1, \ldots, w_p)$, which quantifies the error of the model
 * - $\nabla \mathcal{L}(\vec{w})$ = $\left(\frac{\partial \mathcal{L}}{\partial w_0}, \frac{\partial \mathcal{L}}{\partial w_1}, \ldots, \frac{\partial \mathcal{L}}{\partial w_p}\right)$
   - The **gradient** of $\mathcal{L}(\vec{w})$ with respect to the weights $\vec{w}$, a vector of partial derivatives
+* - $\ell_i$
+  - The loss function calculated for a single data example $(\vec{x}_i, y_i)$
+* - $\sigma(h) = \frac{1}{1 + e^{-h}}$
+  - The **sigmoid** function (also called the logistic function), a function that takes in a linear combination of features $h$ and outputs a probability in the range $(0, 1)$
 ```
