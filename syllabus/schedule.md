@@ -149,7 +149,6 @@ A list of topics we will cover can be found below. Note that topics may be subje
                 <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552069/mod_resource/content/2/lec06-regularization.pdf)</li>
                 <li>[activity 7 part 1](https://docs.google.com/document/d/1YGJkvgbH1YMYXxaXukRL4L0O3N5N0RayQ2R1ms9eIwE/edit?usp=sharing)</li>
                 <li>[[live] activity 7 part 1](https://docs.google.com/document/d/1WMR4KdkXK9XG0aobGGkdTOq1Z_1Y-ENDK0LfQqwyyPM/edit?usp=sharing)</li>
-                <li>[activity 7 part 2](activity7)</li>
             </ul> 
 
         ![](https://img.shields.io/badge/Released-2ca02c) [Worksheet 2](ws2)
@@ -158,6 +157,12 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 2/19 </small> <br>
         ![](https://img.shields.io/badge/Class%2007-1f77b4) <b> Classification I </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552071/mod_resource/content/2/lec07-classification-i-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1564943/mod_resource/content/1/lec07-classification.pdf)</li>
+                <li>[activity 7 part 2](activity7)</li>
+                <li>[[live] activity 7 part 2](activity7_live)</li>
+            </ul> 
 
     - <small> 2/20 </small> 
 
@@ -166,7 +171,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Due-dc322f) [Worksheet 2](ws2)
 
     - <small> 2/24 </small> <br>
-        ![](https://img.shields.io/badge/Class%2008-1f77b4) ![](https://img.shields.io/badge/Class%2007-1f77b4) <b> Classification II </b>
+        ![](https://img.shields.io/badge/Class%2008-1f77b4) <b> Classification II </b>
 
         ![](https://img.shields.io/badge/Released-2ca02c) Homework 2
 
