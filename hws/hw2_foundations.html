@@ -1,0 +1,1098 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HW 2 part 1 &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hws/hw2_foundations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW 2 part 2" href="hw2_predictions.html" />
+    <link rel="prev" title="Homework 2" href="hw2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="hw2.html">Homework 2</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/hws/hw2_foundations.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/hws/hw2_foundations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HW 2 part 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 2 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-gradients-for-logistic-regression-1-5-pts">1. Deriving Gradients for Logistic Regression [1.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-helpful-derivatives-0-5-pts">1.1 Some helpful derivatives [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-of-log-loss-with-respect-to-w-0-0-5-pts">1.2 Gradient of log loss with respect to <span class="math notranslate nohighlight">\(w_0\)</span> [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-of-log-loss-with-respect-to-w-j-0-5-pts">1.3 Gradient of log loss with respect to <span class="math notranslate nohighlight">\(w_j\)</span> [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-gradient-descent-for-logistic-regression-1-5-pts">2. Implementing Gradient Descent for Logistic Regression [1.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid-function-0-25-pts">2.1 Sigmoid function [0.25 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-predictions-0-5-pts">2.2 Logistic regression predictions [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-gradient-update-rule-with-regularization-0-75-pts">2.3 Batch gradient update rule with regularization [0.75 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-model-class-2-pts">3. Logistic Regression Model Class [2 pts]</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hw-2-part-1">
+<span id="hw2-foundations"></span><h1>HW 2 part 1<a class="headerlink" href="#hw-2-part-1" title="Link to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>Classification: Foundations</p>
+<p class="attribution">—TODO your name here</p>
+</div></blockquote>
+<div class="admonition-collaboration-statement admonition">
+<p class="admonition-title">Collaboration Statement</p>
+<ul class="simple">
+<li><p>TODO brief statement on the nature of your collaboration.</p></li>
+<li><p>TODO your collaborator’s names here</p></li>
+</ul>
+</div>
+<section id="part-1-table-of-contents-and-rubric">
+<h2>Part 1 Table of Contents and Rubric<a class="headerlink" href="#part-1-table-of-contents-and-rubric" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Points</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Deriving Gradients for Logistic Regression</p></td>
+<td><p>1.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logistic Regression Gradient Descent Update</p></td>
+<td><p>1.5</p></td>
+</tr>
+<tr class="row-even"><td><p>Logistic Regression Model Class</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Total</p></td>
+<td><p>5 pts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notebook-and-function-imports">
+<h1>Notebook and function imports<a class="headerlink" href="#notebook-and-function-imports" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="c1"># random number generator</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="deriving-gradients-for-logistic-regression-1-5-pts">
+<h1>1. Deriving Gradients for Logistic Regression [1.5 pts]<a class="headerlink" href="#deriving-gradients-for-logistic-regression-1-5-pts" title="Link to this heading">#</a></h1>
+<p>In this section, we’ll derive the gradient update rules for logistic regression.</p>
+<p>From class, we saw that logistic regression uses a two-step model to produce predicted probabilities:</p>
+<p><strong>Step 1:</strong> Compute the linear combination <span class="math notranslate nohighlight">\(h_i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+h_i = w_0 + w_1 x_{i,1} + w_2 x_{i,2} + \cdots + w_p x_{i,p}
+\]</div>
+<p><strong>Step 2:</strong> Pass <span class="math notranslate nohighlight">\(h_i\)</span> through the sigmoid function <span class="math notranslate nohighlight">\(\sigma\)</span> to produce a predicted probability:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(h_i) = \frac{1}{1 + e^{-h_i}}
+\]</div>
+<p>We pair this model with the <strong>log loss</strong> (also called binary cross-entropy) for a single data point <span class="math notranslate nohighlight">\((\vec{x}_i, y_i)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell_{\log, i} = -y_i \log(\sigma(h_i)) - (1 - y_i) \log(1 - \sigma(h_i))
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Sigmoid derivative identity</p>
+<p>To compute the gradients of the log loss, we’ll need the following identity for the derivative of the sigmoid function (if you enjoy algebra, feel free to try deriving it yourself!):</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dh}\sigma(h) = \sigma(h)(1 - \sigma(h))
+\]</div>
+<p>We’ll use this identity throughout the derivations below.</p>
+</div>
+<section id="some-helpful-derivatives-0-5-pts">
+<h2>1.1 Some helpful derivatives [0.5 pts]<a class="headerlink" href="#some-helpful-derivatives-0-5-pts" title="Link to this heading">#</a></h2>
+<p>We first compute a couple of derivatives that will be helpful for the log loss derivation. Show that:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dh}\log(\sigma(h)) = 1 - \sigma(h)
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Calculus hints and reminders</p>
+<p>The derivative of <span class="math notranslate nohighlight">\(\log(x)\)</span> is <span class="math notranslate nohighlight">\(\frac{1}{x}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dx}\log(x) = \frac{1}{x}
+\]</div>
+<p>You’ll then need to use the chain rule and substitute the sigmoid derivative identity from above. You don’t need to take the derivative of <span class="math notranslate nohighlight">\(\sigma(h)\)</span> from scratch!</p>
+</div>
+<p>Your response:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{d}{dh}\log(\sigma(h)) &amp;= \text{ TODO step 1 } \\
+&amp;= \text{ TODO step 2 } \\
+&amp;= 1 - \sigma(h)
+\end{split}\]</div>
+<p>Next, also show that:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{dh}\log(1 - \sigma(h)) = -\sigma(h)
+\]</div>
+<p>Your response:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{d}{dh}\log(1 - \sigma(h)) &amp;= \text{ TODO step 1 } \\
+&amp;= \text{ TODO step 2 } \\
+&amp;= -\sigma(h)
+\end{split}\]</div>
+</section>
+<section id="gradient-of-log-loss-with-respect-to-w-0-0-5-pts">
+<h2>1.2 Gradient of log loss with respect to <span class="math notranslate nohighlight">\(w_0\)</span> [0.5 pts]<a class="headerlink" href="#gradient-of-log-loss-with-respect-to-w-0-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Using your results from 1.1, derive the partial derivative of the single-point log loss with respect to <span class="math notranslate nohighlight">\(w_0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\ell_{\log, i} = -y_i \log(\sigma(h_i)) - (1 - y_i) \log(1 - \sigma(h_i))\]</div>
+<p>Your response (you can just write the final expression):</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \ell_{\log, i}}{\partial w_0} = \text{ TODO }
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>Use the chain rule in two steps: first differentiate <span class="math notranslate nohighlight">\(\ell_i\)</span> with respect to <span class="math notranslate nohighlight">\(h_i\)</span> (using your results from 1.1), then differentiate <span class="math notranslate nohighlight">\(h_i\)</span> with respect to <span class="math notranslate nohighlight">\(w_0\)</span>.</p>
+<p>The final result should be quite simple after some cancellation: just two terms.</p>
+<p>If you get stuck at any point of this derivation, please don’t hesitate to reach out on Ed or come to TA/office hours!</p>
+</div>
+</section>
+<section id="gradient-of-log-loss-with-respect-to-w-j-0-5-pts">
+<h2>1.3 Gradient of log loss with respect to <span class="math notranslate nohighlight">\(w_j\)</span> [0.5 pts]<a class="headerlink" href="#gradient-of-log-loss-with-respect-to-w-j-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Now derive the partial derivative of the single-point log loss <span class="math notranslate nohighlight">\(\ell_i\)</span> with respect to <span class="math notranslate nohighlight">\(w_j\)</span> (for <span class="math notranslate nohighlight">\(j \in \{1, 2, \ldots, p\}\)</span>).</p>
+<p>Your response:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \ell_i}{\partial w_j} = \text{ TODO }
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>This should be very similar to 1.2, with the only difference being what <span class="math notranslate nohighlight">\(\frac{\partial h_i}{\partial w_j}\)</span> is as opposed to <span class="math notranslate nohighlight">\(\frac{\partial h_i}{\partial w_0}\)</span>. The final result should have three terms.</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementing-gradient-descent-for-logistic-regression-1-5-pts">
+<h1>2. Implementing Gradient Descent for Logistic Regression [1.5 pts]<a class="headerlink" href="#implementing-gradient-descent-for-logistic-regression-1-5-pts" title="Link to this heading">#</a></h1>
+<p>Now, let’s translate the math into code to build our own logistic regression model.</p>
+<section id="sigmoid-function-0-25-pts">
+<h2>2.1 Sigmoid function [0.25 pts]<a class="headerlink" href="#sigmoid-function-0-25-pts" title="Link to this heading">#</a></h2>
+<p>We begin by implementing the sigmoid function like we did in class:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(h) = \frac{1}{1 + e^{-h}}
+\]</div>
+<p>In NumPy, <span class="math notranslate nohighlight">\(e^{h}\)</span> is computed as <code class="docutils literal notranslate"><span class="pre">np.exp(h)</span></code>.</p>
+<div class="admonition-python-type-hint-unions admonition">
+<p class="admonition-title">Python Type Hint Unions</p>
+<p>You might notice that the <code class="docutils literal notranslate"><span class="pre">sigmoid()</span></code> function has a type hint that looks like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">np.ndarray</span> <span class="pre">|</span> <span class="pre">float</span></code> indicates that the function can take in either a numpy array or a scalar. This is an example of a <a class="reference external" href="https://docs.python.org/3/library/typing.html#type-hinting-unions">type hint union</a>, which indicates that multiple types are acceptable for the function parameter.</p>
+<p>To be clear, you don’t need to do anything special in your implementation to handle this. A single line of code with <code class="docutils literal notranslate"><span class="pre">np.exp</span></code> will work for both scalar and array inputs!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="n">h</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the sigmoid function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        h: a scalar or numpy array of any shape</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The sigmoid applied element-wise, same shape as input</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test sigmoid with scalar input</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">sigmoid</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">),</span> <span class="s2">&quot;sigmoid(0) should be 0.5&quot;</span>
+
+    <span class="c1"># Test sigmoid with array input</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">expected</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;sigmoid([-1, 0, 1]) should be </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Test that sigmoid outputs are between 0 and 1</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">result</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">result</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;sigmoid outputs should be between 0 and 1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logistic-regression-predictions-0-5-pts">
+<h2>2.2 Logistic regression predictions [0.5 pts]<a class="headerlink" href="#logistic-regression-predictions-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Next, implement the <code class="docutils literal notranslate"><span class="pre">logreg_predictions</span></code> function that computes predicted probabilities for all examples in <code class="docutils literal notranslate"><span class="pre">X</span></code> at once.</p>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>This should look very similar to the <code class="docutils literal notranslate"><span class="pre">linreg_predictions</span></code> function from the last exercise in Worksheet 2. The only difference is that we now pass the linear regression result into the sigmoid function.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">logreg_predictions</span><span class="p">(</span><span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w0</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute logistic regression predicted probabilities for all examples in X.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X: data examples of shape (n, p)</span>
+<span class="sd">        w: weights of shape (p,)</span>
+<span class="sd">        w0: scalar intercept term</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray of shape (n,) of predicted probabilities</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test logreg_predictions with simple data</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">])</span>
+    <span class="n">w0</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">logreg_predictions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">w0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">preds</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="s2">&quot;Predictions should have shape (n,)&quot;</span>
+
+    <span class="c1"># h = [1*0.5 + 2*(-0.5), 3*0.5 + 4*(-0.5)] = [-0.5, -0.5]</span>
+    <span class="c1"># sigmoid(-0.5) = 1 / (1 + exp(0.5))</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">]))</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">expected</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Predictions should be </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Test with zero weights: predictions should all be sigmoid(w0)</span>
+    <span class="n">preds_zero</span> <span class="o">=</span> <span class="n">logreg_predictions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">preds_zero</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)),</span> <span class="s2">&quot;With zero weights, predictions should be sigmoid(w0)&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="batch-gradient-update-rule-with-regularization-0-75-pts">
+<h2>2.3 Batch gradient update rule with regularization [0.75 pts]<a class="headerlink" href="#batch-gradient-update-rule-with-regularization-0-75-pts" title="Link to this heading">#</a></h2>
+<p>Now let’s implement a single batch gradient descent step for logistic regression with <strong>ridge (L2) regularization</strong>. The regularized log loss with ridge over the full dataset is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{ridge log}} = \frac{1}{n}\sum_{i=1}^{n} \left(-y_i \log(\sigma(h_i)) - (1 - y_i) \log(1 - \sigma(h_i))\right) + \lambda \sum_{j=1}^{p} w_j^2
+\]</div>
+<p>This is just like how we added the L2 regularization term to the linear regression MSE loss function.</p>
+<p>Taking the gradients using your results from Question 1, averaged over the dataset, plus the regularization term, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_0} = \frac{1}{n}\sum_{i=1}^{n}\underbrace{\frac{\partial \ell_{\log, i}}{\partial w_0}}_{\text{answer from 1.2}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_j} = \frac{1}{n}\sum_{i=1}^{n}\underbrace{\frac{\partial \ell_{\log, i}}{\partial w_j}}_{\text{answer from 1.3}} + 2\lambda w_j
+\]</div>
+<p>Note that the regularization term <span class="math notranslate nohighlight">\(2\lambda w_j\)</span> only applies to the feature weights <span class="math notranslate nohighlight">\(w_j\)</span>, <strong>not</strong> to the intercept <span class="math notranslate nohighlight">\(w_0\)</span>.</p>
+<p>We’ll now write a function to perform a single gradient descent update for the logistic regression weights, with regularization. Specifically the outputs will be:</p>
+<div class="math notranslate nohighlight">
+\[
+w_{0, \text{new}} = w_{0, \text{old}} - \alpha \frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_0}
+\]</div>
+<p>For each <span class="math notranslate nohighlight">\(j = 1, \ldots, p\)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+w_{j, \text{new}} = w_{j, \text{old}} - \alpha \frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_j}
+\]</div>
+<p>If we define the gradient vector as: <span class="math notranslate nohighlight">\(\nabla \mathcal{L}_{\text{ridge log}} = (\frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_0}, \frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_1}, \ldots, \frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_p})\)</span>, then our code can perform the gradient descent simultaneously for all the weights:</p>
+<div class="math notranslate nohighlight">
+\[\vec{w}_{\text{new}} = \vec{w}_{\text{old}} - \alpha \nabla \mathcal{L}_{\text{ridge log}}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\vec{w}_{\text{new}}\)</span> and <span class="math notranslate nohighlight">\(\vec{w}_{\text{old}}\)</span> are vectors of shape <span class="math notranslate nohighlight">\((p,)\)</span> holding the new and old weights, respectively.</p>
+<p>TODOO give a visual of what diff * X is doing and/or give some practice with this broadcasting in class?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">logreg_grad_update</span><span class="p">(</span><span class="n">w0_old</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">w_old</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lam</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform a single gradient update for logistic regression with ridge regularization.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        w0_old: the old intercept term</span>
+<span class="sd">        w_old: the old weights of shape (p,)</span>
+<span class="sd">        X: the feature matrix of shape (n, p)</span>
+<span class="sd">        y: the target vector of shape (n,)</span>
+<span class="sd">        alpha: the learning rate</span>
+<span class="sd">        lam: the regularization parameter lambda</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (w0_new, w_new): the new intercept term and weights of shape (p,)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Compute the predicted probabilities and the difference from the targets</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">logreg_predictions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w_old</span><span class="p">,</span> <span class="n">w0_old</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">w0_new</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">w_new</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">w0_new</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">)),</span> <span class="s2">&quot;The new intercept term should be a scalar&quot;</span>
+    <span class="k">assert</span> <span class="n">w_new</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">w_old</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;The new weights should have the same shape as the old weights&quot;</span>
+
+    <span class="k">return</span> <span class="n">w0_new</span><span class="p">,</span> <span class="n">w_new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Hints</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">diff</span></code> variable to compute both updates. Both <code class="docutils literal notranslate"><span class="pre">w0_new</span></code> and <code class="docutils literal notranslate"><span class="pre">w_new</span></code> can be computed in a single line of code each, with no loops needed.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">w_new</span></code>: you’ll need to broadcast <code class="docutils literal notranslate"><span class="pre">diff</span></code> against <code class="docutils literal notranslate"><span class="pre">X</span></code> to compute the gradient for all weights simultaneously. Since <code class="docutils literal notranslate"><span class="pre">X</span></code> is an <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">p)</span></code> shape array, <code class="docutils literal notranslate"><span class="pre">diff</span></code> needs to be reshaped to a 2D array with shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">1)</span></code> via <code class="docutils literal notranslate"><span class="pre">reshape(-1,</span> <span class="pre">1)</span></code> in order for the broadcasting to work:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="n">n</span> <span class="n">x</span> <span class="mi">1</span>
+<span class="n">X</span>                   <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="n">n</span> <span class="n">x</span> <span class="n">p</span>
+<span class="n">result</span>              <span class="p">(</span><span class="mi">2</span><span class="n">d</span> <span class="n">array</span><span class="p">):</span> <span class="n">n</span> <span class="n">x</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>Don’t forget to add the regularization term to <code class="docutils literal notranslate"><span class="pre">w_new</span></code> as well!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test with simple data</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+    <span class="n">w_old</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">w0_old</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># no regularization for this test</span>
+
+    <span class="n">w0_new</span><span class="p">,</span> <span class="n">w_new</span> <span class="o">=</span> <span class="n">logreg_grad_update</span><span class="p">(</span><span class="n">w0_old</span><span class="p">,</span> <span class="n">w_old</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
+
+    <span class="c1"># With zero weights and w0=0, all predictions are sigmoid(0) = 0.5</span>
+    <span class="c1"># diff = [0.5-0, 0.5-1, 0.5-1] = [0.5, -0.5, -0.5]</span>
+    <span class="c1"># mean(diff) = -1/6</span>
+    <span class="c1"># w0_new = 0 - 0.1 * (-1/6) = 1/60</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">w0_new</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;w0_new should be </span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="mi">60</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">w0_new</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># diff.reshape(-1, 1) * X = [[0.5, 1.0], [-1.5, -2.0], [-2.5, -3.0]]</span>
+    <span class="c1"># mean over rows = [-7/6, -4/3]</span>
+    <span class="c1"># w_new = [0, 0] - 0.1 * [-7/6, -4/3] = [7/60, 4/30]</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">w_new</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">15</span><span class="p">])),</span> <span class="sa">f</span><span class="s2">&quot;w_new should be [7/60, 2/15], got </span><span class="si">{</span><span class="n">w_new</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Test with regularization</span>
+    <span class="n">w_old_reg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+    <span class="n">w0_new_reg</span><span class="p">,</span> <span class="n">w_new_reg</span> <span class="o">=</span> <span class="n">logreg_grad_update</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">w_old_reg</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">w_new_reg</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="s2">&quot;w_new with regularization should have shape (p,)&quot;</span>
+
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">w_new_reg</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">293</span><span class="o">/</span><span class="mi">30</span><span class="p">,</span> <span class="mi">146</span><span class="o">/</span><span class="mi">15</span><span class="p">])),</span> <span class="sa">f</span><span class="s2">&quot;w_new with regularization should be [293/30, 146/15], got </span><span class="si">{</span><span class="n">w_new_reg</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-model-class-2-pts">
+<h1>3. Logistic Regression Model Class [2 pts]<a class="headerlink" href="#logistic-regression-model-class-2-pts" title="Link to this heading">#</a></h1>
+<p>Below is a gradient descent implementation that uses your <code class="docutils literal notranslate"><span class="pre">logreg_grad_update</span></code> function from the previous question. It follows the same pattern as the one you wrote in HW 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">logreg_grad_descent</span><span class="p">(</span><span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lam</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform gradient descent for logistic regression with ridge regularization.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X: the feature matrix of shape (n, p)</span>
+<span class="sd">        y: the target vector of shape (n,)</span>
+<span class="sd">        alpha: the learning rate</span>
+<span class="sd">        lam: the regularization parameter</span>
+<span class="sd">        max_iters: the maximum number of iterations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (w0, w): the final intercept term and weights of shape (p,)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">w0_old</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">w_old</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="c1"># Initialize in case we hit max_iters without converging</span>
+    <span class="n">w0_new</span><span class="p">,</span> <span class="n">w_new</span> <span class="o">=</span> <span class="n">w0_old</span><span class="p">,</span> <span class="n">w_old</span>
+
+    <span class="n">num_iters</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">w0_new</span><span class="p">,</span> <span class="n">w_new</span> <span class="o">=</span> <span class="n">logreg_grad_update</span><span class="p">(</span><span class="n">w0_old</span><span class="p">,</span> <span class="n">w_old</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
+
+        <span class="c1"># Check for convergence using the full parameter vector (including intercept)</span>
+        <span class="n">step_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">w0_new</span> <span class="o">-</span> <span class="n">w0_old</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">w_new</span> <span class="o">-</span> <span class="n">w_old</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">step_norm</span> <span class="o">&lt;</span> <span class="mf">1e-4</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">num_iters</span> <span class="o">&gt;=</span> <span class="n">max_iters</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max iterations reached: </span><span class="si">{</span><span class="n">max_iters</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="n">w0_old</span><span class="p">,</span> <span class="n">w_old</span> <span class="o">=</span> <span class="n">w0_new</span><span class="p">,</span> <span class="n">w_new</span>
+        
+        <span class="n">num_iters</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">w0_new</span><span class="p">,</span> <span class="n">w_new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s put everything together into a <code class="docutils literal notranslate"><span class="pre">MHCLogisticRegressor</span></code> class. Before we define the class, let’s first take a look at a useful numpy function: <code class="docutils literal notranslate"><span class="pre">np.argmax()</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.argmax()</span></code> returns the <strong>index</strong> of the maximum value in an array. When used with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> on a 2D array, it returns the index of the maximum value in each row. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">proba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>  <span class="c1"># class 0 probability is 0.8</span>
+                      <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>  <span class="c1"># class 1 probability is 0.7</span>
+                      <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span> <span class="c1"># class 0 probability is 0.6</span>
+
+    <span class="c1"># prints the index of the maximum value in each row</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">proba</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># outputs: array([0, 1, 0])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is useful for converting predicted probabilities into class predictions: if the class 0 probability (column 0) is higher, <code class="docutils literal notranslate"><span class="pre">argmax</span></code> returns 0; if the class 1 probability (column 1) is higher, it returns 1.</p>
+<div class="admonition-ml-model-class-documentation admonition">
+<p class="admonition-title">ML model class documentation</p>
+<p>Like HW 1, please also ensure that you document your class and its methods.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MHCLogisticRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;TODO class description&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">lam</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">max_iters</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;TODO constructor description&quot;&quot;&quot;</span>
+
+        <span class="c1"># TODO initialize the self parameters</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;TODO method description&quot;&quot;&quot;</span>
+
+        <span class="c1"># TODO: call logreg_grad_descent to find the optimal weights</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w0_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;TODO method description&quot;&quot;&quot;</span>
+
+        <span class="c1"># TODO A (n,) shape array of class 1 predicted probabilities</span>
+        <span class="n">class1_proba</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># TODO A (n,) shape array of class 0 predicted probabilities</span>
+        <span class="n">class0_proba</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">assert</span> <span class="n">class0_proba</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">class1_proba</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;The class probabilities should have the same shape&quot;</span>
+
+        <span class="c1"># Stacks the class 0 and class 1 probabilities into a single array of shape (n, 2)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">class0_proba</span><span class="p">,</span> <span class="n">class1_proba</span><span class="p">])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;TODO method description&quot;&quot;&quot;</span>
+
+        <span class="c1"># A (n,) shape array of predictions: use argmax with an axis reduction on the predicted probabilities array</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">assert</span> <span class="n">predictions</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="s2">&quot;The predictions should have shape (n,)&quot;</span>
+
+        <span class="k">return</span> <span class="n">predictions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Some linearly separable data</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">7.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">]])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">MHCLogisticRegressor</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_iters</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># Check predict_proba shape</span>
+    <span class="n">proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">proba</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;predict_proba should return shape (n, 2), got </span><span class="si">{</span><span class="n">proba</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Check that probabilities sum to 1</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">proba</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">),</span> <span class="s2">&quot;Probabilities should sum to 1 for each example&quot;</span>
+
+    <span class="c1"># Check predictions</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">preds</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">6</span><span class="p">,),</span> <span class="sa">f</span><span class="s2">&quot;predict should return shape (n,), got </span><span class="si">{</span><span class="n">preds</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Model should correctly classify linearly separable data, got </span><span class="si">{</span><span class="n">preds</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">How to submit</p>
+<p>Follow the instructions on the <a class="reference external" href="https://comsc335.github.io/syllabus/submit.html">course website</a> to submit your work. For part 1, you will submit <code class="docutils literal notranslate"><span class="pre">hw2_foundations.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">hw2_foundations.py</span></code>.</p>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./hws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hw2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hw2_predictions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HW 2 part 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 2 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-gradients-for-logistic-regression-1-5-pts">1. Deriving Gradients for Logistic Regression [1.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-helpful-derivatives-0-5-pts">1.1 Some helpful derivatives [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-of-log-loss-with-respect-to-w-0-0-5-pts">1.2 Gradient of log loss with respect to <span class="math notranslate nohighlight">\(w_0\)</span> [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-of-log-loss-with-respect-to-w-j-0-5-pts">1.3 Gradient of log loss with respect to <span class="math notranslate nohighlight">\(w_j\)</span> [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-gradient-descent-for-logistic-regression-1-5-pts">2. Implementing Gradient Descent for Logistic Regression [1.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid-function-0-25-pts">2.1 Sigmoid function [0.25 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-predictions-0-5-pts">2.2 Logistic regression predictions [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-gradient-update-rule-with-regularization-0-75-pts">2.3 Batch gradient update rule with regularization [0.75 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-model-class-2-pts">3. Logistic Regression Model Class [2 pts]</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

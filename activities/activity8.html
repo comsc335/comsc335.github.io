@@ -223,6 +223,20 @@
 
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw2.html">Homework 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_foundations.html">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -537,7 +551,7 @@ document.write(`
 <p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">LogisticRegression</a> from scikit-learn works the same way as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">LinearRegression</a>: we call <code class="docutils literal notranslate"><span class="pre">.fit(X,</span> <span class="pre">y)</span></code> to train the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO reates a LogisticRegression model and fit it on X and y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO creates a LogisticRegression model and fit it on X and y</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -758,10 +772,6 @@ w_{j, \text{new}} = w_{j, \text{old}} - \alpha \sum_{i=1}^n y_i x_{i,j}
 w_{1, \text{new}} &amp;= w_{1, \text{old}} - \alpha \underbrace{\sum_{i=1}^n y_i x_{i,1}}_{\text{result[0]}} \\
 w_{2, \text{new}} &amp;= w_{2, \text{old}} - \alpha \underbrace{\sum_{i=1}^n y_i x_{i,2}}_{\text{result[1]}}
 \end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[
-w_{1, \text{new}} = w_{1, \text{old}} - \alpha \underbrace{\sum_{i=1}^n y_i x_{i,2}}_{\text{result[1]}}
-\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w_old</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
