@@ -24,3 +24,7 @@ parts:
         sections:
         - file: hws/hw1_foundations.ipynb
         - file: hws/hw1_models.ipynb
+      - file: hws/hw2.md
+        sections:
+        - file: hws/hw2_foundations.ipynb
+        - file: hws/hw2_predictions.ipynb

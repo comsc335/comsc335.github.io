@@ -4,6 +4,7 @@ import functools
 import numpy as np
 import seaborn as sns
 import ipywidgets as widgets
+import pandas as pd
 import matplotlib.pyplot as plt
 from IPython.display import display
 
@@ -145,3 +146,55 @@ def explore_alpha(LinModel, alpha: float):
         f"alpha={alpha:.2f} | iters={len(model.loss_values_)} | "
         f"final [w0,w1,w2]={model.weights_} | final MSE={model.loss_values_[-1]:.4f}"
     )
+
+########################################################
+# Homework 2
+########################################################
+
+
+def explore_categorical_errors(df, column_name, error_type):
+    """Display false positive or false negative rates by categorical column"""
+    
+    # Calculate rates for each category value
+    rates_data = []
+    
+    for category_value in df[column_name].unique():
+        # Filter data for this category value
+        category_mask = df[column_name] == category_value
+        category_data = df[category_mask]
+        
+        # Calculate total positives and negatives for this category
+        total_actual_pos = (category_data['income_>50k'] == 1).sum()
+        total_actual_neg = (category_data['income_>50k'] == 0).sum()
+        
+        # Calculate false positives and false negatives for this category
+        false_pos_count = (category_data['false_pos'] == 1).sum()
+        false_neg_count = (category_data['false_neg'] == 1).sum()
+        
+        # Calculate rates (avoid division by zero)
+        fpr = (false_pos_count / total_actual_neg * 100) if total_actual_neg > 0 else 0
+        fnr = (false_neg_count / total_actual_pos * 100) if total_actual_pos > 0 else 0
+        
+        # Select which rate to display based on error_type
+        if error_type == 'False Positive Rate (%)':
+            rate_value = round(fpr, 1)
+        else:  # False Negative Rate (%)
+            rate_value = round(fnr, 1)
+        
+        rates_data.append({
+            'Category': category_value,
+            error_type: rate_value,
+        })
+    
+    # Create dataframe and sort by total count (most common categories first)
+    rates_df = pd.DataFrame(rates_data)
+    rates_df = rates_df.sort_values(error_type, ascending=False)
+
+    print(f"\n{error_type} of the best model by {column_name}:")
+    # print("=" * 80)
+    # if error_type == 'False Positive Rate (%)':
+    #     print("False Positive Rate = False Positives / Total Actual Negatives")
+    # else:
+    #     print("False Negative Rate = False Negatives / Total Actual Positives")
+    # print()
+    display(rates_df.reset_index(drop=True))

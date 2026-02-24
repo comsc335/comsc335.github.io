@@ -177,7 +177,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
                 <li>[activity 8](activity8)</li>
             </ul> 
 
-        ![](https://img.shields.io/badge/Released-2ca02c) Homework 2
+        ![](https://img.shields.io/badge/Released-2ca02c) [Homework 2](hw2)
 
     - <small> 2/25 </small>
 
@@ -194,7 +194,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2010-1f77b4) 
 
     - <small> 3/4 </small> <br>
-        ![](https://img.shields.io/badge/Due-dc322f) Homework 2
+        ![](https://img.shields.io/badge/Due-dc322f) [Homework 2](hw2)
 
     - <small> 3/5 </small> <br>
         ![](https://img.shields.io/badge/Class%2011-1f77b4) 
