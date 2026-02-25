@@ -713,7 +713,7 @@ h_i = w_0 + w_1 x_{i,1} + w_2 x_{i,2} + \cdots + w_p x_{i,p}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_j} = \frac{1}{n}\sum_{i=1}^{n}\underbrace{\frac{\partial \ell_{\log, i}}{\partial w_j}}_{\text{answer from 1.3}} + 2\lambda w_j
+\frac{\partial \mathcal{L}_{\text{ridge log}}}{\partial w_j} = \left( \frac{1}{n}\sum_{i=1}^{n}\underbrace{\frac{\partial \ell_{\log, i}}{\partial w_j}}_{\text{answer from 1.3}} \right) + 2\lambda w_j
 \]</div>
 <p>Note that the regularization term <span class="math notranslate nohighlight">\(2\lambda w_j\)</span> only applies to the feature weights <span class="math notranslate nohighlight">\(w_j\)</span>, <strong>not</strong> to the intercept <span class="math notranslate nohighlight">\(w_0\)</span>.</p>
 <p>We’ll now write a function to perform a single gradient descent update for the logistic regression weights, with regularization. Specifically the outputs will be:</p>
@@ -747,7 +747,7 @@ w_{j, \text{new}} = w_{j, \text{old}} - \alpha \frac{\partial \mathcal{L}_{\text
 <span class="sd">        (w0_new, w_new): the new intercept term and weights of shape (p,)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># Compute the predicted probabilities and the difference from the targets</span>
+    <span class="c1"># Compute the predicted probabilities and the difference from the targets, y_hat is the same as sigma(h)!</span>
     <span class="n">y_hat</span> <span class="o">=</span> <span class="n">logreg_predictions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w_old</span><span class="p">,</span> <span class="n">w0_old</span><span class="p">)</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
