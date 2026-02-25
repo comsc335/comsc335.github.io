@@ -174,7 +174,9 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2008-1f77b4) <b> Classification II </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552076/mod_resource/content/2/lec08-classification-ii-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552077/mod_resource/content/2/lec08-classification-ii.pdf)</li>
                 <li>[activity 8](activity8)</li>
+                <li>[[live] activity 8](activity8_live)</li>
             </ul> 
 
         ![](https://img.shields.io/badge/Released-2ca02c) [Homework 2](hw2)
