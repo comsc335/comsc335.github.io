@@ -32,4 +32,6 @@
   - The loss function calculated for a single data example $(\vec{x}_i, y_i)$
 * - $\sigma(h) = \frac{1}{1 + e^{-h}}$
   - The **sigmoid** function (also called the logistic function), a function that takes in a linear combination of features $h$ and outputs a probability in the range $(0, 1)$
+* - $\mathbf{1}[\text{condition}]$
+  - The **indicator function**: equals 1 if the condition is true, 0 if false
 ```
