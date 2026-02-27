@@ -187,6 +187,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2009-1f77b4) <b> Classification Metrics</b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552081/mod_resource/content/4/lec09-metrics-data-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552082/mod_resource/content/2/lec09-metrics-data.pdf)</li>
                 <li>[activity 9](https://docs.google.com/document/d/1Rqt2KSSL22uGKs-M_LFdoT3kX0DEYO7NSy5SnvjRQcE/edit?usp=sharing)</li>
             </ul> 
 
