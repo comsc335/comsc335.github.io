@@ -217,7 +217,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
         ![](https://img.shields.io/badge/Released-2ca02c) [Survey 2](https://www.gradescope.com/courses/1231382/assignments/7784686)
 
-    - <small> 3/6 </small>
+    - <small> 3/6 </small> <br>
         ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 3
 
 *   - <small> 3/9 </small> <!-- Week 7 -->
