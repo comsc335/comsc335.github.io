@@ -19,6 +19,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 - Regularization
 - Feature engineering
 - Fairness and interpretability
+- Ensembling
 - Neural networks
 - Unsupervised learning
     - K-means clustering
@@ -186,7 +187,8 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 2/26 </small> <br>
         ![](https://img.shields.io/badge/Class%2009-1f77b4) <b> Classification Metrics</b>
             <ul style="margin-top:-1em;">
-                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552081/mod_resource/content/2/lec09-metrics-data-starter.pdf)</li>
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552081/mod_resource/content/4/lec09-metrics-data-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552082/mod_resource/content/2/lec09-metrics-data.pdf)</li>
                 <li>[activity 9](https://docs.google.com/document/d/1Rqt2KSSL22uGKs-M_LFdoT3kX0DEYO7NSy5SnvjRQcE/edit?usp=sharing)</li>
             </ul> 
 
@@ -197,33 +199,43 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
 
     - <small> 3/3 </small> <br>
-        ![](https://img.shields.io/badge/Class%2010-1f77b4) 
+        ![](https://img.shields.io/badge/Class%2010-1f77b4) <b> ROC Curves and Cross Validation </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552084/mod_resource/content/2/lec10-auc-cv-starter.pdf)</li>
+                <li>[activity 10](https://docs.google.com/document/d/1-nAZ_eJRdrHLxY6sJK_SNXvZsjRVTdkfN-pYVmnBeZU/edit?usp=sharing)</li>
+            </ul> 
 
     - <small> 3/4 </small> <br>
         ![](https://img.shields.io/badge/Due-dc322f) [Homework 2](hw2)
 
     - <small> 3/5 </small> <br>
-        ![](https://img.shields.io/badge/Class%2011-1f77b4) 
+        ![](https://img.shields.io/badge/Class%2011-1f77b4) <b> Fairness </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552086/mod_resource/content/2/lec11-fairness-starter.pdf)</li>
+                <li>[activity 11](activity11)</li>
+            </ul> 
 
-        ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 3
+        ![](https://img.shields.io/badge/Released-2ca02c) [Survey 2](https://www.gradescope.com/courses/1231382/assignments/7784686)
 
     - <small> 3/6 </small>
-
+        ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 3
 
 *   - <small> 3/9 </small> <!-- Week 7 -->
 
     - <small> 3/10 </small> <br>
-        ![](https://img.shields.io/badge/Class%2012-1f77b4) 
+        ![](https://img.shields.io/badge/Class%2012-1f77b4) <b> Trees and Ensembling I </b>
 
     - <small> 3/11 </small> <br>
-        ![](https://img.shields.io/badge/Due-dc322f) Worksheet 3
+        ![](https://img.shields.io/badge/Due-dc322f) <s>Worksheet 3</s>
 
     - <small> 3/12 </small> <br>
-        ![](https://img.shields.io/badge/Class%2013-1f77b4) 
+        ![](https://img.shields.io/badge/Class%2013-1f77b4) <b> Ensembling II </b>
 
-        ![](https://img.shields.io/badge/Released-2ca02c) Homework 3
+        ![](https://img.shields.io/badge/Released-2ca02c) Final project proposal
 
-    - <small> 3/13 </small>
+    - <small> 3/13 </small> <br>
+        ![](https://img.shields.io/badge/Due-dc322f) Worksheet 3
+        ![](https://img.shields.io/badge/Due-dc322f) [Survey 2](https://www.gradescope.com/courses/1231382/assignments/7784686)
 
 *   - <small>03/16 - 3/22</small> 
     <br>🌼 Spring break 🌸
