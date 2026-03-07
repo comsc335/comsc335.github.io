@@ -202,6 +202,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2010-1f77b4) <b> ROC Curves</b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552084/mod_resource/content/2/lec10-auc-cv-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552085/mod_resource/content/2/lec10-auc-cv.pdf)</li>
                 <li>[activity 10](https://docs.google.com/document/d/1-nAZ_eJRdrHLxY6sJK_SNXvZsjRVTdkfN-pYVmnBeZU/edit?usp=sharing)</li>
             </ul> 
 
@@ -212,7 +213,9 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2011-1f77b4) <b> Fairness </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552087/mod_resource/content/2/lec11-cv-fairness-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552088/mod_resource/content/3/lec11-cv-fairness.pdf)</li>
                 <li>[activity 11](activity11)</li>
+                <li>[[live] activity 11](activity11_live)</li>
             </ul> 
 
         ![](https://img.shields.io/badge/Released-2ca02c) [Survey 2](https://www.gradescope.com/courses/1231382/assignments/7784686)
