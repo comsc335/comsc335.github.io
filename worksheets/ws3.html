@@ -436,7 +436,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-scaling">Standard scaling</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and Model: using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt">3. Train and Evaluate: Using Cross-Validation to Tune Hyperparameters [1 pt]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-thresholds-1-25-pts">4. Evaluate: ROC Curves and thresholds [1.25 pts]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-and-roc-curves">4.1 Matplotlib and ROC Curves</a></li>
@@ -663,7 +663,7 @@ y = \begin{cases}
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="features-and-model-using-pipeline-1-pt">
-<h1>2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]<a class="headerlink" href="#features-and-model-using-pipeline-1-pt" title="Link to this heading">#</a></h1>
+<h1>2. Features and Model: using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]<a class="headerlink" href="#features-and-model-using-pipeline-1-pt" title="Link to this heading">#</a></h1>
 <p>Now that the data is prepared, let’s build our features and model.</p>
 <p>We saw in <a class="reference external" href="https://comsc335.github.io/activities/activity7_live.html">Activity 7</a> that we can use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> transformer to add polynomial features to our data. In that activity, we “tuned” both the degree of the polynomial features and the regularization hyperparameter manually just by trying different values and seeing what worked best. In practice, we should treat the degree of the polynomial features as a <strong>hyperparameter</strong> as well and tune both using cross validation.</p>
 <p>To better organize our code, sklearn provides the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> class to chain together feature engineering and model steps. The way it works is that we pass a list of tuples to the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> constructor, where each tuple contains the name of the step and the step itself. For example, the following pipeline begins by applying a <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> transformer followed by a <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model:</p>
@@ -1281,7 +1281,7 @@ but you now need to compute the recall (TPR) for each group according to the <co
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-scaling">Standard scaling</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and Model: using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt">3. Train and Evaluate: Using Cross-Validation to Tune Hyperparameters [1 pt]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-thresholds-1-25-pts">4. Evaluate: ROC Curves and thresholds [1.25 pts]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-and-roc-curves">4.1 Matplotlib and ROC Curves</a></li>
