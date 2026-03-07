@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
@@ -438,7 +438,7 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt">3. Train and Evaluate: Using Cross-Validation to Tune Hyperparameters [1 pt]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-threshold-exploration-1-25-pts">4. Evaluate: ROC Curves and threshold exploration [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-thresholds-1-25-pts">4. Evaluate: ROC Curves and thresholds [1.25 pts]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-and-roc-curves">4.1 Matplotlib and ROC Curves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-widget-for-precision-and-recall">4.2 Threshold widget for precision and recall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-tradeoffs">4.3 Threshold Tradeoffs</a></li>
@@ -782,7 +782,7 @@ y = \begin{cases}
 <p>If <span class="math notranslate nohighlight">\(k=5\)</span>, and we have the given <span class="math notranslate nohighlight">\(\lambda\)</span> and degree values above, how many different models in total do we end up fitting?</p>
 <p><strong>3.1</strong> TODO your response</p>
 <div class="dropdown admonition">
-<p class="admonition-title">3.1 Solution and Takeaway (click to check)</p>
+<p class="admonition-title">Click for 3.1 solution and takeaway</p>
 <p>For 5 <span class="math notranslate nohighlight">\(\lambda\)</span> values and 2 degree values, we need to fit 10 models. Then, if we use 5-fold cross validation, we need to fit 10 x 5 = 50 models in total.</p>
 <p>This is the downside of cross validation: if the models are complex or the dataset is large, the number of models to fit can quickly become computationally expensive.</p>
 </div>
@@ -881,8 +881,8 @@ y = \begin{cases}
 </div>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="evaluate-roc-curves-and-threshold-exploration-1-25-pts">
-<h1>4. Evaluate: ROC Curves and threshold exploration [1.25 pts]<a class="headerlink" href="#evaluate-roc-curves-and-threshold-exploration-1-25-pts" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluate-roc-curves-and-thresholds-1-25-pts">
+<h1>4. Evaluate: ROC Curves and thresholds [1.25 pts]<a class="headerlink" href="#evaluate-roc-curves-and-thresholds-1-25-pts" title="Link to this heading">#</a></h1>
 <p>Now that we’ve found the best model via cross-validation, let’s visualize its performance and explore how different decision thresholds affect outcomes for our public insurance outreach program.</p>
 <section id="matplotlib-and-roc-curves">
 <h2>4.1 Matplotlib and ROC Curves<a class="headerlink" href="#matplotlib-and-roc-curves" title="Link to this heading">#</a></h2>
@@ -1032,7 +1032,7 @@ y = \begin{cases}
 </div>
 </div>
 <div class="dropdown admonition">
-<p class="admonition-title">Click to check threshold=0.5 results</p>
+<p class="admonition-title">Click to check results for threshold of 0.5</p>
 <p>At threshold=0.5, you should see approximately:</p>
 <ul class="simple">
 <li><p>Rrecall: ~0.54</p></li>
@@ -1198,7 +1198,7 @@ but you now need to compute the recall (TPR) for each group according to the <co
 <h1>6. Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
 <p><strong>6.1</strong> How much time did it take you to complete this worksheet?</p>
 <p><strong>Your Response</strong>: TODO</p>
-<p><strong>6.2</strong> What is one thing you have a better understanding of after completing this worksheet and going though the class content this week? This could be about the concepts or the code.</p>
+<p><strong>6.2</strong> What is one thing you have a better understanding of after completing this worksheet and going though the class content this week? This could be about the concepts, the math, or the code.</p>
 <p><strong>Your Response</strong>: TODO</p>
 <p><strong>6.3</strong> What questions or points of confusion do you have about the material covered in the past week of class?</p>
 <p><strong>Your Response</strong>: TODO</p>
@@ -1291,7 +1291,7 @@ but you now need to compute the recall (TPR) for each group according to the <co
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt">3. Train and Evaluate: Using Cross-Validation to Tune Hyperparameters [1 pt]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-threshold-exploration-1-25-pts">4. Evaluate: ROC Curves and threshold exploration [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-thresholds-1-25-pts">4. Evaluate: ROC Curves and thresholds [1.25 pts]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-and-roc-curves">4.1 Matplotlib and ROC Curves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-widget-for-precision-and-recall">4.2 Threshold widget for precision and recall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-tradeoffs">4.3 Threshold Tradeoffs</a></li>
