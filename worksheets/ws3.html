@@ -1,0 +1,1359 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worksheet 3 &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worksheets/ws3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Homework 1" href="../hws/hw1.html" />
+    <link rel="prev" title="Worksheet 2" href="ws2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Worksheet 3</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw2.html">Homework 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_foundations.html">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/worksheets/ws3.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worksheets/ws3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worksheet 3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worksheet 3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-public-insurance-coverage">Motivation: Public Insurance Coverage</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-1-pt">1. Data [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-scaling">Standard scaling</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt">3. Train and Evaluate: Using Cross-Validation to Tune Hyperparameters [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-threshold-exploration-1-25-pts">4. Evaluate: ROC Curves and threshold exploration [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-and-roc-curves">4.1 Matplotlib and ROC Curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-widget-for-precision-and-recall">4.2 Threshold widget for precision and recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-tradeoffs">4.3 Threshold Tradeoffs</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-and-decision-making-1-25-pts">5. Fairness and Decision-Making [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-specific-roc-curves">5.1 Group-Specific ROC Curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equal-opportunity-widget">5.2 Equal Opportunity Widget</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">6. Reflection [0.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worksheet-3">
+<span id="ws3"></span><h1>Worksheet 3<a class="headerlink" href="#worksheet-3" title="Link to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>Cross Validation and Fairness</p>
+<p class="attribution">—TODO your name here</p>
+</div></blockquote>
+<div class="admonition-collaboration-statement admonition">
+<p class="admonition-title">Collaboration Statement</p>
+<ul class="simple">
+<li><p>TODO brief statement on the nature of your collaboration.</p></li>
+<li><p>TODO your collaborator’s names here.</p></li>
+</ul>
+</div>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Practice following the ML process end-to-end with a new dataset</p></li>
+<li><p>Learn how to tune hyperparameters with cross-validation</p></li>
+<li><p>Visualize ROC curves and explore decision thresholds with interactive widgets</p></li>
+<li><p>Examine different model fairness criterion</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact_manual</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="motivation-public-insurance-coverage">
+<h2>Motivation: Public Insurance Coverage<a class="headerlink" href="#motivation-public-insurance-coverage" title="Link to this heading">#</a></h2>
+<p>In this worksheet, we work with the <strong>ACSPublicCoverage</strong> task from the <a class="reference external" href="https://github.com/socialfoundations/folktables">folktables</a> library. This dataset comes from the US Census American Community Survey and predicts whether an individual has public health insurance coverage.</p>
+<p>Suppose we have been hired to work at the Massachusetts state public health agency that wants to identify residents who are likely eligible for public coverage so it can proactively reach out and help them enroll.</p>
+<p>Our task is to build a classification model that will help social workers identify individuals as part of this outreach program. The features in this task include demographic and socioeconomic variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AGEP</span></code>: age of person</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEAR</span></code>: hearing difficulty</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEYE</span></code>: vision difficulty</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIS</span></code>: disability</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DREM</span></code>: cognitive difficulty</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ESP</span></code>: parent’s employment status</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FER</span></code>: recently gave birth</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAR</span></code>: marital status</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MIG</span></code>: mobility status (recently moved or not)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MIL</span></code>: military service</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PINCP</span></code>: total personal income</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RACE</span></code>: race</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCHL</span></code>: schooling attainment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEX</span></code>: sex</p></li>
+</ul>
+<p>And the outcome is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y = \begin{cases}
+    1 &amp; \text{if the person is eligible and has public health insurance coverage} \\
+    0 &amp; \text{if the person is ineligble for public health insurance coverage}
+\end{cases}
+\end{split}\]</div>
+<p>We’ll now follow the ML process start to finish with this dataset, introducing some of the new concepts we’ve learned in the past few classes:</p>
+<p><img alt="" src="../_images/ml_process.png" /></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="data-1-pt">
+<h1>1. Data [1 pt]<a class="headerlink" href="#data-1-pt" title="Link to this heading">#</a></h1>
+<p>Like we’ve seen on Homework 2, we need to prepare the data into a format our model can use. This begins by considering the nature of our features:</p>
+<p>Some features are <strong>numeric</strong>, where the value itself is meaningful and order matters. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AGEP</span></code> (age)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PINCP</span></code> (personal income): higher values mean more income.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCHL</span></code> (educational attainment): codes 1-24 represent increasing education levels, where 0 means no schooling completed and 24 means a doctorate degree.</p></li>
+</ul>
+<p>Other features are <strong>categorical</strong> where the codes are arbitrary labels with no ordering. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MAR</span></code> (marital status): coded 1-5, where 1=Married, 2=Widowed, 3=Divorced, 4=Separated, 5=Never married.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ESR</span></code> (employment status): 1=Civilian employed, 2=Civilian employed part-time, …, 6=Not in labor force.</p></li>
+</ul>
+<section id="standard-scaling">
+<h2>Standard scaling<a class="headerlink" href="#standard-scaling" title="Link to this heading">#</a></h2>
+<p>As we briefly examined in <a class="reference internal" href="../activities/activity11.html#activity11"><span class="std std-ref">Activity 11</span></a>, it is often beneficial to <strong>standardize</strong> the numeric features so that they are roughly on the same scale. This helps gradient descent converge faster, and also prevents numeric overflow/underflow issues if we happen to be taking exponentials like we do in logistic regression. Specifically, the standardization of a feature column <span class="math notranslate nohighlight">\(x_j\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{x_j - \text{mean}_j}{\text{std}_j}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\text{mean}_j\)</span> is the mean of the feature and <span class="math notranslate nohighlight">\(\text{std}_j\)</span> is the standard deviation of the feature. These correspond exactly to the NumPy functions <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>.</p>
+<p>This results in the transformed feature having an updated mean of 0 and an updated standard deviation of 1, which ensures that all of the variables have the same spread and scale. The code was provided on how to do this in HW 2, but now let’s implement it ourselves:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">standardize_feat</span><span class="p">(</span><span class="n">x_col</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rescales x_col to have mean 0 and standard dev 1.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        x_col: the feature column to transform</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The standardized column</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test standardize_feat</span>
+    <span class="n">test_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">standardized</span> <span class="o">=</span> <span class="n">standardize_feat</span><span class="p">(</span><span class="n">test_col</span><span class="p">)</span>
+
+    <span class="c1"># Check that mean is approximately 0</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">standardized</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="s2">&quot;Standardized column should have mean 0&quot;</span>
+    
+    <span class="c1"># Check that standard deviation is approximately 1</span>
+    <span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">standardized</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="s2">&quot;Standardized column should have standard deviation 1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives us an opportunity to look at another core piece of Pandas functionality: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html">pd.apply()</a></p>
+<p>In Python, we can pass <em>functions</em> as parameters to other functions. <code class="docutils literal notranslate"><span class="pre">pd.apply()</span></code> takes as a first parameter a function and applies that function to each column in the Dataframe. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dataframe with two columns: A and B</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+
+<span class="c1"># a function that squares each element in the column</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="c1"># returns a transformed dataframe with each column squared</span>
+<span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above <code class="docutils literal notranslate"><span class="pre">apply()</span></code> operation will return the dataframe with every column squared.</p>
+<p>Complete the <code class="docutils literal notranslate"><span class="pre">prepare_data()</span></code> function below for standardizing the numeric columns using pandas <code class="docutils literal notranslate"><span class="pre">apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">standardize_feat()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">prepare_data</span><span class="p">(</span><span class="n">X_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prepare the public insurance coverage dataframe for modeling.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df: raw X dataframe</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        X: feature matrix as pandas DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Copy the dataframe to avoid modifying the original</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># One-hot encode categorical columns using pd.get_dummies(dtype=int) </span>
+    <span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ANC&#39;</span><span class="p">,</span> <span class="s1">&#39;DEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;DEYE&#39;</span><span class="p">,</span> <span class="s1">&#39;DIS&#39;</span><span class="p">,</span> <span class="s1">&#39;DREM&#39;</span><span class="p">,</span> <span class="s1">&#39;ESP&#39;</span><span class="p">,</span> <span class="s1">&#39;ESR&#39;</span><span class="p">,</span> <span class="s1">&#39;FER&#39;</span><span class="p">,</span> <span class="s1">&#39;MAR&#39;</span><span class="p">,</span> <span class="s1">&#39;MIG&#39;</span><span class="p">,</span> <span class="s1">&#39;MIL&#39;</span><span class="p">,</span> <span class="s1">&#39;SEX&#39;</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">categorical_cols</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># TODO complete standardizing the numeric columns using apply() and standardize_feat</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AGEP&#39;</span><span class="p">,</span> <span class="s1">&#39;SCHL&#39;</span><span class="p">,</span> <span class="s1">&#39;PINCP&#39;</span><span class="p">]</span>
+    <span class="c1"># X[numeric_cols] = None</span>
+    
+
+    <span class="k">return</span> <span class="n">X</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test prepare_data</span>
+    <span class="n">pub_cov</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/COMSC-335/data/public_coverage/X_pub_cov_train.csv&#39;</span><span class="p">)</span>
+    <span class="n">pub_cov_feats</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">pub_cov</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pub_cov_feats</span><span class="p">[</span><span class="s1">&#39;AGEP&#39;</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="s2">&quot;AGEP should have mean 0 after standardization&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">pub_cov_feats</span><span class="p">[</span><span class="s1">&#39;AGEP&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="s2">&quot;AGEP should have std 1 after standardization&quot;</span>
+
+    <span class="k">assert</span> <span class="s1">&#39;MIL_0&#39;</span> <span class="ow">in</span> <span class="n">pub_cov_feats</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;MIL_0 should be one-hot encoded&quot;</span>
+    <span class="k">assert</span> <span class="s1">&#39;MIL_1&#39;</span> <span class="ow">in</span> <span class="n">pub_cov_feats</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;MIL_1 should be one-hot encoded&quot;</span>
+    <span class="k">assert</span> <span class="s1">&#39;MIL_2&#39;</span> <span class="ow">in</span> <span class="n">pub_cov_feats</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;MIL_2 should be one-hot encoded&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="features-and-model-using-pipeline-1-pt">
+<h1>2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]<a class="headerlink" href="#features-and-model-using-pipeline-1-pt" title="Link to this heading">#</a></h1>
+<p>Now that the data is prepared, let’s build our features and model.</p>
+<p>We saw in <a class="reference external" href="https://comsc335.github.io/activities/activity7_live.html">Activity 7</a> that we can use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> transformer to add polynomial features to our data. In that activity, we “tuned” both the degree of the polynomial features and the regularization hyperparameter manually just by trying different values and seeing what worked best. In practice, we should treat the degree of the polynomial features as a <strong>hyperparameter</strong> as well and tune both using cross validation.</p>
+<p>To better organize our code, sklearn provides the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> class to chain together feature engineering and model steps. The way it works is that we pass a list of tuples to the <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> constructor, where each tuple contains the name of the step and the step itself. For example, the following pipeline begins by applying a <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> transformer followed by a <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;features_scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s1">&#39;model_linreg&#39;</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">())</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>We can then call <code class="docutils literal notranslate"><span class="pre">fit()</span></code> and <code class="docutils literal notranslate"><span class="pre">predict()</span></code> on the <strong>entire pipeline</strong> just like we would with a model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>2.1:</strong> Complete the <code class="docutils literal notranslate"><span class="pre">build_classification_pipeline()</span></code> function below, which returns a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> with two named steps:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">features_poly</span></code>: a <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures()</span></code> object with <code class="docutils literal notranslate"><span class="pre">degree=1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_logreg</span></code>: a <code class="docutils literal notranslate"><span class="pre">LogisticRegression()</span></code> object with <code class="docutils literal notranslate"><span class="pre">max_iter=1000</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_classification_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Pipeline</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build a pipeline with two named steps:</span>
+<span class="sd">    - `features_poly`: a `PolynomialFeatures()` object with `degree=1`</span>
+<span class="sd">    - `model_logreg`: a `LogisticRegression()` object with `max_iter=1000`</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pipeline: a Pipeline object with the two steps defined above</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO your code here</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">pipeline</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">build_classification_pipeline</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pipeline steps:&quot;</span><span class="p">,</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;features_poly&#39;</span><span class="p">,</span> <span class="s2">&quot;features_poly should be the first step&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">PolynomialFeatures</span><span class="p">),</span> <span class="s2">&quot;features_poly should be a PolynomialFeatures object&quot;</span>
+    <span class="k">assert</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;model_logreg&#39;</span><span class="p">,</span> <span class="s2">&quot;model_logreg should be the second step&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pipeline</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">LogisticRegression</span><span class="p">),</span> <span class="s2">&quot;model_logreg should be a LogisticRegression object&quot;</span>
+    <span class="k">assert</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max_iter</span> <span class="o">==</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;model_logreg should be a LogisticRegression object with max_iter=1000&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We set <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> to degree 1 for now as a default. sklearn has functionality that allows us to vary the degree through our cross validation process in the next section.</p>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">LogisticRegression()</span></code> uses L2 regularization <span class="math notranslate nohighlight">\(\lambda=1\)</span>. Let’s use the sklearn function <code class="docutils literal notranslate"><span class="pre">roc_auc_score</span></code> to evaluate the model on the test data. <code class="docutils literal notranslate"><span class="pre">roc_auc_score</span></code> takes in the true labels and the predicted probabilities for the <strong>positive class</strong> as inputs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>2.2:</strong> Complete the code below that fits your pipeline to the training data and scores it on the test data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/COMSC-335/data/public_coverage/X_pub_cov_train.csv&#39;</span><span class="p">)</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/COMSC-335/data/public_coverage/X_pub_cov_test.csv&#39;</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/COMSC-335/data/public_coverage/y_pub_cov_train.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;~/COMSC-335/data/public_coverage/y_pub_cov_test.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="c1"># TODO: Fit your pipeline to the training data and use roc_auc_score to score it on the test data</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1">#test_auc = roc_auc_score(TODO)</span>
+
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pipeline test AUC:&quot;</span><span class="p">,</span> <span class="n">test_auc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check AUC results</p>
+<p>For the default hyperparameter values of <span class="math notranslate nohighlight">\(\lambda=1\)</span> and degree=1, the test AUC should be approximately 0.78-0.79.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt">
+<h1>3. Train and Evaluate: Using Cross-Validation to Tune Hyperparameters [1 pt]<a class="headerlink" href="#train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt" title="Link to this heading">#</a></h1>
+<p>Let’s try to improve upon this AUC by tuning the hyperparameters.</p>
+<p>Instead of manually trying different values (and continually peeking at the test set), we’ll use cross validation to systematically “grid search” over all possible hyperparameter values. Suppose we want to try the following values for our regularization hyperparameters:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda \in \{0.001, 0.01, 0.1, 1, 10\}\)</span></p></li>
+<li><p>degree <span class="math notranslate nohighlight">\(\in \{1, 2\}\)</span></p></li>
+</ul>
+<p>Each combination of <span class="math notranslate nohighlight">\(\lambda\)</span> and degree requires us to fit a new model. In total, that means we need to fit 10 models (5 <span class="math notranslate nohighlight">\(\lambda\)</span> values x 2 degree values). It is called a “grid search” because we imagine placing the <span class="math notranslate nohighlight">\(\lambda\)</span> values on the x-axis and the degree values on the y-axis. Each combination of <span class="math notranslate nohighlight">\(\lambda\)</span> and degree is a cell in the grid, and we fit a model for each cell:</p>
+<p><img alt="Grid Search" src="../_images/grid_search.png" /></p>
+<p>Furthermore, we want to safeguard against random variation in our results by using cross validation. From Lecture 11, cross validation works by taking our <strong>training data</strong> and splitting it into <span class="math notranslate nohighlight">\(k\)</span> equal-sized folds. For each fold <span class="math notranslate nohighlight">\(m\)</span>, we train on the other <span class="math notranslate nohighlight">\(k-1\)</span> folds and evaluate on the fold. We then average the results across all <span class="math notranslate nohighlight">\(k\)</span> folds to get a single score.</p>
+<p>We do this for each combination of <span class="math notranslate nohighlight">\(\lambda\)</span> and degree, and then pick the combination that gives the highest <strong>average</strong> AUC. For each fold, we again have to fit a new model since the training data is different for each fold:</p>
+<p><img alt="K-fold CV" src="../_images/kfold_cv.png" /></p>
+<hr class="docutils" />
+<p>If <span class="math notranslate nohighlight">\(k=5\)</span>, and we have the given <span class="math notranslate nohighlight">\(\lambda\)</span> and degree values above, how many different models in total do we end up fitting?</p>
+<p><strong>3.1</strong> TODO your response</p>
+<div class="dropdown admonition">
+<p class="admonition-title">3.1 Solution and Takeaway (click to check)</p>
+<p>For 5 <span class="math notranslate nohighlight">\(\lambda\)</span> values and 2 degree values, we need to fit 10 models. Then, if we use 5-fold cross validation, we need to fit 10 x 5 = 50 models in total.</p>
+<p>This is the downside of cross validation: if the models are complex or the dataset is large, the number of models to fit can quickly become computationally expensive.</p>
+</div>
+<p>While setting this grid search up manually is possible (you can imagine a nested for loop that iterates over the <span class="math notranslate nohighlight">\(\lambda\)</span> values and the degree values), sklearn conveniently provides the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> class to do this.</p>
+<p>The way it works is that we pass it a pipeline, a dictionary of hyperparameters to search over called the <code class="docutils literal notranslate"><span class="pre">param_grid</span></code>, and the number of folds for cross validation. The <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> dictionary keys are the names of the hyperparameters and the values are a list of all values to search over. There is a special string name that sklearn looks for to indicate that the hyperparameter is part of the grid search. We first give the pipeline step name, and then double underscores <code class="docutils literal notranslate"><span class="pre">__</span></code>, and then the hyperparameter name.</p>
+<p>For example, if we wanted to specify the <span class="math notranslate nohighlight">\(\lambda\)</span> values, we would use the key: <code class="docutils literal notranslate"><span class="pre">model_logreg__C</span></code>. This tells sklearn to look for the <strong>C</strong> hyperparameter in the <strong>model_logreg</strong> step of the pipeline.</p>
+<p>Then, the values for the <span class="math notranslate nohighlight">\(\lambda\)</span> values would be the list of values to search over. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;model_logreg__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Just like with the <code class="docutils literal notranslate"><span class="pre">RidgeRegression</span></code> model, sklearn frustratingly does not call <span class="math notranslate nohighlight">\(\lambda\)</span> the hyperparameter name. Instead, it calls it <code class="docutils literal notranslate"><span class="pre">C</span></code>, which is the inverse of <span class="math notranslate nohighlight">\(\lambda\)</span>: <span class="math notranslate nohighlight">\(C = 1/\lambda\)</span></p>
+</div>
+<p>Once we have the <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> specified, we can pass it to the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> class. The constructor takes the pipeline, the <code class="docutils literal notranslate"><span class="pre">param_grid</span></code>, the number of folds for cross validation, and the scoring metric. For example, if we wanted to use five folds and the AUC score as the scoring metric, we would write:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">verbose=2</span></code> tells sklearn to print the amount of time each cv fold takes to fit.</p>
+<p>We can then call <code class="docutils literal notranslate"><span class="pre">fit()</span></code> on the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> object to fit all of the models in the grid:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we can access the best model and best hyperparameters by accessing the <code class="docutils literal notranslate"><span class="pre">best_estimator_</span></code> and <code class="docutils literal notranslate"><span class="pre">best_params_</span></code> attributes of the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+<p>We can interact with <code class="docutils literal notranslate"><span class="pre">best_model</span></code> the same way we have with any other model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">test_scores</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>3.2.</strong> Complete the code below to set up the grid search over the given <span class="math notranslate nohighlight">\(C\)</span> values and degrees:<code class="docutils literal notranslate"><span class="pre">[1,2]</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">model_logreg__C</span></code> entry in <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> is given for you. Make sure to separate the <code class="docutils literal notranslate"><span class="pre">degree</span></code> name from the Pipeline step name with double underscores <code class="docutils literal notranslate"><span class="pre">__</span></code>. What are the best hyperparameter settings you’ve found, and what is the test set AUC?</p>
+<p><strong>Best hyperparameters:</strong>:</p>
+<ul class="simple">
+<li><p>Degree:</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span>:</p></li>
+</ul>
+<p><strong>Test set AUC:</strong> TODO your response</p>
+<div class="note admonition">
+<p class="admonition-title">Runtime note</p>
+<p>This grid search may take 1-2 minutes to run depending on JupyterHub available resources.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1"># TODO add the degree entry for the features_poly step</span>
+        <span class="s1">&#39;TODO&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;model_logreg__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>    
+    <span class="p">}</span>
+
+    <span class="c1"># TODO specify and fit the grid search with the following parameters:</span>
+    <span class="c1"># cv=5</span>
+    <span class="c1"># scoring=&#39;roc_auc&#39;</span>
+    <span class="c1"># verbose=2</span>
+    <span class="n">grid_search</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># TODO Save the best model and best hyperparameters</span>
+    <span class="n">best_model</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">best_params</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># TODO compute the test AUC of the best model</span>
+    <span class="n">test_auc</span> <span class="o">=</span> <span class="kc">None</span>
+    
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best model:&quot;</span><span class="p">,</span> <span class="n">best_model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best hyperparameters:&quot;</span><span class="p">,</span> <span class="n">best_params</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test AUC of best model:&quot;</span><span class="p">,</span> <span class="n">test_auc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check param_grid syntax and best hyperparameters</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> syntax is a bit tricky. The key is to use double underscores <code class="docutils literal notranslate"><span class="pre">__</span></code> to indicate that the hyperparameter is part of the pipeline step. In our case, we have two steps in the pipeline: <code class="docutils literal notranslate"><span class="pre">features_poly</span></code> and <code class="docutils literal notranslate"><span class="pre">model_logreg</span></code>. The two steps have hyperparameters <code class="docutils literal notranslate"><span class="pre">degree</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code>, respectively. So, we specify the <code class="docutils literal notranslate"><span class="pre">param_grid</span></code> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;features_poly__degree&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="s1">&#39;model_logreg__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You should find that the best hyperparameters are:</p>
+<ul class="simple">
+<li><p>Degree: 2</p></li>
+<li><p>C: 0.1</p></li>
+</ul>
+<p>You should also find that the test set AUC is in the 0.81 - 0.82 range. That increase may not seem like much, but in practice an acceptability threshold for a model is often <span class="math notranslate nohighlight">\(\ge0.80\)</span> AUC. So, small improvements can be meaningful. ML engineers will frequently spend a lot of time tuning hyperparameters to get that last bit of improvement.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="evaluate-roc-curves-and-threshold-exploration-1-25-pts">
+<h1>4. Evaluate: ROC Curves and threshold exploration [1.25 pts]<a class="headerlink" href="#evaluate-roc-curves-and-threshold-exploration-1-25-pts" title="Link to this heading">#</a></h1>
+<p>Now that we’ve found the best model via cross-validation, let’s visualize its performance and explore how different decision thresholds affect outcomes for our public insurance outreach program.</p>
+<section id="matplotlib-and-roc-curves">
+<h2>4.1 Matplotlib and ROC Curves<a class="headerlink" href="#matplotlib-and-roc-curves" title="Link to this heading">#</a></h2>
+<p>Up until this point, we have been using <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> for plotting. We prefer seaborn whenever possible because it makes it easy to create nice-looking plots with minimal code that connect with pandas DataFrames. However, to have the greatest degree of control over your visualizations, it is important to also understand the fundamentals of matplotlib.</p>
+<div class="admonition-matplotlib-reading admonition">
+<p class="admonition-title">Matplotlib reading</p>
+<p>Please read through the first three sections of the  <a class="reference external" href="https://matplotlib.org/stable/users/explain/quick_start.html#quick-start">matplotlib quickstart guide</a>: “A simple example,” “Parts of a figure,” and “Coding style.”</p>
+<p>In particular, the “Coding style” section is useful for understanding matplotlib examples you might see online that differ based on whether they are using the “object-oriented” or “pyplot” approach.</p>
+</div>
+<p>Try out the code examples in the cell below. You can use the rest of the quickstart guide as a reference for when you need to customize your plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># standard import idiom for matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># TODO try out code examples from &quot;a simple example&quot; section in the quickstart guide</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We saw in Class 10 that the <strong>ROC curve</strong> (Receiver Operating Characteristic) plots the True Positive Rate (TPR) against the False Positive Rate (FPR) at varying classification thresholds:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{TPR} = \frac{TP}{TP + FN}\)</span>, the proportion of actual positives correctly identified</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{FPR} = \frac{FP}{FP + TN}\)</span>, the proportion of actual negatives incorrectly flagged</p></li>
+</ul>
+<p>We can compute the TPR and FPR across a range of thresholds by using the <code class="docutils literal notranslate"><span class="pre">roc_curve(y_true,</span> <span class="pre">y_scores)</span></code> function, which takes the true labels and the predicted probabilities for the positive class as inputs.</p>
+<p>Read the documentation of sklearn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html">roc_curve</a> function to learn more about the tuple it returns. Then, complete the code below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># TODO compute predicted probabilities for the positive class from best_model</span>
+    <span class="n">y_scores</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># TODO: compute the ROC curve using roc_curve()</span>
+    <span class="n">fpr_vals</span><span class="p">,</span> <span class="n">tpr_vals</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tpr_vals</span></code> and <code class="docutils literal notranslate"><span class="pre">fpr_vals</span></code> are NumPy arrays that correspond to the true positive rate and false positive rate across a sweep of thresholds. That means that if we plot <code class="docutils literal notranslate"><span class="pre">fpr_vals</span></code> on the x-axis and <code class="docutils literal notranslate"><span class="pre">tpr_vals</span></code> on the y-axis, we will get the ROC curve. Let’s do this using matplotlib. In the cell below, create a <code class="docutils literal notranslate"><span class="pre">fig</span></code> with a single <code class="docutils literal notranslate"><span class="pre">ax</span></code> object using <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code>.</p>
+<p>Then, plot the ROC curve by calling <code class="docutils literal notranslate"><span class="pre">ax.plot(fpr_vals,</span> <span class="pre">tpr_vals)</span></code>.</p>
+<p>Finally, give the plot an appropriate title, x-axis label, and y-axis label using <code class="docutils literal notranslate"><span class="pre">ax.set_title()</span></code>, <code class="docutils literal notranslate"><span class="pre">ax.set_xlabel()</span></code>, and <code class="docutils literal notranslate"><span class="pre">ax.set_ylabel()</span></code>.</p>
+<p>Feel free to use other matplotlib functionality from the guide to customize the plot as you see fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+    <span class="c1"># TODO your ROC curve plotting code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">ROC curve visualization (click for a possible solution)</p>
+<p>The code below completes all of the labels that the question asks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_vals</span><span class="p">,</span> <span class="n">tpr_vals</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ROC Curve for public health insurance coverage model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also start to get creative with how we customize our plots. For example, we can add the random-classifier line to the plot by calling <code class="docutils literal notranslate"><span class="pre">ax.plot([0,</span> <span class="pre">1],</span> <span class="pre">[0,</span> <span class="pre">1],</span> <span class="pre">'--')</span></code>. We can also add a legend by calling <code class="docutils literal notranslate"><span class="pre">ax.legend()</span></code> and then adding the <code class="docutils literal notranslate"><span class="pre">label</span></code> argument to each plot line:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_vals</span><span class="p">,</span> <span class="n">tpr_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Our model&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random classifier&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="threshold-widget-for-precision-and-recall">
+<h2>4.2 Threshold widget for precision and recall<a class="headerlink" href="#threshold-widget-for-precision-and-recall" title="Link to this heading">#</a></h2>
+<p>Let’s now explore how different thresholds affect the precision and recall of our model. Let’s first compute the precision and recall, given a set of predictions <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> and the true labels <code class="docutils literal notranslate"><span class="pre">y_true</span></code>. The formulas for precision and recall are given by:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{Precision} = \frac{TP}{TP + FP}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Recall} = \frac{TP}{TP + FN}\)</span></p></li>
+</ul>
+<p>To do so, we’ll need to call the <code class="docutils literal notranslate"><span class="pre">confusion_matrix(y_true,</span> <span class="pre">y_pred)</span></code> function, which returns a confusion matrix as a NumPy array. Refer to <a class="reference internal" href="#activity11_live"><span class="xref myst">Activity 11</span></a> for an example of how to use it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_precision_recall</span><span class="p">(</span><span class="n">y_pred</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute precision and recall.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        y_pred: Predicted labels</span>
+<span class="sd">        y_true: True labels</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (precision, recall) as a tuple of floats</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO extract the true positive, false positive, false negative, and true negative counts from the confusion matrix</span>
+    <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="n">precision</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">recall</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span> <span class="o">=</span> <span class="n">compute_precision_recall</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">precision</span> <span class="o">==</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Precision should be 2/3&quot;</span>
+    <span class="k">assert</span> <span class="n">recall</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Recall should be 1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now build an interactive widget that allows us to compute the precision and recall for different thresholds. Unlike the other widgets in earlier assignments, the function here is provided inline with a special line of code at the top of the cell: <code class="docutils literal notranslate"><span class="pre">&#64;interact_manual(threshold=(0.1,</span> <span class="pre">0.9,</span> <span class="pre">0.1))</span></code>. Code that begins with <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is called a “decorator” and is a way to modify the function below it – you can read more about Python decorators at <a class="reference external" href="https://www.learnpython.org/en/Decorators">this link</a>, but for our purposes it is sufficient to know that we can use them to add interactivity to our functions by mirroring the parameter names in our plotting functions. You can also read <a class="reference external" href="https://ipywidgets.readthedocs.io/en/stable/examples/Using%20Interact.html">this tutorial</a> if you’d like to learn more about ipywidgets.</p>
+<p>In this case, we are telling Python to create a widget with a “Run Interact” button, and by specifying the <code class="docutils literal notranslate"><span class="pre">threshold=(0.1,</span> <span class="pre">0.9,</span> <span class="pre">0.1)</span></code> parameter, we are telling it to create a slider widget with values between 0.1 and 0.9 in increments of 0.1. When the user changes the slider, the function below it is called with the new <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter value.</p>
+<p>Complete the <code class="docutils literal notranslate"><span class="pre">explore_threshold()</span></code> function below to compute and print precision and recall at the given threshold. The thresholded predictions are computed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{y} = 
+\begin{cases}
+1 &amp; \text{if } y_{\text{score}} \geq \text{threshold} \\
+0 &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact_manual</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nd">@interact_manual</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">explore_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="n">y_scores</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># TODO compute your best model predictions at the given threshold</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># TODO compute the precision and recall at the new threshold</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision: </span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall: </span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check threshold=0.5 results</p>
+<p>At threshold=0.5, you should see approximately:</p>
+<ul class="simple">
+<li><p>Rrecall: ~0.54</p></li>
+<li><p>Precision: ~0.75</p></li>
+</ul>
+</div>
+</section>
+<section id="threshold-tradeoffs">
+<h2>4.3 Threshold Tradeoffs<a class="headerlink" href="#threshold-tradeoffs" title="Link to this heading">#</a></h2>
+<p>For our public health insurance outreach scenario, we have that:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+y = \begin{cases}
+    1 &amp; \text{if the person is eligible for public health insurance coverage} \\
+    0 &amp; \text{if the person is not eligible for public health insurance coverage}
+\end{cases}
+\end{split}\]</div>
+<p>We are using our model to help identify residents who are likely eligible for public coverage so the outreach program can proactively contact them and help them enroll.</p>
+<p>In this setting:</p>
+<ul class="simple">
+<li><p>A <strong>false negative</strong> means we miss someone who is actually eligible for public coverage.</p></li>
+<li><p>A <strong>false positive</strong> means we contact someone who is not actually eligible for public coverage.</p></li>
+</ul>
+<p>Answer the following questions:</p>
+<ol class="arabic simple">
+<li><p>Which type of error is more costly in this scenario, and why?</p></li>
+<li><p>Using your threshold widget above, what happens to precision and recall as the threshold increases?</p></li>
+<li><p>Based on your answers to 1 and 2, would you choose a threshold higher or lower than 0.5?</p></li>
+</ol>
+<p><strong>Your responses:</strong></p>
+<ol class="arabic simple">
+<li><p>TODO</p></li>
+<li><p>TODO</p></li>
+<li><p>TODO</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="fairness-and-decision-making-1-25-pts">
+<h1>5. Fairness and Decision-Making [1.25 pts]<a class="headerlink" href="#fairness-and-decision-making-1-25-pts" title="Link to this heading">#</a></h1>
+<p>The dataset, and thus our model includes <code class="docutils literal notranslate"><span class="pre">RACE</span></code> as a feature, which is coded as 1 for White respondents and 0 for non-White respondents. In this section, we’ll evaluate the fairness of the model with respect to this protected attribute.</p>
+<section id="group-specific-roc-curves">
+<h2>5.1 Group-Specific ROC Curves<a class="headerlink" href="#group-specific-roc-curves" title="Link to this heading">#</a></h2>
+<p>In Lecture 11, we discussed the <strong>separation criterion</strong> for fairness, which requires that the model has equal TPR and FPR across all groups. Because the ROC curve plots TPR against FPR, we can visualize whether the separation criterion is met by plotting the ROC curve separately for each group. Complete the code below to compute the per-group ROC curves and AUC values. This time, since we are plotting multiple ROC curves, pass a <code class="docutils literal notranslate"><span class="pre">label</span></code> argument to the <code class="docutils literal notranslate"><span class="pre">ax.plot()</span></code> calls with the group name as the label:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Predicted probabilities for the positive class</span>
+    <span class="n">y_scores</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Extract the race column from the test set</span>
+    <span class="n">race_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;RACE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># TODO create boolean masks for White and non-White groups</span>
+    <span class="n">is_white</span> <span class="o">=</span> <span class="p">(</span><span class="n">race_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">is_nonwhite</span> <span class="o">=</span> <span class="p">(</span><span class="n">race_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    
+    
+    <span class="c1"># TODO compute the ROC curve and AUC for the White group</span>
+    <span class="c1"># use boolean indexing for both y_test, and y_scores for is_white</span>
+    <span class="n">fpr_white</span><span class="p">,</span> <span class="n">tpr_white</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="c1">#auc_white = roc_auc_score(&quot;TODO&quot;)</span>
+    
+    <span class="c1"># TODO compute the ROC curve and AUC for the non-White group</span>
+    <span class="c1"># use boolean indexing for both y_test, and y_scores for is_nonwhite</span>
+    <span class="n">fpr_nonwhite</span><span class="p">,</span> <span class="n">tpr_nonwhite</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="c1">#auc_nonwhite = roc_auc_score(&quot;TODO&quot;)</span>
+
+
+    <span class="c1"># TODO plot both ROC curves with the appropriate labels and AUC values</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check group-specific ROC curve plotting</p>
+<p>After computing the per-group ROC curves and AUC values, we can plot them using the code below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_white</span><span class="p">,</span> <span class="n">tpr_white</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;White (AUC=</span><span class="si">{</span><span class="n">auc_white</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_nonwhite</span><span class="p">,</span> <span class="n">tpr_nonwhite</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Non-White (AUC=</span><span class="si">{</span><span class="n">auc_nonwhite</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should see that the White group has a higher AUC than the non-White group, indicating that the model is better at distinguishing positive from negative cases for White individuals. Because there is a fairly significant difference in AUC between the two groups, we can conclude that the model does <strong>not</strong> satisfy the separation criterion.</p>
+</div>
+</section>
+<section id="equal-opportunity-widget">
+<h2>5.2 Equal Opportunity Widget<a class="headerlink" href="#equal-opportunity-widget" title="Link to this heading">#</a></h2>
+<p>Another fairness criterion we discussed is <strong>equal opportunity</strong>, which means that the TPR should be equal across groups:</p>
+<div class="math notranslate nohighlight">
+\[P(\hat{y}=1 \mid y=1, \text{group}=\text{White}) = P(\hat{y}=1 \mid y=1, \text{group}=\text{non-White})\]</div>
+<p>One way to work toward this is to use <strong>different thresholds</strong> for each group. The widget below lets you explore per-group thresholds and see how they affect TPR and accuracy.</p>
+<p>Complete the code <code class="docutils literal notranslate"><span class="pre">explore_equal_opportunity()</span></code> function below. It should closely mirror the <code class="docutils literal notranslate"><span class="pre">explore_threshold()</span></code> function,
+but you now need to compute the recall (TPR) for each group according to the <code class="docutils literal notranslate"><span class="pre">is_white</span></code> and <code class="docutils literal notranslate"><span class="pre">is_nonwhite</span></code> boolean masks. You should additionally add the <code class="docutils literal notranslate"><span class="pre">&#64;interact_manual</span></code> decorator with two threshold parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t_white=(0.1,</span> <span class="pre">0.9,</span> <span class="pre">0.05)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t_nonwhite=(0.1,</span> <span class="pre">0.9,</span> <span class="pre">0.05)</span></code></p></li>
+</ul>
+<p>These parameters tell the widget to create <strong>two</strong> sliders that correspond to the inputs to the <code class="docutils literal notranslate"><span class="pre">explore_equal_opportunity()</span></code> function, with a range of 0.1 to 0.9 and a step size of 0.05.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># TODO add the @interact_manual decorator with threshold_white and threshold_nonwhite</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">explore_equal_opportunity</span><span class="p">(</span><span class="n">t_white</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">t_nonwhite</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="n">y_scores</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+        
+        <span class="c1"># TODO generate predictions for y_scores[is_white] using t_white</span>
+        <span class="n">y_pred_white</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">precision_white</span><span class="p">,</span> <span class="n">recall_white</span> <span class="o">=</span> <span class="n">compute_precision_recall</span><span class="p">(</span><span class="n">y_pred_white</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="n">is_white</span><span class="p">])</span>
+
+        <span class="c1"># TODO generate predictions for the is_nonwhite group, using t_nonwhite</span>
+        <span class="n">y_pred_nonwhite</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">precision_nonwhite</span><span class="p">,</span> <span class="n">recall_nonwhite</span> <span class="o">=</span> <span class="n">compute_precision_recall</span><span class="p">(</span><span class="n">y_pred_nonwhite</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="n">is_nonwhite</span><span class="p">])</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall (White): </span><span class="si">{</span><span class="n">recall_white</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall (Non-White): </span><span class="si">{</span><span class="n">recall_nonwhite</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Computes overall accuracy by combining predictions from both groups</span>
+        <span class="n">y_pred_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+        <span class="n">y_pred_all</span><span class="p">[</span><span class="n">is_white</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred_white</span>
+        <span class="n">y_pred_all</span><span class="p">[</span><span class="n">is_nonwhite</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred_nonwhite</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred_all</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the equal opportunity widget above, answer the following questions:</p>
+<ol class="arabic simple">
+<li><p><strong>Same threshold (0.5):</strong> Set both thresholds to 0.5. Report the TPR (recall) for both groups, as well as the overall accuracy.</p></li>
+<li><p><strong>Equal opportunity:</strong> Adjust the thresholds until the TPR values are approximately equal across groups. What thresholds did you use? Are there any significant shifts in overall accuracy?</p></li>
+<li><p><strong>Overall Recommendation:</strong> If you were an advisor to the public health outreach program, given what you have explored with the equal opportunity widget here and the precision-recall tradeoff widget in 4.3, what thresholds would you choose to use for this model? It is totally fine to speculate on this question as long as you provide some rationale from what you have observed.</p></li>
+</ol>
+<p><strong>Your responses:</strong></p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<ul class="simple">
+<li><p>TPR white: TODO</p></li>
+<li><p>TPR nonwhite: TODO</p></li>
+<li><p>Overall accuracy: TODO</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>TODO</p></li>
+<li><p>TODO</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Recall (TPR) values check for the default threshold of 0.5</p>
+<p>At threshold=0.5 for both groups, you should see approximately:</p>
+<ul class="simple">
+<li><p>TPR white: ~0.56</p></li>
+<li><p>TPR nonwhite: ~0.51</p></li>
+<li><p>Overall accuracy: ~0.77</p></li>
+</ul>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="reflection-0-5-pts">
+<h1>6. Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
+<p><strong>6.1</strong> How much time did it take you to complete this worksheet?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p><strong>6.2</strong> What is one thing you have a better understanding of after completing this worksheet and going though the class content this week? This could be about the concepts or the code.</p>
+<p><strong>Your Response</strong>: TODO</p>
+<p><strong>6.3</strong> What questions or points of confusion do you have about the material covered in the past week of class?</p>
+<p><strong>Your Response</strong>: TODO</p>
+<hr class="docutils" />
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Dataset: <a class="reference external" href="https://github.com/socialfoundations/folktables">folktables</a> (Ding et al., 2021), based on US Census ACS data.</p></li>
+<li><p>Equal opportunity criterion: Hardt, Price, and Srebro (2016), “Equality of Opportunity in Supervised Learning.”</p></li>
+<li><p>Fairness concepts: <a class="reference external" href="https://fairmlbook.org">fairmlbook.org</a> (Barocas, Hardt, Narayanan).</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worksheets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ws2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Worksheet 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../hws/hw1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework 1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Worksheet 3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-public-insurance-coverage">Motivation: Public Insurance Coverage</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-1-pt">1. Data [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-scaling">Standard scaling</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-model-using-pipeline-1-pt">2. Features and model using <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-evaluate-using-cross-validation-to-tune-hyperparameters-1-pt">3. Train and Evaluate: Using Cross-Validation to Tune Hyperparameters [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-curves-and-threshold-exploration-1-25-pts">4. Evaluate: ROC Curves and threshold exploration [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-and-roc-curves">4.1 Matplotlib and ROC Curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-widget-for-precision-and-recall">4.2 Threshold widget for precision and recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-tradeoffs">4.3 Threshold Tradeoffs</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-and-decision-making-1-25-pts">5. Fairness and Decision-Making [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-specific-roc-curves">5.1 Group-Specific ROC Curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equal-opportunity-widget">5.2 Equal Opportunity Widget</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">6. Reflection [0.5 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
