@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Schedule &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'syllabus/schedule_draft';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws3.html">Worksheet 3</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw2.html">Homework 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_foundations.html">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/syllabus/schedule_draft.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Schedule</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="schedule">
+<h1>Schedule<a class="headerlink" href="#schedule" title="Link to this heading">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As this is a new course, the schedule may change throughout the semester to best accommodate your learning!</p>
+</div>
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
+<p>A list of topics we will cover can be found below. Note that topics may be subject to change.</p>
+<ul class="simple">
+<li><p>Regression</p></li>
+<li><p>Gradient descent</p></li>
+<li><p>Classification</p></li>
+<li><p>Model selection and evaluation</p></li>
+<li><p>Regularization</p></li>
+<li><p>Feature engineering</p></li>
+<li><p>Fairness and interpretability</p></li>
+<li><p>Ensembling</p></li>
+<li><p>Neural networks</p></li>
+<li><p>Unsupervised learning</p>
+<ul>
+<li><p>K-means clustering</p></li>
+<li><p>Autoencoders</p></li>
+</ul>
+</li>
+</ul>
+<!-- Template for lists within a table cell
+
+<ul style="margin-top:-1em;">
+    <li>[starter] slides</li>
+</ul> 
+
+-->
+<hr class="docutils" />
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Monday</p></th>
+<th class="head"><p>Tuesday</p></th>
+<th class="head"><p>Wednesday</p></th>
+<th class="head"><p>Thursday</p></th>
+<th class="head"><p>Friday</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><small> 1/26 </small> <!-- Week 1 --></p></td>
+<td><p><small> 1/27 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2000-1f77b4" /> <b>Introduction</b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552043/mod_resource/content/3/lec00-intro-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552044/mod_resource/content/2/lec00-intro.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://docs.google.com/document/d/1C20oOB-E-XyJra-tNXNY7fLjPHdAUBsZlWaHTEvIWQg/edit?usp=sharing">activity 1</a></li>
+<li><a class="reference external" href="https://mtholyoke.zoom.us/rec/share/RmEz7nIKfeO4sNh4dLAS697zZ-huBebryOdItnU1zmfYiBeXFnFCruTL0gVXBeY.K2mXlnEXy7qH0oIb">recording</a></li>
+</ul></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <a class="reference external" href="https://www.gradescope.com/courses/1231382/assignments/7547649">Survey 1</a></p>
+</td>
+<td><p><small> 1/28 </small></p></td>
+<td><p><small> 1/29 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2001-1f77b4" /> <b>kNN, Math, NumPy</b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552049/mod_resource/content/2/lec01-knn-numpy-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552050/mod_resource/content/4/lec01-knn-numpy.pdf">[complete] slides</a></li>
+<li><a class="reference internal" href="../activities/activity2.html#activity2"><span class="std std-ref">activity 2</span></a></li>
+<li><a class="reference internal" href="../activities/activity2_live.html#activity2-live"><span class="std std-ref">[live] activity 2</span></a></li>
+</ul></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <a class="reference internal" href="../worksheets/ws1.html#ws1"><span class="std std-ref">Worksheet 1</span></a></p>
+</td>
+<td><p><small> 1/30 </small></p></td>
+</tr>
+<tr class="row-odd"><td><p><small> 2/2 </small> <!-- Week 2 -->
+<br> <img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <a class="reference external" href="https://www.gradescope.com/courses/1231382/assignments/7547649">Survey 1</a></p></td>
+<td><p><small> 2/3 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2002-1f77b4" /> <b> Linear Regression </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552052/mod_resource/content/2/lec02-linear-regression-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552053/mod_resource/content/2/lec02-linear-regression.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1561027/mod_resource/content/1/lec02-mse-rotate.mp4">MSE loss video</a></li>
+<li><a class="reference external" href="https://docs.google.com/document/d/1ybZLoFSFOqInZ_nxbSkuUmOgdWQHiVmxUryNA8VM6yQ/edit?usp=sharing">activity 3</a></li>
+</ul></p></td>
+<td><p><small> 2/4 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <a class="reference internal" href="../worksheets/ws1.html#ws1"><span class="std std-ref">Worksheet 1</span></a></p></td>
+<td><p><small> 2/5 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2003-1f77b4" /> <b> Gradient Descent I </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552057/mod_resource/content/4/lec03-gradient-descent-i-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562025/mod_resource/content/1/lec03-gradient-descent-i.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562026/mod_resource/content/2/lec02-gd-w0.mp4">gradient descent video</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562027/mod_resource/content/1/lec02-mse-slice-to-contour.mp4">contour plot video</a></li>
+<li><a class="reference internal" href="../activities/activity4.html#activity4"><span class="std std-ref">activity 4</span></a></li>
+<li><a class="reference internal" href="../activities/activity4_live.html#activity4-live"><span class="std std-ref">[live] activity 4</span></a></li>
+</ul></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <s>Homework 1</s></p>
+</td>
+<td><p><small> 2/6 </small> <br></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <a class="reference internal" href="../hws/hw1.html#hw1"><span class="std std-ref">Homework 1</span></a></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><small> 2/9 </small> <!-- Week 3 --></p></td>
+<td><p><small> 2/10 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2004-1f77b4" /> <b> Gradient Descent II </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562791/mod_resource/content/1/lec04-gradient-descent-ii-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562907/mod_resource/content/1/lec04-gradient-descent-ii.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://docs.google.com/document/d/10deeym-8sHELoF4geHWFqWHs9GSOAjNFgv-nsJMURaU/edit?usp=sharing">activity 5</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562908/mod_resource/content/1/lec04-gd-batch.mp4">batch gradient descent video</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562909/mod_resource/content/1/lec04-gd-batch-sgd.mp4">batch vs SGD video</a></li>
+</ul></p></td>
+<td><p><small> 2/11 </small></p></td>
+<td><p><small> 2/12 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2005-1f77b4" /> <b> Model evaluation </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1563327/mod_resource/content/2/lec05-model-evaluation-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1563565/mod_resource/content/2/lec05-model-evaluation.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1563570/mod_resource/content/1/lec04-gd-batch-sgd-minibatch.mp4">batch vs SGD vs mini-batch video</a></li>
+<li><a class="reference internal" href="../activities/activity6.html#activity6"><span class="std std-ref">activity 6</span></a></li>
+<li><a class="reference internal" href="../activities/activity6_live.html#activity6-live"><span class="std std-ref">[live] activity 6</span></a></li>
+</ul></p></td>
+<td><p><small> 2/13 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <s>Homework 1</s></p></td>
+</tr>
+<tr class="row-odd"><td><p><small> 2/16 </small> <!-- Week 4 --> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <a class="reference internal" href="../hws/hw1.html#hw1"><span class="std std-ref">Homework 1</span></a></p></td>
+<td><p><small> 2/17 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2006-1f77b4" /> <b> Regularization </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552068/mod_resource/content/2/lec06-regularization-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552069/mod_resource/content/2/lec06-regularization.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://docs.google.com/document/d/1YGJkvgbH1YMYXxaXukRL4L0O3N5N0RayQ2R1ms9eIwE/edit?usp=sharing">activity 7 part 1</a></li>
+<li><a class="reference external" href="https://docs.google.com/document/d/1WMR4KdkXK9XG0aobGGkdTOq1Z_1Y-ENDK0LfQqwyyPM/edit?usp=sharing">[live] activity 7 part 1</a></li>
+</ul></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <a class="reference internal" href="../worksheets/ws2.html#ws2"><span class="std std-ref">Worksheet 2</span></a></p>
+</td>
+<td><p><small> 2/18 </small></p></td>
+<td><p><small> 2/19 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2007-1f77b4" /> <b> Classification I </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552071/mod_resource/content/2/lec07-classification-i-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1564943/mod_resource/content/1/lec07-classification.pdf">[complete] slides</a></li>
+<li><a class="reference internal" href="../activities/activity7.html#activity7"><span class="std std-ref">activity 7 part 2</span></a></li>
+<li><a class="reference internal" href="../activities/activity7_live.html#activity7-live"><span class="std std-ref">[live] activity 7 part 2</span></a></li>
+</ul></p></td>
+<td><p><small> 2/20 </small></p></td>
+</tr>
+<tr class="row-even"><td><p><small> 2/23 </small> <br> <!-- Week 5 -->
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <a class="reference internal" href="../worksheets/ws2.html#ws2"><span class="std std-ref">Worksheet 2</span></a></p></td>
+<td><p><small> 2/24 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2008-1f77b4" /> <b> Classification II </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552076/mod_resource/content/2/lec08-classification-ii-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552077/mod_resource/content/2/lec08-classification-ii.pdf">[complete] slides</a></li>
+<li><a class="reference internal" href="../activities/activity8.html#activity8"><span class="std std-ref">activity 8</span></a></li>
+<li><a class="reference internal" href="../activities/activity8_live.html#activity8-live"><span class="std std-ref">[live] activity 8</span></a></li>
+</ul></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <a class="reference internal" href="../hws/hw2.html#hw2"><span class="std std-ref">Homework 2</span></a></p>
+</td>
+<td><p><small> 2/25 </small></p></td>
+<td><p><small> 2/26 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2009-1f77b4" /> <b> Classification Metrics</b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552081/mod_resource/content/4/lec09-metrics-data-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552082/mod_resource/content/2/lec09-metrics-data.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://docs.google.com/document/d/1Rqt2KSSL22uGKs-M_LFdoT3kX0DEYO7NSy5SnvjRQcE/edit?usp=sharing">activity 9</a></li>
+</ul></p></td>
+<td><p><small> 2/27 </small></p></td>
+</tr>
+<tr class="row-odd"><td><p><small> 3/2 </small> <!-- Week 6 --></p></td>
+<td><p><small> 3/3 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2010-1f77b4" /> <b> ROC Curves</b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552084/mod_resource/content/2/lec10-auc-cv-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552085/mod_resource/content/2/lec10-auc-cv.pdf">[complete] slides</a></li>
+<li><a class="reference external" href="https://docs.google.com/document/d/1-nAZ_eJRdrHLxY6sJK_SNXvZsjRVTdkfN-pYVmnBeZU/edit?usp=sharing">activity 10</a></li>
+</ul></p></td>
+<td><p><small> 3/4 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <a class="reference internal" href="../hws/hw2.html#hw2"><span class="std std-ref">Homework 2</span></a></p></td>
+<td><p><small> 3/5 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2011-1f77b4" /> <b> Fairness </b>
+<ul style="margin-top:-1em;">
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552087/mod_resource/content/2/lec11-cv-fairness-starter.pdf">[starter] slides</a></li>
+<li><a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552088/mod_resource/content/3/lec11-cv-fairness.pdf">[complete] slides</a></li>
+<li><a class="reference internal" href="../activities/activity11.html#activity11"><span class="std std-ref">activity 11</span></a></li>
+<li><a class="reference internal" href="../activities/activity11_live.html#activity11-live"><span class="std std-ref">[live] activity 11</span></a></li>
+</ul></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <a class="reference external" href="https://www.gradescope.com/courses/1231382/assignments/7784686">Survey 2</a></p>
+</td>
+<td><p><small> 3/6 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> <a class="reference internal" href="../worksheets/ws3.html#ws3"><span class="std std-ref">Worksheet 3</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><small> 3/9 </small> <!-- Week 7 --></p></td>
+<td><p><small> 3/10 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2012-1f77b4" /> <b> Trees and Ensembling I </b></p></td>
+<td><p><small> 3/11 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <s>Worksheet 3</s></p></td>
+<td><p><small> 3/12 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2013-1f77b4" /> <b> Ensembling II </b></p>
+<p><img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> Final project proposal</p>
+</td>
+<td><p><small> 3/13 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <a class="reference internal" href="../worksheets/ws3.html#ws3"><span class="std std-ref">Worksheet 3</span></a> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> <a class="reference external" href="https://www.gradescope.com/courses/1231382/assignments/7784686">Survey 2</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><small>03/16 - 3/22</small>
+<br>🌼 Spring break 🌸</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><small> 3/23 </small> <!-- Week 8 --></p></td>
+<td><p><small> 3/24 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Class%2014-1f77b4" />
+<br> <img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> HW 3</p></td>
+<td><p><small> 3/25 </small></p></td>
+<td><p><small> 3/26 </small></p></td>
+<td><p><small> 3/27 </small></p></td>
+</tr>
+<tr class="row-odd"><td><p><small> 3/30 </small> <!-- Week 9 --> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> Final project proposal</p></td>
+<td><p><small> 3/31 </small></p></td>
+<td><p><small> 4/1 </small></p></td>
+<td><p><small> 4/2 </small></p></td>
+<td><p><small> 4/3 </small>
+<br> <img alt="" src="https://img.shields.io/badge/Due-dc322f" /> HW 3<br />
+<br> <img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> HW 4</p></td>
+</tr>
+<tr class="row-even"><td><p><small> 4/6 </small> <!-- Week 10 --> <br></p></td>
+<td><p><small> 4/7 </small></p></td>
+<td><p><small> 4/8 </small></p></td>
+<td><p><small> 4/9 </small></p></td>
+<td><p><small> 4/10 </small></p></td>
+</tr>
+<tr class="row-odd"><td><p><small> 4/13 </small> <!-- Week 11 --> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> HW 4</p></td>
+<td><p><small> 4/14 </small> <br>
+<img alt="" src="https://img.shields.io/badge/Released-2ca02c" /> Worksheet 4</p></td>
+<td><p><small> 4/15 </small></p></td>
+<td><p><small> 4/16 </small></p></td>
+<td><p><small> 4/17 </small></p></td>
+</tr>
+<tr class="row-even"><td><p><small> 4/20 </small> <!-- Week 12 --> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> Worksheet 4</p></td>
+<td><p><small> 4/21 </small></p></td>
+<td><p><small> 4/22 </small></p></td>
+<td><p><small> 4/23 </small></p></td>
+<td><p><small> 4/24 </small></p></td>
+</tr>
+<tr class="row-odd"><td><p><small> 4/27 </small> <!-- Week 13 --> <br>
+<img alt="" src="https://img.shields.io/badge/Due-dc322f" /> Final project checkpoint</p></td>
+<td><p><small> 4/28 </small></p></td>
+<td><p><small> 4/29 </small></p></td>
+<td><p><small> 4/30 </small></p></td>
+<td><p><small> 5/1 </small></p></td>
+</tr>
+<tr class="row-even"><td><p><small> 5/4 </small> <!-- Week 14 --></p></td>
+<td><p><small> 5/5 </small></p></td>
+<td><p><small> 5/6 </small></p></td>
+<td><p><small> 5/7 </small></p></td>
+<td><p><small> 5/8 </small></p></td>
+</tr>
+<tr class="row-odd"><td><p><small> 5/11 </small> <br> <br> <img alt="" src="https://img.shields.io/badge/Due:-d62728" /> Final project <strong>(noon)</strong> <!-- Week 15 --></p></td>
+<td><p><small> 5/12 </small></p></td>
+<td><p><small> 5/13 </small></p></td>
+<td><p><small> 5/14 </small></p></td>
+<td><p><small> 5/15 </small></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./syllabus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
