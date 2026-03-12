@@ -25,4 +25,4 @@ This homework is due **Wednesday 3/4 at 11:59pm.**
 :::
 
 - [Part 1: Foundations](hw2_foundations.ipynb)
-- [Part 2: Models](hw2_models.ipynb)
+- [Part 2: Predictions](hw2_predictions.ipynb)

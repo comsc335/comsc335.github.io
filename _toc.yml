@@ -14,6 +14,7 @@ parts:
   - caption: Resources
     chapters:
       - file: resources/catalog.md
+      - file: activities/activities.md
   - caption: Worksheets
     chapters:
       - file: worksheets/ws1.ipynb
@@ -29,3 +30,6 @@ parts:
         sections:
         - file: hws/hw2_foundations.ipynb
         - file: hws/hw2_predictions.ipynb
+      - file: final_project/final_project.md
+        sections:
+        - file: final_project/final_proposal.ipynb

@@ -227,22 +227,14 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 3/10 </small> <br>
         ![](https://img.shields.io/badge/Class%2012-1f77b4) <b> Trees and Ensembling I </b>
-            <ul style="margin-top:-1em;">
-                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552090/mod_resource/content/2/lec12-trees-ensembles-starter.pdf)</li>
-                <li>[activity 12](https://docs.google.com/document/d/1UcubNYNUuppsz8c6ZrMxVGeT6mB7DRQLkUOT7_ROfM8/edit?usp=sharing)</li>
-            </ul> 
 
     - <small> 3/11 </small> <br>
         ![](https://img.shields.io/badge/Due-dc322f) <s>Worksheet 3</s>
 
     - <small> 3/12 </small> <br>
         ![](https://img.shields.io/badge/Class%2013-1f77b4) <b> Ensembling II </b>
-            <ul style="margin-top:-1em;">
-                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552093/mod_resource/content/2/lec13-boosting-projects-starter.pdf)</li>
-                <li>[activity 13](https://docs.google.com/document/d/1i2DDXRDMcxYjWj7oEaxNwX70Zbq2AUcIk3F-YablEpk/edit?usp=sharing)</li>
-            </ul> 
 
-        ![](https://img.shields.io/badge/Released-2ca02c) [Final project proposal](final_proposal)
+        ![](https://img.shields.io/badge/Released-2ca02c) Final project proposal
 
     - <small> 3/13 </small> <br>
         ![](https://img.shields.io/badge/Due-dc322f) [Worksheet 3](ws3) <br>
@@ -254,5 +246,70 @@ A list of topics we will cover can be found below. Note that topics may be subje
     -
     - 
     - 
+
+
+*   - <small> 3/23 </small> <!-- Week 8 -->
+    - <small> 3/24 </small> <br>
+        ![](https://img.shields.io/badge/Class%2014-1f77b4) 
+        <br> ![](https://img.shields.io/badge/Released-2ca02c) HW 3
+    - <small> 3/25 </small>
+    - <small> 3/26 </small>
+    - <small> 3/27 </small>
+
+
+*   - <small> 3/30 </small> <!-- Week 9 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) Final project proposal
+    - <small> 3/31 </small>
+    - <small> 4/1 </small>
+    
+    - <small> 4/2 </small>
+
+    - <small> 4/3 </small>
+        <br> ![](https://img.shields.io/badge/Due-dc322f) HW 3    
+        <br> ![](https://img.shields.io/badge/Released-2ca02c) HW 4
+
+*   - <small> 4/6 </small> <!-- Week 10 --> <br> 
+        
+    - <small> 4/7 </small>
+    - <small> 4/8 </small>
+    - <small> 4/9 </small>
+    - <small> 4/10 </small>
+
+
+*   - <small> 4/13 </small> <!-- Week 11 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) HW 4
+    - <small> 4/14 </small> <br>
+        ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 4
+    - <small> 4/15 </small>
+    - <small> 4/16 </small>
+    - <small> 4/17 </small>
+
+*   - <small> 4/20 </small> <!-- Week 12 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) Worksheet 4
+    - <small> 4/21 </small>
+    - <small> 4/22 </small>
+    - <small> 4/23 </small>
+    - <small> 4/24 </small>
+
+*   - <small> 4/27 </small> <!-- Week 13 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) Final project checkpoint
+
+    - <small> 4/28 </small>
+    - <small> 4/29 </small>
+    - <small> 4/30 </small>
+    - <small> 5/1 </small>
+
+*   - <small> 5/4 </small> <!-- Week 14 -->
+    - <small> 5/5 </small>
+    - <small> 5/6 </small>
+    - <small> 5/7 </small>
+    - <small> 5/8 </small>
+
+*   - <small> 5/11 </small> <br> <br> ![](https://img.shields.io/badge/Due:-d62728) Final project **(noon)** <!-- Week 15 -->
+    - <small> 5/12 </small>
+    - <small> 5/13 </small>
+    - <small> 5/14 </small>
+    - <small> 5/15 </small>
+
 
 :::
