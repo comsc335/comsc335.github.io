@@ -237,8 +237,12 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 3/12 </small> <br>
         ![](https://img.shields.io/badge/Class%2013-1f77b4) <b> Ensembling II </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552093/mod_resource/content/2/lec13-boosting-projects-starter.pdf)</li>
+                <li>[activity 13](https://docs.google.com/document/d/1i2DDXRDMcxYjWj7oEaxNwX70Zbq2AUcIk3F-YablEpk/edit?usp=sharing)</li>
+            </ul> 
 
-        ![](https://img.shields.io/badge/Released-2ca02c) Final project proposal
+        ![](https://img.shields.io/badge/Released-2ca02c) [Final project proposal](final_proposal)
 
     - <small> 3/13 </small> <br>
         ![](https://img.shields.io/badge/Due-dc322f) [Worksheet 3](ws3) <br>

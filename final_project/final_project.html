@@ -58,9 +58,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'final_project/final_project';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Final project dataset proposal" href="final_proposal.html" />
+    <link rel="prev" title="HW 2 part 2" href="../hws/hw2_predictions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +126,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -187,6 +189,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/activities.html">In-Class Activities</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
 <ul class="nav bd-sidenav">
@@ -215,7 +218,7 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../hws/hw1_foundations.html">HW 1 part 1</a></li>
 
@@ -243,6 +246,11 @@
 
 </ul>
 </details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Final Project</a></li>
+
+
+
+
 </ul>
 
     </div>
@@ -394,8 +402,19 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Final Project</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistics-and-assessment-breakdown">Logistics and assessment breakdown</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-report">Components of the report</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-project-approach">Final project approach</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-and-training">Model and training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate">Evaluate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#report-format">Report format</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-resources">Example resources</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-repositories">Dataset repositories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book-and-myst-articles">Jupyter Book and Myst articles</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -415,10 +434,10 @@ document.write(`
 <h1>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Apply the machine learning principles you have learned in an area of your choice</p></li>
-<li><p>Follow the machine learning process from start to finish independently</p></li>
+<li><p>Follow the machine learning process from start to finish</p></li>
 <li><p>Gain experience communicating scientific results:</p>
 <ul>
-<li><p>Visually and in writing through an Jupyter Book article</p></li>
+<li><p>Visually and in writing through a <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">Myst article</a></p></li>
 <li><p>Verbally through a brief teaching presentation to the class</p></li>
 </ul>
 </li>
@@ -428,7 +447,7 @@ document.write(`
 <h1>Logistics and assessment breakdown<a class="headerlink" href="#logistics-and-assessment-breakdown" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Final project groups can be one to three students.</p></li>
-<li><p>Students are expected to contribute equally to the project, and the amount of work should scale with the size of the groups.</p></li>
+<li><p>Students are expected to contribute equally to the project, and the amount of work will scale with the size of the groups.</p></li>
 </ul>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -438,19 +457,19 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="final_proposal.html"><span class="doc std std-doc">Proposal</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="final_proposal.html#final-proposal"><span class="std std-ref">Dataset Proposal</span></a></p></td>
 <td><p>3</p></td>
-<td><p>TODO</p></td>
+<td><p>3/30</p></td>
 </tr>
 <tr class="row-odd"><td><p>Checkpoint</p></td>
 <td><p>5</p></td>
-<td><p>TODO</p></td>
+<td><p>4/27</p></td>
 </tr>
 <tr class="row-even"><td><p>Presentation and peer feedback</p></td>
 <td><p>5</p></td>
-<td><p>TODO</p></td>
+<td><p>4/30, 5/5</p></td>
 </tr>
-<tr class="row-odd"><td><p>Final report and source code</p></td>
+<tr class="row-odd"><td><p>Final report</p></td>
 <td><p>12</p></td>
 <td><p>5/11 <strong>noon</strong></p></td>
 </tr>
@@ -458,22 +477,76 @@ document.write(`
 </table>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="components-of-the-report">
-<h1>Components of the report<a class="headerlink" href="#components-of-the-report" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="final-project-approach">
+<h1>Final project approach<a class="headerlink" href="#final-project-approach" title="Link to this heading">#</a></h1>
+<p>All projects will develop a narrative of the machine learning process from start to finish: Data <span class="math notranslate nohighlight">\(\to\)</span> Features <span class="math notranslate nohighlight">\(\to\)</span> Model <span class="math notranslate nohighlight">\(\to\)</span> Train <span class="math notranslate nohighlight">\(\to\)</span> Evaluate. Specific deliverables for certain steps are described below.</p>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<p>Your proposal and report will include a variation of a <strong>datasheet</strong> for your dataset as proposed by <a class="reference external" href="https://cacm.acm.org/research/datasheets-for-datasets/">Gebru et al. (2021)</a> like we saw in HW 2, which you will initially draft in the <a class="reference internal" href="final_proposal.html#final-proposal"><span class="std std-ref">dataset proposal</span></a>.</p>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<p>You will need to split your data into training and test sets, and also modify features into a format that can be used by the model. That means applying one-hot encoding to categorical features and standard scaling numerical features, as well as any other necessary preprocessing and cleaning.</p>
+</section>
+<section id="model-and-training">
+<h2>Model and training<a class="headerlink" href="#model-and-training" title="Link to this heading">#</a></h2>
+<p>You will build and evaluate multiple models as part of your project. Specifically, you will fit and evaluate the following:</p>
 <ul class="simple">
-<li><p>Datasheet: a description of the dataset you used, including the source, the variables, and the units of analysis.</p></li>
-<li><p>ML task formulation: a description of the machine learning task you are trying to solve, including the target variable, the features, and the type of machine learning model you are using.</p></li>
-<li><p>ML development process narrative</p></li>
-<li><p>Model card for model reporting on your best performing model</p></li>
+<li><p><strong>Baseline model</strong>: logistic regression (for classification) or linear regression (for regression) with L2 regularization</p></li>
+<li><p><strong>Exploratory model(s)</strong>: one new model <strong>per group member</strong> in <a class="reference external" href="https://scikit-learn.org/stable/index.html">sckit-learn</a> that we did not cover in class. You will not need to understand every single detail of the model, but you will need to be able to use the API as well as describe the model’s relevant hyperparameters.</p></li>
+<li><p><strong>Model of your choice</strong>: one model of your choice that you think may perform well on your dataset. This could include random forests, gradient boosting, neural networks, etc.</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="evaluate">
+<h2>Evaluate<a class="headerlink" href="#evaluate" title="Link to this heading">#</a></h2>
+<p>As part of your evaluation, you will write a variation of a <strong>model card</strong> by <a class="reference external" href="https://arxiv.org/pdf/1810.03993">Mitchell et al. (2018)</a> that documents your model’s characteristics, performance, and intended use. One model card will be created <strong>per group member.</strong> You may select any of the models you built for your project to write the model cards for – not necessarily the best performing models! We will cover the model card reading after Spring Break.</p>
+</section>
+<section id="report-format">
+<h2>Report format<a class="headerlink" href="#report-format" title="Link to this heading">#</a></h2>
+<p>The final report will be submitted in the form of a <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">Myst website</a>, which is the same engine that formats the course website. Modern scientific communication is moving beyond static papers towards the “executable book” format, which combines text, math, visualizations, and executable code in a single document. Your report can even be hosted online and showcased as part of your project portfolio. HW 3 will give you initial experience with the Myst website format, which you can then build on for your final project.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-resources">
+<h1>Example resources<a class="headerlink" href="#example-resources" title="Link to this heading">#</a></h1>
+<section id="dataset-repositories">
+<h2>Dataset repositories<a class="headerlink" href="#dataset-repositories" title="Link to this heading">#</a></h2>
+<p>The following repositories are suggestions for finding datasets, feel free to use other repositories as well!</p>
 <ul class="simple">
-<li><p>will need to include:</p></li>
-<li><p>a baseline model (logistic regression / linear regression)</p></li>
-<li><p>one sckit-learn model that we did not cover in class</p></li>
+<li><p><a class="reference external" href="https://github.com/socialfoundations/folktables">folktables</a>: provides access to datasets derived from the US Census. We have used two of the datasets in class assignments but feel free to explore other datasets in the library.</p></li>
+<li><p><a class="reference external" href="https://github.com/rfordatascience/tidytuesday/blob/main/README.md">TidyTuesday</a>: collection of real-world datasets intended for learning data science and visualization</p></li>
+<li><p><a class="reference external" href="https://www.icpsr.umich.edu/web/about/cms/5016">ICPSR</a>: Inter-university Consortium for Political and Social Research, a repository of social science data covering:</p>
+<ul>
+<li><p>health</p></li>
+<li><p>population health</p></li>
+<li><p>education</p></li>
+<li><p>aging</p></li>
+<li><p>criminal justice</p></li>
+<li><p>substance abuse</p></li>
+<li><p>arts and culture</p></li>
 </ul>
+</li>
+<li><p><a class="reference external" href="https://opportunityinsights.org/data/">Opportunity Insights</a>: a research organization that studies the impact of social programs on economic mobility, and also maintains a public data repository</p></li>
+<li><p><a class="reference external" href="https://ourworldindata.org/">Our World in Data</a>: cleaned datasets and visualizations on global development, health, energy, environment, and inequality</p></li>
+<li><p><a class="reference external" href="https://dataverse.harvard.edu/">Harvard Dataverse</a>: a repository of research datasets connected to academic studies – good for replication studies</p></li>
+<li><p><a class="reference external" href="https://datasetsearch.research.google.com/">Google Dataset Search</a>: a search engine for datasets if you have a general topic in mind</p>
+<ul>
+<li><p><strong>a word of caution about Kaggle</strong>: <a class="reference external" href="https://www.kaggle.com/datasets">Kaggle</a> is popular and maintains a large collection of datasets so will show up in many search results. However the quality, context, and documentation around the datasets can vary a lot, which may make filling out the datasheet a bit challenging.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="jupyter-book-and-myst-articles">
+<h2>Jupyter Book and Myst articles<a class="headerlink" href="#jupyter-book-and-myst-articles" title="Link to this heading">#</a></h2>
+<p>These are few examples of how Jupyter Book + Myst Markdown can be used to produce nicely typeset articles with interactive elements:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://goodresearch.dev/zipf">Zipf’s law from the Good Research Code Handbook</a></p></li>
+<li><p><a class="reference external" href="https://programming-dp.com/ch1.html">Programming Differential Privacy</a></p></li>
+<li><p><a class="reference external" href="https://geographicdata.science/book/notebooks/02_geospatial_computational_environment.html">Computational Tools for Geographic Data Science</a></p></li>
+<li><p><a class="reference external" href="https://executablebooks.org/en/latest/gallery/">More examples in Executable Book Gallery</a></p></li>
+</ul>
+</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -506,6 +579,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../hws/hw2_predictions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HW 2 part 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="final_proposal.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Final project dataset proposal</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -525,8 +616,19 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Final Project</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistics-and-assessment-breakdown">Logistics and assessment breakdown</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-report">Components of the report</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-project-approach">Final project approach</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-and-training">Model and training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate">Evaluate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#report-format">Report format</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-resources">Example resources</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-repositories">Dataset repositories</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-book-and-myst-articles">Jupyter Book and Myst articles</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
