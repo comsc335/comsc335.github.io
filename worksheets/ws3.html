@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
@@ -793,7 +793,7 @@ y = \begin{cases}
 <p>For example, if we wanted to specify the <span class="math notranslate nohighlight">\(\lambda\)</span> values, we would use the key: <code class="docutils literal notranslate"><span class="pre">model_logreg__C</span></code>. This tells sklearn to look for the <strong>C</strong> hyperparameter in the <strong>model_logreg</strong> step of the pipeline.</p>
 <p>Then, the values for the <span class="math notranslate nohighlight">\(\lambda\)</span> values would be the list of values to search over. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;model_logreg__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+    <span class="s1">&#39;model_logreg__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -840,7 +840,7 @@ y = \begin{cases}
     <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
         <span class="c1"># TODO add the degree entry for the features_poly step</span>
         <span class="s1">&#39;TODO&#39;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">&#39;model_logreg__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>    
+        <span class="s1">&#39;model_logreg__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>    
     <span class="p">}</span>
 
     <span class="c1"># TODO specify and fit the grid search with the following parameters:</span>
