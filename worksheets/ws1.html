@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
@@ -51,7 +51,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -716,14 +716,14 @@ TODO
 <h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://numpy.org/">NumPy</a> is the standard Python library for scientific computing. The standard import idiom for the library is as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># the standard way to import numpy</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 <p>We can then use the <code class="docutils literal notranslate"><span class="pre">np</span></code> prefix to access the functions and classes in the library. The primary data structure in NumPy is the <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>, which is a multi-dimensional array of elements of the same type, typically integers or floats.</p>
 <p>We can create an <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function and passing in Python lists. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="c1"># create an array from a list</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="c1"># Will print &lt;class &#39;numpy.ndarray&#39;&gt;</span>
@@ -776,7 +776,7 @@ TODO
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shape_practice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shape_practice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Practice with creating arrays of a specific shape.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
@@ -885,7 +885,7 @@ TODO
 <p><strong>3.2:</strong> Consider the array <code class="docutils literal notranslate"><span class="pre">c</span></code> defined in the function below. Use indexing to access <code class="docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">6]</span></code> from <code class="docutils literal notranslate"><span class="pre">c</span></code> and return it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">index_practice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">index_practice</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Practice with indexing&quot;&quot;&quot;</span>
 
     <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
@@ -912,7 +912,7 @@ TODO
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">select_last_column</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select_last_column</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Select the last column of the passed in array.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
@@ -965,7 +965,7 @@ TODO
 <p><strong>3.4:</strong> Complete the function below that selects all elements of the passed in array that are even.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">select_evens</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select_evens</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Select all elements of the passed in array that are even.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
@@ -1064,7 +1064,7 @@ TODO
 <p>One straightforward way to implement this is to use a for loop for the summation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">euclidean_norm_slow</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_norm_slow</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean norm of a vector using a for loop.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
@@ -1095,7 +1095,7 @@ TODO
 <p><strong>4.1</strong> Complete the function below that computes the Euclidean norm of a vector, replacing the for-loop with <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>. You should be able to do this in a single line of code!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">euclidean_norm_vectorized</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_norm_vectorized</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean norm of a vector *without* using a for loop.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
@@ -1161,7 +1161,7 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2
 <p><strong>4.3</strong> Using your <code class="docutils literal notranslate"><span class="pre">euclidean_norm_vectorized</span></code> function, complete the function below that computes the Euclidean distance between two vectors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Euclidean distance between two vectors of the same dimensionality.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
@@ -1206,7 +1206,7 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
 <p>Classes in Python are defined using the <code class="docutils literal notranslate"><span class="pre">class</span></code> keyword.</p>
 <p><code class="docutils literal notranslate"><span class="pre">sklearn</span></code> provides a <code class="docutils literal notranslate"><span class="pre">BaseEstimator</span></code> class that provides a standard interface for all models, and can be <strong>subclassed</strong> to create new models. To extend a class, the child class just passes in the parent class name as an “argument” to the <code class="docutils literal notranslate"><span class="pre">class</span></code> keyword:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our KNNRegressor class extends the BaseEstimator class</span>
-<span class="k">class</span> <span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>
@@ -1217,10 +1217,10 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
 <p>Any additional arguments to the constructor are passed in by the user when the class is instantiated, and instance variables are also assigned using the <code class="docutils literal notranslate"><span class="pre">self</span></code> keyword.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Our KNNRegressor class extends the BaseEstimator class</span>
-<span class="k">class</span> <span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;KNN regressor model.&quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes our KNNRegressor model.</span>
 
 <span class="sd">        Args:</span>
@@ -1246,10 +1246,10 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
 <h2>Instance methods<a class="headerlink" href="#instance-methods" title="Link to this heading">#</a></h2>
 <p>Instance methods are defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword within the class block, and are similar to functions in Python. Like the constructor, the first argument to any instance method is <strong>required</strong> to be <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
 <p>In order for our <code class="docutils literal notranslate"><span class="pre">KNNRegressor</span></code> class to be a valid <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> estimator, we need to implement the <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
     <span class="o">...</span>
     
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the KNN regressor to the training data.</span>
 
 <span class="sd">        Note that KNN models do not have any functions or features that need to be fit, </span>
@@ -1291,7 +1291,7 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
 <p><strong>5.1:</strong> Complete the function below that implements the logic described above. <strong>Hint</strong>: You should use the indexing and slice notation from the NumPy section to select each point in <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, as well as to return the first <code class="docutils literal notranslate"><span class="pre">k</span></code> elements of the sorted array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_k_nearest_indices</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_k_nearest_indices</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds the indices of the k nearest neighbors to a new point x.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
@@ -1347,15 +1347,15 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
 <p><strong>5.2:</strong> Now, let’s put things together. The <code class="docutils literal notranslate"><span class="pre">KNNRegressor</span></code> class is given below, and your job is to complete the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method using the helper function you just implemented:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Self</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
 
 <span class="c1"># Our KNNRegressor class extends the BaseEstimator class</span>
-<span class="k">class</span> <span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">KNNRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;KNN regressor model.&quot;&quot;&quot;</span>
     
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the KNN regressor model.</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
@@ -1366,7 +1366,7 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
         <span class="bp">self</span><span class="o">.</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">n_neighbors</span>
 
 
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Fits the KNN regressor to the training data.</span>
 
 <span class="sd">        Note that KNN models do not have any functions or features that need to be fit, </span>
@@ -1388,7 +1388,7 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
         <span class="k">return</span> <span class="bp">self</span>
 
 
-    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Predicts the values of a set of new points X.</span>
 
 <span class="sd">        Args:</span>
@@ -1463,8 +1463,8 @@ d(\vec{x}, \vec{z}) = \|\vec{x} - \vec{z}\|_2 = \sqrt{\sum_{j=1}^{p} (x_j - z_j)
 <div class="cell tag_hide-code docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">ws_utils</span> <span class="kn">import</span> <span class="n">explore_n_neighbors</span>
-    <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ws_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">explore_n_neighbors</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
 
     <span class="n">widgets</span><span class="o">.</span><span class="n">interact_manual</span><span class="p">(</span><span class="n">explore_n_neighbors</span><span class="p">,</span> 
         <span class="c1"># Tells the widget to use the KNNRegressor class you just implemented</span>
