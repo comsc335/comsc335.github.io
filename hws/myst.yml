@@ -1,0 +1,9 @@
+version: 1
+project:
+  authors:
+    - name: TODO
+  toc:
+    - file: hw3_predictions.ipynb
+
+site:
+  template: article-theme

@@ -30,6 +30,10 @@ parts:
         sections:
         - file: hws/hw2_foundations.ipynb
         - file: hws/hw2_predictions.ipynb
+      - file: hws/hw3.md
+        sections:
+        - file: hws/hw3_foundations.ipynb
+        - file: hws/hw3_predictions.ipynb
       - file: final_project/final_project.md
         sections:
         - file: final_project/final_proposal.ipynb
