@@ -257,4 +257,82 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - 
     - 
 
+
+*   - <small> 3/23 </small> <!-- Week 8 -->
+    - <small> 3/24 </small> <br>
+        ![](https://img.shields.io/badge/Class%2014-1f77b4) <b> Bootstrapping and Variance</b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552096/mod_resource/content/2/lec14-bootstrap-variance-starter.pdf)</li>
+                <li>[activity 14](https://docs.google.com/document/d/1TvU8S9CSGCbGyHqBLSiWw_umhQn57hFGHk2VPiZQX1k/edit?usp=sharing)</li>
+            </ul> 
+        <br> ![](https://img.shields.io/badge/Released-2ca02c) [HW 3](hw3)
+    - <small> 3/25 </small>
+    - <small> 3/26 </small> <br>
+        ![](https://img.shields.io/badge/Class%2015-1f77b4) <b> Neural Networks I </b>
+    - <small> 3/27 </small>
+
+
+*   - <small> 3/30 </small> <!-- Week 9 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) [Final project proposal](final_proposal)
+    - <small> 3/31 </small> <br>
+        ![](https://img.shields.io/badge/Class%2016-1f77b4)
+    - <small> 4/1 </small>
+
+    - <small> 4/2 </small> <br>
+        ![](https://img.shields.io/badge/Class%2017-1f77b4)
+
+    - <small> 4/3 </small>
+        <br> ![](https://img.shields.io/badge/Due-dc322f) [HW 3](hw3)
+        <br> ![](https://img.shields.io/badge/Released-2ca02c) HW 4
+
+*   - <small> 4/6 </small> <!-- Week 10 --> <br> 
+        
+    - <small> 4/7 </small> <br>
+        ![](https://img.shields.io/badge/Class%2018-1f77b4)
+    - <small> 4/8 </small>
+    - <small> 4/9 </small> <br>
+        ![](https://img.shields.io/badge/Class%2019-1f77b4)
+    - <small> 4/10 </small>
+
+*   - <small> 4/13 </small> <!-- Week 11 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) HW 4
+    - <small> 4/14 </small> <br>
+        ![](https://img.shields.io/badge/Class%2020-1f77b4)
+        <br> ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 4
+    - <small> 4/15 </small>
+    - <small> 4/16 </small> <br>
+        ![](https://img.shields.io/badge/Class%2021-1f77b4)
+    - <small> 4/17 </small>
+
+*   - <small> 4/20 </small> <!-- Week 12 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) Worksheet 4
+    - <small> 4/21 </small> <br>
+        ![](https://img.shields.io/badge/Class%2022-1f77b4)
+    - <small> 4/22 </small>
+    - <small> 4/23 </small> <br>
+        ![](https://img.shields.io/badge/Class%2023-1f77b4)
+    - <small> 4/24 </small>
+
+*   - <small> 4/27 </small> <!-- Week 13 --> <br> 
+        ![](https://img.shields.io/badge/Due-dc322f) Final project checkpoint
+
+    - <small> 4/28 </small> <br> <b> BOOM - no class </b>
+    - <small> 4/29 </small>
+    - <small> 4/30 </small> <br>
+        ![](https://img.shields.io/badge/Class%2024-1f77b4)
+    - <small> 5/1 </small>
+
+*   - <small> 5/4 </small> <!-- Week 14 -->
+    - <small> 5/5 </small> <br>
+        ![](https://img.shields.io/badge/Class%2025-1f77b4)
+    - <small> 5/6 </small>
+    - <small> 5/7 </small> 
+    - <small> 5/8 </small>
+
+*   - <small> 5/11 </small> <br> <br> ![](https://img.shields.io/badge/Due:-d62728) Final project **(noon)** <!-- Week 15 -->
+    - <small> 5/12 </small>
+    - <small> 5/13 </small>
+    - <small> 5/14 </small>
+    - <small> 5/15 </small>
+
 :::
