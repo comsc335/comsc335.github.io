@@ -294,9 +294,9 @@ A list of topics we will cover can be found below. Note that topics may be subje
 *   - <small> 4/27 </small> <!-- Week 13 --> <br> 
         ![](https://img.shields.io/badge/Due-dc322f) Final project checkpoint
 
-    - <small> 4/28 </small>
+    - <small> 4/28 </small> <br> <b> BOOM - no class </b>
     - <small> 4/29 </small>
-    - <small> 4/30 </small>
+    - <small> 4/30 </small> 
     - <small> 5/1 </small>
 
 *   - <small> 5/4 </small> <!-- Week 14 -->
