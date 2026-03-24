@@ -1,0 +1,1470 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HW 3 part 1 &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hws/hw3_foundations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW 3 part 2" href="hw3_predictions.html" />
+    <link rel="prev" title="Homework 3" href="hw3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/activities.html">In-Class Activities</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws3.html">Worksheet 3</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="hw2.html">Homework 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw2_foundations.html">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="hw3.html">Homework 3</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HW 3 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw3_predictions.html">HW 3 part 2</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project/final_project.html">Final Project</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/hws/hw3_foundations.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/hws/hw3_foundations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HW 3 part 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 3 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-and-ensembles-1-25-pts">1. Variance and ensembles [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-definition-0-25-pts">1.1 Variance definition [0.25 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-bagging-reduces-variance-1-pt">1.2 Why bagging reduces variance [1 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-and-bias-variance-1-25-pts">2. Decision trees and bias-variance [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-0-5-pts">2.1 Visualizing decision trees [0.5 pts]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-with-plot-tree">Visualizing decision trees with <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-sampling-0-25-pts">2.2 Bootstrap Sampling [0.25 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-and-variance-0-5-pts">2.3 Bias and Variance [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-tree-ensembles-3-pts">3. Implementing Tree Ensembles [3 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-setup">3.1 Data Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-bagging-1-5-pts">3.2 Tree Bagging [1.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-boosting-0-75-pts">3.3 Tree boosting [0.75 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-mse-widget-0-75-pts">3.4 Boosting MSE Widget [0.75 pts]</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hw-3-part-1">
+<span id="hw3-foundations"></span><h1>HW 3 part 1<a class="headerlink" href="#hw-3-part-1" title="Link to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>Ensembling: Foundations</p>
+<p class="attribution">—TODO your name here</p>
+</div></blockquote>
+<div class="admonition-collaboration-statement admonition">
+<p class="admonition-title">Collaboration Statement</p>
+<ul class="simple">
+<li><p>TODO brief statement on the nature of your collaboration.</p></li>
+<li><p>TODO your collaborators’ names here</p></li>
+</ul>
+</div>
+<section id="part-1-table-of-contents-and-rubric">
+<h2>Part 1 Table of Contents and Rubric<a class="headerlink" href="#part-1-table-of-contents-and-rubric" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Points</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Variance reduction with ensembling</p></td>
+<td><p>1.25</p></td>
+</tr>
+<tr class="row-odd"><td><p>Decision trees and bias-variance</p></td>
+<td><p>1.25</p></td>
+</tr>
+<tr class="row-even"><td><p>Implementing tree ensembles</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total</strong></p></td>
+<td><p><strong>5.5 pts</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notebook-and-function-imports">
+<h1>Notebook and function imports<a class="headerlink" href="#notebook-and-function-imports" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact_manual</span>
+
+<span class="c1"># random number generator</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="variance-and-ensembles-1-25-pts">
+<h1>1. Variance and ensembles [1.25 pts]<a class="headerlink" href="#variance-and-ensembles-1-25-pts" title="Link to this heading">#</a></h1>
+<p>In <a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1552091/mod_resource/content/2/lec12-trees-ensembles.pdf">Class 12</a>, we saw that random forests combine many trees and that “individual errors cancel out” when predictions are independent. In this section we’ll make that idea precise using <strong>variance</strong>, a quantity that measures how spread out a set of values is.</p>
+<section id="variance-definition-0-25-pts">
+<h2>1.1 Variance definition [0.25 pts]<a class="headerlink" href="#variance-definition-0-25-pts" title="Link to this heading">#</a></h2>
+<p>In Worksheet 2, we saw the <strong>expectation</strong> of a random variable <span class="math notranslate nohighlight">\(Y\)</span> is the average value of <span class="math notranslate nohighlight">\(Y\)</span> over all possible outcomes. It is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+E[Y] = \sum_{y \in \mathcal{Y}} y P(Y=y)
+\]</div>
+<p>The <strong>variance</strong> of a random variable <span class="math notranslate nohighlight">\(Y\)</span> measures how spread out the values of <span class="math notranslate nohighlight">\(Y\)</span> are around its mean. It is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(Y) = E\left[(Y - E[Y])^2\right]
+\]</div>
+<p>When we have a finite set of <span class="math notranslate nohighlight">\(n\)</span> values <span class="math notranslate nohighlight">\(y_1, y_2, \ldots, y_n\)</span>
+(where each value is equally likely), this simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(Y) = \frac{1}{n}\sum_{i=1}^{n}(y_i - \bar{y})^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i\)</span> is the mean.</p>
+<p>To make this concrete, suppose we have trained four different decision trees <span class="math notranslate nohighlight">\(f_1, f_2, f_3, f_4\)</span>, each time on a different random subset of the training data to predict housing prices. For a <strong>single</strong> test house with true value <span class="math notranslate nohighlight">\(y=6\)</span>, the four trees make the following predictions:</p>
+<div class="math notranslate nohighlight">
+\[
+f_1(x) = 3, \quad f_2(x) = 9, \quad f_3(x) = 5, \quad f_4(x) = 7
+\]</div>
+<p>What is the mean prediction <span class="math notranslate nohighlight">\(\bar{f}\)</span> across the four trees?</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{f} = TODO
+\]</div>
+<p>What is the variance of the predictions?</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(f) = TODO
+\]</div>
+</section>
+<section id="why-bagging-reduces-variance-1-pt">
+<h2>1.2 Why bagging reduces variance [1 pt]<a class="headerlink" href="#why-bagging-reduces-variance-1-pt" title="Link to this heading">#</a></h2>
+<p>The core idea behind bagging (and random forests) for regression tasks is that averaging multiple independent predictions produces a more stable result than relying on any single prediction. This averaging for regression is equivalent to the majority voting we saw in classification.</p>
+<p>Let’s see why this is the case mathematically. Suppose we have <span class="math notranslate nohighlight">\(T\)</span> independent random variables <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots, Y_T\)</span>,
+each with the same variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(Y_t) = \sigma^2 \quad \text{for all } t = 1, 2, \ldots, T
+\]</div>
+<p>Note that this <span class="math notranslate nohighlight">\(\sigma^2\)</span> term represents the “inherent” variability of a single random variable. In the ensemble context, each <span class="math notranslate nohighlight">\(Y_t\)</span> represents the prediction of a different tree. We want to find the variance of the average of these predictions <span class="math notranslate nohighlight">\(\overline{Y}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{Y} = \frac{1}{T}\sum_{t=1}^{T} Y_t
+\]</div>
+<p>To complete our derivation, we’ll use the following two properties of variance:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Scaling:</strong> For any constant <span class="math notranslate nohighlight">\(c\)</span> and random variable <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}(cY) = c^2 \, \text{Var}(Y)\]</div>
+<p><strong>Sum of independent variables:</strong> If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)\]</div>
+<p>This extends to <span class="math notranslate nohighlight">\(T\)</span> independent variables:
+<span class="math notranslate nohighlight">\(\text{Var}(Y_1 + Y_2 + \cdots + Y_T) = \text{Var}(Y_1) + \text{Var}(Y_2) + \cdots + \text{Var}(Y_T)\)</span></p>
+</div>
+<p><strong>1.2.1</strong> Complete the derivation of the variance of the average of the predictions by filling in each step. We start with:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{Var}(\bar{Y}) &amp;= \text{Var}\left(\frac{1}{T}\sum_{t=1}^{T} Y_t\right) \\
+                    &amp;= \text{TODO step 1} \\
+                    &amp;= \text{TODO step 2} \\
+                    &amp;= \text{TODO step 3}
+\end{split}\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Derivation tips</p>
+<ul class="simple">
+<li><p>For step 1, use the scaling property of variance.</p></li>
+<li><p>For step 2, use the sum of independent variables property of variance.</p></li>
+<li><p>For step 3, simplify the summation using the fact that the variance of each <span class="math notranslate nohighlight">\(Y_t\)</span> is <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p></li>
+</ul>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check derivation</p>
+<p>After applying the variance properties and simplifying the summation, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(\bar{Y}) = \frac{\sigma^2}{T}
+\]</div>
+</div>
+<p><strong>1.2.2</strong> Using this result for <span class="math notranslate nohighlight">\(\text{Var}(\bar{Y})\)</span>, suppose that the variance of a single decision tree is <span class="math notranslate nohighlight">\(\sigma^2 = 5\)</span>. What would the variance of an ensemble of <span class="math notranslate nohighlight">\(T = 4\)</span> independent trees be? What about <span class="math notranslate nohighlight">\(T = 100\)</span> trees?</p>
+<ul class="simple">
+<li><p>Ensemble variance with <span class="math notranslate nohighlight">\(T = 4\)</span>: TODO</p></li>
+<li><p>Ensemble variance with <span class="math notranslate nohighlight">\(T = 100\)</span>: TODO</p></li>
+</ul>
+<p><strong>1.2.3</strong> Based on your results above, what happens to the variance of the ensemble prediction as the number of trees <span class="math notranslate nohighlight">\(T\)</span> increases? What does that tell us about the “stability” of predictions made by an ensemble?</p>
+<p><strong>Your response:</strong> TODO</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="decision-trees-and-bias-variance-1-25-pts">
+<h1>2. Decision trees and bias-variance [1.25 pts]<a class="headerlink" href="#decision-trees-and-bias-variance-1-25-pts" title="Link to this heading">#</a></h1>
+<p>We’ll now fit our own decision trees to verify these results empirically. First, let’s get familiar with sklearn’s implementation of decision trees. Specifically, sklearn provides two decision tree classes:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">DecisionTreeClassifier</a> for classification (predicting categories)</p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html">DecisionTreeRegressor</a> for regression (predicting continuous values)</p></li>
+</ul>
+<p>Both follow the same <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> / <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> interface we’ve used and practiced all semester. The key hyperparameter is <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>, which controls the maximum depth of the tree:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+
+<span class="c1"># max_depth controls complexity: deeper = more complex</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A few things to note:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_depth=None</span></code> (the default) means the tree grows until no more splits are possible that reduce the loss function. This can memorize the training data and overfit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_depth=1</span></code> creates a “decision stump”: a tree with a single split. Very simple, but often underfits. Decision stumps are often used as the “base model” in boosting algorithms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_state</span></code> controls the random number generator. When there are ties between equally good splits, sklearn breaks them randomly, so setting <code class="docutils literal notranslate"><span class="pre">random_state</span></code> ensures reproducibility.</p></li>
+<li><p>No <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> is needed to prepare the data. Unlike logistic and linear regression, decision trees split on raw feature values and don’t rely on gradient descent, so scaling doesn’t change the result.</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Regression vs. Classification</p>
+<p>Decision tree regressors predict continuous values (house prices).
+At each leaf, the prediction is the <strong>mean</strong> of the training examples
+that fall into that leaf.</p>
+<p>Decision tree classifiers predict categories (penguin species). At each leaf, the
+prediction is the <strong>majority class</strong>, and <code class="docutils literal notranslate"><span class="pre">.predict_proba()</span></code> returns
+the proportion of each class.</p>
+<p>We’ll use <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> in this section to connect with the
+variance math from the questions above.</p>
+</div>
+<section id="visualizing-decision-trees-0-5-pts">
+<h2>2.1 Visualizing decision trees [0.5 pts]<a class="headerlink" href="#visualizing-decision-trees-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Let’s practice the API with a small housing dataset: predicting house prices from the number of rooms. Complete the cell below to fit a depth-1 decision stump and a deep tree with no depth limit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+
+    <span class="c1"># A small toy dataset: 6 houses with one feature (number of total rooms)</span>
+    <span class="n">X_toy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span> 
+                      <span class="p">[</span><span class="mi">3</span><span class="p">],</span> 
+                      <span class="p">[</span><span class="mi">4</span><span class="p">],</span> 
+                      <span class="p">[</span><span class="mi">6</span><span class="p">],</span> 
+                      <span class="p">[</span><span class="mi">7</span><span class="p">],</span> 
+                      <span class="p">[</span><span class="mi">8</span><span class="p">]])</span>
+    <span class="n">y_toy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+    <span class="c1"># TODO initialize and fit a depth-1 stump</span>
+    <span class="n">stump</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">stump_predictions</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#print(&quot;Stump predictions:&quot;, stump_predictions)</span>
+
+    <span class="c1"># TODO initialize and fit a deep tree (no depth limit)</span>
+    <span class="n">deep</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">deep_predictions</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#print(&quot;Deep tree predictions:&quot;, deep_predictions)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="visualizing-decision-trees-with-plot-tree">
+<h3>Visualizing decision trees with <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code><a class="headerlink" href="#visualizing-decision-trees-with-plot-tree" title="Link to this heading">#</a></h3>
+<p>sklearn provides <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html"><code class="docutils literal notranslate"><span class="pre">plot_tree</span></code></a>
+to visualize the splits and predictions of a fitted tree. It works with
+matplotlib’s object-oriented interface that we practiced in Worksheet 3:
+we create a <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code> using <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code>, then pass the <code class="docutils literal notranslate"><span class="pre">ax</span></code> to
+<code class="docutils literal notranslate"><span class="pre">plot_tree</span></code>.</p>
+<p>Some useful parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">feature_names=feature_names</span></code>: a list of feature name strings, so the plot shows the name of the features</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fontsize</span></code>: controls the text size inside each node</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filled=True</span></code>: colors each node by its predicted value (darker = higher)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">impurity=False</span></code>: hides the splitting metric (called “impurity” in the sklearn docs) to reduce visual clutter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ax</span></code>: a matplotlib axis object, so the plot is drawn on the axis</p></li>
+</ul>
+<p>We add an additional variation to the <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> call to create a figure with two subplots side by side: by specifying the first two parameters as <code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2</span></code>, we create a figure with 1 row and 2 columns of subplots:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># first parameter is the number of rows, second is the number of columns</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Then, we can access each axis by indexing into <code class="docutils literal notranslate"><span class="pre">axs</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># left subplot</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># right subplot</span>
+</pre></div>
+</div>
+<p>Complete the cell below to plot the stump and deep tree side by side using this approach. You can adjust the <code class="docutils literal notranslate"><span class="pre">fontsize</span></code> parameter to make the plot more readable by setting it to a smaller value if there are too many nodes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_tree</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;# of rooms&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Create a figure with two subplots</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+
+    <span class="c1"># TODO plot the stump you fitted in the previous cell on the left (axs[0])</span>
+    <span class="c1">#plot_tree(TODO)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Stump (max_depth=1)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># TODO plot the deep tree you fitted in the previous cell on the right (axs[1])</span>
+    <span class="c1">#plot_tree(TODO)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Deep tree (max_depth=None)&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check sample plot</p>
+<p>Your calls to <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code> that place the stump on <code class="docutils literal notranslate"><span class="pre">axs[0]</span></code> and the deep tree on <code class="docutils literal notranslate"><span class="pre">axs[1]</span></code> should look approximately like the following:</p>
+<p><img alt="" src="../_images/hw3_plot_tree.png" /></p>
+</div>
+</section>
+</section>
+<section id="bootstrap-sampling-0-25-pts">
+<h2>2.2 Bootstrap Sampling [0.25 pts]<a class="headerlink" href="#bootstrap-sampling-0-25-pts" title="Link to this heading">#</a></h2>
+<p>A key ingredient in ensemble methods is <strong>bootstrap sampling</strong>: drawing
+<span class="math notranslate nohighlight">\(n\)</span> examples with replacement from a dataset of <span class="math notranslate nohighlight">\(n\)</span> examples. Because
+we sample with replacement, each bootstrap sample contains some
+duplicate rows and omits others.</p>
+<p>Why do we want duplicates? The idea here is that by treating the original dataset as a “true” population to sample from, drawing samples with replacement gives us a way to simulate “training on different
+datasets” when we only have one dataset. Each bootstrap sample is a
+slightly different view of the data, which leads to slightly different
+trees, which is exactly the diversity we need for ensembling.</p>
+<p>To draw a bootstrap sample in numpy, we can use <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.choice.html#numpy.random.Generator.choice">rng.choice</a> to sample indices with replacement, then use those indices to select the rows of X and y:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="c1"># Initialize a random number generator with a specific seed for reproducibility</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="c1"># setting replace=True means we can sample the same index multiple times (with replacement)</span>
+<span class="c1"># n is the number of examples in the dataset</span>
+<span class="n">bootstrap_idx</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+<span class="n">X_bootstrap</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">bootstrap_idx</span><span class="p">]</span>
+<span class="n">y_bootstrap</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">bootstrap_idx</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Visit the NumPy documentation for <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.choice.html#numpy.random.Generator.choice">rng.choice</a> to understand what all three parameters shown in the code above do, then implement the <code class="docutils literal notranslate"><span class="pre">bootstrap_sample</span></code> function below. We’ll reuse this function throughout the rest of part 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bootstrap_sample</span><span class="p">(</span><span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">random_state</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a bootstrap sample from feature matrix X and targets y.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X: feature 2D array of shape (n, p)</span>
+<span class="sd">        y: target 1D array of shape (n,)</span>
+<span class="sd">        random_state: random seed for reproducibility</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        X_boot: bootstrapped features of shape (n, p)</span>
+<span class="sd">        y_boot: bootstrapped targets of shape (n,)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO your code here</span>
+    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test with small data</span>
+    <span class="n">X_small</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+    <span class="n">y_small</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+
+    <span class="n">X_boot</span><span class="p">,</span> <span class="n">y_boot</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span><span class="n">X_small</span><span class="p">,</span> <span class="n">y_small</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">X_boot</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">X_small</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected shape </span><span class="si">{</span><span class="n">X_small</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">X_boot</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">y_boot</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">y_small</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected shape </span><span class="si">{</span><span class="n">y_small</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">y_boot</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Verify reproducibility</span>
+    <span class="n">X_boot2</span><span class="p">,</span> <span class="n">y_boot2</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span><span class="n">X_small</span><span class="p">,</span> <span class="n">y_small</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">X_boot</span><span class="p">,</span> <span class="n">X_boot2</span><span class="p">),</span> <span class="s2">&quot;Same seed should give same result&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">pandas equivalent</p>
+<p>If you’re working with a pandas DataFrame instead of numpy arrays,
+you can use
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html"><code class="docutils literal notranslate"><span class="pre">DataFrame.sample()</span></code></a> to generate a bootstrap sample:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boot_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="bias-and-variance-0-5-pts">
+<h2>2.3 Bias and Variance [0.5 pts]<a class="headerlink" href="#bias-and-variance-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Based on the tree plots from 2.1, we can see that a stump (<code class="docutils literal notranslate"><span class="pre">max_depth=1</span></code>)
+and a deep tree (<code class="docutils literal notranslate"><span class="pre">max_depth=None</span></code>) make very different predictions.
+But they make errors in different ways:</p>
+<ul class="simple">
+<li><p>The stump will only ever predict two possible values. It’s <em>consistently off</em> with predictions that are too “coarse” because a single split can’t capture the full pattern.</p></li>
+<li><p>The deep tree will predict the exact values of the training data. But if we trained it on a different random sample, it would <em>memorize</em> that sample and give very different predictions.</p></li>
+</ul>
+<p>These two types of errors can be quantified by two concepts:</p>
+<ul class="simple">
+<li><p><strong>Bias</strong> measures how far off a model’s average prediction is from
+the truth. A model with high bias is consistently wrong in the same
+direction: like the stump, which systematically oversimplifies. Mathematically, for a single datapoint <span class="math notranslate nohighlight">\((\vec{x}, y)\)</span> and a given model <span class="math notranslate nohighlight">\(f\)</span> with fixed hyperparameters, the bias is expressed as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{Bias} = \bar{f}(\vec{x}) - y
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\bar{f}(\vec{x})\)</span> is the mean model output over the given predictions.</p>
+<ul class="simple">
+<li><p><strong>Variance</strong> measures how much a model’s predictions fluctuate when trained on different data. A model with high variance is “unstable”: like the deep tree, which gives very different answers depending on the training set. Mathematically, we use the same variance calculation from the previous section, this time over all of the model predictions:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{Var} = \frac{1}{n}\sum_{i=1}^{n}\left(f(\vec{x}_i) - \bar{f}(\vec{x}_i)\right)^2
+\]</div>
+<p>This choice of shallow vs deep tree illustrates the <strong>bias-variance tradeoff</strong> that is present in many machine learning models: simpler models (stumps) tend to have high bias and low variance, while complex models (deep trees) tend to have low bias and high variance.</p>
+<p>Let’s explore these concepts empirically. Complete the <code class="docutils literal notranslate"><span class="pre">compute_bias_variance</span></code> function below. <strong>Note</strong>: you do not need to implement the variance equation from scratch, as it is already implemented in numpy as <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.var.html">np.var</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_bias_and_variance</span><span class="p">(</span><span class="n">predictions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the bias and variance of predictions for a single test point.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        predictions: array of shape (n_bootstrap,) containing predictions</span>
+<span class="sd">                     from models trained on different bootstrap samples</span>
+<span class="sd">        y_true: the true value for this test point</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bias: the difference between mean prediction and true value</span>
+<span class="sd">        variance: the variance of the predictions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO your code here</span>
+    <span class="n">bias</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">bias</span><span class="p">,</span> <span class="n">variance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test with a simple known example</span>
+    <span class="n">test_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+    <span class="n">bias</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">compute_bias_and_variance</span><span class="p">(</span><span class="n">test_preds</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="mf">6.0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">bias</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Expected bias=-2.0, got </span><span class="si">{</span><span class="n">bias</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Expected variance=0.5, got </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Test with constant predictions (zero variance)</span>
+    <span class="n">const_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+    <span class="n">bias_c</span><span class="p">,</span> <span class="n">var_c</span> <span class="o">=</span> <span class="n">compute_bias_and_variance</span><span class="p">(</span><span class="n">const_preds</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">bias_c</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Expected bias=-2.0, got </span><span class="si">{</span><span class="n">bias_c</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">var_c</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Expected variance=0.0, got </span><span class="si">{</span><span class="n">var_c</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2.3.1</strong> We will use our bootstrap sampling method to quantify the bias and variance of the stump and deep tree. Complete the cell below to take <strong>50</strong> bootstrap samples of <code class="docutils literal notranslate"><span class="pre">X_train_sim</span></code> and <code class="docutils literal notranslate"><span class="pre">y_train_sim</span></code>, train a stump and deep tree on each sample, then compute the bias and variance of the predictions on a single test point where the price of the house is $400k: <code class="docutils literal notranslate"><span class="pre">y=4</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Generates some synthetic regression data: 100 houses, 5 features</span>
+    <span class="n">rng_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">X_train_sim</span> <span class="o">=</span> <span class="n">rng_sim</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">y_train_sim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X_train_sim</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">X_train_sim</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+                   <span class="o">+</span> <span class="mf">3.4</span> <span class="o">+</span> <span class="n">rng_sim</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+
+    <span class="n">x_test_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>  <span class="c1"># a new house with features [5, 5, 5, 5, 5]</span>
+    <span class="n">y_true_point</span> <span class="o">=</span> <span class="mf">4.0</span>              <span class="c1"># true value for this house</span>
+
+    <span class="c1"># store the list of predictions for each model</span>
+    <span class="n">stump_predictions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">deep_predictions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">n_bootstrap</span> <span class="o">=</span> <span class="mi">50</span>
+
+    <span class="c1"># loop over 50 bootstrap samples</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bootstrap</span><span class="p">):</span>
+
+        <span class="c1"># TODO take a bootstrap sample of the training data X_train_sim and y_train_sim</span>
+        <span class="c1"># NOTE: make sure to pass the random_state=i to bootstrap_sample() so that the seed is different</span>
+        <span class="n">bootstrap_result</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># X_boot, y_boot = bootstrap_sample(...)</span>
+
+        <span class="c1"># TODO train a stump on the bootstrap sample</span>
+
+        <span class="c1"># TODO add the stump&#39;s prediction for this bootstrap sample to the list</span>
+        <span class="n">stump_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># TODO train a deep tree on the bootstrap sample</span>
+
+        <span class="c1"># TODO add the deep tree&#39;s prediction for this bootstrap sample to the list</span>
+        <span class="n">deep_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># TODO call compute_bias_and_variance() with the list of predictions and the true value for the test point</span>
+    <span class="n">stump_bias</span><span class="p">,</span> <span class="n">stump_variance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">deep_bias</span><span class="p">,</span> <span class="n">deep_variance</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stump bias: </span><span class="si">{</span><span class="n">stump_bias</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Stump variance: </span><span class="si">{</span><span class="n">stump_variance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deep tree bias: </span><span class="si">{</span><span class="n">deep_bias</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Deep tree variance: </span><span class="si">{</span><span class="n">deep_variance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>2.3.2</strong> Which model has higher bias and which has higher variance?</p>
+<ul class="simple">
+<li><p>Higher bias: <strong>TODO</strong></p></li>
+<li><p>Higher variance: <strong>TODO</strong></p></li>
+</ul>
+<p>Most non-neural network models need to balance bias and variance to achieve good overall performance with lower loss. In fact, if we use our usual MSE loss function it can be shown that the overall error of a model can be decomposed into bias and variance terms:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSE} \approx \text{Bias}^2 + \text{Var}
+\]</div>
+<p>Compute the approximate MSE of the stump and deep tree using the bias and variance values from the previous cell, making sure to square the bias values:</p>
+<ul class="simple">
+<li><p>Stump MSE: <strong>TODO</strong></p></li>
+<li><p>Deep tree MSE: <strong>TODO</strong></p></li>
+</ul>
+<p>Based on these empirical results on this small synthetic dataset, does a more complex or a simpler model appear to perform better in terms of overall loss?</p>
+<p><strong>Your response</strong>: TODO</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check takeaway</p>
+<p>Exact numbers will vary, but for this small synthetic dataset, the deep tree has lower MSE, meaning it performs better in terms of overall loss. This is despite the fact that the deep tree has higher variance. In practice, if we wanted to use a decision tree, we would tune the max depth hyperparameter through cross-validation to find the sweet spot between bias and variance that minimizes overall loss.</p>
+<p>Generally in modern machine learning, the overall engineering approach is to build a complex model that can appropriately fit the relationship between features and targets, then use regularization to control the variance. This approach carries forward into deep learning with neural networks.</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementing-tree-ensembles-3-pts">
+<h1>3. Implementing Tree Ensembles [3 pts]<a class="headerlink" href="#implementing-tree-ensembles-3-pts" title="Link to this heading">#</a></h1>
+<p>Now that we’ve explored the variance of trees mathematically (Section 1) and empirically (Section 2), let’s implement the bagging and boosting ensemble strategies from scratch using <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code>.</p>
+<section id="data-setup">
+<h2>3.1 Data Setup<a class="headerlink" href="#data-setup" title="Link to this heading">#</a></h2>
+<p>Run the cell below to generate a synthetic dataset for us to use in this section, with our usual names of <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, and <code class="docutils literal notranslate"><span class="pre">y_test</span></code>. There are 80 data examples in the training set and 20 in the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+    <span class="n">rng_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">X_all</span> <span class="o">=</span> <span class="n">rng_sim</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">y_all</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X_all</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">X_all</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+             <span class="o">+</span> <span class="mf">3.4</span> <span class="o">+</span> <span class="n">rng_sim</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">)</span>
+    <span class="n">feature_names_sim</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rooms&quot;</span><span class="p">,</span> <span class="s2">&quot;lot_size&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;dist_school&quot;</span><span class="p">,</span> <span class="s2">&quot;neighborhood&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;# training examples: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, # test examples: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tree-bagging-1-5-pts">
+<h2>3.2 Tree Bagging [1.5 pts]<a class="headerlink" href="#tree-bagging-1-5-pts" title="Link to this heading">#</a></h2>
+<p>In Section 1.2, we showed that averaging <span class="math notranslate nohighlight">\(T\)</span> independent predictions reduces variance. Let’s now implement that idea directly with a bagging ensemble.</p>
+<p><strong>Bagging model:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fit()</span></code>: For each tree <span class="math notranslate nohighlight">\(t = 1, \ldots, T\)</span>: draw a bootstrap sample using <code class="docutils literal notranslate"><span class="pre">bootstrap_sample()</span></code>, then train a <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor(max_depth=max_depth,</span> <span class="pre">random_state=t)</span></code> model on it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">predict()</span></code>: average all <span class="math notranslate nohighlight">\(T\)</span> trees’ predictions to produce the final prediction.</p></li>
+</ul>
+<p>Read through the <code class="docutils literal notranslate"><span class="pre">MHCBaggingRegressor</span></code> docstring and <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method below. Then, complete the <code class="docutils literal notranslate"><span class="pre">fit()</span></code> and <code class="docutils literal notranslate"><span class="pre">predict()</span></code> methods.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is exactly the mechanism behind <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code> in sklearn. The only difference is that <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code> also adds random feature subsets on top of bootstrap sampling.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MHCBaggingRegressor</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bagging ensemble of decision trees for regression.</span>
+<span class="sd">    </span>
+<span class="sd">    This class implements bootstrap aggregating (bagging) by training multiple</span>
+<span class="sd">    decision trees on bootstrap samples and averaging their predictions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_trees</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the bagging regressor.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            n_trees: number of trees T to train</span>
+<span class="sd">            max_depth: max depth for each tree (None = unlimited)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_trees</span> <span class="o">=</span> <span class="n">n_trees</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trees</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the bagging ensemble on training data.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X: training features, shape (n_train, p)</span>
+<span class="sd">            y: training targets, shape (n_train,)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            self: the fitted model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO for each tree t = 1, ..., T:</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_trees</span><span class="p">):</span>
+            <span class="c1"># Draw a bootstrap sample using `bootstrap_sample()`</span>
+            <span class="n">X_boot</span><span class="p">,</span> <span class="n">y_boot</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            
+            <span class="c1"># Fit a decision tree on the bootstrap sample with max_depth=self.max_depth and random_state=t</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="c1"># Add the tree to the list of trees</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Predict using the bagging ensemble.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            X: features to predict on, shape (n, p)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            predictions: averaged predictions from all trees, shape (n,)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Generates a 2D array of shape (n, T) where each column contains the predictions from each of the T trees on the test data</span>
+        <span class="n">all_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">trees</span><span class="p">])</span>
+
+        <span class="c1"># TODO take the mean of the predictions over all trees</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method, we have to pay attention to which axis to reduce. The line of starter code we give creates an array called <code class="docutils literal notranslate"><span class="pre">all_preds</span></code> where each column contains the predictions from each of the <span class="math notranslate nohighlight">\(T\)</span> trees on the test data. If <code class="docutils literal notranslate"><span class="pre">all_preds</span></code> has shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">T)</span></code>, and the return value of this function is a 1D array of shape <code class="docutils literal notranslate"><span class="pre">(n,)</span></code>, which axis do we need to take the mean over?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test cases</span>
+    <span class="n">bagging_regressor</span> <span class="o">=</span> <span class="n">MHCBaggingRegressor</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">bagging_regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">bagging_regressor</span><span class="o">.</span><span class="n">trees</span><span class="p">)</span> <span class="o">==</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;Expected 50 trees to be fit, got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bagging_regressor</span><span class="o">.</span><span class="n">trees</span><span class="p">))</span>
+
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">bagging_regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],),</span> <span class="s2">&quot;Expected predictions to have shape (n,), got </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s explore how the number of trees and tree depth affect bagging performance. Run the cell below to fit an <code class="docutils literal notranslate"><span class="pre">MHCBaggingRegressor</span></code> for each combination of <code class="docutils literal notranslate"><span class="pre">n_trees</span></code> and <code class="docutils literal notranslate"><span class="pre">max_depth</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_trees</span></code>: 1, 5, 50</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code>: 1, None</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+    <span class="n">n_trees_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+    <span class="n">max_depth_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+    <span class="n">df_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;n_trees&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;test_mse&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="n">max_depth_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n_trees</span> <span class="ow">in</span> <span class="n">n_trees_list</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">MHCBaggingRegressor</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="n">n_trees</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+            <span class="n">test_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+            <span class="n">df_dict</span><span class="p">[</span><span class="s2">&quot;n_trees&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n_trees</span><span class="p">)</span>
+            <span class="n">df_dict</span><span class="p">[</span><span class="s2">&quot;max_depth&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">max_depth</span><span class="p">))</span>
+            <span class="n">df_dict</span><span class="p">[</span><span class="s2">&quot;test_mse&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_mse</span><span class="p">)</span>
+
+    <span class="c1"># render the results as a pandas DataFrame</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_dict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.2.1</strong> Look at the <code class="docutils literal notranslate"><span class="pre">max_depth=None</span></code> rows. What happens to test MSE as <code class="docutils literal notranslate"><span class="pre">n_trees</span></code> increases?</p>
+<p><strong>Your response:</strong> TODO</p>
+<p><strong>3.2.2</strong> Now look at the <code class="docutils literal notranslate"><span class="pre">max_depth=1</span></code> rows. Briefly discuss what you observe: does adding more stumps help in the same way? Why might that be?</p>
+<p><strong>Your response:</strong> TODO</p>
+<p>Finally, let’s connect these results back to the bias-variance tradeoff from Section 2. Run the cell below to fit your <code class="docutils literal notranslate"><span class="pre">MHCBaggingRegressor</span></code> with <code class="docutils literal notranslate"><span class="pre">n_trees=50</span></code> that computes the bias and variance of each tree’s prediction for a single test point using your <code class="docutils literal notranslate"><span class="pre">compute_bias_and_variance()</span></code> function from earlier:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Same test point from Section 2.3</span>
+    <span class="n">x_test_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+    <span class="n">y_true_point</span> <span class="o">=</span> <span class="mf">4.0</span>
+
+    <span class="n">n_trees</span> <span class="o">=</span> <span class="mi">50</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n_trees=</span><span class="si">{</span><span class="n">n_trees</span><span class="si">}</span><span class="s2"> ensemble:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MHCBaggingRegressor</span><span class="p">(</span><span class="n">n_trees</span><span class="o">=</span><span class="n">n_trees</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+        <span class="c1"># Extract each tree&#39;s individual prediction for the test point</span>
+        <span class="n">per_tree_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_point</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">trees</span><span class="p">])</span>
+        <span class="n">bias</span><span class="p">,</span> <span class="n">variance</span> <span class="o">=</span> <span class="n">compute_bias_and_variance</span><span class="p">(</span><span class="n">per_tree_preds</span><span class="p">,</span> <span class="n">y_true_point</span><span class="p">)</span>
+
+        <span class="n">test_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">max_depth=</span><span class="si">{</span><span class="n">max_depth</span><span class="si">}</span><span class="s2">: &quot;</span> <span class="sa">f</span><span class="s2">&quot;bias=</span><span class="si">{</span><span class="n">bias</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, var=</span><span class="si">{</span><span class="n">variance</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, MSE=</span><span class="si">{</span><span class="n">test_mse</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.2.2</strong> Given the results from the above cell and the math we did in Section 1.2, explain in 1-2 sentences why bagging appears to help the deep tree ensemble much more than the stump ensemble in terms of overall test MSE.</p>
+<p><strong>Your response:</strong> TODO</p>
+</section>
+<section id="tree-boosting-0-75-pts">
+<h2>3.3 Tree boosting [0.75 pts]<a class="headerlink" href="#tree-boosting-0-75-pts" title="Link to this heading">#</a></h2>
+<p>In Class 13, we computed gradient boosting by hand using decision stumps. Let’s implement it here using the <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> class.</p>
+<p><strong>Algorithm:</strong></p>
+<p>Initialize train and test predictions with the mean of the training targets:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_\text{train} = \bar{y}_\text{train}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_\text{test} = \bar{y}_\text{train}
+\]</div>
+<p>For <span class="math notranslate nohighlight">\(b = 1, 2, \ldots, B\)</span> boosting rounds:</p>
+<ol class="arabic simple">
+<li><p>Compute the <strong>training</strong> residuals from the current ensemble: $<span class="math notranslate nohighlight">\(r = y_\text{train} - \hat{y}_\text{train}\)</span>$</p></li>
+<li><p>Fit a decision stump <span class="math notranslate nohighlight">\(f_b\)</span> to predict the residuals on the training data <span class="math notranslate nohighlight">\((x_i, r_i)\)</span>.</p></li>
+<li><p>Update the ensemble’s training and testing predictions with learning rate <span class="math notranslate nohighlight">\(\eta\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\hat{y}_\text{train} = \hat{y}_\text{train} + \eta * f_b(X_\text{train})\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{y}_\text{test} = \hat{y}_\text{test} + \eta * f_b(X_\text{test})\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Additionally, compute the training and testing MSE at each round to track boosting performance.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike bagging, gradient boosting does <strong>not</strong> use bootstrap sampling. Each stump is trained on the full training set, but targeting the current residuals.</p>
+</div>
+<p>Complete the function below that translates the above algorithm into code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gradient_boosting_regressor</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+    <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+    <span class="n">X_test</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+    <span class="n">y_test</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+    <span class="n">n_rounds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> 
+    <span class="n">learning_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Implement gradient boosting for regression using decision stumps (depth-1 trees).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X_train: training features, shape (n_train, p)</span>
+<span class="sd">        y_train: training targets, shape (n_train,)</span>
+<span class="sd">        X_test: test features, shape (n_test, p)</span>
+<span class="sd">        y_test: test targets, shape (n_test,)</span>
+<span class="sd">        n_rounds: number of boosting rounds B</span>
+<span class="sd">        learning_rate: step size eta</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        train_mse_list: list of train MSE at each round</span>
+<span class="sd">        test_mse_list: list of test MSE at each round</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Make the initial predictions of mean of training targets, with shape (n_train,) and (n_test,) respectively</span>
+    <span class="n">train_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
+    <span class="n">test_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_train</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span>
+
+
+    <span class="c1"># Track the train and test MSE at each round</span>
+    <span class="n">train_mse_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">test_mse_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># TODO complete the boosting loop according to the algorithm above</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rounds</span><span class="p">):</span>
+        <span class="c1"># Update the training residuals from the current train predictions</span>
+        <span class="n">residuals_train</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Fit a decision stump to predict residuals_train</span>
+        <span class="n">stump</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Update the ensemble&#39;s training and testing predictions with learning rate</span>
+        <span class="c1"># NOTE: make sure to call predict() on X_train for the train preds, and X_test for the test preds</span>
+        <span class="n">train_preds</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">test_preds</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Compute the training and testing MSE at each round to track boosting performance</span>
+        <span class="n">train_mse_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">train_preds</span><span class="p">))</span>
+        <span class="n">test_mse_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">test_preds</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="n">train_mse_list</span><span class="p">,</span> <span class="n">test_mse_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Small example that can be computed by hand</span>
+    <span class="n">X_train_small</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> 
+                              <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+    <span class="n">y_train_small</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">])</span>
+    <span class="n">X_test_small</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.5</span><span class="p">]])</span>
+    <span class="n">y_test_small</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">6.0</span><span class="p">])</span>
+
+    <span class="n">train_mse_list</span><span class="p">,</span> <span class="n">test_mse_list</span> <span class="o">=</span> <span class="n">gradient_boosting_regressor</span><span class="p">(</span>
+        <span class="n">X_train_small</span><span class="p">,</span> <span class="n">y_train_small</span><span class="p">,</span> <span class="n">X_test_small</span><span class="p">,</span> <span class="n">y_test_small</span><span class="p">,</span> <span class="n">n_rounds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Round 1 predictions:</span>
+    <span class="c1"># Initial predictions are 4.0 (mean of y_train_small: (2+6)/2 = 4)</span>
+    <span class="c1"># Residuals: [2-4, 6-4] = [-2, 2]</span>
+    <span class="c1"># Decision stump with max_depth=1 will split at X=2.0</span>
+    <span class="c1"># Left (X&lt;=2.0): mean residual = -2</span>
+    <span class="c1"># Right (X&gt;2.0): mean residual = 2</span>
+        
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_mse_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Should have 2 train MSE values&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_mse_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Should have 2 test MSE values&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">train_mse_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Train MSE round 1 should be 1, got </span><span class="si">{</span><span class="n">train_mse_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">test_mse_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Test MSE round 1 should be 1, got </span><span class="si">{</span><span class="n">test_mse_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boosting-mse-widget-0-75-pts">
+<h2>3.4 Boosting MSE Widget [0.75 pts]<a class="headerlink" href="#boosting-mse-widget-0-75-pts" title="Link to this heading">#</a></h2>
+<p>Let’s now visualize the train and test MSE over boosting rounds. Complete the <code class="docutils literal notranslate"><span class="pre">explore_boosting_mse()</span></code> function below by plotting the train and test MSE using <code class="docutils literal notranslate"><span class="pre">ax.plot(boosting_rounds,</span> <span class="pre">mse_list)</span></code>. Include:</p>
+<ul class="simple">
+<li><p>both training and test MSE curves with labels</p></li>
+<li><p>a legend</p></li>
+<li><p>appropriate axis labels.</p></li>
+</ul>
+<p>Then also add an <code class="docutils literal notranslate"><span class="pre">interact_manual()</span></code> decorator for the learning rate parameter:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate=(0.1,</span> <span class="pre">1.0,</span> <span class="pre">0.1)</span></code></p></li>
+</ul>
+<p>You can refer back to the <a class="reference external" href="https://matplotlib.org/stable/users/explain/quick_start.html#the-explicit-and-the-implicit-interfaces">matplotlib quickstart guide</a> as well as how we used the <code class="docutils literal notranslate"><span class="pre">interact_manual()</span></code> decorator in <a class="reference external" href="https://comsc335.github.io/worksheets/ws3.html#equal-opportunity-widget">Worksheet 3</a> as references.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># TODO add interact_manual() decorator for the learning rate parameter</span>
+    <span class="nd">@interact_manual</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">explore_boosting_mse</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">):</span>
+        <span class="n">n_rounds</span> <span class="o">=</span> <span class="mi">40</span>
+        <span class="n">train_mse_list</span><span class="p">,</span> <span class="n">test_mse_list</span> <span class="o">=</span> <span class="n">gradient_boosting_regressor</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">n_rounds</span><span class="o">=</span><span class="n">n_rounds</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+
+        <span class="n">boosting_rounds</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_rounds</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+        <span class="c1"># TODO: plot train and test MSE over boosting rounds</span>
+
+        <span class="c1">#plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.4.1:</strong> Set the learning rate to 0.7. At approximately which round does test MSE stop improving? Describe any visual evidence of “overfitting” you see in the plot.</p>
+<p><strong>Your response:</strong> TODO</p>
+<p><strong>3.4.2:</strong> Use your widget to try out different learning rates. Applying some of our principles from the choices of learning rate for gradient descent we saw back on HW 1, what learning rate would you prefer for this dataset? It is okay to speculate here as long as you justify your reasoning.</p>
+<p><strong>Your response:</strong> TODO</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click here to verify your plot</p>
+<p>There may be some variation in the exact numbers due to randomness, but your plot for learning rate 0.7 should look something like this:</p>
+<p><img alt="" src="../_images/hw3_boosting_mse.png" /></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">How to submit</p>
+<p>Follow the instructions on the <a class="reference external" href="https://comsc335.github.io/syllabus/submit.html">course website</a> to submit your work. For part 1, you will submit <code class="docutils literal notranslate"><span class="pre">hw3_foundations.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">hw3_foundations.py</span></code>.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./hws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hw3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hw3_predictions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HW 3 part 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 3 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-and-ensembles-1-25-pts">1. Variance and ensembles [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-definition-0-25-pts">1.1 Variance definition [0.25 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-bagging-reduces-variance-1-pt">1.2 Why bagging reduces variance [1 pt]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-and-bias-variance-1-25-pts">2. Decision trees and bias-variance [1.25 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-0-5-pts">2.1 Visualizing decision trees [0.5 pts]</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-with-plot-tree">Visualizing decision trees with <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-sampling-0-25-pts">2.2 Bootstrap Sampling [0.25 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-and-variance-0-5-pts">2.3 Bias and Variance [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-tree-ensembles-3-pts">3. Implementing Tree Ensembles [3 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-setup">3.1 Data Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-bagging-1-5-pts">3.2 Tree Bagging [1.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-boosting-0-75-pts">3.3 Tree boosting [0.75 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting-mse-widget-0-75-pts">3.4 Boosting MSE Widget [0.75 pts]</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
