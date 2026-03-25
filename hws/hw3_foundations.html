@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
@@ -454,12 +454,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-and-bias-variance-1-25-pts">2. Decision trees and bias-variance [1.25 pts]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-0-5-pts">2.1 Visualizing decision trees [0.5 pts]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-0-25-pts">2.1 Visualizing decision trees [0.25 pts]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-with-plot-tree">Visualizing decision trees with <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-sampling-0-25-pts">2.2 Bootstrap Sampling [0.25 pts]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-and-variance-0-5-pts">2.3 Bias and Variance [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-and-variance-0-75-pts">2.3 Bias and Variance [0.75 pts]</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-tree-ensembles-3-pts">3. Implementing Tree Ensembles [3 pts]</a><ul class="visible nav section-nav flex-column">
@@ -670,8 +670,8 @@ the proportion of each class.</p>
 <p>We’ll use <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> in this section to connect with the
 variance math from the questions above.</p>
 </div>
-<section id="visualizing-decision-trees-0-5-pts">
-<h2>2.1 Visualizing decision trees [0.5 pts]<a class="headerlink" href="#visualizing-decision-trees-0-5-pts" title="Link to this heading">#</a></h2>
+<section id="visualizing-decision-trees-0-25-pts">
+<h2>2.1 Visualizing decision trees [0.25 pts]<a class="headerlink" href="#visualizing-decision-trees-0-25-pts" title="Link to this heading">#</a></h2>
 <p>Let’s practice the API with a small housing dataset: predicting house prices from the number of rooms. Complete the cell below to fit a depth-1 decision stump and a deep tree with no depth limit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -831,8 +831,8 @@ you can use
 </div>
 </div>
 </section>
-<section id="bias-and-variance-0-5-pts">
-<h2>2.3 Bias and Variance [0.5 pts]<a class="headerlink" href="#bias-and-variance-0-5-pts" title="Link to this heading">#</a></h2>
+<section id="bias-and-variance-0-75-pts">
+<h2>2.3 Bias and Variance [0.75 pts]<a class="headerlink" href="#bias-and-variance-0-75-pts" title="Link to this heading">#</a></h2>
 <p>Based on the tree plots from 2.1, we can see that a stump (<code class="docutils literal notranslate"><span class="pre">max_depth=1</span></code>)
 and a deep tree (<code class="docutils literal notranslate"><span class="pre">max_depth=None</span></code>) make very different predictions.
 But they make errors in different ways:</p>
@@ -1402,12 +1402,12 @@ direction: like the stump, which systematically oversimplifies. Mathematically, 
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-and-bias-variance-1-25-pts">2. Decision trees and bias-variance [1.25 pts]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-0-5-pts">2.1 Visualizing decision trees [0.5 pts]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-0-25-pts">2.1 Visualizing decision trees [0.25 pts]</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-decision-trees-with-plot-tree">Visualizing decision trees with <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-sampling-0-25-pts">2.2 Bootstrap Sampling [0.25 pts]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-and-variance-0-5-pts">2.3 Bias and Variance [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-and-variance-0-75-pts">2.3 Bias and Variance [0.75 pts]</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-tree-ensembles-3-pts">3. Implementing Tree Ensembles [3 pts]</a><ul class="visible nav section-nav flex-column">

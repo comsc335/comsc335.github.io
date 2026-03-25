@@ -263,6 +263,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2014-1f77b4) <b> Bootstrapping and Variance</b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552096/mod_resource/content/2/lec14-bootstrap-variance-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552097/mod_resource/content/2/lec14-bootstrap-variance.pdf)</li>
                 <li>[activity 14](https://docs.google.com/document/d/1TvU8S9CSGCbGyHqBLSiWw_umhQn57hFGHk2VPiZQX1k/edit?usp=sharing)</li>
             </ul> 
         <br> ![](https://img.shields.io/badge/Released-2ca02c) [HW 3](hw3)
