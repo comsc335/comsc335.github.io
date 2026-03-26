@@ -270,6 +270,12 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 3/25 </small>
     - <small> 3/26 </small> <br>
         ![](https://img.shields.io/badge/Class%2015-1f77b4) <b> Neural Networks I </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552099/mod_resource/content/2/lec15-neural-networks-i-starter.pdf)</li>
+                <li>[activity 15](https://docs.google.com/document/d/17qpM9MDd8UoDifozbpY42AVzLPnxamufW9UETGchXlA/edit?usp=sharing)</li>
+                <li>[activity 15 notebook](activity15)</li>
+            </ul> 
+        
     - <small> 3/27 </small>
 
 
