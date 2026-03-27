@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Activity 15: Forward prediction in neural networks &#8212; COMSC 335: Machine Learning</title>
+    <title>Activity 15: Forward prediction in neural networks Live &#8212; COMSC 335: Machine Learning</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'activities/activity15';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'activities/activity15_live';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -318,7 +318,7 @@
       
       
       
-      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/activities/activity15.ipynb&branch=main" target="_blank"
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/activities/activity15_live.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on JupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -349,7 +349,7 @@
       
       
       
-      <li><a href="../_sources/activities/activity15.ipynb" target="_blank"
+      <li><a href="../_sources/activities/activity15_live.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -433,7 +433,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Activity 15: Forward prediction in neural networks</h1>
+    <h1>Activity 15: Forward prediction in neural networks Live</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -443,7 +443,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activity 15: Forward prediction in neural networks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activity 15: Forward prediction in neural networks Live</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-image-a-cat">Is this image a cat?</a></li>
 </ul>
 </li>
@@ -469,8 +469,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="activity-15-forward-prediction-in-neural-networks">
-<span id="activity15"></span><h1>Activity 15: Forward prediction in neural networks<a class="headerlink" href="#activity-15-forward-prediction-in-neural-networks" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="activity-15-forward-prediction-in-neural-networks-live">
+<span id="activity15-live"></span><h1>Activity 15: Forward prediction in neural networks Live<a class="headerlink" href="#activity-15-forward-prediction-in-neural-networks-live" title="Link to this heading">#</a></h1>
 <p><strong>2026-03-26</strong></p>
 <section id="is-this-image-a-cat">
 <h2>Is this image a cat?<a class="headerlink" href="#is-this-image-a-cat" title="Link to this heading">#</a></h2>
@@ -522,6 +522,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x shape: (2,)
+W1 shape: (3, 2)
+v shape: (3,)
+</pre></div>
+</div>
+</div>
 </div>
 <section id="the-operator">
 <h2>The <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator<a class="headerlink" href="#the-operator" title="Link to this heading">#</a></h2>
@@ -548,6 +555,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>broadcast: [ 0.8 -0.2  1.4]
+matmul:    [ 0.8 -0.2  1.4]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Then, we can use <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.maximum.html">np.maximum</a> to apply the ReLU activation function. Read the docs, then complete our full forward prediction pass using <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>.</p>
 <div class="cell docutils container">
@@ -562,17 +575,24 @@ document.write(`
 <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>   <span class="c1"># shape (3,): weights, hidden -&gt; output</span>
 
 <span class="c1"># TODO Compute the pre-activation values using the `@` operator</span>
-<span class="n">z</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">W1</span> <span class="o">@</span> <span class="n">x</span>
 
 <span class="c1"># TODO Apply ReLU (hint: np.maximum compares element-wise)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># TODO Compute the output using the `@` operator</span>
-<span class="n">y_hat</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">h</span> <span class="o">@</span> <span class="n">v</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;z (pre-activation): </span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;h (after ReLU):     </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y_hat (output):     </span><span class="si">{</span><span class="n">y_hat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z (pre-activation): [ 0.8 -0.2  1.4]
+h (after ReLU):     [0.8 0.  1.4]
+y_hat (output):     0.94
 </pre></div>
 </div>
 </div>
@@ -616,6 +636,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type:  &lt;class &#39;torch.Tensor&#39;&gt;
+shape: torch.Size([2])
+value: tensor([1., 1.])
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="nn-sequential-building-a-network">
@@ -635,6 +662,15 @@ document.write(`
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sequential(
+  (0): Linear(in_features=2, out_features=3, bias=False)
+  (1): ReLU()
+  (2): Linear(in_features=3, out_features=1, bias=False)
+)
 </pre></div>
 </div>
 </div>
@@ -673,6 +709,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Layer 1 weight shape: torch.Size([3, 2])
+Layer 2 weight shape: torch.Size([1, 3])
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can next pass our input through the model and check that the output matches our hand computation and NumPy result:</p>
 <div class="cell docutils container">
@@ -682,6 +724,12 @@ document.write(`
 <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x_torch</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PyTorch output: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hand computation: 0.94&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PyTorch output: tensor([0.9400], grad_fn=&lt;SqueezeBackward4&gt;)
+Hand computation: 0.94
 </pre></div>
 </div>
 </div>
@@ -764,7 +812,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activity 15: Forward prediction in neural networks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activity 15: Forward prediction in neural networks Live</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-image-a-cat">Is this image a cat?</a></li>
 </ul>
 </li>
