@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
@@ -796,7 +796,7 @@ y = \begin{cases} 1 &amp; \text{individual is eligible for and has public health
 <p>In the dataset, <code class="docutils literal notranslate"><span class="pre">RACE</span> <span class="pre">=</span> <span class="pre">1</span></code> denotes White respondents and <code class="docutils literal notranslate"><span class="pre">RACE</span> <span class="pre">=</span> <span class="pre">0</span></code> denotes Non-White respondents; <code class="docutils literal notranslate"><span class="pre">SEX</span> <span class="pre">=</span> <span class="pre">1</span></code> denotes Male and <code class="docutils literal notranslate"><span class="pre">SEX</span> <span class="pre">=</span> <span class="pre">2</span></code> denotes Female. Like we have seen in other datasets, we note that sex and race are far more complex than a binary categorization can capture, and as a result the models built using this dataset are limited in that they cannot account for people who don’t fit neatly into those categories.</p>
 </div>
 <p>Let’s also visualize these intersectional metrics in the same style as shown in the “Smiling Detection” model card (except without the error bars):</p>
-<p><img alt="" src="figures/model_card_fpr_fnr.png" /></p>
+<p><img alt="" src="../_images/model_card_fpr_fnr.png" /></p>
 <p>Seaborn’s <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.pointplot.html">sns.pointplot</a> allows us to closely replicate this visual style using the following parameters:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">x='metric'</span></code>: the metric to plot on the x-axis</p></li>
