@@ -288,7 +288,9 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2016-1f77b4) <b> Neural Networks II </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552102/mod_resource/content/2/lec16-neural-networks-ii-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552103/mod_resource/content/2/lec16-neural-networks-ii.pdf)</li>
                 <li>[activity 16](https://colab.research.google.com/drive/1clu2b791-vEdRrEEcFoS7QIqCX7PSOky?usp=sharing)</li>
+                <li>[[live] activity 16](https://colab.research.google.com/drive/1B3voMXbuReLezxy1yVdiXOcsWs17l17C?usp=sharing)</li>
             </ul> 
     - <small> 4/1 </small>
 
