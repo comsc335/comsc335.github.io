@@ -296,6 +296,11 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 4/2 </small> <br>
         ![](https://img.shields.io/badge/Class%2017-1f77b4) <b> Neural Networks III </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552105/mod_resource/content/2/lec17-neural-networks-iii-starter.pdf)</li>
+                <li>[activity 17](https://docs.google.com/document/d/1Q4K0riRyIwolydJhY0Ya-cgoL1kpIo-Z3M8LflMG_J4/edit?usp=sharing)</li>
+                <li>[activity 17 colab](https://colab.research.google.com/drive/1qbuChg9toqyx1XrUUFFyg1v9Be0zGDMb?usp=sharing)</li>
+            </ul> 
 
     - <small> 4/3 </small>
         <br> ![](https://img.shields.io/badge/Due-dc322f) [HW 3](hw3)
