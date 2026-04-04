@@ -1,0 +1,1173 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HW 4 part 1 &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hws/hw4_foundations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Final Project" href="../final_project/final_project.html" />
+    <link rel="prev" title="Homework 4" href="hw4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/activities.html">In-Class Activities</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws3.html">Worksheet 3</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="hw2.html">Homework 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw2_foundations.html">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="hw3.html">Homework 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw3_foundations.html">HW 3 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="hw3_predictions.html">HW 3 part 2</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="hw4.html">Homework 4</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HW 4 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1CdCBIrE3lztLfyQjx7pcumUtmmhDON9f?usp=sharing">HW 4 Part 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project/final_project.html">Final Project</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/hws/hw4_foundations.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/hws/hw4_foundations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HW 4 part 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 4 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-and-the-chain-rule-1-75-pts">1. Backpropagation and the chain rule [1.75 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-rule-warmup-0-5-pts">1.1 Chain rule warmup [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-on-a-small-network-0-75-pts">1.2 Backpropagation on a small network [0.75 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-computation-in-backpropagation-0-5-pts">1.3 Shared computation in backpropagation [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-components-1-75-pts">2. PyTorch Components [1.75 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-model-0-5-pts">2.1 <code class="docutils literal notranslate"><span class="pre">build_model()</span></code> [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-one-step-0-75-pts">2.2 <code class="docutils literal notranslate"><span class="pre">train_one_step()</span></code> [0.75 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-0-5-pts">2.3 <code class="docutils literal notranslate"><span class="pre">evaluate()</span></code> [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#training-loop-concepts-1-pt">3. Training Loop Concepts [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch-gradient-descent-0-5-pts">3.1 Mini-batch gradient descent [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-train-and-validation-loss-curves-0-5-pts">3.2 Reading train and validation loss curves [0.5 pts]</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hw-4-part-1">
+<span id="hw4-foundations"></span><h1>HW 4 part 1<a class="headerlink" href="#hw-4-part-1" title="Link to this heading">#</a></h1>
+<blockquote class="epigraph">
+<div><p>Neural Networks: Foundations</p>
+<p class="attribution">—TODO your name here</p>
+</div></blockquote>
+<div class="admonition-collaboration-statement admonition">
+<p class="admonition-title">Collaboration Statement</p>
+<ul class="simple">
+<li><p>TODO brief statement on the nature of your collaboration.</p></li>
+<li><p>TODO your collaborator’s names here</p></li>
+</ul>
+</div>
+<section id="part-1-table-of-contents-and-rubric">
+<h2>Part 1 Table of Contents and Rubric<a class="headerlink" href="#part-1-table-of-contents-and-rubric" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Points</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Backpropagation and the chain rule</p></td>
+<td><p>1.75</p></td>
+</tr>
+<tr class="row-odd"><td><p>PyTorch components</p></td>
+<td><p>1.75</p></td>
+</tr>
+<tr class="row-even"><td><p>Training loop concepts</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total</strong></p></td>
+<td><p><strong>4.5 pts</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="notebook-and-function-imports">
+<h1>Notebook and function imports<a class="headerlink" href="#notebook-and-function-imports" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+
+<span class="c1"># random number generator</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="backpropagation-and-the-chain-rule-1-75-pts">
+<h1>1. Backpropagation and the chain rule [1.75 pts]<a class="headerlink" href="#backpropagation-and-the-chain-rule-1-75-pts" title="Link to this heading">#</a></h1>
+<p>In <a class="reference external" href="https://comsc335.github.io/activities/activity15_live.html">Activity 15</a>, we built a neural network and computed its <strong>forward pass</strong>: given inputs and weights, we compute predictions. Now we turn to the question of how neural networks learn: how do we compute the gradients needed for gradient descent?</p>
+<p>In HW 1 and HW 2, we derived gradients for linear regression and logistic regression by hand. For neural networks with many layers and weights, we need a systematic approach. This is where the <strong>chain rule</strong> and <strong>backpropagation</strong> come in.</p>
+<section id="chain-rule-warmup-0-5-pts">
+<h2>1.1 Chain rule warmup [0.5 pts]<a class="headerlink" href="#chain-rule-warmup-0-5-pts" title="Link to this heading">#</a></h2>
+<p>In HW 1, we computed <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial w_j}\)</span> for linear regression using the chain rule. In HW 2, we used the chain rule again to derive <span class="math notranslate nohighlight">\(\frac{\partial \ell_{\log,i}}{\partial w_j}\)</span> for logistic regression. Let’s refresh here with another chain rule example.</p>
+<p>If <span class="math notranslate nohighlight">\(L\)</span> depends on <span class="math notranslate nohighlight">\(a\)</span>, and <span class="math notranslate nohighlight">\(a\)</span> depends on <span class="math notranslate nohighlight">\(w\)</span>, then the chain rule says:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dL}{dw} = \frac{dL}{da} \cdot \frac{da}{dw}
+\]</div>
+<p>The chain rule extends naturally to longer chains, if <span class="math notranslate nohighlight">\(a\)</span> also depends on <span class="math notranslate nohighlight">\(z\)</span> and <span class="math notranslate nohighlight">\(z\)</span> depends on <span class="math notranslate nohighlight">\(w\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dL}{dw} = \frac{dL}{da} \cdot \frac{da}{dz} \cdot \frac{dz}{dw}
+\]</div>
+<p>Suppose we have the following chain of functions:</p>
+<div class="math notranslate nohighlight">
+\[
+L(a) = (a - 3)^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+a(z) = \text{ReLU}(z) = \max(0, z)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+z(w) = 2w + 1
+\]</div>
+<p>Compute <span class="math notranslate nohighlight">\(\frac{dL}{dw}\)</span> at <span class="math notranslate nohighlight">\(w = 1\)</span> by applying the chain rule. Fill in each step:</p>
+<p><strong>Your response:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+z(1) = \text{TODO} \\\\
+a(z) = \text{ReLU}(\text{TODO}) = \text{TODO} \\\\
+L(a) = (\text{TODO} - 3)^2 = \text{TODO}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{dL}{da} = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{da}{dz} = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{dz}{dw} = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{dL}{dw} = \frac{dL}{da} \cdot \frac{da}{dz} \cdot \frac{dz}{dw} = \text{TODO}
+\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check your answer</p>
+<p><span class="math notranslate nohighlight">\(z(1) = 2(1) + 1 = 3\)</span>. <span class="math notranslate nohighlight">\(a = \text{ReLU}(3) = 3\)</span>. <span class="math notranslate nohighlight">\(L = (3 - 3)^2 = 0\)</span>.</p>
+<p>The partial derivatives: <span class="math notranslate nohighlight">\(\frac{dL}{da} = 2(a - 3) = 2(3 - 3) = 0\)</span>, <span class="math notranslate nohighlight">\(\frac{da}{dz} = 1\)</span> (since <span class="math notranslate nohighlight">\(z = 3 &gt; 0\)</span>, the ReLU slope is 1), <span class="math notranslate nohighlight">\(\frac{dz}{dw} = 2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dL}{dw} = 0 \cdot 1 \cdot 2 = 0
+\]</div>
+<p>The gradient is zero because <span class="math notranslate nohighlight">\(L\)</span> is already at its minimum with respect to <span class="math notranslate nohighlight">\(a\)</span>: the prediction <span class="math notranslate nohighlight">\(a = 3\)</span> matches the target. A zero gradient means gradient descent won’t change <span class="math notranslate nohighlight">\(w\)</span>, as we’ve already found the optimal value!</p>
+</div>
+</section>
+<section id="backpropagation-on-a-small-network-0-75-pts">
+<h2>1.2 Backpropagation on a small network [0.75 pts]<a class="headerlink" href="#backpropagation-on-a-small-network-0-75-pts" title="Link to this heading">#</a></h2>
+<p>Now let’s apply the chain rule to a neural network. We’ll use the same notation from <a class="reference external" href="https://comsc335.github.io/activities/activity15_live.html">Activity 15</a>: <span class="math notranslate nohighlight">\(z\)</span> for pre-activation values, <span class="math notranslate nohighlight">\(h\)</span> for post-activation (hidden) values, and <span class="math notranslate nohighlight">\(\hat{y}\)</span> for the output.</p>
+<p>We’ll use a small network with 2 inputs, 2 hidden neurons (ReLU), and 1 output. The loss is squared error: <span class="math notranslate nohighlight">\(\mathcal{L} = (\hat{y} - y)^2\)</span>:</p>
+<p><img alt="" src="../_images/hw4_neural_net.png" /></p>
+<p>The network computes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+z_k = \sum_j w_{k,j} \, x_j \quad \text{(pre-activation for hidden neuron } k\text{)} \\\\
+h_k = \text{ReLU}(z_k) \quad \text{(hidden activation)} \\\\
+\hat{y} = v_1 h_1 + v_2 h_2 \quad \text{(output)} \\\\
+\mathcal{L} = (\hat{y} - y)^2 \quad \text{(loss)}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{k,j}\)</span> is the weight from input <span class="math notranslate nohighlight">\(x_j\)</span> to hidden neuron <span class="math notranslate nohighlight">\(h_k\)</span>, and <span class="math notranslate nohighlight">\(v_k\)</span> is the weight from <span class="math notranslate nohighlight">\(h_k\)</span> to the output.</p>
+<p><strong>Specific values for this exercise:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+W = \begin{bmatrix} w_{1,1} &amp; w_{1,2} \\\\ w_{2,1} &amp; w_{2,2} \end{bmatrix} = \begin{bmatrix} 0.5 &amp; -0.3 \\\\ 0.2 &amp; 0.8 \end{bmatrix}, \quad v = (v_1, v_2) = (0.6, 0.4)
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+x = (x_1, x_2) = (1, 2), \quad y = 1
+\]</div>
+<p><strong>1.2.1</strong> Compute the forward pass. Fill in each intermediate value:</p>
+<div class="math notranslate nohighlight">
+\[
+z_1 = w_{1,1} x_1 + w_{1,2} x_2 = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+z_2 = w_{2,1} x_1 + w_{2,2} x_2 = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+h_1 = \text{ReLU}(z_1) = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+h_2 = \text{ReLU}(z_2) = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\hat{y} = v_1 h_1 + v_2 h_2 = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L} = (\hat{y} - y)^2 = \text{TODO}
+\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to check your forward pass</p>
+<p><span class="math notranslate nohighlight">\(z_1 = 0.5(1) + (-0.3)(2) = -0.1\)</span></p>
+<p><span class="math notranslate nohighlight">\(z_2 = 0.2(1) + 0.8(2) = 1.8\)</span></p>
+<p><span class="math notranslate nohighlight">\(h_1 = \text{ReLU}(-0.1) = 0\)</span>, so ReLU zeroed out this neuron!</p>
+<p><span class="math notranslate nohighlight">\(h_2 = \text{ReLU}(1.8) = 1.8\)</span></p>
+<p><span class="math notranslate nohighlight">\(\hat{y} = 0.6(0) + 0.4(1.8) = 0.72\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mathcal{L} = (0.72 - 1)^2 = 0.0784\)</span></p>
+</div>
+<p><strong>1.2.2</strong> Now compute the gradient of the loss with respect to <span class="math notranslate nohighlight">\(w_{2,1}\)</span> (the weight from input <span class="math notranslate nohighlight">\(x_1\)</span> to hidden neuron <span class="math notranslate nohighlight">\(h_2\)</span>). The chain rule gives us:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_{2,1}} = \frac{\partial \mathcal{L}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial h_2} \cdot \frac{\partial h_2}{\partial z_2} \cdot \frac{\partial z_2}{\partial w_{2,1}}
+\]</div>
+<p>Compute each term:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial \hat{y}} = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \hat{y}}{\partial h_2} = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial h_2}{\partial z_2} = \text{TODO}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial z_2}{\partial w_{2,1}} = \text{TODO}
+\]</div>
+<p>Then put it all together for the backwards pass:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_{2,1}} = \text{TODO}
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>Use the values from 1.2.1. For <span class="math notranslate nohighlight">\(\frac{\partial h_2}{\partial z_2}\)</span>: what is the derivative of <span class="math notranslate nohighlight">\(\text{ReLU}(z)\)</span> when <span class="math notranslate nohighlight">\(z &gt; 0\)</span>?</p>
+</div>
+<p><strong>1.2.3</strong> Now consider <span class="math notranslate nohighlight">\(w_{1,1}\)</span> (the weight from <span class="math notranslate nohighlight">\(x_1\)</span> to hidden neuron <span class="math notranslate nohighlight">\(h_1\)</span>). Without doing the full computation, what is <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial w_{1,1}}\)</span>? Briefly explain why.</p>
+<p><strong>Your response:</strong> TODO</p>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>Look at the value of <span class="math notranslate nohighlight">\(z_1\)</span> you computed in 1.2.1, and then consider what <span class="math notranslate nohighlight">\(\frac{\partial h_1}{\partial z_1}\)</span> for this particular value.</p>
+</div>
+</section>
+<section id="shared-computation-in-backpropagation-0-5-pts">
+<h2>1.3 Shared computation in backpropagation [0.5 pts]<a class="headerlink" href="#shared-computation-in-backpropagation-0-5-pts" title="Link to this heading">#</a></h2>
+<p>In 1.2, we computed the gradient for a single weight <span class="math notranslate nohighlight">\(w_{2,1}\)</span> by evaluating a chain of 4 partial derivatives. But our network has 6 weights total. Do we need to redo all that work for each one?</p>
+<p>Let’s write out the chain rule for three different weights and look for patterns.</p>
+<p><strong>1.3.1</strong> Here are the chain rule expressions for three of the six weights in our network:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_{2,1}} = \frac{\partial \mathcal{L}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial h_2} \cdot \frac{\partial h_2}{\partial z_2} \cdot \frac{\partial z_2}{\partial w_{2,1}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial w_{1,1}} = \frac{\partial \mathcal{L}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial h_1} \cdot \frac{\partial h_1}{\partial z_1} \cdot \frac{\partial z_1}{\partial w_{1,1}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}}{\partial v_2} = \frac{\partial \mathcal{L}}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial v_2}
+\]</div>
+<p>Which partial derivative term appears in all three chains?</p>
+<p><strong>Your response:</strong> TODO</p>
+<p><strong>1.3.2</strong> Part of what makes backpropagation efficient is once a partial derivative is computed, it can be reused for all weights that depend on it. Briefly explain why computing gradients backwards from the <strong>output back to the inputs</strong> (this corresponds to evaluating the chain rule expressions above left to right) saves work, as opposed to computing each weight’s gradient independently. Use the three chain rule expressions above to support your answer.</p>
+<p><strong>Your response:</strong> TODO</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click for takeaway</p>
+<p>The chains all start with the same terms on the left (<span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial \hat{y}}\)</span>) and only differ at the end. That means we only need to compute <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}}{\partial \hat{y}}\)</span> once, and then we can reuse it for all 6 weight gradients in our small network. Large-scale deep networks have hundreds of millions of weights, so this compute-and-reuse strategy is essential for training them efficiently.</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pytorch-components-1-75-pts">
+<h1>2. PyTorch Components [1.75 pts]<a class="headerlink" href="#pytorch-components-1-75-pts" title="Link to this heading">#</a></h1>
+<p>In class, we built a neural network using <code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code>, <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code>, and <code class="docutils literal notranslate"><span class="pre">nn.ReLU</span></code> and verified our forward pass by hand. In this section, we’ll build three reusable functions that modularize the training workflow:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">build_model()</span></code>: construct an <code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code> from a list of layer sizes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_one_step()</span></code>: perform one gradient descent step</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code>: compute loss and accuracy without updating weights</p></li>
+</ol>
+<p>These three functions will be the building blocks for the training loop you’ll write in Part 2.</p>
+<section id="build-model-0-5-pts">
+<h2>2.1 <code class="docutils literal notranslate"><span class="pre">build_model()</span></code> [0.5 pts]<a class="headerlink" href="#build-model-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Let’s generalize the model construction we have seen in class into a reusable function. <code class="docutils literal notranslate"><span class="pre">build_model()</span></code> constructs an <code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code> with ReLU activations between each pair of layers, and optional dropout for regularization.</p>
+<div class="tip admonition">
+<p class="admonition-title">Dropout</p>
+<p><strong>Dropout</strong> is a regularization technique that randomly “turns off” a random fraction of neurons during each training step, preventing the network from relying too heavily on any single neuron. It’s specified by a probability <code class="docutils literal notranslate"><span class="pre">p</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">p=0.2</span></code> means each neuron is dropped with probability 0.2. When <code class="docutils literal notranslate"><span class="pre">dropout_rate</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, add an <code class="docutils literal notranslate"><span class="pre">nn.Dropout(p=dropout_rate)</span></code> layer after each <code class="docutils literal notranslate"><span class="pre">nn.ReLU</span></code>. We’ll explore its effect in Part 2.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_model</span><span class="p">(</span>
+    <span class="n">input_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">hidden_sizes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="n">output_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">dropout_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a feedforward neural network with ReLU activations.</span>
+
+<span class="sd">    Constructs an nn.Sequential model with the following pattern for each</span>
+<span class="sd">    hidden layer: Linear -&gt; ReLU -&gt; (optional Dropout). The final layer</span>
+<span class="sd">    is a plain Linear layer with no activation.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_size: number of input features</span>
+<span class="sd">        hidden_sizes: list of hidden layer sizes, e.g. [128, 64]</span>
+<span class="sd">        output_size: number of output classes</span>
+<span class="sd">        dropout_rate: dropout probability (0.0 means no dropout)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        An nn.Sequential model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">prev_size</span> <span class="o">=</span> <span class="n">input_size</span>
+
+    <span class="c1"># TODO: iterate over hidden_sizes, and for each hidden size h:</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hidden_sizes</span><span class="p">:</span>
+        <span class="c1"># TODO: append nn.Linear to the layers list from prev_size to h</span>
+        <span class="k">pass</span>
+
+        <span class="c1"># TODO: append nn.ReLU() to the layers list</span>
+
+        <span class="c1"># TODO: if dropout_rate &gt; 0, append nn.Dropout(p=dropout_rate) to the layers list</span>
+
+        <span class="c1"># TODO: update prev_size to h</span>
+        <span class="n">prev_size</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># TODO: append the final nn.Linear from prev_size to output_size for the output layer</span>
+
+    <span class="c1"># Return the model as a nn.Sequential with the layers built</span>
+    <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Test 1: basic architecture, check parameter count</span>
+    <span class="n">model1</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="n">n_params</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model1</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+    <span class="k">assert</span> <span class="n">n_params</span> <span class="o">==</span> <span class="mi">109321</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected 109321 parameters, got </span><span class="si">{</span><span class="n">n_params</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test 1 passed: </span><span class="si">{</span><span class="n">n_params</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> parameters&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Test 2: with dropout — should have 2 Dropout layers</span>
+    <span class="n">model2</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="mi">9</span><span class="p">,</span> <span class="n">dropout_rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">dropout_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">model2</span><span class="o">.</span><span class="n">modules</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">)]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">dropout_layers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected 2 Dropout layers, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">dropout_layers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test 2 passed: found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">dropout_layers</span><span class="p">)</span><span class="si">}</span><span class="s2"> Dropout layers&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Test 3: single hidden layer</span>
+    <span class="n">model3</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">n_params3</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model3</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+    <span class="c1"># Linear(10, 5): 10*5 + 5 = 55. Linear(5, 2): 5*2 + 2 = 12. Total: 67</span>
+    <span class="k">assert</span> <span class="n">n_params3</span> <span class="o">==</span> <span class="mi">67</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected 67 parameters, got </span><span class="si">{</span><span class="n">n_params3</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test 3 passed: </span><span class="si">{</span><span class="n">n_params3</span><span class="si">}</span><span class="s2"> parameters&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">All build_model tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-one-step-0-75-pts">
+<h2>2.2 <code class="docutils literal notranslate"><span class="pre">train_one_step()</span></code> [0.75 pts]<a class="headerlink" href="#train-one-step-0-75-pts" title="Link to this heading">#</a></h2>
+<p>Now let’s implement a single gradient descent step. In HW 1, you wrote <code class="docutils literal notranslate"><span class="pre">linreg_grad_update</span></code> which manually computed gradients and updated weights. In PyTorch, the same process happens through three operations:</p>
+<ol class="arabic simple">
+<li><p><strong>Forward pass</strong>: compute predictions and loss</p></li>
+<li><p><strong>Backward pass</strong>: <code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code> computes all gradients automatically using backpropagation</p></li>
+<li><p><strong>Optimizer step</strong>: <code class="docutils literal notranslate"><span class="pre">optimizer.step()</span></code> updates all weights using the computed gradients</p></li>
+</ol>
+<p>One important detail: we also need to call <code class="docutils literal notranslate"><span class="pre">optimizer.zero_grad()</span></code> <strong>before</strong> the forward pass to clear gradients from the previous step. (PyTorch accumulates gradients by default.)</p>
+<div class="note admonition">
+<p class="admonition-title">Connecting to Section 1</p>
+<p><code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code> is doing exactly the forward-backward computation we analyzed in 1.3: it computes all partial derivatives by reusing intermediate values, avoiding the exponential blowup of computing each gradient independently.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_one_step</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+    <span class="n">X_batch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">y_batch</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">loss_fn</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Optimizer</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform one gradient descent step: forward, loss, backward, update.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: the neural network model</span>
+<span class="sd">        X_batch: input features for this batch, shape (batch_size, input_size)</span>
+<span class="sd">        y_batch: target labels for this batch, shape (batch_size,)</span>
+<span class="sd">        loss_fn: the loss function (e.g., nn.CrossEntropyLoss())</span>
+<span class="sd">        optimizer: the optimizer (e.g., torch.optim.SGD or Adam)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The loss value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># TODO: zero out the gradients to reset them for this gradient descent step</span>
+
+
+    <span class="c1"># TODO: the forward pass through the model to compute predictions</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># TODO: compute the loss using loss_fn</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># TODO: the backward pass to compute all gradients via backpropagation</span>
+
+
+    <span class="c1"># TODO: Take one step of gradient descent with the optimizer</span>
+
+
+    <span class="c1"># Returns the loss as a Python float using .item()</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="n">model_test</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">X_test_batch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">y_test_batch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">16</span><span class="p">,))</span>
+
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model_test</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="n">loss1</span> <span class="o">=</span> <span class="n">train_one_step</span><span class="p">(</span><span class="n">model_test</span><span class="p">,</span> <span class="n">X_test_batch</span><span class="p">,</span> <span class="n">y_test_batch</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">loss1</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Loss should be a float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">loss1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">loss1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Loss should be positive, got </span><span class="si">{</span><span class="n">loss1</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="n">loss2</span> <span class="o">=</span> <span class="n">train_one_step</span><span class="p">(</span><span class="n">model_test</span><span class="p">,</span> <span class="n">X_test_batch</span><span class="p">,</span> <span class="n">y_test_batch</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">loss2</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Loss should be a float, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">loss2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loss after step 1: </span><span class="si">{</span><span class="n">loss1</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loss after step 2: </span><span class="si">{</span><span class="n">loss2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;train_one_step tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-0-5-pts">
+<h2>2.3 <code class="docutils literal notranslate"><span class="pre">evaluate()</span></code> [0.5 pts]<a class="headerlink" href="#evaluate-0-5-pts" title="Link to this heading">#</a></h2>
+<p>Finally, we need a function to evaluate our model’s performance on a validation or test set without updating the weights. We need two key PyTorch idioms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>: switches off behaviors that only make sense during training (like dropout)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code>: disables gradient tracking since we don’t need gradients during evaluation (saves memory)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+    <span class="n">loss_fn</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate model: returns (loss, accuracy) without updating weights.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model: the neural network model</span>
+<span class="sd">        X: input features, shape (n, input_size)</span>
+<span class="sd">        y: target labels, shape (n,)</span>
+<span class="sd">        loss_fn: the loss function</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (loss, accuracy) as a tuple of scalars</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="c1"># disable dropout</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span> <span class="c1"># tells PyTorch to not track gradients</span>
+
+        <span class="c1"># TODO: compute predictions by passing X through the model</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># TODO: compute the loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># TODO: compute predicted classes using argmax</span>
+        <span class="n">predicted_classes</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># TODO: compute accuracy as the fraction of correct predictions</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="n">model_eval</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">X_eval</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">y_eval</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+    <span class="n">loss_fn_eval</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+    <span class="n">loss</span><span class="p">,</span> <span class="n">acc</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model_eval</span><span class="p">,</span> <span class="n">X_eval</span><span class="p">,</span> <span class="n">y_eval</span><span class="p">,</span> <span class="n">loss_fn_eval</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">acc</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Accuracy should be between 0 and 1, got </span><span class="si">{</span><span class="n">acc</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">assert</span> <span class="n">loss</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Loss should be positive, got </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evaluation loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evaluation accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="training-loop-concepts-1-pt">
+<h1>3. Training Loop Concepts [1 pt]<a class="headerlink" href="#training-loop-concepts-1-pt" title="Link to this heading">#</a></h1>
+<p>In Part 2, you’ll write a full training loop using the functions from Section 3. Let’s practice again with the training loop concepts needed: <strong>mini-batches</strong>, <strong>epochs</strong>, and <strong>DataLoaders</strong>.</p>
+<section id="mini-batch-gradient-descent-0-5-pts">
+<h2>3.1 Mini-batch gradient descent [0.5 pts]<a class="headerlink" href="#mini-batch-gradient-descent-0-5-pts" title="Link to this heading">#</a></h2>
+<p>In HW 1, your <code class="docutils literal notranslate"><span class="pre">linreg_grad_descent</span></code> computed the gradient using <strong>all</strong> <span class="math notranslate nohighlight">\(n\)</span> training examples at every step. This is the <strong>batch</strong> gradient descent approach we discussed in lectures 4-5. For large neural networks with millions of examples, computing one gradient over the full dataset is too expensive.</p>
+<p>Instead, we use <strong>mini-batch</strong> gradient descent: at each step, we compute the gradient on a small batch of <span class="math notranslate nohighlight">\(b\)</span> examples. Each complete pass through the training set is called an <strong>epoch</strong>. Within each epoch, the PyTorch <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> class divides the data into mini-batches and shuffles them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+
+    <span class="c1"># Preview: how DataLoader works</span>
+    <span class="n">X_preview</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">y_preview</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_preview</span><span class="p">,</span> <span class="n">y_preview</span><span class="p">)</span>
+    <span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="si">}</span><span class="s2"> examples&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of batches per epoch: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># Peek at one batch</span>
+    <span class="n">X_batch_preview</span><span class="p">,</span> <span class="n">y_batch_preview</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_loader</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch X shape: </span><span class="si">{</span><span class="n">X_batch_preview</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Batch y shape: </span><span class="si">{</span><span class="n">y_batch_preview</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3.1.1</strong> Suppose we have <span class="math notranslate nohighlight">\(n = 1024\)</span> training examples and a batch size of <span class="math notranslate nohighlight">\(b = 64\)</span>.</p>
+<p>How many gradient updates (calls to <code class="docutils literal notranslate"><span class="pre">train_one_step</span></code>) happen in <strong>one epoch</strong>?</p>
+<p><strong>Your response:</strong> TODO</p>
+<p>If we train for 10 epochs, how many <strong>total</strong> gradient updates happen if we use a batch size of <span class="math notranslate nohighlight">\(b = 64\)</span>?</p>
+<p><strong>Your response:</strong> TODO</p>
+<p>Compare this to 10 steps of full-batch gradient descent (<span class="math notranslate nohighlight">\(b = n = 1024\)</span>). How many total gradient updates would that be? Discuss which approach you think would learn more effectively when training a model on a large dataset.</p>
+<p><strong>Your response:</strong> TODO</p>
+<p><strong>3.1.2</strong> What are some trade-offs between using a <strong>smaller</strong> batch size (e.g., <span class="math notranslate nohighlight">\(b = 16\)</span>) versus a <strong>larger</strong> batch size (e.g., <span class="math notranslate nohighlight">\(b = 512\)</span>)? Think back to our discussion of batch vs mini-batch vs stochastic gradient descent in <a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1562907/mod_resource/content/1/lec04-gradient-descent-ii.pdf">lecture 4</a> and <a class="reference external" href="https://moodle.mtholyoke.edu/pluginfile.php/1563565/mod_resource/content/2/lec05-model-evaluation.pdf">lecture 5</a>, and also consider the number of gradient updates per epoch. It is okay to speculate here, as this is an open-ended question.</p>
+<p><strong>Your response:</strong> TODO</p>
+</section>
+<section id="reading-train-and-validation-loss-curves-0-5-pts">
+<h2>3.2 Reading train and validation loss curves [0.5 pts]<a class="headerlink" href="#reading-train-and-validation-loss-curves-0-5-pts" title="Link to this heading">#</a></h2>
+<p>When training a neural network, we track both <strong>training loss</strong> (on the data the model is being trained on) and <strong>validation loss</strong> (on held-out data the model hasn’t seen). The relationship between these two curves tells us whether our model is learning well.</p>
+<p>Here is a preview of the training loop structure you’ll complete in Part 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>   <span class="c1"># iterate over mini-batches</span>
+        <span class="n">train_one_step</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_batch</span><span class="p">,</span> <span class="n">y_batch</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">)</span>
+    <span class="n">val_loss</span><span class="p">,</span> <span class="n">val_acc</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>3.2.1</strong> The plots below show train and validation loss curves over 20 epochs for two models trained on the same dataset. Examine each plot and diagnose whether you observe <strong>underfitting</strong>, <strong>overfitting</strong>, or a <strong>good fit</strong>. Explain your reasoning in 1-2 sentences.</p>
+<p><img alt="" src="../_images/hw4_training_curves.png" /></p>
+<p><strong>Model A diagnosis:</strong> TODO</p>
+<p><strong>Model B diagnosis:</strong> TODO</p>
+<p><strong>3.2.2</strong> Based on the plots above, describe what pattern in the train vs. validation loss curves would indicate that a model is performing well. What would you look for to decide when to stop training?</p>
+<p><strong>Your response:</strong> TODO</p>
+<div class="tip admonition">
+<p class="admonition-title">How to submit</p>
+<p>Follow the instructions on the <a class="reference external" href="https://comsc335.github.io/syllabus/submit.html">course website</a> to submit your work. For part 1, you will submit <code class="docutils literal notranslate"><span class="pre">hw4_foundations.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">hw4_foundations.py</span></code>.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./hws"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hw4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Homework 4</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../final_project/final_project.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Final Project</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">HW 4 part 1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-table-of-contents-and-rubric">Part 1 Table of Contents and Rubric</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-and-function-imports">Notebook and function imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-and-the-chain-rule-1-75-pts">1. Backpropagation and the chain rule [1.75 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chain-rule-warmup-0-5-pts">1.1 Chain rule warmup [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-on-a-small-network-0-75-pts">1.2 Backpropagation on a small network [0.75 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-computation-in-backpropagation-0-5-pts">1.3 Shared computation in backpropagation [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-components-1-75-pts">2. PyTorch Components [1.75 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-model-0-5-pts">2.1 <code class="docutils literal notranslate"><span class="pre">build_model()</span></code> [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-one-step-0-75-pts">2.2 <code class="docutils literal notranslate"><span class="pre">train_one_step()</span></code> [0.75 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-0-5-pts">2.3 <code class="docutils literal notranslate"><span class="pre">evaluate()</span></code> [0.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#training-loop-concepts-1-pt">3. Training Loop Concepts [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-batch-gradient-descent-0-5-pts">3.1 Mini-batch gradient descent [0.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-train-and-validation-loss-curves-0-5-pts">3.2 Reading train and validation loss curves [0.5 pts]</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
