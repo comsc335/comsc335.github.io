@@ -304,7 +304,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
 
     - <small> 4/3 </small>
         <br> ![](https://img.shields.io/badge/Due-dc322f) [HW 3](hw3)
-        <br> ![](https://img.shields.io/badge/Released-2ca02c) HW 4
+        <br> ![](https://img.shields.io/badge/Released-2ca02c) [HW 4](hw4)
 
 *   - <small> 4/6 </small> <!-- Week 10 --> <br> 
         
@@ -316,7 +316,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 4/10 </small>
 
 *   - <small> 4/13 </small> <!-- Week 11 --> <br> 
-        ![](https://img.shields.io/badge/Due-dc322f) HW 4
+        ![](https://img.shields.io/badge/Due-dc322f) [HW 4](hw4)
     - <small> 4/14 </small> <br>
         ![](https://img.shields.io/badge/Class%2020-1f77b4)
         <br> ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 4

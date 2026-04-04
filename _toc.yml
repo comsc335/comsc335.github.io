@@ -34,6 +34,11 @@ parts:
         sections:
         - file: hws/hw3_foundations.ipynb
         - file: hws/hw3_predictions.ipynb
+      - file: hws/hw4.md
+        sections:
+        - file: hws/hw4_foundations.ipynb
+        - url: https://colab.research.google.com/drive/1CdCBIrE3lztLfyQjx7pcumUtmmhDON9f?usp=sharing
+          title: HW 4 Part 2
       - file: final_project/final_project.md
         sections:
         - file: final_project/final_proposal.ipynb
