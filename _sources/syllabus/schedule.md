@@ -321,7 +321,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 4/10 </small>
 
 *   - <small> 4/13 </small> <!-- Week 11 --> <br> 
-        ![](https://img.shields.io/badge/Due-dc322f) [HW 4](hw4)
+        ![](https://img.shields.io/badge/Due-dc322f) [HW 4](hw4) <br> <b>Tony away this week, but available via Ed/email</b>
     - <small> 4/14 </small> <br>
         ![](https://img.shields.io/badge/Class%2020-1f77b4) <b> Guest lecture: Word embeddings </b>
         <br> ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 4
