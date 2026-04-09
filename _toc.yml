@@ -42,3 +42,4 @@ parts:
       - file: final_project/final_project.md
         sections:
         - file: final_project/final_proposal.ipynb
+        - file: final_project/final_template.ipynb

@@ -298,6 +298,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2017-1f77b4) <b> Neural Networks III </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552105/mod_resource/content/2/lec17-neural-networks-iii-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552106/mod_resource/content/2/lec17-neural-networks-iii.pdf)</li>
                 <li>[activity 17](https://docs.google.com/document/d/1Q4K0riRyIwolydJhY0Ya-cgoL1kpIo-Z3M8LflMG_J4/edit?usp=sharing)</li>
                 <li>[activity 17 colab](https://colab.research.google.com/drive/1qbuChg9toqyx1XrUUFFyg1v9Be0zGDMb?usp=sharing)</li>
             </ul> 
@@ -309,29 +310,34 @@ A list of topics we will cover can be found below. Note that topics may be subje
 *   - <small> 4/6 </small> <!-- Week 10 --> <br> 
         
     - <small> 4/7 </small> <br>
-        ![](https://img.shields.io/badge/Class%2018-1f77b4)
+        ![](https://img.shields.io/badge/Class%2018-1f77b4) <b> Unsupervised Learning I </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552108/mod_resource/content/2/lec18-unsupervised-learning-i-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552109/mod_resource/content/2/lec18-unsupervised-learning-i.pdf)</li>
+                <li>[activity 18](https://docs.google.com/document/d/1f6zOOXwIRv1x3Us2qYDJwCPWK4s2d0pNdBGeq3-zSi0/edit?usp=sharing)</li>
+            </ul> 
     - <small> 4/8 </small>
     - <small> 4/9 </small> <br>
-        ![](https://img.shields.io/badge/Class%2019-1f77b4)
+        ![](https://img.shields.io/badge/Class%2019-1f77b4) <b> Unsupervised Learning II </b>
     - <small> 4/10 </small>
 
 *   - <small> 4/13 </small> <!-- Week 11 --> <br> 
-        ![](https://img.shields.io/badge/Due-dc322f) [HW 4](hw4)
+        ![](https://img.shields.io/badge/Due-dc322f) [HW 4](hw4) <br> <b>Tony away this week, but available via Ed/email</b>
     - <small> 4/14 </small> <br>
-        ![](https://img.shields.io/badge/Class%2020-1f77b4)
+        ![](https://img.shields.io/badge/Class%2020-1f77b4) <b> Guest lecture: Word embeddings </b>
         <br> ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 4
     - <small> 4/15 </small>
     - <small> 4/16 </small> <br>
-        ![](https://img.shields.io/badge/Class%2021-1f77b4)
+        ![](https://img.shields.io/badge/Class%2021-1f77b4) <b> [video] ML engineering </b>
     - <small> 4/17 </small>
 
 *   - <small> 4/20 </small> <!-- Week 12 --> <br> 
         ![](https://img.shields.io/badge/Due-dc322f) Worksheet 4
     - <small> 4/21 </small> <br>
-        ![](https://img.shields.io/badge/Class%2022-1f77b4)
+        ![](https://img.shields.io/badge/Class%2022-1f77b4) <b> Project check-ins</b>
     - <small> 4/22 </small>
     - <small> 4/23 </small> <br>
-        ![](https://img.shields.io/badge/Class%2023-1f77b4)
+        ![](https://img.shields.io/badge/Class%2023-1f77b4) <b> Special topic: Language Models</b>
     - <small> 4/24 </small>
 
 *   - <small> 4/27 </small> <!-- Week 13 --> <br> 
@@ -340,12 +346,12 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 4/28 </small> <br> <b> BOOM - no class </b>
     - <small> 4/29 </small>
     - <small> 4/30 </small> <br>
-        ![](https://img.shields.io/badge/Class%2024-1f77b4)
+        ![](https://img.shields.io/badge/Class%2024-1f77b4) <b> Presentations I </b>
     - <small> 5/1 </small>
 
 *   - <small> 5/4 </small> <!-- Week 14 -->
     - <small> 5/5 </small> <br>
-        ![](https://img.shields.io/badge/Class%2025-1f77b4)
+        ![](https://img.shields.io/badge/Class%2025-1f77b4) <b> Presentations II and wrap-up </b>
     - <small> 5/6 </small>
     - <small> 5/7 </small> 
     - <small> 5/8 </small>

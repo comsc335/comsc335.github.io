@@ -1,0 +1,9 @@
+version: 1
+project:
+  authors:
+    - name: TODO
+  toc:
+    - file: final_template.ipynb
+
+site:
+  template: article-theme
