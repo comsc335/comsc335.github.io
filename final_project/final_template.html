@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Final Project Template &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_project/final_template';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Final project dataset proposal" href="final_proposal.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activities/activities.html">In-Class Activities</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws3.html">Worksheet 3</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw2.html">Homework 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_foundations.html">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw3.html">Homework 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw3_foundations.html">HW 3 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw3_predictions.html">HW 3 part 2</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw4.html">Homework 4</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw4_foundations.html">HW 4 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1CdCBIrE3lztLfyQjx7pcumUtmmhDON9f?usp=sharing">HW 4 Part 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="final_project.html">Final Project</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/final_project/final_template.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_project/final_template.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Final Project Template</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Final Project Template</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-question-1-pt">ML question [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-datasheet-2-pts">Dataset Datasheet [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-process-and-distribution">Collection Process and Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-1-pt">Features [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-and-feature-engineering">Preprocessing and feature engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration-and-visualization">Data exploration and visualization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#models-and-training">Models and Training</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-model-1-pt">Baseline model [1 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-model-s-1-5-pts">Exploratory model(s) [1.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-of-choice-1-5-pts">Model of choice [1.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-1-pt">Evaluation [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-card-s-2-pts">Model Card(s) [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-card-todo-model-name">Model Card: [TODO model name]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">Reflection [0.5 pts]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-submit-1-pt">What to submit [1 pt]</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="final-project-template">
+<span id="final-template"></span><h1>Final Project Template<a class="headerlink" href="#final-project-template" title="Link to this heading">#</a></h1>
+<p>The overall structure of your final project should read like a technical blog post, where you motivate your machine learning question to the readers, introduce the relevant background, give an overview of your machine learning approach, and then present your models’ performance along with the model card(s).</p>
+<p>You may format your final project however you like, but be sure to address the points outlined under each section. Feel free to add or modify subsections as needed, as well as delete the points and templated admonition sections, like the ones below. You can refer to the <a class="reference external" href="https://comsc335.github.io/projects/final_template.html">template on the course website</a> as you work on your final project to make sure you’re addressing all the points.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For those who are interested in structuring academic writing, I suggest reading <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619">Mensh and Kording 2017</a>: Ten simple rules on structuring papers.</p>
+<p>Note that this is completely optional, you are <strong>not</strong> required to adhere to these writing rules.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you want to hide code cells to make your final project look cleaner, you can use <a class="reference external" href="https://jupyterbook.org/v1/content/metadata.html">Jupyter functionality for hiding/removing content</a> to toggle the visibility of the code cells for your rendered article.</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ml-question-1-pt">
+<h1>ML question [1 pt]<a class="headerlink" href="#ml-question-1-pt" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Give an appropriate title for your project, replacing “Final Project Template” above.</p></li>
+<li><p><strong>Motivation</strong>: Motivate the overall question you are trying to answer to a general audience.</p></li>
+<li><p><strong>Teaser figure</strong>: Provide at least one visual or media “teaser figure” to help set up your project. See <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/syntax/images_and_figures.html">the Myst markdown guide</a> for how to add figures.</p></li>
+<li><p><strong>Prediction use cases</strong>: Explain what real-world decision or impact a model answering this question could support, being specific aobut what someone or some entity could do with the prediction.</p></li>
+<li><p><strong>Deployment impact</strong>: Explain who might be affected and the potential impacts (positive or negative) if this model were to be deployed.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section can use your reponses to the dataset proposal as an outline.</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dataset-datasheet-2-pts">
+<h1>Dataset Datasheet [2 pts]<a class="headerlink" href="#dataset-datasheet-2-pts" title="Link to this heading">#</a></h1>
+<p>Following the Datasheets for Datasets framework (<a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/3458723">Gebru et al. 2021</a>) that we studied in HW 2, complete the datasheet below for your project’s dataset to the best of your knowledge. Provide ~1–3 sentences per question.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a question is not applicable to your dataset or you cannot find the information, that is okay – make a note and briefly explain why.</p>
+</div>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Purpose</strong>: For what purpose was the dataset created? Was there a specific task in mind?</p></li>
+<li><p><strong>Creators</strong>: Who created the dataset and on behalf of what entity?</p></li>
+</ol>
+</section>
+<section id="composition">
+<h2>Composition<a class="headerlink" href="#composition" title="Link to this heading">#</a></h2>
+<ol class="arabic simple" start="3">
+<li><p><strong>Instances</strong>: What do the instances in the dataset represent (e.g., people, images, transactions)? How many instances are there in total?</p></li>
+<li><p><strong>Features and target</strong>: What features does the dataset contain, and what is the prediction target? Are there any features that could be considered sensitive or protected attributes?</p></li>
+<li><p><strong>Missing data</strong>: Is any information missing from individual instances? If so, describe the nature and extent of the missingness.</p></li>
+<li><p><strong>Confidentiality</strong>: Does the dataset contain data that might be considered confidential or that relates to identifiable individuals?</p></li>
+</ol>
+</section>
+<section id="collection-process-and-distribution">
+<h2>Collection Process and Distribution<a class="headerlink" href="#collection-process-and-distribution" title="Link to this heading">#</a></h2>
+<ol class="arabic simple" start="7">
+<li><p><strong>Collection mechanism</strong>: How was the data collected (e.g., survey, web scraping, sensors, administrative records)?</p></li>
+<li><p><strong>Time frame</strong>: Over what time frame was the data collected?</p></li>
+<li><p><strong>Consent and ethics</strong>: Were the individuals whose data is included notified or given a chance to consent?</p></li>
+<li><p><strong>Availability</strong>: Where is the dataset hosted, and under what license is it distributed?</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="features-1-pt">
+<h1>Features [1 pt]<a class="headerlink" href="#features-1-pt" title="Link to this heading">#</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Your preprocessing code can live in this notebook or in a separate notebook file. If you use a separate file, describe what it does here and make sure to include it in your submission.</p>
+</div>
+<section id="preprocessing-and-feature-engineering">
+<h2>Preprocessing and feature engineering<a class="headerlink" href="#preprocessing-and-feature-engineering" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Describe how you split your data into training and test sets, including the split ratio.</p></li>
+<li><p>Describe any feature preprocessing steps you applied, such as:</p>
+<ul>
+<li><p>One-hot encoding of categorical features</p></li>
+<li><p>Standard scaling of numerical features</p></li>
+<li><p>Handling of missing values</p></li>
+<li><p>Any feature engineering or new features created from existing ones</p></li>
+<li><p>Any feature selection performed</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="data-exploration-and-visualization">
+<h2>Data exploration and visualization<a class="headerlink" href="#data-exploration-and-visualization" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Provide a summary statistics table of at least <strong>two</strong> features (more if you’d like!) you find notable in your dataset (e.g., mean, std, min, max for numerical features; value counts for categorical features).</p></li>
+<li><p>Provide relevant visualizations of those two features, such as a histogram, scatter plot, or bar plot. Refer to <a class="reference external" href="https://comsc335.github.io/worksheets/worksheet2.html">Worksheet 2</a> for a refresher on seaborn and plotting concepts.</p></li>
+<li><p>Briefly comment on what you observe.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="models-and-training">
+<h1>Models and Training<a class="headerlink" href="#models-and-training" title="Link to this heading">#</a></h1>
+<section id="baseline-model-1-pt">
+<h2>Baseline model [1 pt]<a class="headerlink" href="#baseline-model-1-pt" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fit a baseline model: <a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">logistic regression</a> (for classification) or <a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares">linear regression</a> (for regression) with L2 regularization, with <span class="math notranslate nohighlight">\(\lambda\)</span> selected using a grid search with cross-validation.</p></li>
+<li><p>Report the baseline model’s performance on your test set using an appropriate metric (e.g., accuracy, AUC, RMSE).</p></li>
+<li><p>Briefly discuss: does the baseline model do better than a naive strategy (e.g., always predicting the majority class or predicting the mean value)?</p></li>
+</ul>
+</section>
+<section id="exploratory-model-s-1-5-pts">
+<h2>Exploratory model(s) [1.5 pts]<a class="headerlink" href="#exploratory-model-s-1-5-pts" title="Link to this heading">#</a></h2>
+<p>Fit and evaluate <strong>one new model per group member</strong> from <a class="reference external" href="https://scikit-learn.org/stable/index.html">scikit-learn</a> that we did not cover in class. For each model:</p>
+<ul class="simple">
+<li><p>Provide a description (~1-2 sentences) of how the model works at a high level, which should be understandable for a general technical audience (for example, your classmates in this class). Feel free to include equations or pseudocode if helpful, and cite any references you used to learn about the model.</p></li>
+<li><p>Identify at least one relevant hyperparameter and explain what it controls.</p></li>
+<li><p>Report the model’s performance on your test set using the same metric as the baseline. Note that you do not need to tune the hyperparameters for the exploratory model(s), unless you select it as your “model of choice”.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Some models to consider: Lasso, Elastic Net, Support Vector Machines, Naive Bayes, AdaBoost, Gaussian Processes. Check the <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html">sklearn user guide</a> for descriptions and API documentation.</p>
+</div>
+</section>
+<section id="id1">
+<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
+<section id="model-of-choice-1-5-pts">
+<h2>Model of choice [1.5 pts]<a class="headerlink" href="#model-of-choice-1-5-pts" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Select one model you think will perform best on your dataset. This could be one of your exploratory models with tuned hyperparameters, a random forest, gradient boosting, a neural network, or any other approach.</p></li>
+<li><p>Describe how you selected hyperparameters and what combination of hyperparameters you optimized for.</p></li>
+<li><p>Report the model’s test performance and compare it to the baseline and exploratory models.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluation-1-pt">
+<h1>Evaluation [1 pt]<a class="headerlink" href="#evaluation-1-pt" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Provide a markdown comparison table summarizing the performance of all your models (baseline, exploratory, and model of choice) on the test set.</p></li>
+<li><p>Provide at least <strong>one</strong> evaluation visualization comparing models, such as:</p>
+<ul>
+<li><p>A confusion matrix heatmap (for multi-class classification)</p></li>
+<li><p>An ROC curve(for binary classification)</p></li>
+<li><p>A residual plot (for regression)</p></li>
+<li><p>A predicted vs. actual scatter plot (for regression)</p></li>
+</ul>
+</li>
+<li><p>Briefly discuss your results: Which model performed best, and why do you think that is the case? Could the model(s) be overfitting?</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="model-card-s-2-pts">
+<h1>Model Card(s) [2 pts]<a class="headerlink" href="#model-card-s-2-pts" title="Link to this heading">#</a></h1>
+<p>Following the Model Cards for Model Reporting framework (<a class="reference external" href="https://dl.acm.org/doi/epdf/10.1145/3287560.3287596">Mitchell et al. 2019</a>) that we studied in HW 3, complete <strong>one model card per group member</strong>. You may choose any of the models you built, not necessarily the best performing one.</p>
+<section id="model-card-todo-model-name">
+<h2>Model Card: [TODO model name]<a class="headerlink" href="#model-card-todo-model-name" title="Link to this heading">#</a></h2>
+<p><strong>Model Details</strong></p>
+<ul class="simple">
+<li><p>Model type: TODO (e.g., random forest, logistic regression, neural network)</p></li>
+<li><p>Key hyperparameters: TODO</p></li>
+<li><p>Training data size: TODO examples, TODO features</p></li>
+<li><p>Software: TODO (e.g., scikit-learn, PyTorch)</p></li>
+</ul>
+<p><strong>Intended Use</strong></p>
+<ul class="simple">
+<li><p>Primary intended use: TODO describe the prediction task and who would use this model.</p></li>
+<li><p>Out-of-scope uses: TODO identify at least one use case this model should <strong>not</strong> be used for, and briefly explain why.</p></li>
+</ul>
+<p><strong>Factors</strong></p>
+<ul class="simple">
+<li><p>Relevant factors: TODO describe demographic, environmental, or instrumentation factors that could affect model performance. Think about the three factor categories from <a class="reference external" href="https://dl.acm.org/doi/epdf/10.1145/3287560.3287596">Mitchell et al. 2019</a> Section 4.3: groups, instrumentation, and environment.</p></li>
+<li><p>Evaluation groups: TODO if applicable, describe the groups you evaluated disaggregated performance across.</p></li>
+</ul>
+<p><strong>Metrics</strong></p>
+<p>Report an evaluation metric you find most relevant to your model’s prediction task. Include disaggregated metrics for at least two subgroups in your dataset.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Overall</p></th>
+<th class="head"><p>Group 1</p></th>
+<th class="head"><p>Group 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TODO</p></td>
+<td><p>TODO</p></td>
+<td><p>TODO</p></td>
+<td><p>TODO</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Ethical Considerations</strong></p>
+<ul class="simple">
+<li><p>TODO discuss any potential harms or biases. Consider: who benefits and who could be harmed by this model’s predictions? Are there disparities in performance across groups? What steps could be taken to mitigate these issues?</p></li>
+</ul>
+<p><strong>Caveats and Recommendations</strong></p>
+<ul class="simple">
+<li><p>TODO note any limitations of the model, gaps in the evaluation, or avenues for future work.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reflection-0-5-pts">
+<h1>Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Summary: Return to the ML question you posed at the beginning of your report. Based on your evaluation results, would you recommend deploying this model for the use case you described?
+Looking back: What is one thing you would do differently if you had more time or data?</p></li>
+<li><p>Looking back: Reflect on the ML process you followed in this project. What is something you would have liked to pursue further if you had more or different data? What is one thing you understand better now than when you started the project?</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="what-to-submit-1-pt">
+<h1>What to submit [1 pt]<a class="headerlink" href="#what-to-submit-1-pt" title="Link to this heading">#</a></h1>
+<p>You should submit a <code class="docutils literal notranslate"><span class="pre">final_project.zip</span></code> file containing your typeset Myst website. You can follow the same process as <a class="reference external" href="https://comsc335.github.io/hws/hw3_predictions.html#typesetting-0-5-pts">HW 3</a>to build and launch your website. <strong>Note:</strong> if you encounter an “address already in use” error when when running the http server, you change the port number to anything in the range 8000-8999.</p>
+<p>To create a zip of your final project, run the following commands in a terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># change directory to the projects folder</span>
+<span class="nb">cd</span><span class="w"> </span>~/comsc335.github.io/final_project/
+
+<span class="c1"># packages the site into a zip file</span>
+zip<span class="w"> </span>-r<span class="w"> </span>final_project.zip<span class="w"> </span>_build/
+</pre></div>
+</div>
+<p>Please upload the zip file to Google Drive and paste the link to the file below:</p>
+<ul class="simple">
+<li><p><strong>TODO zip Google Drive link here</strong></p></li>
+</ul>
+<p>You should also include all source code <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> or <code class="docutils literal notranslate"><span class="pre">.py</span></code> files used for data cleaning/preprocessing to reproduce your results as part of your Gradescope submission.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The published html article should still have source code cells. However, you may want to do data cleaning/preprocessing if needed in a separate file so that the focus in your rendered article is on the analysis and results.</p>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./final_project"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="final_proposal.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Final project dataset proposal</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Final Project Template</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-question-1-pt">ML question [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-datasheet-2-pts">Dataset Datasheet [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collection-process-and-distribution">Collection Process and Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#features-1-pt">Features [1 pt]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-and-feature-engineering">Preprocessing and feature engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration-and-visualization">Data exploration and visualization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#models-and-training">Models and Training</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-model-1-pt">Baseline model [1 pt]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-model-s-1-5-pts">Exploratory model(s) [1.5 pts]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-of-choice-1-5-pts">Model of choice [1.5 pts]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-1-pt">Evaluation [1 pt]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-card-s-2-pts">Model Card(s) [2 pts]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-card-todo-model-name">Model Card: [TODO model name]</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-0-5-pts">Reflection [0.5 pts]</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-to-submit-1-pt">What to submit [1 pt]</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

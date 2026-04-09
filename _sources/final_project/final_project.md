@@ -18,10 +18,38 @@
 | Component | Points | Due Date |
 | --- | --- | --- |
 | [Dataset Proposal](final_proposal) | 3 | 3/30 |
-| Checkpoint | 5 | 4/27 |
+| [Checkpoint](checkpoint) | 5 | 4/27 |
 | Presentation and peer feedback | 5 | 4/30, 5/5 |
-| Final report | 12 | 5/11 **noon** |
+| [Final report](final_template) | 12 | 5/11 **noon** |
 
+
+# Final report rubric
+
+| Component | Points |
+| --- | --- |
+| Source code and Myst article file | 1 |
+| Machine learning question | 1 |
+| Data: datasheet | 2 | 
+| Features: cleaning/engineering | 1 |
+| Models: baseline, exploratory, and model of choice | 3.5 |
+| Evaluation | 1 |
+| Model card(s)  | 2 |
+| Reflection | 0.5 | 
+| Total | 12 |
+
+
+:::{admonition} Evaluation Guidelines
+:class: note
+
+Your final report will be evaluated on both completion and quality. Specifically, I'll be looking for:
+
+- A completed project that addresses each section of the final report template
+- Clear visual and written presentation of your data, modeling choices, and results
+- Thoughtful engagement with the datasheet and model card frameworks
+
+This is your opportunity to showcase your understanding of the machine learning process and communicate your findings. I'm looking for thoughtful consideration of your approach rather than the highest possible model performance. If you have any questions, please do reach out!
+
+:::
 
 # Final project approach
 
