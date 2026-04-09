@@ -468,7 +468,6 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#models-and-training">Models and Training</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-model-1-pt">Baseline model [1 pt]</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-model-s-1-5-pts">Exploratory model(s) [1.5 pts]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-of-choice-1-5-pts">Model of choice [1.5 pts]</a></li>
 </ul>
 </li>
@@ -494,7 +493,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="final-project-template">
 <span id="final-template"></span><h1>Final Project Template<a class="headerlink" href="#final-project-template" title="Link to this heading">#</a></h1>
 <p>The overall structure of your final project should read like a technical blog post, where you motivate your machine learning question to the readers, introduce the relevant background, give an overview of your machine learning approach, and then present your models’ performance along with the model card(s).</p>
-<p>You may format your final project however you like, but be sure to address the points outlined under each section. Feel free to add or modify subsections as needed, as well as delete the points and templated admonition sections, like the ones below. You can refer to the <a class="reference external" href="https://comsc335.github.io/projects/final_template.html">template on the course website</a> as you work on your final project to make sure you’re addressing all the points.</p>
+<p>You should address the points outlined under each section, however feel free to format your final project however you like to make it more narrative or expository. In particular, you can add or modify subsections as needed, as well as delete the outlined bullet points and templated admonition sections. You can refer to the <a class="reference external" href="https://comsc335.github.io/projects/final_template.html">template on the course website</a> as you work on your final project to make sure you’re addressing all the points.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>For those who are interested in structuring academic writing, I suggest reading <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619">Mensh and Kording 2017</a>: Ten simple rules on structuring papers.</p>
@@ -511,12 +510,12 @@ document.write(`
 <li><p>Give an appropriate title for your project, replacing “Final Project Template” above.</p></li>
 <li><p><strong>Motivation</strong>: Motivate the overall question you are trying to answer to a general audience.</p></li>
 <li><p><strong>Teaser figure</strong>: Provide at least one visual or media “teaser figure” to help set up your project. See <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/syntax/images_and_figures.html">the Myst markdown guide</a> for how to add figures.</p></li>
-<li><p><strong>Prediction use cases</strong>: Explain what real-world decision or impact a model answering this question could support, being specific aobut what someone or some entity could do with the prediction.</p></li>
+<li><p><strong>Prediction use cases</strong>: Explain what real-world decision or impact a model answering this question could support, being specific about what someone or some entity could do with the prediction.</p></li>
 <li><p><strong>Deployment impact</strong>: Explain who might be affected and the potential impacts (positive or negative) if this model were to be deployed.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This section can use your reponses to the dataset proposal as an outline.</p>
+<p>This section can use your responses to the dataset proposal as an outline.</p>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="dataset-datasheet-2-pts">
@@ -577,7 +576,7 @@ document.write(`
 <h2>Data exploration and visualization<a class="headerlink" href="#data-exploration-and-visualization" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Provide a summary statistics table of at least <strong>two</strong> features (more if you’d like!) you find notable in your dataset (e.g., mean, std, min, max for numerical features; value counts for categorical features).</p></li>
-<li><p>Provide relevant visualizations of those two features, such as a histogram, scatter plot, or bar plot. Refer to <a class="reference external" href="https://comsc335.github.io/worksheets/worksheet2.html">Worksheet 2</a> for a refresher on seaborn and plotting concepts.</p></li>
+<li><p>Provide relevant visualizations of those two features, such as a histogram, scatter plot, or bar plot. Refer to <a class="reference external" href="https://comsc335.github.io/worksheets/ws2.html">Worksheet 2</a> for a refresher on seaborn and plotting concepts.</p></li>
 <li><p>Briefly comment on what you observe.</p></li>
 </ul>
 </section>
@@ -596,7 +595,7 @@ document.write(`
 <h2>Exploratory model(s) [1.5 pts]<a class="headerlink" href="#exploratory-model-s-1-5-pts" title="Link to this heading">#</a></h2>
 <p>Fit and evaluate <strong>one new model per group member</strong> from <a class="reference external" href="https://scikit-learn.org/stable/index.html">scikit-learn</a> that we did not cover in class. For each model:</p>
 <ul class="simple">
-<li><p>Provide a description (~1-2 sentences) of how the model works at a high level, which should be understandable for a general technical audience (for example, your classmates in this class). Feel free to include equations or pseudocode if helpful, and cite any references you used to learn about the model.</p></li>
+<li><p>Briefly describe the core idea of the model (~1 paragraph). Feel free to include equations or pseudocode if helpful (but not required), and cite any references you used to learn about the model.</p></li>
 <li><p>Identify at least one relevant hyperparameter and explain what it controls.</p></li>
 <li><p>Report the model’s performance on your test set using the same metric as the baseline. Note that you do not need to tune the hyperparameters for the exploratory model(s), unless you select it as your “model of choice”.</p></li>
 </ul>
@@ -605,15 +604,12 @@ document.write(`
 <p>Some models to consider: Lasso, Elastic Net, Support Vector Machines, Naive Bayes, AdaBoost, Gaussian Processes. Check the <a class="reference external" href="https://scikit-learn.org/stable/user_guide.html">sklearn user guide</a> for descriptions and API documentation.</p>
 </div>
 </section>
-<section id="id1">
-<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-</section>
 <section id="model-of-choice-1-5-pts">
 <h2>Model of choice [1.5 pts]<a class="headerlink" href="#model-of-choice-1-5-pts" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Select one model you think will perform best on your dataset. This could be one of your exploratory models with tuned hyperparameters, a random forest, gradient boosting, a neural network, or any other approach.</p></li>
 <li><p>Describe how you selected hyperparameters and what combination of hyperparameters you optimized for.</p></li>
-<li><p>Report the model’s test performance and compare it to the baseline and exploratory models.</p></li>
+<li><p>Report the model’s test performance.</p></li>
 </ul>
 </section>
 </section>
@@ -655,7 +651,7 @@ document.write(`
 <li><p>Evaluation groups: TODO if applicable, describe the groups you evaluated disaggregated performance across.</p></li>
 </ul>
 <p><strong>Metrics</strong></p>
-<p>Report an evaluation metric you find most relevant to your model’s prediction task. Include disaggregated metrics for at least two subgroups in your dataset.</p>
+<p>Report an evaluation metric you find most relevant to your model’s prediction task. Include disaggregated metrics for at least two subgroups in your dataset. Subgroups can be demographic (such as sex or age bracket) if your dataset contains such attributes, or they can be meaningful non-demographic groups (e.g., image classes with fewer training examples, geographic regions, or categories where you suspect the model may perform differently). The goal is to check whether your model works equally well across different parts of your data.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Metric</p></th>
@@ -686,14 +682,13 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="reflection-0-5-pts">
 <h1>Reflection [0.5 pts]<a class="headerlink" href="#reflection-0-5-pts" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Summary: Return to the ML question you posed at the beginning of your report. Based on your evaluation results, would you recommend deploying this model for the use case you described?
-Looking back: What is one thing you would do differently if you had more time or data?</p></li>
+<li><p>Summary: Return to the ML question you posed at the beginning of your report. Based on your evaluation results, would you recommend deploying this model for the use case you described?</p></li>
 <li><p>Looking back: Reflect on the ML process you followed in this project. What is something you would have liked to pursue further if you had more or different data? What is one thing you understand better now than when you started the project?</p></li>
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="what-to-submit-1-pt">
 <h1>What to submit [1 pt]<a class="headerlink" href="#what-to-submit-1-pt" title="Link to this heading">#</a></h1>
-<p>You should submit a <code class="docutils literal notranslate"><span class="pre">final_project.zip</span></code> file containing your typeset Myst website. You can follow the same process as <a class="reference external" href="https://comsc335.github.io/hws/hw3_predictions.html#typesetting-0-5-pts">HW 3</a>to build and launch your website. <strong>Note:</strong> if you encounter an “address already in use” error when when running the http server, you change the port number to anything in the range 8000-8999.</p>
+<p>You should submit a <code class="docutils literal notranslate"><span class="pre">final_project.zip</span></code> file containing your typeset Myst website. You can follow the same process as <a class="reference external" href="https://comsc335.github.io/hws/hw3_predictions.html#typesetting-0-5-pts">HW 3</a> to build and launch your website. <strong>Note:</strong> if you encounter an “address already in use” error when when running the http server, you change the port number to anything in the range 8000-8999.</p>
 <p>To create a zip of your final project, run the following commands in a terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># change directory to the projects folder</span>
 <span class="nb">cd</span><span class="w"> </span>~/comsc335.github.io/final_project/
@@ -784,7 +779,6 @@ zip<span class="w"> </span>-r<span class="w"> </span>final_project.zip<span clas
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#models-and-training">Models and Training</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-model-1-pt">Baseline model [1 pt]</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-model-s-1-5-pts">Exploratory model(s) [1.5 pts]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-of-choice-1-5-pts">Model of choice [1.5 pts]</a></li>
 </ul>
 </li>
