@@ -25,3 +25,10 @@
   - [Live activity](https://docs.google.com/document/d/1PKWToBzfLkJByz8xLY83hIdVnLB-hgAKxxiV-hP7NbM/edit?usp=sharing)
   - [Notebook](activity15)
   - [Live notebook](activity15_live)
+- [Activity 16: Neural Networks II](https://colab.research.google.com/drive/1clu2b791-vEdRrEEcFoS7QIqCX7PSOky?usp=sharing)
+  - [Live notebook](https://colab.research.google.com/drive/1B3voMXbuReLezxy1yVdiXOcsWs17l17C?usp=sharing)
+- [Activity 17: Neural Networks III](https://docs.google.com/document/d/1Q4K0riRyIwolydJhY0Ya-cgoL1kpIo-Z3M8LflMG_J4/edit?usp=sharing)
+  - [Colab](https://colab.research.google.com/drive/1qbuChg9toqyx1XrUUFFyg1v9Be0zGDMb?usp=sharing)
+- [Activity 18: Unsupervised Learning I](https://docs.google.com/document/d/1f6zOOXwIRv1x3Us2qYDJwCPWK4s2d0pNdBGeq3-zSi0/edit?usp=sharing)
+- [Activity 19: Unsupervised Learning II](activity19)
+
