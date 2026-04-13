@@ -321,6 +321,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2019-1f77b4) <b> Unsupervised Learning II </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552111/mod_resource/content/2/lec19-unsupervised-learning-ii-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552112/mod_resource/content/2/lec19-unsupervised-learning-ii.pdf)</li>
                 <li>[activity 19](activity19)</li>
             </ul> 
     - <small> 4/10 </small>
