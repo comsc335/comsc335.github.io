@@ -330,14 +330,16 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Due-dc322f) [HW 4](hw4) <br> <b>Tony away this week, but available via Ed/email</b>
     - <small> 4/14 </small> <br>
         ![](https://img.shields.io/badge/Class%2020-1f77b4) <b> Guest lecture: Word embeddings </b>
-        <br> ![](https://img.shields.io/badge/Released-2ca02c) Worksheet 4
+        <br><br> ![](https://img.shields.io/badge/Released-2ca02c) [Worksheet 4](https://colab.research.google.com/drive/1mEgv9KhNyLwxJ5n3xIEQcSeREm5cf8dC?usp=sharing)<br>
+        ![](https://img.shields.io/badge/Released-2ca02c) [Course survey 3](https://www.gradescope.com/courses/1231382/assignments/7984243)
     - <small> 4/15 </small>
     - <small> 4/16 </small> <br>
         ![](https://img.shields.io/badge/Class%2021-1f77b4) <b> [video] ML engineering </b>
     - <small> 4/17 </small>
 
 *   - <small> 4/20 </small> <!-- Week 12 --> <br> 
-        ![](https://img.shields.io/badge/Due-dc322f) Worksheet 4
+        ![](https://img.shields.io/badge/Due-dc322f) [Worksheet 4](https://colab.research.google.com/drive/1mEgv9KhNyLwxJ5n3xIEQcSeREm5cf8dC?usp=sharing)<br>
+        ![](https://img.shields.io/badge/Due-dc322f) [Course survey 3](https://www.gradescope.com/courses/1231382/assignments/7984243)
     - <small> 4/21 </small> <br>
         ![](https://img.shields.io/badge/Class%2022-1f77b4) <b> Project check-ins</b>
     - <small> 4/22 </small>
