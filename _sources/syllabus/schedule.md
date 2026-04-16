@@ -335,6 +335,9 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 4/15 </small>
     - <small> 4/16 </small> <br>
         ![](https://img.shields.io/badge/Class%2021-1f77b4) <b> [video] ML engineering </b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] notebook](lec21)</li>
+            </ul> 
     - <small> 4/17 </small>
 
 *   - <small> 4/20 </small> <!-- Week 12 --> <br> 
