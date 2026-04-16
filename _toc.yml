@@ -20,6 +20,8 @@ parts:
       - file: worksheets/ws1.ipynb
       - file: worksheets/ws2.ipynb
       - file: worksheets/ws3.ipynb
+      - url: https://colab.research.google.com/drive/1mEgv9KhNyLwxJ5n3xIEQcSeREm5cf8dC?usp=sharing
+        title: Worksheet 4
   - caption: Homeworks
     chapters:
       - file: hws/hw1.md
