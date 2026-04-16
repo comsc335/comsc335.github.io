@@ -337,6 +337,8 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2021-1f77b4) <b> [video] ML engineering </b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] notebook](lec21)</li>
+                <li>[[live] notebook](lec21_live)</li>
+                <li>[video recording](https://moodle.mtholyoke.edu/mod/kalvidres/view.php?id=1205196)</li>
             </ul> 
     - <small> 4/17 </small>
 

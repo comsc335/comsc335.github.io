@@ -1,0 +1,1662 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>(Video) lecture 21: ML engineering “from scratch” &#8212; COMSC 335: Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=d9506e9e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'activities/lec21_live';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">COMSC 335: Machine Learning</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Syllabus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/values.html">Goals and Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/policies.html">Course Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/submit.html">How to Run and Submit</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/office_hours.html">Office Hours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../syllabus/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/catalog.html">Notation catalog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="activities.html">In-Class Activities</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Worksheets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws1.html">Worksheet 1</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws2.html">Worksheet 2</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../worksheets/ws3.html">Worksheet 3</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1mEgv9KhNyLwxJ5n3xIEQcSeREm5cf8dC?usp=sharing">Worksheet 4</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Homeworks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw1.html">Homework 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_foundations.html">HW 1 part 1</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw1_models.html">HW 1 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw2.html">Homework 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_foundations.html">HW 2 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw2_predictions.html">HW 2 part 2</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw3.html">Homework 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw3_foundations.html">HW 3 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw3_predictions.html">HW 3 part 2</a></li>
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hws/hw4.html">Homework 4</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hws/hw4_foundations.html">HW 4 part 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference external" href="https://colab.research.google.com/drive/1CdCBIrE3lztLfyQjx7pcumUtmmhDON9f?usp=sharing">HW 4 Part 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project/final_project.html">Final Project</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://comsc335-sp-hub.mtholyoke.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/comsc335/comsc335.github.io&urlpath=tree/comsc335.github.io/activities/lec21_live.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/activities/lec21_live.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>(Video) lecture 21: ML engineering “from scratch”</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">0. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">1. Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-concept-pd-merge">New concept: <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-data-and-building-our-target">2. Exploring the data and building our target</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-binary-target">Building the binary target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missingness-in-data">Missingness in data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-train-test-split">3. Features and train/test split</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-age">Parsing age</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding-the-categorical-columns">One-hot encoding the categorical columns</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-train-evaluate">4. Model, train, evaluate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-baseline-how-far-does-one-feature-take-us">A first baseline: how far does one feature take us?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-all-the-intake-features">Adding all the intake features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#another-model-random-forest">Another model: Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-all-three-models-with-roc-curves">Comparing all three models with ROC curves</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility-check">5. Reproducibility check</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="video-lecture-21-ml-engineering-from-scratch">
+<span id="lec21-live"></span><h1>(Video) lecture 21: ML engineering “from scratch”<a class="headerlink" href="#video-lecture-21-ml-engineering-from-scratch" title="Link to this heading">#</a></h1>
+<p><img alt="ML process" src="https://comsc335.github.io/_images/ml_process.png" /></p>
+<p><strong>Our data</strong>: <a class="reference external" href="https://www.austintexas.gov/animal-services">Austin Animal Center</a> is the largest no-kill animal shelter in the US.</p>
+<p><strong>Question and prediction task</strong>: The shelter wants to know, at the moment an animal walks in, which animals are at risk of a bad outcome (e.g. euthanasia, died, missing) versus a good outcome (e.g. adoption, transfer, return to owner). The goal is to help staff prioritize interventions: foster placement, medical care, or adoption listings.</p>
+<p>We will see two new pandas concepts:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code> for combining two tables on a shared key</p></li>
+<li><p>Missingness with <code class="docutils literal notranslate"><span class="pre">.isna()</span></code> / <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>, plus one-hot indicators for missing categoricals</p></li>
+</ol>
+<section id="imports">
+<h2>0. Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<p>We begin with our usual imports:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data">
+<h2>1. Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<p>We have two CSV files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">intakes.csv</span></code>, one row per animal, with information recorded at intake time (species, sex, intake type, condition, age, breed, color)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outcomes.csv</span></code>, one row per animal, with the outcome of their shelter stay (adopted, transferred, euthanized, etc.)</p></li>
+</ul>
+<p>We’ll need to combine them to build our dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intakes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/COMSC-335/data/intakes.csv&quot;</span><span class="p">)</span>
+<span class="n">outcomes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;~/COMSC-335/data/outcomes.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Animal ID</th>
+      <th>Outcome Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A704961</td>
+      <td>Adoption</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A676160</td>
+      <td>Transfer</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A718092</td>
+      <td>Return to Owner</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A892519</td>
+      <td>Adoption</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A697724</td>
+      <td>Adoption</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intakes_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Animal ID</th>
+      <th>Animal Type</th>
+      <th>Sex upon Intake</th>
+      <th>Intake Type</th>
+      <th>Intake Condition</th>
+      <th>Age upon Intake</th>
+      <th>Breed</th>
+      <th>Color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A708396</td>
+      <td>Dog</td>
+      <td>Intact Female</td>
+      <td>Stray</td>
+      <td>Normal</td>
+      <td>1 year</td>
+      <td>Pit Bull Mix</td>
+      <td>Black/White</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A735529</td>
+      <td>Dog</td>
+      <td>Spayed Female</td>
+      <td>Stray</td>
+      <td>Normal</td>
+      <td>3 years</td>
+      <td>Labrador Retriever Mix</td>
+      <td>Brown/White</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A762369</td>
+      <td>Cat</td>
+      <td>Spayed Female</td>
+      <td>Owner Surrender</td>
+      <td>Normal</td>
+      <td>8 years</td>
+      <td>Domestic Shorthair Mix</td>
+      <td>Brown Tabby</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A814930</td>
+      <td>Cat</td>
+      <td>Neutered Male</td>
+      <td>Owner Surrender</td>
+      <td>Normal</td>
+      <td>3 years</td>
+      <td>Domestic Longhair Mix</td>
+      <td>Brown Tabby</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A796971</td>
+      <td>Dog</td>
+      <td>Unknown</td>
+      <td>Stray</td>
+      <td>Normal</td>
+      <td>1 week</td>
+      <td>Labrador Retriever Mix</td>
+      <td>Brown</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="new-concept-pd-merge">
+<h3>New concept: <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code><a class="headerlink" href="#new-concept-pd-merge" title="Link to this heading">#</a></h3>
+<p>Pandas has a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.merge.html">merge()</a> method that works like a SQL join. Given two DataFrames and a shared key column, it lines up rows that have matching keys.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Toy example: left table has features, right table has labels.</span>
+<span class="n">left_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="n">right_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">right_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>color</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>red</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>blue</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>green</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>D</td>
+      <td>red</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code> argument keeps only rows where the key appears in <em>both</em> tables, so that row <code class="docutils literal notranslate"><span class="pre">&quot;D&quot;</span></code> disappears from the output.</p>
+<p>The full merge options are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;inner&quot;</span></code>: keep only rows where the key appears in both tables</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code>: keep all rows from the left table, and only matching rows from the right table</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code>: keep all rows from the right table, and only matching rows from the left table</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;outer&quot;</span></code>: keep all rows from both tables, and fill missing values with <code class="docutils literal notranslate"><span class="pre">NaN</span></code></p></li>
+</ul>
+<p>For our shelter data we want <code class="docutils literal notranslate"><span class="pre">inner</span></code>: we only care about animals where we know both the intake info and the final outcome. Let’s merge on <code class="docutils literal notranslate"><span class="pre">Animal</span> <span class="pre">ID</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">intakes_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">outcomes_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;Animal ID&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intakes_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(20000, 8)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exploring-the-data-and-building-our-target">
+<h2>2. Exploring the data and building our target<a class="headerlink" href="#exploring-the-data-and-building-our-target" title="Link to this heading">#</a></h2>
+<p>The merged table has the features and the labels, but our target doesn’t exist as a clean binary column yet, so we have to build it. Look at the outcome column first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Outcome Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Outcome Type
+Adoption           9239
+Transfer           5691
+Return to Owner    2487
+Euthanasia         1226
+Died                196
+Rto-Adopt           129
+Disposal             90
+Missing              10
+NaN                   4
+Relocate              2
+Lost                  1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="building-the-binary-target">
+<h3>Building the binary target<a class="headerlink" href="#building-the-binary-target" title="Link to this heading">#</a></h3>
+<p>We’ll call an outcome “bad” if the animal was euthanized, died, disposed of, reported missing, or lost. Everything else (adopted, transferred to a rescue, returned to owner, relocated) we’ll call “good”.</p>
+<p>Like other class labels we’ve seen, this can be subjective! “Transferred” could mean a no-kill rescue partner (good) or another crowded facility (less good).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pressing shift-tab in the notebook will (sometimes) show the docstring for the object under your cursor.</p>
+</div>
+<p>We then need to check for missing outcome values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BAD_OUTCOMES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Euthanasia&quot;</span><span class="p">,</span> <span class="s2">&quot;Died&quot;</span><span class="p">,</span> <span class="s2">&quot;Missing&quot;</span><span class="p">,</span> <span class="s2">&quot;Disposal&quot;</span><span class="p">,</span> <span class="s2">&quot;Lost&quot;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;bad_outcome&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Outcome Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">BAD_OUTCOMES</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;bad_outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bad_outcome
+0    0.920157
+1    0.079843
+Name: proportion, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bad_outcome&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;bad_outcome&#39;, ylabel=&#39;count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/8364d087fd5facc67c6c2ff0b86ded12dd1fef8575e327e9ea3c1eaa6c6de375.png" src="../_images/8364d087fd5facc67c6c2ff0b86ded12dd1fef8575e327e9ea3c1eaa6c6de375.png" />
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Class imbalance takeaway</p>
+<p>Around 8% of animals have a bad outcome, so the classes are imbalanced. Accuracy will not be a good metric for our models, and instead we should use AUC to evaluate them.</p>
+</div>
+</section>
+<section id="missingness-in-data">
+<h3>Missingness in data<a class="headerlink" href="#missingness-in-data" title="Link to this heading">#</a></h3>
+<p>In practice, most real datasets have gaps. Pandas represents missing values as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Two quick helpers for spotting it:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.isna()</span></code> returns a boolean DataFrame the same shape as <code class="docutils literal notranslate"><span class="pre">df</span></code>, with <code class="docutils literal notranslate"><span class="pre">True</span></code> wherever a value is missing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.isna().sum()</span></code> gives you a per-column count of missing values (since <code class="docutils literal notranslate"><span class="pre">True</span></code> sums as 1)</p></li>
+</ul>
+<p>When we build <code class="docutils literal notranslate"><span class="pre">X</span></code>, we also pass <code class="docutils literal notranslate"><span class="pre">dummy_na=True</span></code> to <code class="docutils literal notranslate"><span class="pre">pd.get_dummies</span></code> so missing categoricals get explicit <code class="docutils literal notranslate"><span class="pre">_nan</span></code> columns instead of only all-zero level dummies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span>  <span class="p">[</span><span class="s2">&quot;Bella&quot;</span><span class="p">,</span> <span class="s2">&quot;Speedy&quot;</span><span class="p">,</span> <span class="s2">&quot;King&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span>   <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+    <span class="s2">&quot;breed&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Lab&quot;</span><span class="p">,</span> <span class="s2">&quot;Tabby&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="n">toy_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>name     0
+age      1
+breed    1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1128</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05913499344692005
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Animal ID              0
+Animal Type            0
+Sex upon Intake        0
+Intake Type            0
+Intake Condition    1128
+Age upon Intake        0
+Breed                  0
+Color                  0
+Outcome Type           4
+bad_outcome            0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Missingness in data</p>
+<p>Most columns are complete, but <code class="docutils literal notranslate"><span class="pre">Intake</span> <span class="pre">Condition</span></code> has about 1,200 missing values (~6% of rows). Here are a few reasonable choices:</p>
+<ul class="simple">
+<li><p>Drop the rows: okay if the missingness is random or a small fraction of the data</p></li>
+<li><p>Drop the column: overkill, because the non-missing rows still carry real signal</p></li>
+<li><p>Encode missing in the dummy expansion: adds explicit <code class="docutils literal notranslate"><span class="pre">_nan</span></code> indicator columns for categoricals with missing entries, without picking a fake string label first</p></li>
+</ul>
+<p>Missingness itself can be an informative feature: for example, astaff member in a rush might skip the field more often for healthy-looking animals.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Intake Condition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Normal&#39;, &#39;Sick&#39;, &#39;Injured&#39;, &#39;Nursing&#39;, nan, &#39;Neonatal&#39;, &#39;Medical&#39;,
+       &#39;Behavior&#39;, &#39;Aged&#39;, &#39;Feral&#39;, &#39;Other&#39;, &#39;Unknown&#39;, &#39;Pregnant&#39;,
+       &#39;Parvo&#39;, &#39;Med Attn&#39;, &#39;Neurologic&#39;, &#39;Med Urgent&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>One last look before we build features: is <code class="docutils literal notranslate"><span class="pre">Intake</span> <span class="pre">Condition</span></code> actually predictive of outcome?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Intake Condition&quot;</span><span class="p">)[</span><span class="s2">&quot;bad_outcome&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intake Condition
+Behavior      0.000000
+Med Attn      0.000000
+Neurologic    0.000000
+Parvo         0.000000
+Pregnant      0.000000
+Neonatal      0.042254
+Normal        0.046188
+Feral         0.058824
+Nursing       0.062084
+Medical       0.062500
+Other         0.105263
+Aged          0.163265
+Injured       0.313351
+Sick          0.380952
+Med Urgent    0.500000
+Unknown       0.500000
+Name: bad_outcome, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Animal ID</th>
+      <th>Animal Type</th>
+      <th>Sex upon Intake</th>
+      <th>Intake Type</th>
+      <th>Intake Condition</th>
+      <th>Age upon Intake</th>
+      <th>Breed</th>
+      <th>Color</th>
+      <th>Outcome Type</th>
+      <th>bad_outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A708396</td>
+      <td>Dog</td>
+      <td>Intact Female</td>
+      <td>Stray</td>
+      <td>Normal</td>
+      <td>1 year</td>
+      <td>Pit Bull Mix</td>
+      <td>Black/White</td>
+      <td>Adoption</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A735529</td>
+      <td>Dog</td>
+      <td>Spayed Female</td>
+      <td>Stray</td>
+      <td>Normal</td>
+      <td>3 years</td>
+      <td>Labrador Retriever Mix</td>
+      <td>Brown/White</td>
+      <td>Return to Owner</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A762369</td>
+      <td>Cat</td>
+      <td>Spayed Female</td>
+      <td>Owner Surrender</td>
+      <td>Normal</td>
+      <td>8 years</td>
+      <td>Domestic Shorthair Mix</td>
+      <td>Brown Tabby</td>
+      <td>Adoption</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A814930</td>
+      <td>Cat</td>
+      <td>Neutered Male</td>
+      <td>Owner Surrender</td>
+      <td>Normal</td>
+      <td>3 years</td>
+      <td>Domestic Longhair Mix</td>
+      <td>Brown Tabby</td>
+      <td>Adoption</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A796971</td>
+      <td>Dog</td>
+      <td>Unknown</td>
+      <td>Stray</td>
+      <td>Normal</td>
+      <td>1 week</td>
+      <td>Labrador Retriever Mix</td>
+      <td>Brown</td>
+      <td>Transfer</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="features-and-train-test-split">
+<h2>3. Features and train/test split<a class="headerlink" href="#features-and-train-test-split" title="Link to this heading">#</a></h2>
+<p>Now we build the feature matrix <code class="docutils literal notranslate"><span class="pre">X</span></code> and label vector <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p><strong>Important:</strong> we can only use information available at intake time.</p>
+<p>We’ll drop columns <code class="docutils literal notranslate"><span class="pre">Breed</span></code> and <code class="docutils literal notranslate"><span class="pre">Color</span></code> because they have too many unique values to use get_dummies on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Animal Type&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sex upon Intake&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Intake Type&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Intake Condition&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Age upon Intake&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">X_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;bad_outcome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="parsing-age">
+<h3>Parsing age<a class="headerlink" href="#parsing-age" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Age</span> <span class="pre">upon</span> <span class="pre">Intake</span></code> is a string like <code class="docutils literal notranslate"><span class="pre">&quot;2</span> <span class="pre">years&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;3</span> <span class="pre">weeks&quot;</span></code>, but ML models want numbers.</p>
+<p>We’ll write a small helper that parses any of these formats into days, then use <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> to run it over the whole column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age upon Intake&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;1 year&#39;, &#39;3 years&#39;, &#39;8 years&#39;, &#39;1 week&#39;, &#39;5 months&#39;, &#39;3 weeks&#39;,
+       &#39;4 years&#39;, &#39;1 weeks&#39;, &#39;1 month&#39;, &#39;2 years&#39;, &#39;8 months&#39;, &#39;4 weeks&#39;,
+       &#39;6 months&#39;, &#39;9 years&#39;, &#39;7 months&#39;, &#39;5 years&#39;, &#39;10 years&#39;,
+       &#39;3 months&#39;, &#39;2 months&#39;, &#39;4 days&#39;, &#39;1 day&#39;, &#39;4 months&#39;, &#39;13 years&#39;,
+       &#39;7 years&#39;, &#39;11 years&#39;, &#39;2 weeks&#39;, &#39;6 years&#39;, &#39;10 months&#39;, &#39;2 days&#39;,
+       &#39;3 days&#39;, &#39;9 months&#39;, &#39;5 weeks&#39;, &#39;6 days&#39;, &#39;18 years&#39;, &#39;17 years&#39;,
+       &#39;0 years&#39;, &#39;19 years&#39;, &#39;11 months&#39;, &#39;12 years&#39;, &#39;5 days&#39;,
+       &#39;16 years&#39;, &#39;14 years&#39;, &#39;15 years&#39;, &#39;22 years&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit_to_days</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;week&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">365</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 year&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;years&quot;</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_age</span><span class="p">(</span><span class="n">age_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="c1"># tuple unpack the number and the unit</span>
+    <span class="n">num</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">age_str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">unit</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">*</span> <span class="n">unit_to_days</span><span class="p">[</span><span class="n">unit</span><span class="p">]</span>
+
+<span class="c1"># some test cases</span>
+<span class="k">assert</span> <span class="n">parse_age</span><span class="p">(</span><span class="s2">&quot;1 year&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">365</span>
+<span class="k">assert</span> <span class="n">parse_age</span><span class="p">(</span><span class="s2">&quot;5 months&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">30</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1&#39;, &#39;year&#39;]
+year
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_df</span><span class="p">[</span><span class="s2">&quot;age_days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_df</span><span class="p">[</span><span class="s2">&quot;Age upon Intake&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">parse_age</span><span class="p">)</span>
+<span class="n">X_df</span> <span class="o">=</span> <span class="n">X_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Age upon Intake&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-hot-encoding-the-categorical-columns">
+<h3>One-hot encoding the categorical columns<a class="headerlink" href="#one-hot-encoding-the-categorical-columns" title="Link to this heading">#</a></h3>
+<p>Let’s look at the four categorical columns we’ll use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Animal</span> <span class="pre">Type</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sex</span> <span class="pre">upon</span> <span class="pre">Intake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Intake</span> <span class="pre">Type</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Intake</span> <span class="pre">Condition</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Animal Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Sex upon Intake&quot;</span><span class="p">,</span> <span class="s2">&quot;Intake Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Intake Condition&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Four categorical columns (<code class="docutils literal notranslate"><span class="pre">Animal</span> <span class="pre">Type</span></code>, <code class="docutils literal notranslate"><span class="pre">Sex</span> <span class="pre">upon</span> <span class="pre">Intake</span></code>, <code class="docutils literal notranslate"><span class="pre">Intake</span> <span class="pre">Type</span></code>, <code class="docutils literal notranslate"><span class="pre">Intake</span> <span class="pre">Condition</span></code>) all have a small number of observed levels, so <code class="docutils literal notranslate"><span class="pre">pd.get_dummies</span></code> can be used to generate features. We also set <code class="docutils literal notranslate"><span class="pre">dummy_na=True</span></code> so any <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in those columns becomes an explicit missing-indicator column (for example <code class="docutils literal notranslate"><span class="pre">Intake</span> <span class="pre">Condition_nan</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X_df</span><span class="p">,</span> <span class="n">categorical_cols</span><span class="p">,</span> <span class="n">dummy_na</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age_days</th>
+      <th>Animal Type_Bird</th>
+      <th>Animal Type_Cat</th>
+      <th>Animal Type_Dog</th>
+      <th>Animal Type_Livestock</th>
+      <th>Animal Type_Other</th>
+      <th>Animal Type_nan</th>
+      <th>Sex upon Intake_Intact Female</th>
+      <th>Sex upon Intake_Intact Male</th>
+      <th>Sex upon Intake_Neutered Male</th>
+      <th>...</th>
+      <th>Intake Condition_Neonatal</th>
+      <th>Intake Condition_Neurologic</th>
+      <th>Intake Condition_Normal</th>
+      <th>Intake Condition_Nursing</th>
+      <th>Intake Condition_Other</th>
+      <th>Intake Condition_Parvo</th>
+      <th>Intake Condition_Pregnant</th>
+      <th>Intake Condition_Sick</th>
+      <th>Intake Condition_Unknown</th>
+      <th>Intake Condition_nan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>365</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1095</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2920</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1095</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 37 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_df</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3815, 37)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="model-train-evaluate">
+<h2>4. Model, train, evaluate<a class="headerlink" href="#model-train-evaluate" title="Link to this heading">#</a></h2>
+<section id="a-first-baseline-how-far-does-one-feature-take-us">
+<h3>A first baseline: how far does one feature take us?<a class="headerlink" href="#a-first-baseline-how-far-does-one-feature-take-us" title="Link to this heading">#</a></h3>
+<p>Before we use all our features at a model, let’s see how well a single feature does.</p>
+<p>We’ll fit a logistic regression on <code class="docutils literal notranslate"><span class="pre">age_days</span></code> alone and measure ROC-AUC on the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">pipe_lr_age</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s2">&quot;lr&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+<span class="p">])</span>
+
+<span class="n">pipe_lr_age</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">[[</span><span class="s2">&quot;age_days&quot;</span><span class="p">]],</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">lr_age_scores</span> <span class="o">=</span> <span class="n">pipe_lr_age</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">[[</span><span class="s2">&quot;age_days&quot;</span><span class="p">]])[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">lr_age_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6143687824015693
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-all-the-intake-features">
+<h3>Adding all the intake features<a class="headerlink" href="#adding-all-the-intake-features" title="Link to this heading">#</a></h3>
+<p>We’ll rerun the same logistic regression, but now give it every feature we built in section 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipe_lr_all</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">&quot;scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s2">&quot;lr&quot;</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+<span class="p">])</span>
+
+<span class="n">pipe_lr_all</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">lr_all_scores</span> <span class="o">=</span> <span class="n">pipe_lr_all</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">lr_all_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.906825463546775
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="another-model-random-forest">
+<h3>Another model: Random Forest<a class="headerlink" href="#another-model-random-forest" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">rf_scores</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rf_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9096567185091776
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-all-three-models-with-roc-curves">
+<h3>Comparing all three models with ROC curves<a class="headerlink" href="#comparing-all-three-models-with-roc-curves" title="Link to this heading">#</a></h3>
+<p>Let’s put them on one ROC plot to see the rankings side by side.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Logistic regression, age only&quot;</span><span class="p">:</span> <span class="n">lr_age_scores</span><span class="p">,</span>
+    <span class="s2">&quot;Logistic regression, all features&quot;</span><span class="p">:</span> <span class="n">lr_all_scores</span><span class="p">,</span>
+    <span class="s2">&quot;random forest, all features&quot;</span><span class="p">:</span> <span class="n">rf_scores</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">model</span><span class="p">,</span> <span class="n">scores</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+    <span class="n">auc</span> <span class="o">=</span>  <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">fpr</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tpr</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fcb6c7c2723a69691bc5615a3943a808923a1d3cc0e2905b1017c83770cd2061.png" src="../_images/fcb6c7c2723a69691bc5615a3943a808923a1d3cc0e2905b1017c83770cd2061.png" />
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">feature performance takeaway</p>
+<p>We should see a big jump from one feature to all features in the logistic regression, from about 0.60 to about 0.90.</p>
+<p>We see minimal improvement from the random forest.</p>
+<p>Getting features into a usable shape, or collecting more features, sometimes matters more than swapping the ML model type – especially in this case where there are only a few features.</p>
+</div>
+</section>
+</section>
+<section id="reproducibility-check">
+<h2>5. Reproducibility check<a class="headerlink" href="#reproducibility-check" title="Link to this heading">#</a></h2>
+<p>An important habit for code hygiene: every time you finish a notebook, restart the kernel and run all cells from top to bottom. This prevents:</p>
+<ol class="arabic simple">
+<li><p><strong>Cell-order bugs.</strong>  Defining a variable in cell 12, then modified it in cell 5 after scrolling up. The notebook as a linear script no longer reproduces your results.</p></li>
+<li><p><strong>Hidden randomness.</strong> Forgetting to set <code class="docutils literal notranslate"><span class="pre">random_state</span></code> somewhere. Restart + run all lets you verify the final metric is stable across runs.</p></li>
+</ol>
+<p>Keep <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> on every step that involves randomness to ensure reproducibility: <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>, <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>, <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code></p>
+<p>We’ll use <strong>Kernel -&gt; Restart Kernel and Run All Cells</strong> to let the notebook rerun top to bottom.</p>
+<section id="wrap-up">
+<h3>Wrap-up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Data: two raw CSVs, merged with <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code> on a shared key.</p></li>
+<li><p>Features: target engineering (collapsing outcome categories into binary), handling missingness, categorical encoding with <code class="docutils literal notranslate"><span class="pre">pd.get_dummies</span></code>, custom parsing for the age string.</p></li>
+<li><p>Model + Train + Evaluate: three models compared on ROC-AUC: a one-feature LR, a full-feature LR, and a Random Forest.</p></li>
+<li><p>Reproducibility: seeds, restart and run all, assertion on the final metric.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./activities"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">0. Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">1. Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-concept-pd-merge">New concept: <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-data-and-building-our-target">2. Exploring the data and building our target</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-binary-target">Building the binary target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missingness-in-data">Missingness in data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-and-train-test-split">3. Features and train/test split</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-age">Parsing age</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding-the-categorical-columns">One-hot encoding the categorical columns</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-train-evaluate">4. Model, train, evaluate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-baseline-how-far-does-one-feature-take-us">A first baseline: how far does one feature take us?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-all-the-intake-features">Adding all the intake features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#another-model-random-forest">Another model: Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-all-three-models-with-roc-curves">Comparing all three models with ROC curves</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproducibility-check">5. Reproducibility check</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+  COMSC 335: Machine Learning is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
