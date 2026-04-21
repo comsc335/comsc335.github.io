@@ -6,6 +6,8 @@
 - ~4-5 minutes (max 5 minutes) per group
 - Format will be Google Slides to make transitions between groups easier
 - Sign up for a presentation slot [linked here](https://docs.google.com/spreadsheets/d/1e3F6CNbZeeMMwMAY-RBxDBaXy7dgVkr1Yz6-4M2poFY/edit?usp=sharing)
+- [Presentation template](https://docs.google.com/presentation/d/1jLwe2jX7uT0yP_jYxUqZ-E-ZAfDqXikUlrY9rHaY2Xc/edit?usp=sharing)
+- [Shared presentation slides](https://docs.google.com/presentation/d/1Gr82GfMzLDr3P3X6WDVVAhaQ_hfF9dxKxgUmxuOu_xs/edit?usp=sharing)
 
 ## Guidelines
 
