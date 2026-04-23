@@ -350,6 +350,10 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 4/22 </small>
     - <small> 4/23 </small> <br>
         ![](https://img.shields.io/badge/Class%2023-1f77b4) <b> Special topic: Language Models</b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552123/mod_resource/content/2/lec23-language-models-starter.pdf)</li>
+                <li>[activity 23](https://docs.google.com/document/d/12sZwenRtvKdMx9FeW230RogJPtWsMRw_CMdAOd6WqOU/edit?usp=sharing)</li>
+            </ul> 
     - <small> 4/24 </small>
 
 *   - <small> 4/27 </small> <!-- Week 13 --> <br> 
