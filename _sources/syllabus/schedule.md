@@ -352,22 +352,31 @@ A list of topics we will cover can be found below. Note that topics may be subje
         ![](https://img.shields.io/badge/Class%2023-1f77b4) <b> Special topic: Language Models</b>
             <ul style="margin-top:-1em;">
                 <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552123/mod_resource/content/2/lec23-language-models-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552124/mod_resource/content/2/lec23-language-models.pdf)</li>
                 <li>[activity 23](https://docs.google.com/document/d/12sZwenRtvKdMx9FeW230RogJPtWsMRw_CMdAOd6WqOU/edit?usp=sharing)</li>
             </ul> 
     - <small> 4/24 </small>
 
 *   - <small> 4/27 </small> <!-- Week 13 --> <br> 
-        ![](https://img.shields.io/badge/Due-dc322f) Final project checkpoint
+        ![](https://img.shields.io/badge/Due-dc322f) [Final project checkpoint](https://www.gradescope.com/courses/1231382/assignments/8041957/)
 
     - <small> 4/28 </small> <br> <b> BOOM - no class </b>
     - <small> 4/29 </small>
     - <small> 4/30 </small> <br>
         ![](https://img.shields.io/badge/Class%2024-1f77b4) <b> Presentations I </b>
+            <ul style="margin-top:-1em;">
+                <li>[shared presentation slides](https://docs.google.com/presentation/d/1Gr82GfMzLDr3P3X6WDVVAhaQ_hfF9dxKxgUmxuOu_xs/edit?usp=sharing)</li>
+                <li>[peer feedback doc](https://docs.google.com/document/d/1snz8dRQ9WA4BZOtTMHYyKLgtWhipA8cO8Ip-cV9hqwI/edit?tab=t.923xtw7fx5cj)</li>
+            </ul> 
     - <small> 5/1 </small>
 
 *   - <small> 5/4 </small> <!-- Week 14 -->
     - <small> 5/5 </small> <br>
         ![](https://img.shields.io/badge/Class%2025-1f77b4) <b> Presentations II and wrap-up </b>
+            <ul style="margin-top:-1em;">
+                <li>[shared presentation slides](https://docs.google.com/presentation/d/1Gr82GfMzLDr3P3X6WDVVAhaQ_hfF9dxKxgUmxuOu_xs/edit?usp=sharing)</li>
+                <li>[peer feedback doc](https://docs.google.com/document/d/1snz8dRQ9WA4BZOtTMHYyKLgtWhipA8cO8Ip-cV9hqwI/edit?tab=t.923xtw7fx5cj)</li>
+            </ul> 
     - <small> 5/6 </small>
     - <small> 5/7 </small> 
     - <small> 5/8 </small>
