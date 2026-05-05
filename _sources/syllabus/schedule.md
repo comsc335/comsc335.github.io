@@ -376,7 +376,8 @@ A list of topics we will cover can be found below. Note that topics may be subje
             <ul style="margin-top:-1em;">
                 <li>[shared presentation slides](https://docs.google.com/presentation/d/1Gr82GfMzLDr3P3X6WDVVAhaQ_hfF9dxKxgUmxuOu_xs/edit?usp=sharing)</li><br>
                 <li>[peer feedback doc, tab is your name](https://docs.google.com/document/d/1snz8dRQ9WA4BZOtTMHYyKLgtWhipA8cO8Ip-cV9hqwI/edit?tab=t.923xtw7fx5cj)</li>
-                <li>[peer feedback doc, tab is presenter's name](https://docs.google.com/document/d/1hMRrtVOszfdEPdq7Wbfgc9BfSjemWeeyIYan1j_ZFTQ/edit?tab=t.c0ude5xy72f6)</li>
+                <li>[peer feedback doc, tab is presenter's name](https://docs.google.com/document/d/1hMRrtVOszfdEPdq7Wbfgc9BfSjemWeeyIYan1j_ZFTQ/edit?tab=t.c0ude5xy72f6)</li><br>
+                <li>[Course feedback form](https://mtholyokeevals.qualtrics.com/jfe/form/SV_aVLb6EKAOpahSFo)</li>
             </ul> 
     - <small> 5/6 </small>
     - <small> 5/7 </small> 
