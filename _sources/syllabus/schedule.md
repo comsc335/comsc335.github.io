@@ -383,7 +383,7 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 5/7 </small> 
     - <small> 5/8 </small>
 
-*   - <small> 5/11 </small> <br> <br> ![](https://img.shields.io/badge/Due:-d62728) Final project **(noon)** <!-- Week 15 -->
+*   - <small> 5/11 </small> <br> <br> ![](https://img.shields.io/badge/Due:-d62728) [Final project](https://www.gradescope.com/courses/1231382/assignments/8105589/) **(noon)** <!-- Week 15 -->
     - <small> 5/12 </small>
     - <small> 5/13 </small>
     - <small> 5/14 </small>
