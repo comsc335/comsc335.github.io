@@ -31,4 +31,5 @@
   - [Colab](https://colab.research.google.com/drive/1qbuChg9toqyx1XrUUFFyg1v9Be0zGDMb?usp=sharing)
 - [Activity 18: Unsupervised Learning I](https://docs.google.com/document/d/1f6zOOXwIRv1x3Us2qYDJwCPWK4s2d0pNdBGeq3-zSi0/edit?usp=sharing)
 - [Activity 19: Unsupervised Learning II](activity19)
+- [Activity 23: Language Models](https://docs.google.com/document/d/12sZwenRtvKdMx9FeW230RogJPtWsMRw_CMdAOd6WqOU/edit?usp=sharing)
 
