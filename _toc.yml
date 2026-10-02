@@ -13,8 +13,9 @@ parts:
       - file: syllabus/schedule.md
   - caption: Resources
     chapters:
-      - file: resources/catalog.md
+      # - file: resources/catalog.md
       - file: activities/activities.md
+  # comment everything below for syllabus pdf compilation
   - caption: Worksheets
     chapters:
       - file: worksheets/ws1.ipynb

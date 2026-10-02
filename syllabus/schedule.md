@@ -350,25 +350,40 @@ A list of topics we will cover can be found below. Note that topics may be subje
     - <small> 4/22 </small>
     - <small> 4/23 </small> <br>
         ![](https://img.shields.io/badge/Class%2023-1f77b4) <b> Special topic: Language Models</b>
+            <ul style="margin-top:-1em;">
+                <li>[[starter] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552123/mod_resource/content/2/lec23-language-models-starter.pdf)</li>
+                <li>[[complete] slides](https://moodle.mtholyoke.edu/pluginfile.php/1552124/mod_resource/content/2/lec23-language-models.pdf)</li>
+                <li>[activity 23](https://docs.google.com/document/d/12sZwenRtvKdMx9FeW230RogJPtWsMRw_CMdAOd6WqOU/edit?usp=sharing)</li>
+            </ul> 
     - <small> 4/24 </small>
 
 *   - <small> 4/27 </small> <!-- Week 13 --> <br> 
-        ![](https://img.shields.io/badge/Due-dc322f) Final project checkpoint
+        ![](https://img.shields.io/badge/Due-dc322f) [Final project checkpoint](https://www.gradescope.com/courses/1231382/assignments/8041957/)
 
     - <small> 4/28 </small> <br> <b> BOOM - no class </b>
     - <small> 4/29 </small>
     - <small> 4/30 </small> <br>
         ![](https://img.shields.io/badge/Class%2024-1f77b4) <b> Presentations I </b>
+            <ul style="margin-top:-1em;">
+                <li>[shared presentation slides](https://docs.google.com/presentation/d/1Gr82GfMzLDr3P3X6WDVVAhaQ_hfF9dxKxgUmxuOu_xs/edit?usp=sharing)</li>
+                <li>[peer feedback doc](https://docs.google.com/document/d/1snz8dRQ9WA4BZOtTMHYyKLgtWhipA8cO8Ip-cV9hqwI/edit?tab=t.923xtw7fx5cj)</li>
+            </ul> 
     - <small> 5/1 </small>
 
 *   - <small> 5/4 </small> <!-- Week 14 -->
     - <small> 5/5 </small> <br>
         ![](https://img.shields.io/badge/Class%2025-1f77b4) <b> Presentations II and wrap-up </b>
+            <ul style="margin-top:-1em;">
+                <li>[shared presentation slides](https://docs.google.com/presentation/d/1Gr82GfMzLDr3P3X6WDVVAhaQ_hfF9dxKxgUmxuOu_xs/edit?usp=sharing)</li><br>
+                <li>[peer feedback doc, tab is your name](https://docs.google.com/document/d/1snz8dRQ9WA4BZOtTMHYyKLgtWhipA8cO8Ip-cV9hqwI/edit?tab=t.923xtw7fx5cj)</li>
+                <li>[peer feedback doc, tab is presenter's name](https://docs.google.com/document/d/1hMRrtVOszfdEPdq7Wbfgc9BfSjemWeeyIYan1j_ZFTQ/edit?tab=t.c0ude5xy72f6)</li><br>
+                <li>[Course feedback form](https://mtholyokeevals.qualtrics.com/jfe/form/SV_aVLb6EKAOpahSFo)</li>
+            </ul> 
     - <small> 5/6 </small>
     - <small> 5/7 </small> 
     - <small> 5/8 </small>
 
-*   - <small> 5/11 </small> <br> <br> ![](https://img.shields.io/badge/Due:-d62728) Final project **(noon)** <!-- Week 15 -->
+*   - <small> 5/11 </small> <br> <br> ![](https://img.shields.io/badge/Due:-d62728) [Final project](https://www.gradescope.com/courses/1231382/assignments/8105589/) **(noon)** <!-- Week 15 -->
     - <small> 5/12 </small>
     - <small> 5/13 </small>
     - <small> 5/14 </small>
